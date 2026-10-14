@@ -1,0 +1,9 @@
+node_modules/
+dist/
+dist-single/
+*.tsbuildinfo
+# voice-recording working files (cache and logs), rebuilt by scripts/build_voices.py
+scripts/out/
+*.log
+.env
+.env.*

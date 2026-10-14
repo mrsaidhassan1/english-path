@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root, html {
+  /* Always light: some browsers and hosts force dark form controls, which made typing invisible. */
+  color-scheme: light only;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Form controls: always white with dark navy text, whatever the browser or system theme. */
+@layer base {
+  input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='file']),
+  textarea,
+  select {
+    background-color: #fff;
+    color: #161E54;
+    -webkit-text-fill-color: #161E54;
+    caret-color: #FF5151;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: #8A90B8;
+    -webkit-text-fill-color: #8A90B8;
+    opacity: 1;
+  }
+  input:disabled,
+  textarea:disabled,
+  textarea[readonly] {
+    background-color: #F3F5FB;
+    color: #161E54;
+    -webkit-text-fill-color: #161E54;
+    opacity: 1;
+  }
+  /* Our own tick boxes: white with a navy border, green with a white tick when ticked. */
+  input[type='checkbox'] {
+    appearance: none;
+    -webkit-appearance: none;
+    flex-shrink: 0;
+    display: inline-grid;
+    place-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0;
+    border: 2px solid #8A90B8;
+    border-radius: 0.45rem;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  input[type='checkbox']::before {
+    content: '';
+    width: 0.8rem;
+    height: 0.8rem;
+    transform: scale(0);
+    transition: transform 0.12s ease-in-out;
+    background-color: #fff;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+  input[type='checkbox']:checked {
+    background-color: #1F9D6B;
+    border-color: #1F9D6B;
+  }
+  input[type='checkbox']:checked::before { transform: scale(1); }
+  input[type='checkbox']:disabled { opacity: 0.6; cursor: default; }
+  input[type='range'] { accent-color: #161E54; }
+}
+
+html { font-size: 17px; }
+body {
+  @apply bg-paper font-sans text-navy antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Clear keyboard focus everywhere */
+:focus-visible { outline: 3px solid #FF5151; outline-offset: 2px; border-radius: 12px; }
+
+[lang='ar'], [dir='rtl'] { font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+/* Printing: reports and certificates only */
+@media print {
+  @page { margin: 12mm; }
+  html { font-size: 12px; }
+  body { background: #fff !important; }
+  aside, header, nav, .print\:hidden { display: none !important; }
+  main { padding: 0 !important; max-width: none !important; }
+  .print-page { break-inside: avoid; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

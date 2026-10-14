@@ -1,0 +1,9 @@
+{
+  "name": "SH English Path · A1 Learning Hub",
+  "short_name": "SH English Path",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#F6F7FB",
+  "theme_color": "#161E54",
+  "icons": [{ "src": "brand/sh-mark.png", "sizes": "500x500", "type": "image/png", "purpose": "any" }]
+}
