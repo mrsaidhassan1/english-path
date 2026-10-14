@@ -123,3 +123,29 @@ export const onlineError = (e: unknown) => {
   if (/fetch|network/i.test(m)) return 'No internet connection. Your work is saved on this phone and will be sent later.';
   return m;
 };
+
+// ------------------------------------------------------------------ email links (invitation / password reset)
+// Supabase's emails send the teacher back to the app with tokens in the URL hash
+// (#access_token=…&refresh_token=…&type=invite|recovery). The app uses a HashRouter, so read and
+// remove them before the router sees the hash, then ask the teacher to choose a password.
+let pendingPassword = false;
+export const needsPassword = () => pendingPassword;
+
+export function captureAuthFromUrl(): Promise<boolean> | null {
+  if (!onlineEnabled || typeof window === 'undefined') return null;
+  const h = window.location.hash;
+  if (!/access_token=/.test(h) && !/error_description=/.test(h)) return null;
+  const q = new URLSearchParams(h.replace(/^#\/?/, ''));
+  history.replaceState(null, '', window.location.pathname + window.location.search + '#/');
+  const access_token = q.get('access_token');
+  const refresh_token = q.get('refresh_token');
+  if (!access_token || !refresh_token) return Promise.resolve(false);
+  pendingPassword = q.get('type') === 'invite' || q.get('type') === 'recovery';
+  return sb().auth.setSession({ access_token, refresh_token }).then(({ error }) => !error);
+}
+
+export async function setTeacherPassword(password: string): Promise<void> {
+  const { error } = await sb().auth.updateUser({ password });
+  if (error) throw error;
+  pendingPassword = false;
+}

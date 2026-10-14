@@ -1,3 +1,5 @@
+import { captureAuthFromUrl } from './lib/online';
+import { SetPasswordGate } from './components/SetPassword';
 import { useOnlineSync } from './hooks/useOnlineSync';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import type { ReactNode } from 'react';
@@ -56,6 +58,9 @@ function Shell() {
   );
 }
 
+// Read invitation / password-reset tokens before the HashRouter sees the URL.
+const authFromUrl = captureAuthFromUrl();
+
 export default function App() {
   return (
     <AppProvider>
@@ -63,6 +68,7 @@ export default function App() {
         <Shell />
       </HashRouter>
       <ConfirmHost />
+      <SetPasswordGate ready={authFromUrl} />
     </AppProvider>
   );
 }
