@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { existsSync, readFileSync } from 'node:fs';
 import { demoData, emptyData, ensureBuiltInClass, FND68_CLASS, startData } from '../lib/demo';
-import { findClassByCode, importClassFile, joinWithCode, migrate, nameOf, newClass, parseCsvClass, studentsIn, type ClassFile } from '../lib/classes';
+import { progressOf } from '../lib/online';
+import { findClassByCode, importClassFile, joinWithCode, mergeOnlineClass, migrate, nameOf, newClass, parseCsvClass, studentsIn, type ClassFile } from '../lib/classes';
 import { assignmentsFor } from '../lib/recommend';
 
 const file: ClassFile = {
@@ -144,5 +145,39 @@ describe('built-in FND 68 class (no student data)', () => {
 
   it('ships no FND 68 student names in the built-in data', () => {
     expect(JSON.stringify(startData())).not.toMatch(/iatcId|lastName/);
+  });
+});
+
+describe('online class store merge', () => {
+  const row = (id: string, first: string, last: string | null, lessons = {}) => ({ id, first_name: first, last_name: last, progress: { lessons, streak: { count: 3, last: '2026-10-14' } }, updated_at: '2026-10-14T10:00:00Z' });
+  const wr = (id: string, student: string) => ({ id, student_id: student, task_title: 'About Me', prompt: 'Write 25 words.', bullets: ['a', 'b', 'c'], body: 'My name is Test. I am a student.', words: 8, estimate: null, marks: null, teacher_score: null, teacher_note: null, source: 'u1-d1-write', created_at: '2026-10-14T10:05:00Z' });
+
+  it('links roster learners by name, adds new learners, and brings their writing', () => {
+    const d = startData();
+    importClassFile(d, { ...file, class: { name: 'FND 68' } });
+    const before = d.students.length;
+    const r = mergeOnlineClass(d, FND68_CLASS.id, [row('u-1', 'Khalid', 'Example', { 'u1-d1': { score: 8, total: 10, completedAt: '', attempts: 1 } }), row('u-2', 'Faris', null)], [wr('wr-1', 'u-1'), wr('wr-2', 'u-2')]);
+    expect(r).toEqual({ added: 1, updated: 1, writing: 2 });
+    expect(d.students).toHaveLength(before + 1);
+    const khalid = d.students.find((s) => s.firstName === 'Khalid')!;
+    expect(khalid.onlineId).toBe('u-1');
+    expect(khalid.iatcId).toBe('100003'); // teacher-only fields kept
+    expect(khalid.lessons['u1-d1'].score).toBe(8);
+    expect(d.writing.filter((w) => w.online)).toHaveLength(2);
+  });
+
+  it('does not duplicate learners or writing when loaded again', () => {
+    const d = startData();
+    mergeOnlineClass(d, FND68_CLASS.id, [row('u-1', 'Faris', null)], [wr('wr-1', 'u-1')]);
+    const r = mergeOnlineClass(d, FND68_CLASS.id, [row('u-1', 'Faris', null)], [wr('wr-1', 'u-1')]);
+    expect(r).toEqual({ added: 0, updated: 1, writing: 0 });
+    expect(d.students).toHaveLength(1);
+    expect(d.writing).toHaveLength(1);
+  });
+
+  it('never sends photos or teacher-only fields online', () => {
+    const s = demoData().students[0];
+    const p = progressOf({ ...s, avatar: { kind: 'photo', dataUrl: 'data:image/jpeg;base64,xx', seed: 5 }, iatcId: '123', group: 'G1' });
+    expect(JSON.stringify(p)).not.toMatch(/dataUrl|iatcId|group|level/);
   });
 });

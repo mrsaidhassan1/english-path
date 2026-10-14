@@ -1,3 +1,4 @@
+import { useOnlineSync } from './hooks/useOnlineSync';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import { AppProvider, useApp } from './store';
@@ -25,6 +26,7 @@ function TeacherOnly({ children }: { children: ReactNode }) {
 
 function Shell() {
   const { data } = useApp();
+  useOnlineSync();
   if (!data.session.role) return <Welcome />;
   return (
     <Layout>

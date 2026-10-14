@@ -1,7 +1,9 @@
 import { useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { LayoutDashboard, Presentation, Printer, Users, BarChart3, Send, PenLine, Database, Settings as Cog, Download, Upload, Trash2, RotateCcw, Copy, School } from 'lucide-react';
+import { LayoutDashboard, Presentation, Printer, Users, BarChart3, Send, PenLine, Database, Settings as Cog, Download, Upload, Trash2, RotateCcw, Copy, School, Cloud } from 'lucide-react';
 import { ClassesPanel } from './Classes';
+import { OnlineClassPanel } from './OnlineClass';
+import { onlineEnabled, onlineError, saveMarkOnline } from '../lib/online';
 import type { Assignment, Skill, WritingSubmission } from '../types';
 import { a1Errors, CRITERIA, estimateWriting, marksTotal, RUBRIC_SRC, unknownWords, WRITING_MAX, type WritingMarks } from '../data/writingRubric';
 import { SKILLS } from '../types';
@@ -23,7 +25,7 @@ import { nameOf } from '../lib/classes';
 import { canDownload, canPrint } from '../lib/env';
 import { ask } from '../components/Confirm';
 
-type Tab = 'overview' | 'classes' | 'students' | 'assign' | 'writing' | 'content' | 'settings';
+type Tab = 'overview' | 'classes' | 'online' | 'students' | 'assign' | 'writing' | 'content' | 'settings';
 
 export default function Teacher() {
   const [params, setParams] = useSearchParams();
@@ -47,6 +49,7 @@ export default function Teacher() {
       <Tabs<Tab> className="mb-6 print:hidden" value={shown} onChange={(t) => setParams({ tab: t })} tabs={[
         { id: 'overview', label: <span className="flex items-center gap-1"><BarChart3 size={16} /> Overview</span> },
         { id: 'classes', label: <span className="flex items-center gap-1"><School size={16} /> Classes ({data.classes.length})</span> },
+        ...(onlineEnabled ? [{ id: 'online' as Tab, label: <span className="flex items-center gap-1"><Cloud size={16} /> Online class</span> }] : []),
         { id: 'students', label: <span className="flex items-center gap-1"><Users size={16} /> Students</span> },
         { id: 'assign', label: <span className="flex items-center gap-1"><Send size={16} /> Assign</span> },
         { id: 'writing', label: <span className="flex items-center gap-1"><PenLine size={16} /> Writing {toMark > 0 && <span className="rounded-full bg-coral px-1.5 text-xs text-white">{toMark}</span>}</span> },
@@ -55,6 +58,7 @@ export default function Teacher() {
       ]} />
       {shown === 'overview' && <Overview />}
       {shown === 'classes' && <ClassesPanel />}
+      {shown === 'online' && <OnlineClassPanel />}
       {shown === 'students' && <Roster />}
       {shown === 'assign' && <Assign />}
       {shown === 'writing' && <WritingQueue />}
@@ -295,7 +299,7 @@ function Assign() {
 // Marking with the A1 writing rubric (A1 Exam / A1 Writing Exam / "A1 writing rubric.pdf"):
 // Content, Organisation and Language, 0–5 each, total /15. The automatic estimate is pre-selected; the teacher decides.
 function WritingQueue() {
-  const { data, update, updateStudent, students } = useApp();
+  const { data, update, updateStudent, students, toast } = useApp();
   const inClass = new Set(students.map((s) => s.id));
   const items = data.writing.filter((w) => inClass.has(w.studentId));
   const [marks, setMarks] = useState<Record<string, WritingMarks>>({});
@@ -308,7 +312,10 @@ function WritingQueue() {
     const m = marks[w.id] ?? suggestion(w);
     const total = marksTotal(m);
     const prev = w.marks ? marksTotal(w.marks) : undefined;
-    update((d) => { const x = d.writing.find((y) => y.id === w.id); if (x) { x.marks = m; x.teacherScore = total; x.teacherNote = notes[w.id] ?? x.teacherNote ?? ''; } });
+    const note = notes[w.id] ?? w.teacherNote ?? '';
+    update((d) => { const x = d.writing.find((y) => y.id === w.id); if (x) { x.marks = m; x.teacherScore = total; x.teacherNote = note; } });
+    // writing that came from a learner's phone: send the mark back online
+    if (w.online) saveMarkOnline(w.id, m, total, note).catch((e) => toast(`Mark saved here, but not online: ${onlineError(e)}`, 'warn'));
     updateStudent((s) => {
       const st = s.skillStats.writing ?? { correct: 0, total: 0 };
       const exam = s.exams.find((r) => r.writingId === w.id);

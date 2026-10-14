@@ -158,6 +158,27 @@ The data model (`src/types.ts`) already separates students, assignments, writing
 
 ---
 
+## 7a. Online class (GitHub Pages + Supabase)
+
+**Live app:** https://mrsaidhassan1.github.io/sh-english-path/ (GitHub repository `mrsaidhassan1/sh-english-path`). Every push to `main` is built, tested and published by `.github/workflows/deploy.yml`.
+
+With an online class store, learners' work reaches the teacher from their own phones:
+
+- **Learners** open the link, tap *Join with the class code*, type **FND68-SH** and their name. The phone signs in anonymously (no password) and sends their progress and writing online automatically. A chip in the top bar shows *Saved online* or *Saved on this phone* (offline; it is sent later).
+- **Teacher**: *Teacher Dashboard → Online class*. Sign in with email and password, then *Load the class now* to bring every learner's progress and writing into the dashboard. Learners from the class file are linked by name. Marks saved in *Writing* go back to the learner's phone (*Progress → My writing*).
+- **Privacy**: names typed by learners, their progress and writing are stored in the Supabase project. Row-level security lets a phone read only its own rows, and only the teacher's login reads the class (`supabase/setup.sql`). No IATC IDs, photos or class-file data are sent. One phone = one online learner.
+
+**Set up once:**
+
+1. Create a free project at supabase.com.
+2. In **SQL Editor**, run `supabase/setup.sql`.
+3. In **Authentication → Sign In / Providers**, turn on **Allow anonymous sign-ins**.
+4. In **Authentication → Users → Invite user**, invite the teacher's email. Accept the email and set a password.
+5. Run the last line of `setup.sql` with that email. It connects the teacher to FND68-SH.
+6. In GitHub, go to **Settings → Secrets and variables → Actions → Variables** and add `SUPABASE_URL` (Project URL) and `SUPABASE_ANON_KEY` (the anon public key, found in Supabase Settings → API). Re-run the deploy workflow.
+
+Without those two variables the app works exactly as before, saving on each device only. The claude.ai copy always works that way.
+
 ## 8. Natural voices (OpenVox / Kokoro)
 
 Almost everything the app says uses real recorded voices, made offline on this PC with the Kokoro voices that **OpenVox – Local Voice AI** installed:

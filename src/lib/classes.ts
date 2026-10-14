@@ -1,5 +1,5 @@
 // Classes: several classes on one device, join codes, class files (import / export) and name display.
-import type { AppData, Cefr, ClassInfo, ExamResult, Student } from '../types';
+import type { AppData, Cefr, ClassInfo, ExamResult, Student, WritingSubmission } from '../types';
 import { newStudent, recordExam } from './learner';
 import { newSeed } from './rng';
 
@@ -186,4 +186,61 @@ export function migrate(raw: Record<string, unknown>): AppData {
   const settings = { ...old.settings };
   delete (settings as { className?: string }).className;
   return { ...old, version: 2, classes: [cls], activeClassId: cls.id, students, assignments, settings };
+}
+
+// ------------------------------------------------------------------ online class store
+/** Learner-owned fields that the learner's phone sends online. */
+const ONLINE_FIELDS = ['avatar', 'goal', 'interests', 'lessons', 'skillStats', 'grammarStats', 'vocab', 'practiseAgain', 'speaking', 'exams', 'streak', 'activeDays', 'badges', 'log'] as const;
+
+/**
+ * Merge the online class (rows loaded by the teacher) into this device's class.
+ * A learner is matched by online id, then by name (so a roster imported from the class file links up);
+ * otherwise added. Their progress replaces the local copy; teacher-only fields (level, group, roster
+ * number, ID, photo, classroom participation) are kept. Online writing is added; marks are kept.
+ */
+export function mergeOnlineClass(
+  d: AppData, classId: string,
+  rows: { id: string; first_name: string; last_name: string | null; progress: Partial<Student>; updated_at: string }[],
+  writing: { id: string; student_id: string; task_title: string | null; prompt: string | null; bullets: string[]; body: string; words: number | null; estimate: WritingSubmission['estimate'] | null; marks: WritingSubmission['marks'] | null; teacher_score: number | null; teacher_note: string | null; source: string | null; created_at: string }[],
+): { added: number; updated: number; writing: number } {
+  const key = (f: string, l?: string | null) => `${f.trim().toLowerCase()}|${(l ?? '').trim().toLowerCase()}`;
+  let added = 0;
+  let updated = 0;
+  const localId = new Map<string, string>();
+  for (const r of rows) {
+    const inClass = studentsIn(d, classId);
+    let s = inClass.find((x) => x.onlineId === r.id)
+      ?? inClass.find((x) => !x.onlineId && key(x.firstName, x.lastName) === key(r.first_name, r.last_name))
+      ?? inClass.find((x) => !x.onlineId && !r.last_name && x.firstName.trim().toLowerCase() === r.first_name.trim().toLowerCase() && inClass.filter((y) => y.firstName.trim().toLowerCase() === x.firstName.trim().toLowerCase()).length === 1);
+    if (!s) {
+      s = newStudent(r.first_name, 'A0', { classId, lastName: r.last_name ?? undefined, joinedBy: 'online' });
+      d.students.push(s);
+      added++;
+    } else updated++;
+    s.onlineId = r.id;
+    s.onlineAt = r.updated_at;
+    const p = r.progress ?? {};
+    for (const f of ONLINE_FIELDS) if (p[f] !== undefined) (s as unknown as Record<string, unknown>)[f] = p[f];
+    localId.set(r.id, s.id);
+  }
+  let newWriting = 0;
+  for (const w of writing) {
+    const studentId = localId.get(w.student_id);
+    if (!studentId) continue;
+    const have = d.writing.find((x) => x.id === w.id);
+    if (have) {
+      have.online = true;
+      if (w.marks && !have.marks) { have.marks = w.marks; have.teacherScore = w.teacher_score ?? undefined; have.teacherNote = w.teacher_note ?? undefined; }
+      continue;
+    }
+    d.writing.push({
+      id: w.id, studentId, taskTitle: w.task_title ?? 'Writing', prompt: w.prompt ?? '', bullets: w.bullets ?? [], text: w.body, words: w.words ?? 0,
+      selfCheck: 0, estimate: w.estimate ?? undefined, marks: w.marks ?? undefined, teacherScore: w.teacher_score ?? undefined, teacherNote: w.teacher_note ?? undefined,
+      createdAt: w.created_at, source: w.source ?? 'online', online: true,
+    });
+    newWriting++;
+  }
+  d.writing.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+  refreshNameFlags(d);
+  return { added, updated, writing: newWriting };
 }

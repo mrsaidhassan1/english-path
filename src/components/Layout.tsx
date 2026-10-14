@@ -3,6 +3,8 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {
   Home, Route, BookOpen, Layers, Mic, Dumbbell, RefreshCcw, ClipboardCheck, BarChart3, LayoutDashboard, Presentation, MoreHorizontal, LogOut, Languages, X,
 } from 'lucide-react';
+import { useSyncState } from '../hooks/useOnlineSync';
+import { Cloud, CloudOff, RefreshCw } from 'lucide-react';
 import { useApp } from '../store';
 import { Logo, LogoMark } from './Logo';
 import { Avatar } from './Avatar';
@@ -88,6 +90,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-2 px-3 sm:gap-3 sm:px-4">
           <div className="min-w-0 lg:hidden"><Logo size={30} /></div>
           <div className="flex-1" />
+          {me && <SyncChip />}
           <button
             onClick={() => update((d) => { d.settings.arabic = !d.settings.arabic; })}
             aria-pressed={data.settings.arabic}
@@ -144,5 +147,23 @@ export function Layout({ children }: { children: ReactNode }) {
         </div>
       )}
     </div>
+  );
+}
+
+/** Online saving status for the signed-in learner (only when the online class store is set up). */
+function SyncChip() {
+  const s = useSyncState();
+  if (s.kind === 'off' || s.kind === 'idle') return null;
+  const look = {
+    saving: { icon: <RefreshCw size={16} className="animate-spin" />, text: 'Saving…', cls: 'bg-navy-50 text-navy' },
+    saved: { icon: <Cloud size={16} />, text: 'Saved online', cls: 'bg-mint-50 text-mint-700' },
+    offline: { icon: <CloudOff size={16} />, text: 'Saved on this phone', cls: 'bg-sun-50 text-sun-700' },
+    other: { icon: <CloudOff size={16} />, text: 'Saved on this phone', cls: 'bg-sun-50 text-sun-700' },
+    error: { icon: <CloudOff size={16} />, text: 'Not sent', cls: 'bg-coral-50 text-coral-700' },
+  }[s.kind];
+  return (
+    <span className={`flex min-h-[36px] items-center gap-1.5 rounded-full px-3 text-sm font-semibold ${look.cls}`} title={s.message ?? look.text} role="status">
+      {look.icon}<span className="hidden sm:inline">{look.text}</span>
+    </span>
   );
 }

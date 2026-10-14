@@ -181,7 +181,9 @@ export interface Student {
   groupRole?: string; // Leader / Assistant / Middle / Support
   partnerNos?: number[]; // roster numbers of pair partners in the same class
   pairNote?: string;
-  joinedBy?: 'teacher' | 'import' | 'code' | 'demo';
+  joinedBy?: 'teacher' | 'import' | 'code' | 'demo' | 'online';
+  onlineId?: string; // the learner's id in the online class store (see lib/online.ts)
+  onlineAt?: string; // when the teacher last loaded this learner's progress from online
   level: Cefr;
   avatar: AvatarChoice;
   goal: string;
@@ -229,6 +231,8 @@ export interface WritingSubmission {
   teacherNote?: string;
   createdAt: string;
   source: string; // lesson or exam id
+  sentOnline?: boolean; // the learner's phone has sent it to the online class store
+  online?: boolean; // the teacher loaded it from the online class store (marks are saved back online)
 }
 
 export interface Settings {

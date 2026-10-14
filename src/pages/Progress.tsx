@@ -125,6 +125,8 @@ export function ProgressPage() {
         </Card>
       </div>
 
+      <MyWriting studentId={s.id} />
+
       <Card>
         <h2 className="mb-3 text-lg font-bold text-navy">Units</h2>
         <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-4">
@@ -226,5 +228,32 @@ export function CertificatePage() {
         </div>
       </section>
     </div>
+  );
+}
+
+/** The learner's writing with the teacher's marks (A1 writing rubric, /15). */
+function MyWriting({ studentId }: { studentId: string }) {
+  const { data } = useApp();
+  const mine = data.writing.filter((w) => w.studentId === studentId).slice(0, 6);
+  if (mine.length === 0) return null;
+  return (
+    <Card>
+      <h2 className="mb-1 flex items-center gap-2 text-lg font-bold text-navy"><Pencil size={20} /> My writing</h2>
+      <Ar className="mb-2">كتاباتي وتقييم المعلم</Ar>
+      <ul className="space-y-2">
+        {mine.map((w) => (
+          <li key={w.id} className="rounded-2xl bg-navy-50 px-4 py-3">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <b className="text-navy">‘{w.taskTitle}’ <span className="font-normal text-navy-400">· {niceDate(w.createdAt)}</span></b>
+              {w.marks
+                ? <Pill tone="mint">Teacher: {w.teacherScore}/15 · Content {w.marks.content} · Organisation {w.marks.organisation} · Language {w.marks.language}</Pill>
+                : w.teacherScore !== undefined ? <Pill tone="mint">Teacher: {w.teacherScore}/5</Pill>
+                : <Pill tone="sun">Waiting for your teacher</Pill>}
+            </div>
+            {w.teacherNote && <p className="mt-1 text-navy">💬 {w.teacherNote}</p>}
+          </li>
+        ))}
+      </ul>
+    </Card>
   );
 }
