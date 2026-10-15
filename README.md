@@ -166,7 +166,7 @@ The data model (`src/types.ts`) already separates students, assignments, writing
 
 ## 7a. Online class (GitHub Pages + Supabase)
 
-**Live app:** https://mrsaidhassan1.github.io/sh-english-path/ (GitHub repository `mrsaidhassan1/sh-english-path`). Every push to `main` is built, tested and published by `.github/workflows/deploy.yml`.
+**Live app:** https://mrsaidhassan1.github.io/english-path/ (GitHub repository `mrsaidhassan1/english-path`). Every push to `main` is built, tested and published by `.github/workflows/deploy.yml`.
 
 With an online class store, learners' work reaches the teacher from their own phones:
 
