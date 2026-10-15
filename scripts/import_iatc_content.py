@@ -53,7 +53,8 @@ def clean(value):
     if isinstance(value, list):
         return [clean(v) for v in value]
     if isinstance(value, dict):
-        return {k: clean(v) for k, v in value.items()}
+        # keys too: speaker names are keys in a listening exam's voice cast ({"Mr Said": "am_fenrir"})
+        return {clean(k): clean(v) for k, v in value.items()}
     return value
 
 
@@ -90,6 +91,9 @@ oxford = []
 for line in ox_path.read_text(encoding="utf-8").splitlines():
     line = line.strip()
     if not line or line.startswith("#") or re.fullmatch(r"\d+ /", line) or line.endswith("."):
+        continue
+    if AVOID.search(line):  # IATC avoid topics are not shown or recorded, even in the reference list
+        report["skipped"].append({"item": f"Oxford A1 headword '{line}'", "reason": "avoid / caution topic"})
         continue
     oxford.append(line)
 ox_set = set()

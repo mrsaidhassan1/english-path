@@ -110,7 +110,9 @@ describe('exams', () => {
 });
 
 describe('safety and privacy', () => {
-  const everything = JSON.stringify({ MODULES, EXAMS, ROLE_PLAYS, vocab: IATC.vocab, days: IATC.days, units: IATC.units, dialogues: IATC.dialogues });
+  // all imported content, keys included (the import report only lists, for the teacher, what was left out)
+  const { report: _skippedList, ...imported } = IATC;
+  const everything = JSON.stringify({ MODULES, EXAMS, ROLE_PLAYS, imported });
   it('never shows the teacher’s personal name', () => {
     expect(everything).not.toMatch(/Said Hassan|Mr\.? Said\b|سعيد حسن/);
   });
