@@ -72,6 +72,8 @@ export interface IatcSpeaking {
   id: string; week: number; theme: string; warm: string[];
   task: { type: string; title: string; intro?: string; q?: string[] };
   talk: { topic: string; bullets: string[] }; lang: [string, string][]; src: SourceRef;
+  p1?: [question: string, ar: string, model: string][]; // Headway-aligned packs: Part 1 questions with Arabic and a model answer
+  p2?: { topic: string; title?: string; prompts: string[]; answers?: string[]; models?: string[] }[]; // information-exchange cards
 }
 export interface IatcMock {
   id: string; week: number; title: string; p1intro: string; email: string[];

@@ -10,8 +10,8 @@ import type { Activity } from '../types';
 const allActivities: Activity[] = [...MODULES.flatMap((m) => m.lessons.flatMap((l) => l.activities)), ...REVIEWS.flatMap((r) => r.activities)];
 
 describe('units', () => {
-  it('has 8 units = Weeks 1–8, each with a lesson for every class day (Sun–Thu), a conversation lesson and a check', () => {
-    expect(MODULES).toHaveLength(8);
+  it('has one unit per week (Weeks 1–14), each with a lesson for every class day (Sun–Thu), a conversation lesson and a check', () => {
+    expect(MODULES).toHaveLength(14);
     MODULES.forEach((m, i) => {
       expect(m.n).toBe(i + 1);
       expect(m.week).toBe(i + 1);
@@ -20,7 +20,7 @@ describe('units', () => {
       expect(m.goals.length).toBe(m.goalsAr.length);
       expect(m.vocab.length).toBeGreaterThanOrEqual(100);
     });
-    expect(REVIEWS).toHaveLength(4);
+    expect(REVIEWS).toHaveLength(7);
   });
 
   it('every day lesson has its reading (from the Week N handout) and a writing task', () => {
@@ -29,7 +29,7 @@ describe('units', () => {
       expect(kinds, l.id).toContain('reading');
       expect(kinds, l.id).toContain('write');
       const read = l.activities.find((a) => a.kind === 'reading');
-      expect(read?.src?.file, l.id).toMatch(/readings\/week\d\.json$/);
+      expect(read?.src?.file, l.id).toMatch(/readings\/week\d+\.json$/);
     }
   });
 
@@ -123,7 +123,7 @@ describe('safety and privacy', () => {
     idx.forEach((r) => {
       expect(r.src?.label, r.id).toBeTruthy();
       expect(r.module).toBeGreaterThanOrEqual(1);
-      expect(r.module).toBeLessThanOrEqual(8);
+      expect(r.module).toBeLessThanOrEqual(MODULES.length);
       expect(['A0', 'A1', 'A0-A1']).toContain(r.cefr);
     });
   });

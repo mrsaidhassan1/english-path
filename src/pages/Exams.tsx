@@ -32,17 +32,38 @@ const SKILL_NEXT: Record<Skill, { tip: string; to: string }> = {
   speaking: { tip: 'Answer in a full sentence and add one more idea.', to: '/speaking' },
 };
 
+// Listening practice exams come five a week (Sun–Thu): show one week at a time.
+const examWeek = (e: Exam) => Number(e.id.match(/^lx-w(\d+)d/)?.[1] ?? 0);
+const LISTENING_WEEKS = [...new Set(EXAMS.filter((e) => e.kind === 'listening').map(examWeek))].filter(Boolean).sort((a, b) => a - b);
+/** Class Week 1 = Sun 6 Sep 2026 (FND 68). */
+function currentClassWeek(): number {
+  const w = Math.floor((Date.now() - new Date('2026-09-06T00:00:00+03:00').getTime()) / (7 * 864e5)) + 1;
+  const fit = LISTENING_WEEKS.filter((x) => x <= w);
+  return fit.length ? fit[fit.length - 1] : LISTENING_WEEKS[0] ?? 0;
+}
+
 export function ExamsPage() {
   const { learner: s } = useLearner();
+  const [week, setWeek] = useState(currentClassWeek);
   const groups: Exam['kind'][] = ['diagnostic', 'mock', 'listening', 'speaking'];
   return (
     <div className="space-y-7">
       <PageHeader title="Exams" ar="الاختبارات" sub="Timed A1 practice in the ELEM exam format. Results by skill." icon={<ClipboardCheck />} />
       {groups.map((g) => (
         <section key={g}>
-          <h2 className="mb-3 flex items-center gap-2 text-xl font-bold text-navy">{KIND_META[g].icon} {KIND_META[g].label}</h2>
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+            <h2 className="flex items-center gap-2 text-xl font-bold text-navy">{KIND_META[g].icon} {KIND_META[g].label}</h2>
+            {g === 'listening' && LISTENING_WEEKS.length > 1 && (
+              <label className="flex items-center gap-2 font-semibold text-navy">Week
+                <select value={week} onChange={(e) => setWeek(Number(e.target.value))} aria-label="Choose the week"
+                  className="min-h-[44px] rounded-2xl border-2 border-navy-100 bg-white px-3 font-bold text-navy">
+                  {LISTENING_WEEKS.map((w) => <option key={w} value={w}>Week {w}</option>)}
+                </select>
+              </label>
+            )}
+          </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {EXAMS.filter((e) => e.kind === g).map((e) => {
+            {EXAMS.filter((e) => e.kind === g && (g !== 'listening' || examWeek(e) === week)).map((e) => {
               const last = [...s.exams].reverse().find((r) => r.examId === e.id);
               return (
                 <Link key={e.id} to={`/exams/${e.id}`} className="flex flex-col gap-2 rounded-3xl border border-navy-100 bg-white p-5 shadow-card transition hover:-translate-y-0.5 hover:border-coral">

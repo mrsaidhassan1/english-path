@@ -12,7 +12,7 @@ export function LessonsPage() {
   const { learner: s, unlockAll, assigned } = useLearner();
   return (
     <div>
-      <PageHeader title="Lessons" ar="الدروس" sub="8 units from A0 to A1, one for each week (Week 1–8). Each unit has a lesson for every class day, Sunday to Thursday." icon={<BookOpen />} />
+      <PageHeader title="Lessons" ar="الدروس" sub={`${MODULES.length} units from A0 to A1, one for each week (Week 1–${MODULES.length}). Each unit has a lesson for every class day, Sunday to Thursday.`} icon={<BookOpen />} />
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {MODULES.map((m) => {
           const open = moduleUnlocked(s, m, { unlockAll, assigned });

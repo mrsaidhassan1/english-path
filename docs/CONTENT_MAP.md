@@ -33,7 +33,7 @@ This map was built on 13 Oct 2026 from the IATC English folder. The full, search
 | Status | lesson · revision · exam |
 | Source | `src` = file + location + the classroom document (docx, pptx or pdf) |
 
-## 3. Units and their sources (Unit N = Week N)
+## 3. Units and their sources (Unit N = Week N, Units 1–14)
 
 Every unit is built from the **A0 – A1 Weekly Materials, Week N** (aligned to New Headway Beginner Unit N):
 `tools/weekly-pack/content/readings/weekN.json` (the reading handouts, Sun–Thu) + `tools/weekly-pack/content/weekN.json` (the lesson slides' words, grammar and goals).
@@ -51,7 +51,11 @@ Every unit is built from the **A0 – A1 Weekly Materials, Week N** (aligned to 
 
 The Conversations / Listening packs were written before the Headway realignment, so their week order differs. Each unit uses the present-tense conversation and listening that best match its topic. Week 1's deck has four days for five readings, so Sunday uses Monday's deck day and Monday/Tuesday share the Tuesday deck day (words split in two).
 
-Reviews come after Units 2, 4, 6 and 8. They are built from those units' checks and words.
+Units 9–14 (Weeks 9–14, Headway Units 9–14) follow the same pattern: Times Past · We Had a Great Time! · I Can Do That! · Please and Thank You · Here and Now · It's Time to Go!
+
+Since 14 Oct 2026 the Conversations / Listening / Speaking pack follows the Headway weeks, so every unit uses its own week: Sunday's conversation, Monday's listening and Sunday's Speaking Part 1 questions (the table above shows the earlier picks for Units 1–8).
+
+Reviews come after every two units. They are built from those units' checks and words.
 
 ## 4. Exams
 

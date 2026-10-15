@@ -17,77 +17,86 @@ interface UnitCfg {
   goalsAr: string[];
   grammarKeys: string[];
   open?: boolean; // open to every student now (all its lessons), without finishing the units before it
-  dialogue: string | Dialogue; // IATC conversation id, or an original dialogue
-  listening: string; // IATC listening id
-  speaking?: string; // IATC speaking id for the useful language
+  // From the Week N Conversations / Listening / Speaking pack (Headway-aligned since Oct 2026).
+  // Defaults: Sunday's conversation, Monday's listening, Sunday's speaking questions.
+  dialogue?: string | Dialogue;
+  listening?: string;
+  speaking?: string;
 }
-
-// Original dialogue written for the app (uses Week 2–3 vocabulary): personal information.
-const studentCard: Dialogue = {
-  id: 'm3-dlg-student-card',
-  title: 'A New Student Card',
-  setting: 'The student office at IATC. Majed needs a new student card.',
-  original: true,
-  lines: [
-    ['Officer', 'Good morning. Can I **help** you?'],
-    ['Majed', 'Good morning. I need a new **student card**, please.'],
-    ['Officer', 'OK. What’s your **first name**?'],
-    ['Majed', 'My first name is [[Majed]].'],
-    ['Officer', 'And what’s your **surname**?'],
-    ['Majed', 'It’s [[Alharbi]].'],
-    ['Officer', 'How do you **spell** that?'],
-    ['Majed', 'A-L-H-A-R-B-I.'],
-    ['Officer', 'Thank you. How **old** are you?'],
-    ['Majed', 'I’m [[nineteen]] years old.'],
-    ['Officer', 'What’s your **phone number**?'],
-    ['Majed', 'It’s [[055 318 4270]].'],
-    ['Officer', 'And what’s your **address**?'],
-    ['Majed', 'It’s [[12]] King Fahd **Road**, Riyadh.'],
-    ['Officer', 'Great. Here is your new card.'],
-    ['Majed', 'Thank you very much!'],
-  ],
-};
+const convId = (c: UnitCfg) => c.dialogue ?? `dlg-s${c.n}d1`;
+const listeningId = (c: UnitCfg) => c.listening ?? `lst-s${c.n}d2`;
+const speakingId = (c: UnitCfg) => c.speaking ?? `spk-s${c.n}d1`;
 
 export const UNIT_CFG: UnitCfg[] = [
   {
     n: 1, title: 'Hello!', titleAr: 'مرحباً!', icon: 'hand', colour: '#FF5151',
-    grammarKeys: ['be', 'possessive-adj', 'a-an', 'plurals', 'numbers'], dialogue: 'dlg-s1d1', listening: 'lst-s1d1', speaking: 'spk-s1d1',
+    grammarKeys: ['be', 'possessive-adj', 'a-an', 'plurals', 'numbers'],
     goalsAr: ['أستطيع أن أُلقي التحية وأعرّف بنفسي.', 'أستطيع أن أسأل عن الحال وأجيب.', 'أستطيع أن أستخدم تحيات الصباح والمساء والوداع.', 'أستطيع أن أسأل «ما هذا؟» وأجيب بـ a / an.', 'أستطيع أن أعدّ من ١ إلى ١٠ وأكوّن الجمع.', 'أستطيع أن أكتب ٢٥ كلمة عن نفسي وعن فصلي.'],
   },
   {
     n: 2, title: 'Your World', titleAr: 'عالمك', icon: 'globe', colour: '#25AFC7',
-    grammarKeys: ['pronouns', 'possessive-adj', 'wh-questions', 'numbers', 'be'], dialogue: 'dlg-s2d1', listening: 'lst-s2d1', speaking: 'spk-s2d1',
+    grammarKeys: ['pronouns', 'possessive-adj', 'wh-questions', 'numbers', 'be'],
     goalsAr: ['أستطيع أن أسأل «من أين أنت؟» وأجيب.', 'أستطيع أن أتحدث عن الآخرين باستخدام he / she و his / her.', 'أستطيع أن أسأل «هل هو من …؟» وأجيب إجابة قصيرة.', 'أستطيع أن أقول الأرقام من ١١ إلى ٣٠ وأسأل عن العمر.', 'أستطيع أن أصف الأماكن والطقس.', 'أستطيع أن أكتب ٢٥ كلمة عن المكان الذي أنا منه.'],
   },
   {
     n: 3, title: 'All About You', titleAr: 'كل شيء عنك', icon: 'briefcase', colour: '#4F5BA8',
-    grammarKeys: ['be', 'a-an', 'wh-questions'], dialogue: studentCard, listening: 'lst-s4d1', speaking: 'spk-s4d1',
+    grammarKeys: ['be', 'a-an', 'wh-questions'],
     goalsAr: ['أستطيع أن أسأل عن الوظيفة وأجيب.', 'أستطيع أن أسأل عن المعلومات الشخصية: الاسم والعنوان والهاتف والعمر.', 'أستطيع أن أستخدم isn’t و aren’t لتصحيح المعلومات.', 'أستطيع أن أستخدم عبارات الاعتذار والشكر.', 'أستطيع أن أكوّن أسئلة بـ am / is / are وأجيب إجابات قصيرة.', 'أستطيع أن أكتب ٢٥ كلمة عن وظائف عائلتي.'],
   },
   {
     n: 4, title: 'Family and Friends', titleAr: 'العائلة والأصدقاء', icon: 'users', colour: '#FF6B6B',
-    grammarKeys: ['possessive-s', 'have-has', 'possessive-adj', 'spelling'], dialogue: 'dlg-s2d2', listening: 'lst-s1d2', speaking: 'spk-s2d2',
+    grammarKeys: ['possessive-s', 'have-has', 'possessive-adj', 'spelling'],
     goalsAr: ['أستطيع أن أصف عائلتي باستخدام our و their و ’s.', 'أستطيع أن أعرف إن كانت ’s تعني is أو الملكية.', 'أستطيع أن أستخدم has / have.', 'أستطيع أن أقول ما أحبه وما أريده.', 'أستطيع أن أتهجّى اسمي وأعطي رقم هاتفي.', 'أستطيع أن أكتب ٢٥ كلمة عن صديقي المقرّب.'],
   },
   {
     n: 5, title: 'The Way I Live', titleAr: 'طريقة حياتي', icon: 'utensils', colour: '#1F9D6B',
-    grammarKeys: ['present-simple', 'a-an', 'numbers'], dialogue: 'dlg-s3d2', listening: 'lst-s2d3', speaking: 'spk-s3d2',
+    grammarKeys: ['present-simple', 'a-an', 'numbers'],
     goalsAr: ['أستطيع أن أقول ما أحبه وما لا أحبه.', 'أستطيع أن أسأل «هل تحب …؟» وأجيب.', 'أستطيع أن أتحدث عن حياتي: أسكن وأعمل وأتكلم.', 'أستطيع أن أربط الدول بالجنسيات واللغات.', 'أستطيع أن أسأل عن السعر وأقول الأسعار حتى ١٠٠ ريال.', 'أستطيع أن أكتب ٢٥ كلمة عن الطعام والرياضة التي أحبها.'],
   },
   {
     n: 6, title: 'Every Day', titleAr: 'كل يوم', icon: 'sun', colour: '#FFC14D',
-    grammarKeys: ['present-simple', 'frequency', 'prepositions'], dialogue: 'dlg-s5d2', listening: 'lst-s5d2', speaking: 'spk-s5d2',
+    grammarKeys: ['present-simple', 'frequency', 'prepositions'],
     goalsAr: ['أستطيع أن أقول الوقت وأستخدم at / on / in.', 'أستطيع أن أصف يوم شخص: He gets up at six.', 'أستطيع أن أستخدم always و usually و often و sometimes و never.', 'أستطيع أن أتهجّى أفعال he / she: watches, goes, studies.', 'أستطيع أن أسأل «Does he …?» وأجيب.', 'أستطيع أن أكتب ٢٥ كلمة عن الروتين اليومي لشخص.'],
   },
   {
     n: 7, title: 'My Favourites', titleAr: 'أشيائي المفضلة', icon: 'star', colour: '#C8322F',
-    grammarKeys: ['wh-questions', 'this-that', 'can', 'object-pronouns'], dialogue: 'dlg-s3d4', listening: 'lst-s3d4', speaking: 'spk-s3d4',
+    grammarKeys: ['wh-questions', 'this-that', 'can', 'object-pronouns'],
     goalsAr: ['أستطيع أن أسأل بأدوات الاستفهام: What و Where و When و Who و Why و How many.', 'أستطيع أن أستخدم this / that والصفات قبل الأسماء.', 'أستطيع أن أطلب بأدب في المحلات: Can I have …?', 'أستطيع أن أصف رحلة بكلمات مثل fast و cheap و expensive.', 'أستطيع أن أستخدم me و him و her و us و them.', 'أستطيع أن أكتب ٢٥ كلمة عن أشيائي المفضلة.'],
   },
   {
     n: 8, title: 'Where I Live', titleAr: 'أين أسكن', icon: 'home', colour: '#161E54', open: true,
-    grammarKeys: ['there-is', 'prepositions', 'countable'], dialogue: 'dlg-s3d5', listening: 'lst-s3d1', speaking: 'spk-s3d1',
+    grammarKeys: ['there-is', 'prepositions', 'countable'],
     goalsAr: ['أستطيع أن أصف بيتي باستخدام There is / There are.', 'أستطيع أن أقول أين توجد الأشياء: in و on و under و next to.', 'أستطيع أن أسأل «Is there …?» وأستخدم some / any.', 'أستطيع أن أعطي الاتجاهات: Turn left. Go straight on.', 'أستطيع أن أتحدث عن الطقس والفصول.', 'أستطيع أن أكتب ٢٥ كلمة عن مدينتي.'],
+  },
+  {
+    n: 9, title: 'Times Past', titleAr: 'أيام مضت', icon: 'history', colour: '#25AFC7',
+    grammarKeys: ['was-were', 'past-simple', 'numbers'],
+    goalsAr: ['أستطيع أن أقول السنوات: nineteen ninety-six.', 'أستطيع أن أقول متى وُلد الناس: He was born in 1980.', 'أستطيع أن أقول الشهور وتاريخ ميلادي.', 'أستطيع أن أقول التواريخ بالأعداد الترتيبية: the fifth of May.', 'أستطيع أن أستخدم was / were للحديث عن الماضي.', 'أستطيع أن أستخدم went و had و did و saw للحديث عن الأمس.'],
+  },
+  {
+    n: 10, title: 'We Had a Great Time!', titleAr: 'قضينا وقتاً رائعاً!', icon: 'camera', colour: '#FF6B6B',
+    grammarKeys: ['past-simple', 'wh-questions'],
+    goalsAr: ['أستطيع أن أتهجّى وأنطق الأفعال الماضية المنتظمة: played, watched, studied.', 'أستطيع أن أسأل «Did you …?» وأجيب إجابة قصيرة.', 'أستطيع أن أسأل بأدوات الاستفهام في الماضي: Where did you go?', 'أستطيع أن أستخدم ago و last week و in مع السنة.', 'أستطيع أن أتحدث عن الرياضة وأنشطة وقت الفراغ.', 'أستطيع أن أكتب ٢٥ كلمة عن رحلة أو يوم خارج البيت.'],
+  },
+  {
+    n: 11, title: 'I Can Do That!', titleAr: 'أستطيع فعل ذلك!', icon: 'trophy', colour: '#1F9D6B',
+    grammarKeys: ['can', 'adverbs', 'adjectives'],
+    goalsAr: ['أستطيع أن أقول ما يستطيع الناس فعله وما لا يستطيعون في أعمالهم.', 'أستطيع أن أسأل «Can you …?» وأجيب إجابة قصيرة.', 'أستطيع أن أستخدم الظروف: well و fast و slowly و fluently.', 'أستطيع أن أضع الصفة قبل الاسم: a dangerous sport.', 'أستطيع أن أتحدث عن الإنترنت وكيف أستخدمه.', 'أستطيع أن أسأل «What’s the matter?» وأطلب المساعدة.'],
+  },
+  {
+    n: 12, title: 'Please and Thank You', titleAr: 'من فضلك وشكراً', icon: 'shopping-bag', colour: '#FFC14D',
+    grammarKeys: ['would-like', 'countable', 'can'],
+    goalsAr: ['أستطيع أن أقول ما يمكن شراؤه في المحلات المختلفة.', 'أستطيع أن أطلب بأدب: I’d like … / Would you like …?', 'أستطيع أن أستخدم some و any مع الطعام.', 'أستطيع أن أطلب وجبة في مطعم.', 'أستطيع أن أفهم اللافتات الشائعة: Push و Pull و No entry.', 'أستطيع أن أعطي نصيحة صحية بـ too much و too many.'],
+  },
+  {
+    n: 13, title: 'Here and Now', titleAr: 'هنا والآن', icon: 'shirt', colour: '#C8322F',
+    grammarKeys: ['present-continuous', 'present-simple'],
+    goalsAr: ['أستطيع أن أصف الملابس والألوان: He’s wearing a white thobe.', 'أستطيع أن أقول ما يفعله الناس الآن: am / is / are + -ing.', 'أستطيع أن أسأل بالمضارع المستمر: Where are you going?', 'أستطيع أن أختار بين المضارع البسيط والمضارع المستمر.', 'أستطيع أن أستخدم الأفعال المتضادة: arrive / leave و open / close.', 'أستطيع أن أتحدث عن المشاعر والمرض: I’m worried. I have a cold.'],
+  },
+  {
+    n: 14, title: 'It’s Time to Go!', titleAr: 'حان وقت الرحيل!', icon: 'plane', colour: '#161E54',
+    grammarKeys: ['going-to', 'past-simple', 'present-simple'],
+    goalsAr: ['أستطيع أن أقول كيف أسافر: by car و by plane و on foot.', 'أستطيع أن أتحدث عن خططي المستقبلية بـ going to.', 'أستطيع أن أسأل بـ going to: What are you going to study?', 'أستطيع أن أستخدم المضارع والماضي و going to في نص واحد.', 'أستطيع أن أستخدم العبارات الاجتماعية: Same to you! و My pleasure.', 'أستطيع أن أكتب ٢٥ كلمة عن خططي للإجازة.'],
   },
 ];
 
@@ -96,6 +105,10 @@ export const DAY_AR: Record<string, string> = { Sunday: 'الأحد', Monday: '�
 /** Grammar key for a day's grammar title (most specific first). */
 export function grammarKeyFor(title: string, fallback: string): string {
   const rules: [RegExp, string][] = [
+    [/present continuous|wearing|what are you doing|where are they going/i, 'present-continuous'], [/going to/i, 'going-to'],
+    [/i'd like|would you like/i, 'would-like'], [/too much|too many/i, 'countable'], [/was \/ were|were born|past of be|saying years/i, 'was-were'],
+    [/past simple|did you|-ed\b|\bago\b|went|yesterday/i, 'past-simple'], [/adverb/i, 'adverbs'], [/can't|can you|can \+/i, 'can'],
+    [/ordinal|date of birth|months/i, 'numbers'],
     [/plural/i, 'plurals'], [/possessive 's|'s =/i, 'possessive-s'], [/has \/ have/i, 'have-has'], [/alphabet|spell/i, 'spelling'],
     [/always|usually|never/i, 'frequency'], [/there is|is there/i, 'there-is'], [/some \/ any/i, 'countable'], [/prepositions|at \/ on \/ in|directions/i, 'prepositions'],
     [/me • him|me \/ him/i, 'object-pronouns'], [/this \/ that/i, 'this-that'], [/adjective/i, 'adjectives'], [/can i/i, 'can'], [/how much|numbers/i, 'numbers'],
@@ -223,13 +236,18 @@ function listeningActs(n: number, lstId: string, topic: string): Activity[] {
 }
 
 function speakingTask(cfg: UnitCfg, days: IatcUnitDay[], unitTitle: string): SpeakingTask {
-  const sp = cfg.speaking ? IATC.speaking.find((s) => s.id === cfg.speaking) : undefined;
+  const sp = IATC.speaking.find((s) => s.id === speakingId(cfg));
+  if (sp?.p1?.length) {
+    // Speaking Part 1 style: the week's questions, with Arabic and a model answer
+    return {
+      title: `Speak: ${unitTitle}`,
+      steps: sp.p1.slice(0, 5).map(([q]) => `Answer: ${stripMarkup(q)}`),
+      usefulLanguage: sp.p1.slice(0, 5).map(([q, ar]) => [stripMarkup(q), ar] as [string, string]),
+      model: sp.p1.slice(0, 2).map(([, , m]) => stripMarkup(m)).join(' '),
+    };
+  }
   const qs = days.map((d) => d.speaking[0]).filter(Boolean).map(stripMarkup);
-  return {
-    title: `Speak: ${unitTitle}`,
-    steps: qs.map((q) => `Answer: ${q}`),
-    usefulLanguage: sp?.lang?.slice(0, 5) ?? [],
-  };
+  return { title: `Speak: ${unitTitle}`, steps: qs.map((q) => `Answer: ${q}`), usefulLanguage: sp?.lang?.slice(0, 5) ?? [] };
 }
 
 function quizFor(n: number, days: IatcUnitDay[], words: string[], key0: string): McqItem[] {
@@ -258,10 +276,12 @@ function buildUnit(cfg: UnitCfg, distractors: string[]): Module | null {
   const { n } = cfg;
   const key0 = cfg.grammarKeys[0];
   const words = existingWords(u.days.flatMap((d) => d.words));
-  const conv = typeof cfg.dialogue === 'string' ? getDialogue(cfg.dialogue) : null;
-  const dialogue: Dialogue = typeof cfg.dialogue === 'string'
+  const want = convId(cfg);
+  const conv = typeof want === 'string' ? getDialogue(want) : null;
+  if (typeof want === 'string' && !conv) return null;
+  const dialogue: Dialogue = typeof want === 'string'
     ? { id: conv!.id, title: conv!.title, setting: conv!.setting, lines: conv!.lines, src: conv!.src }
-    : cfg.dialogue;
+    : want;
   const subtitle = u.focus.split('•').slice(1).map((s) => s.trim()).filter(Boolean).join(' • ');
 
   const lessons: Lesson[] = u.days.map((d, k) => dayLesson(n, d, k, key0));
@@ -271,7 +291,7 @@ function buildUnit(cfg: UnitCfg, distractors: string[]): Module | null {
     activities: [
       { kind: 'watch', id: `u${n}-dlg`, title: dialogue.title, prompt: 'Listen to the conversation. Read the words.', promptAr: 'استمع إلى المحادثة واقرأ الكلمات.', dialogue, tags: tag(n, 'listening', cfg.title), src: dialogue.src },
       dialogueBuilder(`u${n}-build`, n, cfg.title, dialogue, distractors.filter((t) => !dialogue.lines.some(([, l]) => stripMarkup(l) === t))),
-      ...listeningActs(n, cfg.listening, cfg.title),
+      ...listeningActs(n, listeningId(cfg), cfg.title),
       ...(repeat.length ? [{ kind: 'listen' as const, id: `u${n}-repeat`, title: 'Listen and repeat', prompt: 'Listen. Then say it.', promptAr: 'استمع ثم كرّر.', items: repeat, tags: tag(n, 'speaking', cfg.title) }] : []),
       { kind: 'speak', id: `u${n}-speak`, title: `Speak: ${cfg.title}`, prompt: 'Your turn to speak.', promptAr: 'دورك في التحدث.', task: speakingTask(cfg, u.days, cfg.title), tags: tag(n, 'speaking', cfg.title) },
     ],
@@ -281,7 +301,7 @@ function buildUnit(cfg: UnitCfg, distractors: string[]): Module | null {
     activities: [{ kind: 'mcq', id: `u${n}-quiz`, title: 'Check yourself', prompt: 'Choose the right answer.', promptAr: 'اختر الإجابة الصحيحة.', items: quizFor(n, u.days, words, key0), tags: tag(n, 'grammar', cfg.title, key0, 'revision') }],
   });
 
-  const sources: SourceRef[] = [u.src, ...u.days.flatMap((d) => [d.reading.src, d.src]), ...(dialogue.src ? [dialogue.src] : []), ...(getListening(cfg.listening) ? [getListening(cfg.listening)!.src] : [])];
+  const sources: SourceRef[] = [u.src, ...u.days.flatMap((d) => [d.reading.src, d.src]), ...(dialogue.src ? [dialogue.src] : []), ...(getListening(listeningId(cfg)) ? [getListening(listeningId(cfg))!.src] : [])];
   return {
     n, id: `u${n}`, title: cfg.title, titleAr: cfg.titleAr, subtitle, icon: cfg.icon, colour: cfg.colour,
     goals: u.review, goalsAr: cfg.goalsAr, grammarKeys: cfg.grammarKeys, vocab: words, dialogue, lessons, full: true, sources,
@@ -289,5 +309,5 @@ function buildUnit(cfg: UnitCfg, distractors: string[]): Module | null {
   };
 }
 
-const convLines = UNIT_CFG.flatMap((c) => (typeof c.dialogue === 'string' ? getDialogue(c.dialogue)?.lines ?? [] : c.dialogue.lines)).map(([, t]) => stripMarkup(t));
+const convLines = UNIT_CFG.flatMap((c) => { const d = convId(c); return typeof d === 'string' ? getDialogue(d)?.lines ?? [] : d.lines; }).map(([, t]) => stripMarkup(t));
 export const UNITS: Module[] = UNIT_CFG.map((c) => buildUnit(c, convLines)).filter((m): m is Module => !!m);

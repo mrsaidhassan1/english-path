@@ -20,12 +20,12 @@ function fromIatc(id: string): Dialogue {
 export const ROLE_PLAYS: RolePlay[] = [
   {
     id: 'rp-meet', title: 'Meeting someone', titleAr: 'التعرّف على شخص', icon: '🤝', module: 1,
-    dialogue: fromIatc('dlg-s1d2'),
+    dialogue: fromIatc('dlg-s1d1'),
     useful: [['This is my friend, …', 'هذا صديقي …'], ['Nice to meet you.', 'تشرفت بمعرفتك.'], ['Nice to meet you too.', 'وأنا كذلك.']],
   },
   {
     id: 'rp-intro', title: 'Introducing yourself', titleAr: 'التعريف بنفسك', icon: '👋', module: 1,
-    dialogue: fromIatc('dlg-s1d1'),
+    dialogue: fromIatc('dlg-s2d1'),
     useful: [['My name is …', 'اسمي …'], ['I am from …', 'أنا من …'], ['I am a student here.', 'أنا طالب هنا.']],
   },
   {
@@ -48,7 +48,7 @@ export const ROLE_PLAYS: RolePlay[] = [
   },
   {
     id: 'rp-family', title: 'Talking about family', titleAr: 'الحديث عن العائلة', icon: '👨‍👩‍👦', module: 4,
-    dialogue: fromIatc('dlg-s2d2'),
+    dialogue: fromIatc('dlg-s4d1'),
     useful: [['This is my father.', 'هذا أبي.'], ['He is a …', 'هو …'], ['Where do they live?', 'أين يسكنون؟']],
   },
   {
@@ -71,7 +71,7 @@ export const ROLE_PLAYS: RolePlay[] = [
   },
   {
     id: 'rp-directions', title: 'Asking for directions', titleAr: 'السؤال عن الطريق', icon: '🧭', module: 8,
-    dialogue: fromIatc('dlg-s3d5'),
+    dialogue: fromIatc('dlg-s8d4'),
     useful: [['Is there a … near here?', 'هل يوجد … قريب من هنا؟'], ['Go straight. Turn right.', 'امشِ مستقيماً ثم انعطف يميناً.'], ['It’s next to the …', 'إنه بجانب …']],
   },
   {
@@ -94,7 +94,7 @@ export const ROLE_PLAYS: RolePlay[] = [
   },
   {
     id: 'rp-routine', title: 'Talking about daily routine', titleAr: 'الحديث عن الروتين اليومي', icon: '📅', module: 6,
-    dialogue: fromIatc('dlg-s5d2'),
+    dialogue: fromIatc('dlg-s6d2'),
     useful: [['I usually get up at …', 'عادةً أستيقظ الساعة …'], ['I never …', 'أنا لا … أبداً'], ['Do you …?', 'هل …؟']],
   },
 ];
@@ -120,6 +120,6 @@ export const SPEAKING_PART1: SpeakingQuestion[] = [
   { q: 'Do you have brothers or sisters?', ar: 'هل لديك إخوة أو أخوات؟', model: 'Yes, I do. I have two brothers and one sister.', module: 4 },
   { q: 'Are you a student or do you work?', ar: 'هل أنت طالب أم تعمل؟', model: 'I’m a student. I study English at IATC.', more: 'I want to work in aircraft maintenance.', module: 3 },
   { q: 'What do you do in your free time?', ar: 'ماذا تفعل في وقت فراغك؟', model: 'I play football with my friends.', module: 7 },
-  { q: 'What did you do last weekend?', ar: 'ماذا فعلت في نهاية الأسبوع الماضي؟', model: 'I visited my uncle. We had dinner together.', tip: 'Use the past: went, had, visited.', module: 8 },
+  { q: 'What did you do last weekend?', ar: 'ماذا فعلت في نهاية الأسبوع الماضي؟', model: 'I visited my uncle. We had dinner together.', tip: 'Use the past: went, had, visited.', module: 10 },
 ];
 export const SPEAKING_SRC = SP_SRC;

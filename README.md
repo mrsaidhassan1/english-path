@@ -59,7 +59,7 @@ Learners sign in by choosing their class and tapping their own card. On a projec
 |---|---|
 | **Home** | Greeting, next best lesson, Daily 5 words, quick links |
 | **My Learning** | "Welcome back, Abdullah!", today's message, recommendations with reasons, weekly goal, streak, teacher tasks, Practise again list, and **My Learning Path** (completed / current / recommended next / locked / revision) |
-| **Lessons** | 8 units = Weeks 1–8 of the A0 – A1 Weekly Materials. Each unit has a lesson for every class day (Sunday–Thursday: new words → grammar → sentence building → the day's reading → opposites / plurals → writing), then Conversation & listening and Check yourself. Unit goals ("In this unit… I can …"), completion screen with score, words learned, progress and next lesson |
+| **Lessons** | 14 units = Weeks 1–14 of the A0 – A1 Weekly Materials. Each unit has a lesson for every class day (Sunday–Thursday: new words → grammar → sentence building → the day's reading → opposites / plurals → writing), then Conversation & listening and Check yourself. Unit goals ("In this unit… I can …"), completion screen with score, words learned, progress and next lesson |
 | **Activities** | Matching, multiple choice, drag & drop (with a tap alternative), picture choice, gap-fill, sentence ordering, dialogue building, error correction, reading, listen & repeat, speaking task, writing (25 words, 3 bullets, 5-point self-check) |
 | **Vocabulary** | Flashcards with picture, audio (normal and slow), Arabic, meaning and example. New / Learning / Review / Mastered status, **I know this** and **Practise again**, search, unit filters, **Daily 5 challenge**, spaced-repetition review, weekly chart and the Oxford 3000 A1 list |
 | **Speaking** | 8 role plays: meeting someone, introducing yourself, ordering food or a drink, family, asking the time, directions, hobbies, daily routine. Each follows **Listen → Repeat → Record → Replay**, with sentence highlighting and slow and normal audio. Also A1 Speaking Part 1 questions. Feedback is encouraging only, with no pronunciation scoring |
@@ -114,9 +114,9 @@ npm run import-content
 
 ---
 
-## 6. Course structure: Units 1–8 = Weeks 1–8
+## 6. Course structure: Units 1–14 = Weeks 1–14
 
-The course follows the class: **Unit N = Week N** of `FND68/CLass FND 68/A0 - A1 Resources/A0 - A1 Weekly Materials/`, which is aligned to **New Headway Beginner Unit N**. Units are A0 (1–2), A0–A1 (3–5) and A1 (6–8).
+The course follows the class: **Unit N = Week N** of `FND68/CLass FND 68/A0 - A1 Resources/A0 - A1 Weekly Materials/`, which is aligned to **New Headway Beginner Unit N**. Units are A0 (1–2), A0–A1 (3–5) and A1 (6–14).
 
 | Unit | Week | Title | Focus |
 |---|---|---|---|
@@ -128,16 +128,22 @@ The course follows the class: **Unit N = Week N** of `FND68/CLass FND 68/A0 - A1
 | 6 | 6 | Every Day | the time • Present Simple he / she • always / never |
 | 7 | 7 | My Favourites | question words • this / that • Can I …? • me / him / them |
 | 8 | 8 | Where I Live | There is / are • prepositions • some / any • directions |
+| 9 | 9 | Times Past | was / were born • dates • Past Simple irregular |
+| 10 | 10 | We Had a Great Time! | Past Simple regular and irregular • Did you …? • sport and sightseeing |
+| 11 | 11 | I Can Do That! | can / can't • adverbs • adjective + noun • everyday problems |
+| 12 | 12 | Please and Thank You | I'd like • some / any • in a restaurant • signs |
+| 13 | 13 | Here and Now | colours and clothes • Present Continuous • opposite verbs • What's the matter? |
+| 14 | 14 | It's Time to Go! | transport • going to • grammar revision • social expressions |
 
 Each unit has:
 
 - **Five day lessons (Sunday–Thursday).** Each one uses that day's handout and deck: the day's words (cards, matching, pictures), the grammar box and practice from the lesson slides, sentence building, the reading with True/False and comprehension questions, opposites and plurals, and the 25-word writing task.
-- **Conversation & listening.** A matching conversation and listening script from the Week 1–8 Conversations / Listening packs, listen-and-repeat, and a speaking task built from the day questions.
+- **Conversation & listening.** From the unit's own week in the Conversations / Listening / Speaking pack (`tools/skills-pack/content/wN.json`, Headway-aligned since Oct 2026): Sunday's conversation (listen, then build it), Monday's listening with its questions, listen-and-repeat, and Sunday's Speaking Part 1 questions with Arabic and a model answer.
 - **Check yourself.** Ten questions: grammar from the week, word meanings and listening.
 
-After Units 2, 4, 6 and 8 there is a review.
+After every two units (2, 4, 6 … 14) there is a review.
 
-Everything is generated from the weekly source files by `scripts/import_iatc_content.py` (the `units` block). `src/data/modules/units.ts` only holds each unit's title, Arabic goals and chosen conversation / listening. To add Week 9, add `week9.json` and `readings/week9.json` to the weekly pack, add Week 9 to the importer loop, add a `UNIT_CFG` entry and re-run `npm run import-content`. Week 1's deck has four days (Mon–Thu) for five readings (Sun–Thu), so the importer maps them with `W1_DECK`.
+Everything is generated from the weekly source files by `scripts/import_iatc_content.py` (the `units` block). `src/data/modules/units.ts` only holds each unit's title, Arabic goals and chosen conversation / listening. To add Week 15, add `week15.json` and `readings/week15.json` (and `skills-pack/content/w15.json`) to the packs. The importer finds every week that has both files. Then add a `UNIT_CFG` entry (title, Arabic title and goals, icon, colour, grammar points) and re-run `npm run import-content` and the voice recording. Week 1's deck has four days (Mon–Thu) for five readings (Sun–Thu), so the importer maps them with `W1_DECK`.
 
 Grammar points are tracked with the keys in `src/data/grammarKeys.ts`. Each key links to an A1 Grammar deck, so repeated mistakes, for example with *am / is / are*, lead to a targeted booster.
 
@@ -186,7 +192,7 @@ Almost everything the app says uses real recorded voices, made offline on this P
 - **Speaking:** every unit conversation and listening script, all 8 role plays, listen-and-repeat lines, model answers, useful phrases, Speaking Part 1 questions.
 - **Vocabulary:** all ~1,075 words and their example sentences, plus the Oxford 3000 A1 headwords.
 - **Grammar:** every example in the grammar panels, every sentence in the A1 Grammar decks (boosters), and the sentence-order answers.
-- **Readings:** all 40 Week 1–8 reading texts (one per class day) and the exam reading texts (Reading Part 1 emails and the diagnostic). A teacher setting turns the exam Listen buttons off for real exam conditions.
+- **Readings:** all 70 Week 1–14 reading texts (one per class day) and the exam reading texts (Reading Part 1 emails and the diagnostic). A teacher setting turns the exam Listen buttons off for real exam conditions.
 - **Listening exams:** all 5 papers, each speaker in the same voice as the class MP3s (the exam's own cast).
 
 Each person in a dialogue has their own voice (teachers, officers and shop staff a deeper voice; students two lighter voices). Spelled names (B-A-D-E-R), phone numbers, abbreviations (IATC, FND, TV) and words like "a.m.", "OK", "Mr" are rewritten so the voice reads them the way people say them. Short lines are packed into one MP3 per dialogue, activity or group of 30 words; the app plays just the part it needs.
@@ -221,7 +227,7 @@ sh-a1-english-webapp/
 │  ├─ assets/brand/                 logo mark only
 │  ├─ data/
 │  │  ├─ generated/iatc-content.json  imported IATC content (do not edit)
-│  │  ├─ modules/                   units.ts (Units 1–8 = Weeks 1–8), builder helpers, reviews
+│  │  ├─ modules/                   units.ts (Units 1–14 = Weeks 1–14), builder helpers, reviews
 │  │  ├─ content.ts  exams.ts  speaking.ts  images.ts  grammarKeys.ts  contentIndex.ts
 │  ├─ lib/                          storage, speech, recorder, srs, recommend, learner, picker, demo, …
 │  ├─ components/                   UI kit, Monster avatars, Avatar, Layout, Roster, StudentPicker,

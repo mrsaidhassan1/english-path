@@ -25,6 +25,12 @@ const UNIT_COUNT = UNIT_CFG.length;
 
 // For items without a week (or from the skills pack, whose topics follow a different order): match by topic.
 const KEYWORDS: [RegExp, number][] = [
+  [/born|history|famous people|when i was|childhood|months|dates/i, 9],
+  [/weekend|sightseeing|trip|holiday in|last week|did you|visited/i, 10],
+  [/internet|dangerous|can you|skills|what's the matter|problem/i, 11],
+  [/supermarket|restaurant|order|signs|healthy|i'd like|menu/i, 12],
+  [/wearing|clothes|right now|at the moment|feelings|ill/i, 13],
+  [/transport|going to|plans|future|abroad|airport|travel/i, 14],
   [/hello|classroom|greet|introduc|my english class|what's this/i, 1],
   [/countr|world|where i am from|cities|holiday/i, 2],
   [/job|airport|aviation|hangar|college life|work|personal information|excuse/i, 3],
@@ -64,22 +70,22 @@ export function buildContentIndex(): ContentRecord[] {
     out.push(rec({ id: `grammar:${g.id}`, type: 'Grammar deck', title: `A1 Grammar ${g.num}: ${g.title}`, topic: g.sub, vocabTheme: '—', skill: 'grammar', module: key?.module ?? 1, grammar: key?.key ?? '', status: 'lesson', src: g.src }));
   }
   for (const d of IATC.dialogues) {
-    const module = moduleForTheme(`${d.theme} ${d.title}`, d.week);
+    const module = d.week ? Math.min(UNIT_COUNT, d.week) : moduleForTheme(`${d.theme} ${d.title}`);
     out.push(rec({ id: `dialogue:${d.id}`, type: 'Dialogue', title: d.title, topic: d.theme, vocabTheme: d.theme, skill: 'speaking', module, status: 'lesson', src: d.src }));
   }
   for (const l of IATC.listening) {
-    const module = moduleForTheme(`${l.theme} ${l.title}`, l.week);
+    const module = l.week ? Math.min(UNIT_COUNT, l.week) : moduleForTheme(`${l.theme} ${l.title}`);
     out.push(rec({ id: `listening:${l.id}`, type: 'Listening', title: l.title, topic: l.theme, vocabTheme: l.theme, skill: 'listening', module, status: 'revision', src: l.src }));
   }
   for (const s of IATC.speaking) {
-    const module = moduleForTheme(`${s.theme} ${s.talk.topic}`, s.week);
+    const module = s.week ? Math.min(UNIT_COUNT, s.week) : moduleForTheme(`${s.theme} ${s.talk.topic}`);
     out.push(rec({ id: `speaking:${s.id}`, type: 'Speaking task', title: s.talk.topic, topic: s.theme, vocabTheme: s.theme, skill: 'speaking', module, status: 'lesson', src: s.src }));
   }
   for (const m of IATC.mocks) {
     out.push(rec({ id: `mock:${m.id}`, type: 'Mock exam', title: m.title, topic: 'ELEM Reading & Writing', vocabTheme: 'mixed', skill: 'reading', module: Math.min(UNIT_COUNT, m.week), status: 'exam', src: m.src, cefr: 'A1' }));
   }
   for (const e of IATC.listeningExams) {
-    out.push(rec({ id: `lexam:${e.id}`, type: 'Listening exam', title: `Week ${e.week} ${e.day}: ${e.theme}`, topic: e.theme, vocabTheme: e.theme, skill: 'listening', module: moduleForTheme(e.theme, e.week), status: 'exam', src: e.src, cefr: 'A1' }));
+    out.push(rec({ id: `lexam:${e.id}`, type: 'Listening exam', title: `Week ${e.week} ${e.day}: ${e.theme}`, topic: e.theme, vocabTheme: e.theme, skill: 'listening', module: e.week ? Math.min(UNIT_COUNT, e.week) : moduleForTheme(e.theme), status: 'exam', src: e.src, cefr: 'A1' }));
   }
   for (const t of IATC.topics) {
     out.push(rec({ id: `topic:${t.id}`, type: 'Topic list', title: t.title, topic: t.title, vocabTheme: t.title, skill: 'writing', module: moduleForTheme(t.title), status: 'revision', src: { file: 'tools/weekly-pack/content/topic-words/a1_topics.txt', label: `A1 Vocabulary Topics · ${t.title}`, doc: 'FND68/CLass FND 68/A0 - A1 Resources/A1 Vocabulay/A1 Vocabulary Topics/FND_68_A1_Vocabulary_Topics_Words.docx' } }));

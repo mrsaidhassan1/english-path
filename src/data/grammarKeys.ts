@@ -17,15 +17,18 @@ export const GRAMMAR_KEYS: GrammarKey[] = [
   { key: 'possessive-s', label: "Possessive 's", ar: 'الملكية', deck: 'g5', module: 4 },
   { key: 'frequency', label: 'always / usually / never', ar: 'ظروف التكرار', module: 6 },
   { key: 'adjectives', label: 'Adjectives: a fast train', ar: 'الصفات', module: 7 },
+  { key: 'adverbs', label: 'Adverbs: well / fast / slowly', ar: 'الظروف', module: 11 },
+  { key: 'would-like', label: "I'd like / Would you like …?", ar: 'الطلب بأدب', module: 12 },
+  { key: 'going-to', label: 'going to (future plans)', ar: 'المستقبل بـ going to', module: 14 },
   { key: 'object-pronouns', label: 'me / him / her / us / them', ar: 'ضمائر المفعول به', module: 7 },
   { key: 'present-simple', label: 'Present simple', ar: 'المضارع البسيط', deck: 'g4', module: 5 },
   { key: 'countable', label: 'Countable & uncountable', ar: 'المعدود وغير المعدود', deck: 'g6', module: 8 },
   { key: 'there-is', label: 'there is / there are', ar: 'يوجد', deck: 'g6', module: 8 },
   { key: 'prepositions', label: 'in / on / under / next to', ar: 'حروف الجر', deck: 'g7', module: 8 },
-  { key: 'can', label: "can / can't", ar: 'يستطيع', module: 7 },
-  { key: 'present-continuous', label: 'Present continuous', ar: 'المضارع المستمر', module: 8 },
-  { key: 'past-simple', label: 'Past simple', ar: 'الماضي البسيط', deck: 'g9', module: 8 },
-  { key: 'was-were', label: 'was / were', ar: 'الماضي من فعل الكون', deck: 'g8', module: 8 },
+  { key: 'can', label: "can / can't", ar: 'يستطيع', module: 11 },
+  { key: 'present-continuous', label: 'Present continuous', ar: 'المضارع المستمر', module: 13 },
+  { key: 'past-simple', label: 'Past simple', ar: 'الماضي البسيط', deck: 'g9', module: 10 },
+  { key: 'was-were', label: 'was / were', ar: 'الماضي من فعل الكون', deck: 'g8', module: 9 },
 ];
 
 const byKey = new Map(GRAMMAR_KEYS.map((g) => [g.key, g]));

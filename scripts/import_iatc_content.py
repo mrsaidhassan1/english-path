@@ -67,7 +67,7 @@ def is_safe(item, label: str) -> bool:
 
 
 def load(p: Path):
-    return json.loads(p.read_text(encoding="utf-8"))
+    return json.loads(p.read_text(encoding="utf-8-sig"))  # some files are saved with a BOM
 
 
 def rel(p: Path) -> str:
@@ -113,7 +113,9 @@ mocks = []
 units = []
 # Week 1's deck has four days (Mon–Thu) but five readings (Sun–Thu): reading k uses deck day W1_DECK[k].
 W1_DECK = [0, 1, 1, 2, 3]
-for week in range(1, 9):
+# Every week that has both a deck file and a reading file becomes a unit (Week N = Unit N).
+UNIT_WEEKS = [w for w in range(1, 40) if (TOOLS / f"weekly-pack/content/week{w}.json").exists() and (TOOLS / f"weekly-pack/content/readings/week{w}.json").exists()]
+for week in UNIT_WEEKS:
     p = TOOLS / f"weekly-pack/content/week{week}.json"
     wk = clean(load(p))
     rd_path = TOOLS / f"weekly-pack/content/readings/week{week}.json"
@@ -293,8 +295,10 @@ for n in range(1, 21):
 
 # ---------------------------------------------------------------- dialogues, listening, speaking (skills pack)
 dialogues, listening, speaking = [], [], []
-for week in range(1, 9):
+for week in UNIT_WEEKS:
     p = TOOLS / f"skills-pack/content/w{week}.json"
+    if not p.exists():
+        continue
     s = clean(load(p))
     for i, d in enumerate(s["days"]):
         base = f"s{week}d{i + 1}"
@@ -313,6 +317,12 @@ for week in range(1, 9):
                                       "doc": week_doc(week, "FND_68_Week_*_Listening_A1_Teacher_Version.pdf"),
                                       "label": f"Week {week} listening: {ls['title']}"}})
         sp = d.get("speak")
+        if sp and "p1" in sp:
+            # Headway-aligned packs (Oct 2026): p1 = [question, Arabic, model answer], p2 = information-exchange cards
+            p2 = (sp.get("p2") or [{}])[0]
+            sp = {"p1": sp.get("p1", []), "p2": sp.get("p2", []),
+                  "talk": {"topic": p2.get("topic") or d.get("theme", ""), "bullets": p2.get("prompts", [])},
+                  "lang": [[q, ar] for q, ar, *_ in sp.get("p1", [])], "warm": [], "task": {"type": "p1", "title": d.get("theme", "")}}
         if sp and is_safe(sp, f"speaking (week {week} {d.get('theme')})"):
             speaking.append({"id": f"spk-{base}", "week": week, "theme": d.get("theme"), **sp,
                              "src": {"file": rel(p), "at": f"days[{i}].speak",
