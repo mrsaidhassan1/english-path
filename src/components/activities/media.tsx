@@ -13,7 +13,8 @@ import { markWordsSeen, recordSpeaking, recordWord } from '../../lib/learner';
 import { stripMarkup, wordCount } from '../../lib/text';
 import { NextButton, Shell, type ActivityProps } from './common';
 import type { GrammarPoint, WritingTask } from '../../types';
-import { CRITERIA, estimateWriting, marksTotal, WRITING_MAX, writingTip, type WritingMarks } from '../../data/writingRubric';
+import { CRITERIA, marksTotal, WRITING_MAX } from '../../data/writingRubric';
+import { analyseWriting, type WritingAnalysis } from '../../data/writingCheck';
 
 const PANEL: Record<GrammarPoint['colour'], string> = {
   navy: 'border-navy-200 bg-navy-50',
@@ -257,16 +258,17 @@ export function WritingBox({ task, source, onSubmitted }: { task: WritingTask; s
     if (/\bi\b/.test(text)) h.push('Write “I” as a capital letter.');
     return h;
   }, [text]);
-  const [estimate, setEstimate] = useState<WritingMarks | null>(null);
+  const [analysis, setAnalysis] = useState<WritingAnalysis | null>(null);
   const submit = () => {
     const self = checks.filter(Boolean).length;
-    const est = estimateWriting(text, task.bullets, task.prompt);
+    const a = analyseWriting(text, { title: task.title, prompt: task.prompt, bullets: task.bullets, model: task.model, frame: task.frame });
+    const est = a.marks;
     if (me) {
       update((d) => {
         d.writing.unshift({ id: `wr-${Date.now()}`, studentId: me.id, taskTitle: task.title, prompt: task.prompt, bullets: task.bullets, text, words, selfCheck: self, estimate: est, createdAt: new Date().toISOString(), source });
       });
     }
-    setEstimate(est);
+    setAnalysis(a);
     setSent(true);
     onSubmitted(marksTotal(est), text);
   };
@@ -305,7 +307,7 @@ export function WritingBox({ task, source, onSubmitted }: { task: WritingTask; s
       {sent && (
         <div className="mt-4 space-y-3">
           <Feedback ok en={words >= task.minWords ? 'Great writing! Your teacher will read it.' : 'Thank you! Next time, try to write a little more.'} ar="شكراً! سيقرأ معلمك كتابتك." />
-          {estimate && <WritingEstimate marks={estimate} />}
+          {analysis && <WritingEstimate a={analysis} />}
           <div className="rounded-2xl bg-mint-50 p-4">
             <div className="mb-1 flex items-center justify-between"><b className="text-mint-700">Model answer</b><AudioButton text={task.model} size="sm" /></div>
             <p className="text-lg text-navy">{task.model}</p>
@@ -317,9 +319,9 @@ export function WritingBox({ task, source, onSubmitted }: { task: WritingTask; s
   );
 }
 
-/** The app's first estimate with the A1 writing rubric, and one tip. The teacher gives the real mark. */
-function WritingEstimate({ marks }: { marks: WritingMarks }) {
-  const tip = writingTip(marks);
+/** The app's first check with the A1 writing rubric: marks, what to fix, points covered. The teacher gives the real mark. */
+function WritingEstimate({ a }: { a: WritingAnalysis }) {
+  const marks = a.marks;
   return (
     <div className="rounded-2xl border-2 border-navy-100 p-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -334,7 +336,19 @@ function WritingEstimate({ marks }: { marks: WritingMarks }) {
           </div>
         ))}
       </div>
-      <p className="mt-2 text-navy">💡 {tip.en}<Ar>{tip.ar}</Ar></p>
+      {a.bullets.length > 0 && (
+        <ul className="mt-3 space-y-1">
+          {a.bullets.map((b) => (
+            <li key={b.text} className={`flex items-center gap-2 ${b.covered ? 'text-mint-700' : 'text-coral-700'}`}>
+              <span aria-hidden="true">{b.covered ? '✔' : '✘'}</span> {b.text} <span className="sr-only">{b.covered ? '(done)' : '(missing)'}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      <h4 className="mt-3 font-bold text-navy">To make it better</h4>
+      <ul className="mt-1 space-y-1.5">
+        {a.tips.map((t) => <li key={t.en} className="text-navy">💡 {t.en}<Ar className="text-sm">{t.ar}</Ar></li>)}
+      </ul>
       <p className="mt-1 text-sm text-navy-400">This is a first check by the app. Your teacher gives the real mark.</p>
     </div>
   );

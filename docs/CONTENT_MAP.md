@@ -1,4 +1,4 @@
-# Content map: IATC English A0–A1 resources → SH English Path
+# Content map: IATC English A0–A1 resources → English Path
 
 This map was built on 13 Oct 2026 from the IATC English folder. The full, searchable, item-by-item version (more than 2,000 rows, each with tags and a source reference) is in the app under **Teacher Dashboard → Content map**.
 

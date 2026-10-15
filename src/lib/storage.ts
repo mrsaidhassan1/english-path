@@ -58,6 +58,6 @@ export function exportJson(data: AppData): string {
 
 export function importJson(text: string): AppData {
   const parsed = JSON.parse(text);
-  if (!isAppData(parsed)) throw new Error('This is not an SH English Path backup file.');
+  if (!isAppData(parsed)) throw new Error('This is not an English Path backup file.');
   return migrate(parsed as unknown as Record<string, unknown>);
 }

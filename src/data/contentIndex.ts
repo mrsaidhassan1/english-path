@@ -91,7 +91,7 @@ export function buildContentIndex(): ContentRecord[] {
     out.push(rec({ id: `topic:${t.id}`, type: 'Topic list', title: t.title, topic: t.title, vocabTheme: t.title, skill: 'writing', module: moduleForTheme(t.title), status: 'revision', src: { file: 'tools/weekly-pack/content/topic-words/a1_topics.txt', label: `A1 Vocabulary Topics · ${t.title}`, doc: 'FND68/CLass FND 68/A0 - A1 Resources/A1 Vocabulay/A1 Vocabulary Topics/FND_68_A1_Vocabulary_Topics_Words.docx' } }));
   }
   for (const r of ROLE_PLAYS) {
-    out.push(rec({ id: `roleplay:${r.id}`, type: 'Role play', title: r.title, topic: r.title, vocabTheme: r.title, skill: 'speaking', module: r.module, status: 'lesson', src: r.dialogue.src ?? { file: 'src/data/speaking.ts', label: 'Original app dialogue (written for SH English Path)' } }));
+    out.push(rec({ id: `roleplay:${r.id}`, type: 'Role play', title: r.title, topic: r.title, vocabTheme: r.title, skill: 'speaking', module: r.module, status: 'lesson', src: r.dialogue.src ?? { file: 'src/data/speaking.ts', label: 'Original app dialogue (written for English Path)' } }));
   }
   out.push(rec({ id: 'speaking:part1', type: 'Speaking task', title: 'A1 Speaking Part 1 questions', topic: 'Questions about you', vocabTheme: 'personal information', skill: 'speaking', module: 1, status: 'exam', src: SPEAKING_SRC, cefr: 'A1' }));
   return out;

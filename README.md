@@ -1,4 +1,4 @@
-# SH English Path · A1 Learning Hub
+# English Path · A1 Learning Hub
 
 *Learn. Practise. Speak with confidence.*
 
@@ -79,9 +79,9 @@ Learners sign in by choosing their class and tapping their own card. On a projec
 ## 4. Branding and privacy rules (built in)
 
 - Only the **logo mark** (the SH emblem) is used: `src/assets/brand/sh-mark.png`, plus a white version for dark backgrounds. These are copies of `tools/brand/SH_mark_*.png`. The full logo with the personal name is **never** used.
-- The visible name everywhere is **"SH English Path"**, with the subtitle **"A1 Learning Hub"** and the tagline **"Learn. Practise. Speak with confidence."** (all set in `src/components/Logo.tsx`). The teacher's personal name in English or Arabic does not appear anywhere. The importer replaces "Mr Said" in IATC texts with "Mr Adel", and a test checks that the name never appears.
+- The visible name everywhere is **"English Path"**, with the subtitle **"A1 Learning Hub"** and the tagline **"Learn. Practise. Speak with confidence."** (all set in `src/components/Logo.tsx`). The teacher's personal name in English or Arabic does not appear anywhere. The importer replaces "Mr Said" in IATC texts with "Mr Adel", and a test checks that the name never appears.
 - Colours come from the mark: navy `#161E54`, coral `#FF5151` (dark coral `#C8322F` for small text), cyan `#88E0EF`, with mint and sun as support colours.
-- Certificates show the logo mark, "SH English Path", the learner's first name, the achievement and the date. The signature line says only "Teacher".
+- Certificates show the logo mark, "English Path", the learner's first name, the achievement and the date. The signature line says only "Teacher".
 - **Privacy.** Learner names, photos and results stay in this browser's localStorage. Voice recordings are kept in memory only: they are never saved or uploaded. Photos are resized to 256 px before they are saved. Class files with real names and IDs live in `Web App/class-files/`, **outside** the app folder, so they are never built into `dist/` or `dist-single/`. Load them through the Classes tab on each device, and don't upload them to the internet.
 - **Cultural sensitivity.** Content follows IATC QF 05. The importer skips any item that mentions an "avoid" topic, and a test checks the whole app for them.
 
@@ -242,6 +242,11 @@ sh-a1-english-webapp/
 ## 11. Known limitations
 
 - Sign-in is a local card tap, not real authentication. See section 7.
-- Writing is marked with the A1 writing rubric (`FND68/CLass FND 68/A0 - A1 Resources/A1 Exam/A1 Writing Exam/A1 writing rubric.pdf`): Content, Organisation and Language, 0–5 each, /15 (`src/data/writingRubric.ts`). The app gives a first estimate from simple signals: the three bullet points and length, linking words and pronouns, sentences with a verb, capitals and full stops, common A1 errors, and words not in the A1 word lists. It cannot judge meaning or relevance, so exam writing stays provisional until the teacher saves a mark in **Teacher Dashboard → Writing**. That mark then replaces the provisional one in the exam result.
+- Writing is marked with the A1 writing rubric (`FND68/CLass FND 68/A0 - A1 Resources/A1 Exam/A1 Writing Exam/A1 writing rubric.pdf`): Content, Organisation and Language, 0–5 each, /15. The app's first check is in `src/data/writingCheck.ts`:
+  - **Content:** each bullet point, judged by what makes it different from the other points (synonyms, plus "where / when / why / how old" evidence); writing about another topic; past instead of future (and the reverse); length. The task's model answer is used as the topic guide.
+  - **Organisation:** linking words, pronouns and time phrases, repeated words between sentences, run-on sentences, and a greeting and sign-off for messages.
+  - **Language:** about 20 common A1 errors, each with the exact words and a correction ("he go" → "he goes", "I have 19 years" → "I am 19 years old", "there are a" → "there is a"); errors per 10 words; spelling against the A1 word lists; capitals, full stops and "I".
+  - **Calibration:** the five marked samples in the rubric PDF come out at 15, 13, 10, 7 and 2 against the official 15, 12, 9, 4 and 2 (1.0 mark mean error). The 70 model answers in the weekly materials average 12.9/15. Weakened versions (a point left out, A1 errors added, no capitals or full stops) score lower in 69–70 cases out of 70, and another task's answer gets Content ≤ 2 in 63 of 70.
+  - **On screen:** students see their marks, which points they covered, and 2–4 tips in English and Arabic. The teacher sees the text with the mistakes highlighted, the reason for each suggested band, and a suggested comment. The teacher always decides; exam writing stays provisional until the teacher saves a mark.
 - In the code, units are still called `Module` (types, routes such as `/lessons/u3`, stored progress). Only the wording on screen says Unit.
 - Emoji pictures can look slightly different on Windows, Android and iOS.

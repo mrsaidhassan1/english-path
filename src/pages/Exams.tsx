@@ -8,7 +8,8 @@ import { useLearner } from '../hooks/useLearner';
 import { recordExam } from '../lib/learner';
 import { speakLines, stopSpeaking, ttsSupported } from '../lib/speech';
 import { normalise, wordCount } from '../lib/text';
-import { estimateWriting, marksTotal, WRITING_MAX } from '../data/writingRubric';
+import { marksTotal, WRITING_MAX } from '../data/writingRubric';
+import { analyseWriting } from '../data/writingCheck';
 import { niceDate } from '../lib/date';
 import { Recorder } from '../components/Recorder';
 import { AudioButton } from '../components/AudioButton';
@@ -149,7 +150,7 @@ export function ExamRunner() {
       if (s.kind === 'write') {
         const text = String(answers[`${s.id}`] ?? '');
         // provisional mark with the A1 writing rubric (Content + Organisation + Language, /15); the teacher confirms it
-        const estimate = estimateWriting(text, s.write!.bullets, s.write!.prompt);
+        const estimate = analyseWriting(text, { title: s.write!.title, prompt: s.write!.prompt, bullets: s.write!.bullets, model: s.write!.model }).marks;
         sc = marksTotal(estimate);
         tot = WRITING_MAX;
         if (me && text.trim()) {

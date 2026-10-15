@@ -1,4 +1,4 @@
-// Design-system building blocks for SH English Path.
+// Design-system building blocks for English Path.
 import { useEffect, useRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { X } from 'lucide-react';

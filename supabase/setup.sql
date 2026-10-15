@@ -1,4 +1,4 @@
--- SH English Path: online class store (Supabase / Postgres).
+-- English Path: online class store (Supabase / Postgres).
 -- Run once in the Supabase dashboard: SQL Editor → New query → paste → Run.
 -- Then: Authentication → Sign In / Providers → turn ON "Allow anonymous sign-ins" (students sign in that way),
 -- and invite the teacher by email (Authentication → Users → Invite user). Finally run the

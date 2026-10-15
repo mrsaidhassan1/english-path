@@ -1,4 +1,4 @@
-// Core types for SH English Path.
+// Core types for English Path.
 
 export type Skill = 'vocabulary' | 'grammar' | 'reading' | 'listening' | 'speaking' | 'writing';
 export const SKILLS: Skill[] = ['vocabulary', 'grammar', 'reading', 'listening', 'speaking', 'writing'];

@@ -5,7 +5,8 @@ import { ClassesPanel } from './Classes';
 import { OnlineClassPanel } from './OnlineClass';
 import { onlineEnabled, onlineError, saveMarkOnline } from '../lib/online';
 import type { Assignment, Skill, WritingSubmission } from '../types';
-import { a1Errors, CRITERIA, estimateWriting, marksTotal, RUBRIC_SRC, unknownWords, WRITING_MAX, type WritingMarks } from '../data/writingRubric';
+import { CRITERIA, marksTotal, RUBRIC_SRC, WRITING_MAX, type WritingMarks } from '../data/writingRubric';
+import { analyseWriting, type WritingAnalysis, type WritingIssue } from '../data/writingCheck';
 import { SKILLS } from '../types';
 import { MODULES, REVIEWS } from '../data/modules';
 import { EXAMS } from '../data/exams';
@@ -307,7 +308,13 @@ function WritingQueue() {
   const [editing, setEditing] = useState<Record<string, boolean>>({});
   if (items.length === 0) return <EmptyState icon="✏️" title="No writing yet" text="Student writing from lessons, practice and exams appears here." />;
 
-  const suggestion = (w: WritingSubmission): WritingMarks => w.marks ?? w.estimate ?? estimateWriting(w.text, w.bullets, w.prompt);
+  const analysisCache = new Map<string, WritingAnalysis>();
+  const analysisOf = (w: WritingSubmission) => {
+    let a = analysisCache.get(w.id);
+    if (!a) { a = analyseWriting(w.text, { title: w.taskTitle, prompt: w.prompt, bullets: w.bullets }); analysisCache.set(w.id, a); }
+    return a;
+  };
+  const suggestion = (w: WritingSubmission): WritingMarks => w.marks ?? analysisOf(w).marks;
   const save = (w: WritingSubmission) => {
     const m = marks[w.id] ?? suggestion(w);
     const total = marksTotal(m);
@@ -348,7 +355,7 @@ function WritingQueue() {
         const m = marks[w.id] ?? suggestion(w);
         const open = w.teacherScore === undefined || editing[w.id];
         const oldScale = w.teacherScore !== undefined && !w.marks;
-        const issues = [...a1Errors(w.text), ...unknownWords(w.text).slice(0, 6).map((x) => `check spelling: “${x}”`)];
+        const a = analysisOf(w);
         return (
           <Card key={w.id}>
             <div className="flex flex-wrap items-start gap-3">
@@ -362,10 +369,21 @@ function WritingQueue() {
                 : <Pill tone="sun">To mark</Pill>}
             </div>
             <p className="mt-2 text-sm text-navy-500">{w.prompt} {w.bullets.length > 0 && `(${w.bullets.join(' · ')})`}</p>
-            <p className="mt-2 whitespace-pre-wrap rounded-2xl bg-navy-50 p-4 text-lg text-navy">{w.text}</p>
+            <p className="mt-2 whitespace-pre-wrap rounded-2xl bg-navy-50 p-4 text-lg text-navy"><Highlighted text={w.text} issues={a.issues} /></p>
+            <div className="mt-2 flex flex-wrap gap-2 text-sm">
+              {a.bullets.map((b) => <Pill key={b.text} tone={b.covered ? 'mint' : 'coral'}>{b.covered ? '✔' : '✘'} {b.text}</Pill>)}
+              <Pill tone="grey">{a.words} words · {a.sentences} sentences</Pill>
+              {a.offTopic && <Pill tone="coral">Mostly off the task</Pill>}
+              {a.timeMismatch && <Pill tone="sun">{a.timeMismatch === 'past-for-future' ? 'Past instead of future' : 'No past verbs'}</Pill>}
+            </div>
             {open ? (
               <div className="mt-3 space-y-3">
-                {issues.length > 0 && <p className="text-sm text-sun-700">Things to look at: {issues.join(' · ')}</p>}
+                {a.issues.some((i) => i.kind !== 'punctuation') && (
+                  <ul className="space-y-0.5 text-sm text-navy">
+                    {a.issues.filter((i) => i.kind === 'grammar').map((i) => <li key={i.text}><mark className="rounded bg-coral-100 px-1">{i.text}</mark>{i.fix && <> → <b>{i.fix}</b></>} <span className="text-navy-400">({i.why})</span></li>)}
+                    {a.issues.some((i) => i.kind === 'spelling') && <li>Spelling to check: {a.issues.filter((i) => i.kind === 'spelling').map((i) => <mark key={i.text} className="mr-1 rounded bg-sun-100 px-1">{i.text}</mark>)}</li>}
+                  </ul>
+                )}
                 {CRITERIA.map((c) => (
                   <div key={c.key} className="rounded-2xl border-2 border-navy-100 p-3">
                     <div className="flex flex-wrap items-center gap-2">
@@ -380,9 +398,13 @@ function WritingQueue() {
                       {!w.marks && <span className="text-xs text-navy-400">suggested {suggestion(w)[c.key]}</span>}
                     </div>
                     <p className="mt-1 text-sm text-navy-500">Band {m[c.key]}: {c.bands[m[c.key] as 0 | 1 | 2 | 3 | 4 | 5]}</p>
+                    {!w.marks && a.reasons[c.key].length > 0 && <p className="mt-0.5 text-sm text-navy-400">Why the app suggests {a.marks[c.key]}: {a.reasons[c.key].join(' ')}</p>}
                   </div>
                 ))}
-                <input value={notes[w.id] ?? w.teacherNote ?? ''} onChange={(e) => setNotes({ ...notes, [w.id]: e.target.value })} placeholder="Short, kind feedback (optional)" className="min-h-[44px] w-full rounded-xl border-2 border-navy-100 px-3" aria-label="Feedback" />
+                <div className="flex flex-wrap gap-2">
+                  <input value={notes[w.id] ?? w.teacherNote ?? ''} onChange={(e) => setNotes({ ...notes, [w.id]: e.target.value })} placeholder="Short, kind feedback (optional)" className="min-h-[44px] min-w-0 flex-1 rounded-xl border-2 border-navy-100 px-3" aria-label="Feedback" />
+                  <Button type="button" variant="soft" size="sm" onClick={() => setNotes({ ...notes, [w.id]: a.comment })}>Use suggested comment</Button>
+                </div>
                 <Button variant="success" onClick={() => save(w)}>Save mark: {marksTotal(m)}/{WRITING_MAX}</Button>
               </div>
             ) : (
@@ -513,5 +535,21 @@ function SettingsPanel() {
         <p className="text-xs text-navy-400">The app is built so secure accounts and cloud storage can be added later (see README: “Adding accounts and cloud storage”).</p>
       </Card>
     </div>
+  );
+}
+
+/** The student's text with the words the app flagged (grammar in coral, spelling in yellow). */
+function Highlighted({ text, issues }: { text: string; issues: WritingIssue[] }) {
+  const marks = issues.filter((i) => i.text && i.kind !== 'punctuation').map((i) => ({ t: i.text, spelling: i.kind === 'spelling' }));
+  if (!marks.length) return <>{text}</>;
+  const esc = (x: string) => x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp(`(${marks.map((m) => (m.spelling ? `\\b${esc(m.t)}\\b` : esc(m.t))).join('|')})`, 'gi');
+  return (
+    <>
+      {text.split(re).map((part, k) => {
+        const hit = marks.find((m) => m.t.toLowerCase() === part.toLowerCase());
+        return hit ? <mark key={k} className={`rounded px-0.5 ${hit.spelling ? 'bg-sun-100' : 'bg-coral-100'}`} title={hit.spelling ? 'Check the spelling' : 'Grammar'}>{part}</mark> : <span key={k}>{part}</span>;
+      })}
+    </>
   );
 }
