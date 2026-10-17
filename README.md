@@ -183,7 +183,7 @@ With an online class store, learners' work reaches the teacher from their own ph
 4. In **Authentication → Users → Invite user**, invite the teacher's email. Accept the email and set a password.
 5. Run the last line of `setup.sql` with that email. It connects the teacher to FND68-SH.
 6. In **SQL Editor**, run `supabase/phase1_roles.sql` with the admin's email in place of `ADMIN-EMAIL-HERE`. It adds the staff roles and makes that login the Admin and owner of FND68-SH.
-7. Optional, after checking that a learner can still join: **Authentication → Sign In / Providers → Allow new users to sign up: off**. Staff are then added only by invitation.
+7. Leave **Allow new users to sign up** ON: learners join with anonymous sign-ins, which that switch can also block. It is safe: a login that is not in the `staff` table sees nothing and cannot open teacher mode.
 8. In GitHub, go to **Settings → Secrets and variables → Actions → Variables** and add `SUPABASE_URL` (Project URL) and `SUPABASE_ANON_KEY` (the anon public key, found in Supabase Settings → API). Re-run the deploy workflow.
 
 Without those two variables the app works exactly as before, saving on each device only. The claude.ai copy always works that way.
