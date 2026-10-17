@@ -14,7 +14,8 @@ import { stripMarkup, wordCount } from '../../lib/text';
 import { NextButton, Shell, type ActivityProps } from './common';
 import type { GrammarPoint, WritingTask } from '../../types';
 import { CRITERIA, marksTotal, WRITING_MAX } from '../../data/writingRubric';
-import { analyseWriting, type WritingAnalysis } from '../../data/writingCheck';
+import { analyseWriting, writingChecklist, type WritingAnalysis } from '../../data/writingCheck';
+import { headwayWritingGuide } from '../../data/headwayWriting';
 
 const PANEL: Record<GrammarPoint['colour'], string> = {
   navy: 'border-navy-200 bg-navy-50',
@@ -236,19 +237,14 @@ export function Speak({ activity, onDone }: ActivityProps<'speak'>) {
 }
 
 // ------------------------------------------------------------------ writing
-// The student's checklist follows the A1 writing rubric: Content, Organisation, Language.
-const CHECKS = [
-  ['Content', 'I wrote about the topic and all 3 points (about 25 words).', 'كتبت عن الموضوع والنقاط الثلاث (حوالي ٢٥ كلمة).'],
-  ['Organisation', 'I joined my ideas with and, but, because or so.', 'ربطت أفكاري بـ and و but و because و so.'],
-  ['Language', 'Every sentence has a subject and a verb.', 'كل جملة فيها فاعل وفعل.'],
-  ['Language', 'I used words I know and spelled them well.', 'استخدمت كلمات أعرفها وكتبتها بشكل صحيح.'],
-  ['Language', 'Capital letters and full stops are correct.', 'الحروف الكبيرة والنقاط صحيحة.'],
-];
+// The student's checklist follows the A1 writing rubric (Content, Organisation, Language), in the words of the
+// task's Headway unit and kind of writing (writingChecklist in data/writingCheck.ts).
 
 export function WritingBox({ task, source, onSubmitted }: { task: WritingTask; source: string; onSubmitted: (selfCheck: number, text: string) => void }) {
   const { update, me, isTeacher } = useApp();
   const [text, setText] = useState('');
-  const [checks, setChecks] = useState<boolean[]>(CHECKS.map(() => false));
+  const checklist = useMemo(() => writingChecklist({ title: task.title, prompt: task.prompt, bullets: task.bullets, model: task.model, frame: task.frame }), [task]);
+  const [checks, setChecks] = useState<boolean[]>(() => checklist.map(() => false));
   const [sent, setSent] = useState(false);
   const words = wordCount(text);
   const autoHints = useMemo(() => {
@@ -295,7 +291,7 @@ export function WritingBox({ task, source, onSubmitted }: { task: WritingTask; s
       {!sent && (
         <div className="mt-4 rounded-2xl border-2 border-navy-100 p-4">
           <h4 className="mb-2 font-bold text-navy">Check your writing ✔</h4>
-          {CHECKS.map(([area, en, ar], k) => (
+          {checklist.map(({ area, en, ar }, k) => (
             <label key={k} className="flex min-h-[44px] cursor-pointer items-center gap-3 text-lg text-navy">
               <input type="checkbox" className="h-6 w-6" checked={checks[k]} onChange={(e) => { const v = e.target.checked; setChecks((cs) => cs.map((c, j) => (j === k ? v : c))); }} />
               <span><span className="mr-2 rounded-full bg-navy-50 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-navy-500">{area}</span>{en}<Ar>{ar}</Ar></span>
@@ -349,7 +345,9 @@ function WritingEstimate({ a }: { a: WritingAnalysis }) {
       <ul className="mt-1 space-y-1.5">
         {a.tips.map((t) => <li key={t.en} className="text-navy">💡 {t.en}<Ar className="text-sm">{t.ar}</Ar></li>)}
       </ul>
-      <p className="mt-1 text-sm text-navy-400">This is a first check by the app. Your teacher gives the real mark.</p>
+      <p className="mt-1 text-sm text-navy-400">
+        This is a first check by the app{a.unit ? `, with what you studied in Unit ${a.unit} (${headwayWritingGuide(a.unit)!.title})` : ''}. Your teacher gives the real mark.
+      </p>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { OnlineClassPanel } from './OnlineClass';
 import { classPermissions, onlineEnabled, onlineError, saveMarkOnline } from '../lib/online';
 import type { Assignment, Skill, WritingSubmission } from '../types';
 import { CRITERIA, marksTotal, RUBRIC_SRC, WRITING_MAX, type WritingMarks } from '../data/writingRubric';
-import { analyseWriting, type WritingAnalysis, type WritingIssue } from '../data/writingCheck';
+import { analyseWriting, GENRE_LABEL, type WritingAnalysis, type WritingIssue } from '../data/writingCheck';
 import { SKILLS } from '../types';
 import { MODULES, REVIEWS } from '../data/modules';
 import { EXAMS } from '../data/exams';
@@ -350,7 +350,7 @@ function WritingQueue() {
     <div className="space-y-4">
       {viewOnly && <Card className="bg-sun-100"><p className="font-semibold text-navy">You are an observer in this class: you can read the writing and marks, but not change them.</p></Card>}
       <Card className="bg-navy-50">
-        <p className="text-navy"><b>A1 writing rubric, /15:</b> Content 0–5 · Organisation 0–5 · Language 0–5. The app suggests a mark (shown selected); check it and change any band before you save.</p>
+        <p className="text-navy"><b>A1 writing rubric, /15:</b> Content 0–5 · Organisation 0–5 · Language 0–5. The app suggests a mark (shown selected); check it and change any band before you save. Weekly tasks are checked against their New Headway Plus Beginner unit: linking words only once the book has used them (and → Unit 1, but → 3, because → 7, so → 8), what he / she / it / they refer to, the kind of writing (postcard, place, routine …) and the unit’s language. Tasks that do not match a unit get a general A1 check.</p>
         <p className="mt-1 text-sm text-navy-400">Source: {RUBRIC_SRC.label} — {RUBRIC_SRC.file}</p>
       </Card>
       {items.map((w) => {
@@ -375,7 +375,9 @@ function WritingQueue() {
             <p className="mt-2 whitespace-pre-wrap rounded-2xl bg-navy-50 p-4 text-lg text-navy"><Highlighted text={w.text} issues={a.issues} /></p>
             <div className="mt-2 flex flex-wrap gap-2 text-sm">
               {a.bullets.map((b) => <Pill key={b.text} tone={b.covered ? 'mint' : 'coral'}>{b.covered ? '✔' : '✘'} {b.text}</Pill>)}
+              <Pill tone="sky">{a.unit ? `Headway Unit ${a.unit}` : 'General check (no unit match)'} · {GENRE_LABEL[a.genre]}</Pill>
               <Pill tone="grey">{a.words} words · {a.sentences} sentences</Pill>
+              {a.references.unclear.length > 0 && <Pill tone="sun">Unclear: {a.references.unclear.map((r) => `“${r.word}”`).join(', ')}</Pill>}
               {a.offTopic && <Pill tone="coral">Mostly off the task</Pill>}
               {a.timeMismatch && <Pill tone="sun">{a.timeMismatch === 'past-for-future' ? 'Past instead of future' : 'No past verbs'}</Pill>}
             </div>
