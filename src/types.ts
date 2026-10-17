@@ -262,5 +262,15 @@ export interface AppData {
   assignments: Assignment[];
   writing: WritingSubmission[];
   settings: Settings;
-  session: { role: 'student' | 'teacher' | null; studentId: string | null };
+  session: { role: 'student' | 'teacher' | null; studentId: string | null; staff?: StaffAccess };
+}
+
+/** A teacher's access in the online class store (Phase 1 roles), re-checked every time the app opens. */
+export type StaffRole = 'admin' | 'teacher' | 'observer';
+export type ClassStaffRole = 'admin' | 'owner' | 'teacher' | 'observer';
+export interface StaffAccess {
+  email: string;
+  role: StaffRole;
+  classes: { code: string; name: string; role: ClassStaffRole }[];
+  checkedAt: string;
 }

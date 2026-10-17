@@ -1,3 +1,4 @@
+import { useStaffCheck } from './hooks/useStaffCheck';
 import { captureAuthFromUrl } from './lib/online';
 import { SetPasswordGate } from './components/SetPassword';
 import { useOnlineSync } from './hooks/useOnlineSync';
@@ -29,6 +30,7 @@ function TeacherOnly({ children }: { children: ReactNode }) {
 function Shell() {
   const { data } = useApp();
   useOnlineSync();
+  useStaffCheck();
   if (!data.session.role) return <Welcome />;
   return (
     <Layout>

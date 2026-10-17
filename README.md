@@ -171,7 +171,8 @@ The data model (`src/types.ts`) already separates students, assignments, writing
 With an online class store, learners' work reaches the teacher from their own phones:
 
 - **Learners** open the link, tap *Join with the class code*, type **FND68-SH** and their name. The phone signs in anonymously (no password) and sends their progress and writing online automatically. A chip in the top bar shows *Saved online* or *Saved on this phone* (offline; it is sent later).
-- **Teacher**: *Teacher Dashboard → Online class*. Sign in with email and password, then *Load the class now* to bring every learner's progress and writing into the dashboard. Learners from the class file are linked by name. Marks saved in *Writing* go back to the learner's phone (*Progress → My writing*).
+- **Teacher**: on the welcome screen choose *I'm the teacher* and sign in with email and password (the online version has no PIN: teacher mode needs a real staff login, checked again every time the app opens). Then *Teacher Dashboard → Online class → Load the class now* to bring every learner's progress and writing into the dashboard. Learners from the class file are linked by name. Marks saved in *Writing* go back to the learner's phone (*Progress → My writing*).
+- **Staff roles** (`supabase/phase1_roles.sql`): **Admin** sees and manages every class; **Teacher** (class owner or teacher) reads and marks their own classes; **Observer** reads a class, its answers and student work but cannot mark. Suspended staff have no access. The server records who marked each piece of writing (`marked_by`). Students are unchanged.
 - **Privacy**: names typed by learners, their progress and writing are stored in the Supabase project. Row-level security lets a phone read only its own rows, and only the teacher's login reads the class (`supabase/setup.sql`). No IATC IDs, photos or class-file data are sent. One phone = one online learner.
 
 **Set up once:**
@@ -181,7 +182,9 @@ With an online class store, learners' work reaches the teacher from their own ph
 3. In **Authentication → Sign In / Providers**, turn on **Allow anonymous sign-ins**.
 4. In **Authentication → Users → Invite user**, invite the teacher's email. Accept the email and set a password.
 5. Run the last line of `setup.sql` with that email. It connects the teacher to FND68-SH.
-6. In GitHub, go to **Settings → Secrets and variables → Actions → Variables** and add `SUPABASE_URL` (Project URL) and `SUPABASE_ANON_KEY` (the anon public key, found in Supabase Settings → API). Re-run the deploy workflow.
+6. In **SQL Editor**, run `supabase/phase1_roles.sql` with the admin's email in place of `ADMIN-EMAIL-HERE`. It adds the staff roles and makes that login the Admin and owner of FND68-SH.
+7. Optional, after checking that a learner can still join: **Authentication → Sign In / Providers → Allow new users to sign up: off**. Staff are then added only by invitation.
+8. In GitHub, go to **Settings → Secrets and variables → Actions → Variables** and add `SUPABASE_URL` (Project URL) and `SUPABASE_ANON_KEY` (the anon public key, found in Supabase Settings → API). Re-run the deploy workflow.
 
 Without those two variables the app works exactly as before, saving on each device only. The claude.ai copy always works that way.
 

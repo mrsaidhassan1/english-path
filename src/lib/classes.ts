@@ -1,5 +1,5 @@
 // Classes: several classes on one device, join codes, class files (import / export) and name display.
-import type { AppData, Cefr, ClassInfo, ExamResult, Student, WritingSubmission } from '../types';
+import type { AppData, Cefr, ClassInfo, ExamResult, StaffAccess, Student, WritingSubmission } from '../types';
 import { newStudent, recordExam } from './learner';
 import { newSeed } from './rng';
 
@@ -243,4 +243,27 @@ export function mergeOnlineClass(
   d.writing.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   refreshNameFlags(d);
   return { added, updated, writing: newWriting };
+}
+
+/**
+ * After a staff sign-in (or the check when the app opens): remember the access, make sure every class
+ * they can open exists on this device (matched by join code, then by name), and switch away from a
+ * class they cannot open.
+ */
+export function applyStaffAccess(d: AppData, access: StaffAccess) {
+  d.session.staff = access;
+  for (const c of access.classes) {
+    const have = d.classes.find((x) => x.code.toUpperCase() === c.code.toUpperCase())
+      ?? d.classes.find((x) => x.name.replace(/\s+/g, '').toLowerCase() === c.name.replace(/\s+/g, '').toLowerCase());
+    if (have) { have.code = c.code; continue; }
+    d.classes.push({ ...newClass(c.name), code: c.code });
+  }
+  const open = (id: string) => {
+    const k = d.classes.find((x) => x.id === id);
+    return !!k && (access.role === 'admin' || access.classes.some((c) => c.code.toUpperCase() === k.code.toUpperCase()));
+  };
+  if (!open(d.activeClassId)) {
+    const first = d.classes.find((x) => open(x.id));
+    if (first) d.activeClassId = first.id;
+  }
 }

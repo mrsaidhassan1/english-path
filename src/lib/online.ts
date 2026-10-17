@@ -6,7 +6,7 @@
 //   * Teacher: signs in with email + password in Teacher Dashboard → Online class, loads the
 //     whole class and saves writing marks online.
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
-import type { Student, WritingSubmission } from '../types';
+import type { StaffAccess, Student, WritingSubmission } from '../types';
 import type { WritingMarks } from '../data/writingRubric';
 
 const URL = (import.meta.env.VITE_SUPABASE_URL as string | undefined)?.trim();
@@ -87,6 +87,46 @@ export async function teacherSignIn(email: string, password: string): Promise<vo
   if (error) throw error;
 }
 export async function teacherSignOut(): Promise<void> { await sb().auth.signOut(); }
+
+/**
+ * This signed-in staff member's role and classes (supabase/phase1_roles.sql → my_access()).
+ * null = not signed in, not staff, or suspended. Older databases without the roles script fall back to
+ * "teacher of the classes this login can read".
+ */
+export async function fetchMyAccess(): Promise<StaffAccess | null> {
+  if (!onlineEnabled) return null;
+  const c = sb();
+  const { data: { session } } = await c.auth.getSession();
+  if (!session || session.user.is_anonymous) return null;
+  const email = session.user.email ?? '';
+  const { data, error } = await c.rpc('my_access');
+  if (error) {
+    if (error.code !== 'PGRST202' && !/my_access/.test(error.message)) throw error;
+    const { data: cls, error: e2 } = await c.from('classes').select('code, name');
+    if (e2) throw e2;
+    return cls?.length ? { email, role: 'teacher', classes: cls.map((x) => ({ code: x.code as string, name: x.name as string, role: 'owner' as const })), checkedAt: new Date().toISOString() } : null;
+  }
+  const a = data as { role: StaffAccess['role']; status: string; classes: StaffAccess['classes'] } | null;
+  if (!a || a.status !== 'active') return null;
+  return { email, role: a.role, classes: a.classes ?? [], checkedAt: new Date().toISOString() };
+}
+
+/** Sign in as staff: the password must be right AND the login must have staff access. */
+export async function staffSignIn(email: string, password: string): Promise<StaffAccess> {
+  await teacherSignIn(email, password);
+  const access = await fetchMyAccess();
+  if (!access) {
+    await teacherSignOut();
+    throw new Error('not a staff account');
+  }
+  return access;
+}
+
+/** What this person may do in a class. */
+export function classPermissions(access: StaffAccess | undefined, classCode: string | undefined) {
+  const role = access?.role === 'admin' ? 'admin' : access?.classes.find((c) => c.code === classCode)?.role;
+  return { role, canRead: !!role, canMark: role === 'admin' || role === 'owner' || role === 'teacher', readOnly: role === 'observer' };
+}
 export async function teacherEmail(): Promise<string | null> {
   if (!onlineEnabled) return null;
   const { data } = await sb().auth.getSession();
@@ -118,6 +158,7 @@ export async function saveMarkOnline(id: string, marks: WritingMarks, total: num
 export const onlineError = (e: unknown) => {
   const m = (e as { message?: string })?.message ?? String(e);
   if (/invalid login/i.test(m)) return 'Wrong email or password.';
+  if (/not a staff account/i.test(m)) return 'This login has no teacher access. Ask the admin to add you.';
   if (/unknown or closed class code/i.test(m)) return 'That class code is not open online.';
   if (/anonymous/i.test(m)) return 'Online saving is not switched on yet (anonymous sign-ins are off).';
   if (/fetch|network/i.test(m)) return 'No internet connection. Your work is saved on this phone and will be sent later.';

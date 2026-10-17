@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { existsSync, readFileSync } from 'node:fs';
 import { demoData, emptyData, ensureBuiltInClass, FND68_CLASS, startData } from '../lib/demo';
-import { progressOf } from '../lib/online';
-import { findClassByCode, importClassFile, joinWithCode, mergeOnlineClass, migrate, nameOf, newClass, parseCsvClass, studentsIn, type ClassFile } from '../lib/classes';
+import { classPermissions, progressOf } from '../lib/online';
+import type { StaffAccess } from '../types';
+import { applyStaffAccess, findClassByCode, importClassFile, joinWithCode, mergeOnlineClass, migrate, nameOf, newClass, parseCsvClass, studentsIn, type ClassFile } from '../lib/classes';
 import { assignmentsFor } from '../lib/recommend';
 
 const file: ClassFile = {
@@ -179,5 +180,35 @@ describe('online class store merge', () => {
     const s = demoData().students[0];
     const p = progressOf({ ...s, avatar: { kind: 'photo', dataUrl: 'data:image/jpeg;base64,xx', seed: 5 }, iatcId: '123', group: 'G1' });
     expect(JSON.stringify(p)).not.toMatch(/dataUrl|iatcId|group|level/);
+  });
+});
+
+describe('staff roles (phase 1)', () => {
+  const access = (role: StaffAccess['role'], classes: StaffAccess['classes']): StaffAccess => ({ email: 't@example.com', role, classes, checkedAt: '2026-10-17T00:00:00Z' });
+
+  it('links the built-in class and adds classes this teacher can see', () => {
+    const d = startData();
+    applyStaffAccess(d, access('teacher', [{ code: 'FND68-SH', name: 'FND 68', role: 'owner' }, { code: 'FND70-XY', name: 'FND 70', role: 'observer' }]));
+    expect(d.session.staff?.role).toBe('teacher');
+    expect(d.classes.filter((c) => c.code === 'FND68-SH')).toHaveLength(1);
+    expect(d.classes.some((c) => c.code === 'FND70-XY' && c.name === 'FND 70')).toBe(true);
+  });
+
+  it('moves away from a class the teacher has no access to', () => {
+    const d = startData();
+    const other = newClass('Somebody else');
+    d.classes.push(other);
+    d.activeClassId = other.id;
+    applyStaffAccess(d, access('teacher', [{ code: 'FND68-SH', name: 'FND 68', role: 'teacher' }]));
+    expect(d.classes.find((c) => c.id === d.activeClassId)?.code).toBe('FND68-SH');
+  });
+
+  it('gives observers read-only access and admins everything', () => {
+    const obs = access('observer', [{ code: 'FND68-SH', name: 'FND 68', role: 'observer' }]);
+    expect(classPermissions(obs, 'FND68-SH')).toMatchObject({ canRead: true, canMark: false, readOnly: true });
+    expect(classPermissions(obs, 'OTHER')).toMatchObject({ canRead: false, canMark: false });
+    expect(classPermissions(access('teacher', [{ code: 'FND68-SH', name: 'FND 68', role: 'teacher' }]), 'FND68-SH')).toMatchObject({ canMark: true, readOnly: false });
+    expect(classPermissions(access('admin', []), 'ANY')).toMatchObject({ role: 'admin', canRead: true, canMark: true });
+    expect(classPermissions(undefined, 'FND68-SH').canRead).toBe(false);
   });
 });

@@ -1,5 +1,7 @@
 // Sign-in: choose your class, then your card (learners); join a class with a code; or enter as the teacher.
 // Local accounts only (see README → "Adding accounts and cloud storage").
+import { TeacherSignIn } from '../components/TeacherSignIn';
+import { onlineEnabled } from '../lib/online';
 import { useMemo, useState } from 'react';
 import { GraduationCap, Search, Lock, ArrowLeft, KeyRound, Users } from 'lucide-react';
 import type { ClassInfo } from '../types';
@@ -15,6 +17,7 @@ export default function Welcome() {
   const [q, setQ] = useState('');
   const [picked, setPicked] = useState<ClassInfo | null>(data.classes.length === 1 ? data.classes[0] : null);
   const [pinOpen, setPinOpen] = useState(false);
+  const [signInOpen, setSignInOpen] = useState(false);
   const [pin, setPin] = useState('');
   const [pinErr, setPinErr] = useState(false);
   const [joinOpen, setJoinOpen] = useState(false);
@@ -125,7 +128,7 @@ export default function Welcome() {
 
           <div className="mt-8 flex flex-col items-center gap-3 border-t border-navy-100 pt-6 sm:flex-row sm:justify-between">
             <Button variant="soft" size="lg" onClick={() => { setJoinOpen(true); setJoinErr(''); }}><KeyRound size={20} /> New here? Join with a class code</Button>
-            <Button variant="outline" size="lg" onClick={() => (data.settings.teacherPin ? setPinOpen(true) : enterTeacher())}>
+            <Button variant="outline" size="lg" onClick={() => (onlineEnabled ? setSignInOpen(true) : data.settings.teacherPin ? setPinOpen(true) : enterTeacher())}>
               <GraduationCap size={22} /> I’m the teacher
             </Button>
           </div>
@@ -149,6 +152,9 @@ export default function Welcome() {
           <Button type="submit" size="lg" className="w-full" disabled={!code.trim() || !fullName.trim()}>Join and start</Button>
         </form>
       </Modal>
+
+      {/* online version: a real teacher sign-in; offline copies: the optional PIN */}
+      <TeacherSignIn open={signInOpen} onClose={() => setSignInOpen(false)} />
 
       <Modal open={pinOpen} onClose={() => setPinOpen(false)} title="Teacher PIN" labelledBy="pin-title">
         <form onSubmit={(e) => { e.preventDefault(); enterTeacher(); }} className="space-y-3">

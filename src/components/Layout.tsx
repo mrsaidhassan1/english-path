@@ -1,3 +1,4 @@
+import { onlineEnabled, teacherSignOut } from '../lib/online';
 import { useEffect, useState, type ReactNode } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {
@@ -54,6 +55,8 @@ export function Layout({ children }: { children: ReactNode }) {
   }, [loc.pathname]);
   const mobileMain = items.filter((n) => ['/', '/learning', '/lessons', '/vocabulary'].includes(n.to));
   const signOut = () => {
+    // a teacher on the online version also leaves their staff sign-in
+    if (onlineEnabled && data.session.role === 'teacher') teacherSignOut().catch(() => undefined);
     update((d) => { d.session = { role: null, studentId: null }; });
     nav('/');
   };

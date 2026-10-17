@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { LayoutDashboard, Presentation, Printer, Users, BarChart3, Send, PenLine, Database, Settings as Cog, Download, Upload, Trash2, RotateCcw, Copy, School, Cloud } from 'lucide-react';
 import { ClassesPanel } from './Classes';
 import { OnlineClassPanel } from './OnlineClass';
-import { onlineEnabled, onlineError, saveMarkOnline } from '../lib/online';
+import { classPermissions, onlineEnabled, onlineError, saveMarkOnline } from '../lib/online';
 import type { Assignment, Skill, WritingSubmission } from '../types';
 import { CRITERIA, marksTotal, RUBRIC_SRC, WRITING_MAX, type WritingMarks } from '../data/writingRubric';
 import { analyseWriting, type WritingAnalysis, type WritingIssue } from '../data/writingCheck';
@@ -300,7 +300,9 @@ function Assign() {
 // Marking with the A1 writing rubric (A1 Exam / A1 Writing Exam / "A1 writing rubric.pdf"):
 // Content, Organisation and Language, 0–5 each, total /15. The automatic estimate is pre-selected; the teacher decides.
 function WritingQueue() {
-  const { data, update, updateStudent, students, toast } = useApp();
+  const { data, cls, update, updateStudent, students, toast } = useApp();
+  // observers (online) read the writing and the app's analysis but cannot mark
+  const viewOnly = onlineEnabled && classPermissions(data.session.staff, cls?.code).readOnly;
   const inClass = new Set(students.map((s) => s.id));
   const items = data.writing.filter((w) => inClass.has(w.studentId));
   const [marks, setMarks] = useState<Record<string, WritingMarks>>({});
@@ -346,6 +348,7 @@ function WritingQueue() {
 
   return (
     <div className="space-y-4">
+      {viewOnly && <Card className="bg-sun-100"><p className="font-semibold text-navy">You are an observer in this class: you can read the writing and marks, but not change them.</p></Card>}
       <Card className="bg-navy-50">
         <p className="text-navy"><b>A1 writing rubric, /15:</b> Content 0–5 · Organisation 0–5 · Language 0–5. The app suggests a mark (shown selected); check it and change any band before you save.</p>
         <p className="mt-1 text-sm text-navy-400">Source: {RUBRIC_SRC.label} — {RUBRIC_SRC.file}</p>
@@ -353,7 +356,7 @@ function WritingQueue() {
       {items.map((w) => {
         const s = data.students.find((x) => x.id === w.studentId);
         const m = marks[w.id] ?? suggestion(w);
-        const open = w.teacherScore === undefined || editing[w.id];
+        const open = !viewOnly && (w.teacherScore === undefined || editing[w.id]);
         const oldScale = w.teacherScore !== undefined && !w.marks;
         const a = analysisOf(w);
         return (
@@ -407,7 +410,7 @@ function WritingQueue() {
                 </div>
                 <Button variant="success" onClick={() => save(w)}>Save mark: {marksTotal(m)}/{WRITING_MAX}</Button>
               </div>
-            ) : (
+            ) : viewOnly ? null : (
               <Button className="mt-3" variant="soft" size="sm" onClick={() => setEditing((e) => ({ ...e, [w.id]: true }))}>{oldScale ? 'Re-mark with the /15 rubric' : 'Change mark'}</Button>
             )}
             {w.teacherNote && !open && <p className="mt-2 text-navy">💬 {w.teacherNote}</p>}
