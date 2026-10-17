@@ -16,5 +16,5 @@ export function useLearner() {
     if (me) data.assignments.filter((a) => (a.to === 'class' ? a.classId === me.classId : a.to.includes(me.id))).forEach((a) => set.add(a.ref));
     return set;
   }, [data.assignments, me]);
-  return { learner: me ?? preview, preview: !me, unlockAll: data.settings.unlockAll || !me, assigned };
+  return { learner: me ?? preview, preview: !me, unlockAll: data.settings.unlockAll || (!me && !data.session.viewAsStudent), assigned };
 }

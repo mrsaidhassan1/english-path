@@ -5,7 +5,8 @@ import {
   Home, Route, BookOpen, Layers, Mic, Dumbbell, RefreshCcw, ClipboardCheck, BarChart3, LayoutDashboard, Presentation, MoreHorizontal, LogOut, Languages, X,
 } from 'lucide-react';
 import { useSyncState } from '../hooks/useOnlineSync';
-import { Cloud, CloudOff, RefreshCw } from 'lucide-react';
+import { Cloud, CloudOff, RefreshCw, UserRound } from 'lucide-react';
+import { ViewAsStudentBanner, useViewAsStudent } from './StaffPreview';
 import { useApp } from '../store';
 import { Logo, LogoMark } from './Logo';
 import { Avatar } from './Avatar';
@@ -54,6 +55,7 @@ export function Layout({ children }: { children: ReactNode }) {
     window.scrollTo(0, 0);
   }, [loc.pathname]);
   const mobileMain = items.filter((n) => ['/', '/learning', '/lessons', '/vocabulary'].includes(n.to));
+  const viewAs = useViewAsStudent();
   const signOut = () => {
     // a teacher on the online version also leaves their staff sign-in
     if (onlineEnabled && data.session.role === 'teacher') teacherSignOut().catch(() => undefined);
@@ -88,6 +90,7 @@ export function Layout({ children }: { children: ReactNode }) {
       </aside>
 
       <div className="lg:pl-72">
+      <ViewAsStudentBanner />
       {/* Top bar */}
       <header className="sticky top-0 z-30 border-b border-navy-100/60 bg-white/90 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-2 px-3 sm:gap-3 sm:px-4">
@@ -109,7 +112,12 @@ export function Layout({ children }: { children: ReactNode }) {
               <span className="hidden font-bold text-navy sm:inline">{me.firstName}</span>
             </NavLink>
           ) : isTeacher ? (
-            <span className="flex min-h-[44px] items-center gap-2 rounded-2xl bg-navy px-3 font-bold text-white"><LogoMark size={24} white /> Teacher</span>
+            <>
+              <button onClick={() => viewAs(true)} className="flex min-h-[44px] items-center gap-2 rounded-2xl bg-navy-50 px-3 font-semibold text-navy hover:bg-navy-100" title="See the app as a student sees it">
+                <UserRound size={20} /> <span className="hidden md:inline">View as student</span>
+              </button>
+              <span className="flex min-h-[44px] items-center gap-2 rounded-2xl bg-navy px-3 font-bold text-white"><LogoMark size={24} white /> {data.session.staff?.role === 'admin' ? 'Admin' : data.session.staff?.role === 'observer' ? 'Observer' : 'Teacher'}</span>
+            </>
           ) : null}
           <button onClick={signOut} className="grid h-11 w-11 place-items-center rounded-2xl text-navy hover:bg-navy-50" aria-label="Switch user / sign out" title="Switch user">
             <LogOut size={20} />

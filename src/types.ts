@@ -241,6 +241,7 @@ export interface Settings {
   unlockAll: boolean;
   speechRate: number;
   examReadAloud: boolean; // Listen buttons on exam reading texts (the real ELEM exam has none)
+  showAnswers?: boolean; // teacher preview: answers shown under each activity (default on)
 }
 
 export interface ClassInfo {
@@ -262,7 +263,7 @@ export interface AppData {
   assignments: Assignment[];
   writing: WritingSubmission[];
   settings: Settings;
-  session: { role: 'student' | 'teacher' | null; studentId: string | null; staff?: StaffAccess };
+  session: { role: 'student' | 'teacher' | null; studentId: string | null; staff?: StaffAccess; viewAsStudent?: boolean };
 }
 
 /** A teacher's access in the online class store (Phase 1 roles), re-checked every time the app opens. */

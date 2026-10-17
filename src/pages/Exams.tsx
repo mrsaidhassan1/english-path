@@ -15,6 +15,38 @@ import { Recorder } from '../components/Recorder';
 import { AudioButton } from '../components/AudioButton';
 import { Ar, Button, Card, EmptyState, LinkButton, PageHeader, Pill, ProgressBar, Tabs } from '../components/ui';
 import { ask } from '../components/Confirm';
+import { useAssignHere, useCanEdit, useShowAnswers } from '../components/StaffPreview';
+import { Eye, EyeOff, KeyRound, Send } from 'lucide-react';
+
+/** The right answer to an exam question, as text. */
+const examAnswer = (s: ExamSection, q: ExamSection['items'][number]) => (s.kind === 'typed' ? String(q.answer) : s.kind === 'choice' ? String(q.options?.[q.answer as number] ?? q.answer) : '');
+
+/** Teacher / Admin / Observer: the whole answer key, with the recordings written out. */
+function ExamKey({ exam }: { exam: Exam }) {
+  return (
+    <Card className="mt-4 border-2 border-dashed border-mint bg-mint-50">
+      <h2 className="flex items-center gap-2 text-xl font-bold text-mint-700"><KeyRound /> Answer key</h2>
+      {exam.sections.map((s) => (
+        <section key={s.id} className="mt-4">
+          <h3 className="font-bold text-navy">{s.title}</h3>
+          {s.audio && <p className="mt-1 text-sm text-navy-500"><b>Recording:</b> {s.audio.map(([who, t]) => `${who}: ${t}`).join(' / ')}</p>}
+          {s.kind === 'write' && s.write && <p className="mt-1 text-navy"><b>Model answer ({WRITING_MAX} marks, A1 writing rubric):</b> {s.write.model}</p>}
+          {s.kind === 'speak' && <p className="mt-1 text-navy-500">Speaking: 1 mark for answering in a full sentence, 1 for one more idea, per question.</p>}
+          {(s.kind === 'choice' || s.kind === 'typed') && (
+            <ol className="mt-1 space-y-1">
+              {s.items.map((q, k) => (
+                <li key={k} className="text-navy">
+                  {k + 1}. <span className="text-navy-500">{q.q.replace(/\[|\]/g, '')}</span> → <b className="text-mint-700">{examAnswer(s, q)}</b>
+                  {q.say && <span className="block text-sm text-navy-400">{q.say.map(([who, t]) => `${who}: ${t}`).join(' / ')}</span>}
+                </li>
+              ))}
+            </ol>
+          )}
+        </section>
+      ))}
+    </Card>
+  );
+}
 
 
 const KIND_META: Record<Exam['kind'], { label: string; icon: ReactNode; tone: string }> = {
@@ -129,8 +161,11 @@ function PlayTwice({ lines, label = 'Play recording' }: { lines: [string, string
 export function ExamRunner() {
   const { examId } = useParams();
   const exam = getExam(examId ?? '');
-  const { me, updateStudent, update } = useApp();
+  const { me, updateStudent, update, isTeacher } = useApp();
   const { learner } = useLearner();
+  const [showAnswers, setShowAnswers] = useShowAnswers();
+  const canEdit = useCanEdit();
+  const assignHere = useAssignHere();
   const [phase, setPhase] = useState<'start' | 'run' | 'result'>('start');
   const [sec, setSec] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
@@ -217,9 +252,16 @@ export function ExamRunner() {
           </ol>
           <p className="mt-4 text-navy-500">Tips: read the instructions · answer every question · check your answers before you finish.</p>
           <Ar>نصائح: اقرأ التعليمات، أجب عن كل الأسئلة، وراجع إجاباتك.</Ar>
-          {!me && <p className="mt-3"><Pill tone="sun">Teacher preview — results are not saved</Pill></p>}
+          {!me && isTeacher && <p className="mt-3"><Pill tone="sun">Teacher preview — results are not saved</Pill></p>}
+          {isTeacher && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Button size="sm" variant={showAnswers ? 'success' : 'outline'} aria-pressed={showAnswers} onClick={() => setShowAnswers(!showAnswers)}>{showAnswers ? <Eye size={16} /> : <EyeOff size={16} />} {showAnswers ? 'Answer key shown' : 'Show answer key'}</Button>
+              {canEdit && <Button size="sm" variant="outline" onClick={() => assignHere('exam', exam.id, `Exam: ${exam.title}`)}><Send size={16} /> Assign</Button>}
+            </div>
+          )}
           <Button size="xl" variant="accent" className="mt-6 w-full" onClick={() => { startedAt.current = Date.now(); setLeft(exam.minutes * 60); setPhase('run'); }}>Start the exam</Button>
         </Card>
+        {isTeacher && showAnswers && <ExamKey exam={exam} />}
       </div>
     );
   }
@@ -243,7 +285,7 @@ export function ExamRunner() {
         <ProgressBar pct={(answered / totalQ) * 100} className="mt-2" label="Answered" />
         <Tabs className="mt-2" value={String(sec)} onChange={(v) => setSec(Number(v))} tabs={exam.sections.map((x, k) => ({ id: String(k), label: x.title.replace(/ — .*$/, '') }))} />
       </div>
-      <SectionView s={s} answers={answers} setAnswers={setAnswers} />
+      <SectionView s={s} answers={answers} setAnswers={setAnswers} showKey={isTeacher && showAnswers} />
       <div className="mt-5 flex justify-between">
         <Button variant="outline" disabled={sec === 0} onClick={() => setSec(sec - 1)}>Previous part</Button>
         {sec + 1 < exam.sections.length ? <Button onClick={() => { setSec(sec + 1); window.scrollTo({ top: 0 }); }}>Next part</Button> : <Button variant="success" size="lg" onClick={submit}>Finish and see results</Button>}
@@ -252,7 +294,7 @@ export function ExamRunner() {
   );
 }
 
-function SectionView({ s, answers, setAnswers }: { s: ExamSection; answers: Answers; setAnswers: Dispatch<SetStateAction<Answers>> }) {
+function SectionView({ s, answers, setAnswers, showKey = false }: { s: ExamSection; answers: Answers; setAnswers: Dispatch<SetStateAction<Answers>>; showKey?: boolean }) {
   const readAloud = useApp().data.settings.examReadAloud;
   const set = (k: string, v: string | number) => setAnswers((a) => ({ ...a, [k]: v }));
   return (
@@ -281,6 +323,7 @@ function SectionView({ s, answers, setAnswers }: { s: ExamSection; answers: Answ
           </div>
           <textarea aria-label="Your writing" value={String(answers[s.id] ?? '')} onChange={(e) => set(s.id, e.target.value)} rows={6} className="mt-3 w-full rounded-2xl border-2 border-navy-100 p-4 text-xl text-navy outline-none focus:border-navy" spellCheck={false} />
           <Pill tone={wordCount(String(answers[s.id] ?? '')) >= 20 ? 'mint' : 'sun'}>{wordCount(String(answers[s.id] ?? ''))} words</Pill>
+          {showKey && <p className="mt-3 rounded-2xl border-2 border-dashed border-mint bg-mint-50 p-3 text-navy"><b className="text-mint-700">Model answer:</b> {s.write.model}</p>}
         </div>
       )}
       <ol className="mt-4 space-y-4">
@@ -303,6 +346,7 @@ function SectionView({ s, answers, setAnswers }: { s: ExamSection; answers: Answ
                   ))}
                 </div>
               )}
+              {showKey && (s.kind === 'choice' || s.kind === 'typed') && <p className="mb-2"><Pill tone="mint">Answer: {examAnswer(s, q)}</Pill></p>}
               {s.kind === 'typed' && (
                 <input aria-label={`Answer ${k + 1}`} value={String(answers[key] ?? '')} onChange={(e) => set(key, e.target.value)} className="min-h-[52px] w-full rounded-2xl border-2 border-navy-100 px-4 text-xl text-navy outline-none focus:border-navy sm:w-72" autoComplete="off" spellCheck={false} />
               )}

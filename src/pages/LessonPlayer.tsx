@@ -1,6 +1,6 @@
 // Plays a lesson (a list of activities), then shows the lesson or unit completion screen.
 import { useMemo, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Award, Lock, RotateCcw } from 'lucide-react';
 import type { Lesson, Module } from '../types';
 import { getLesson, getModule, MODULES } from '../data/modules';
@@ -14,6 +14,8 @@ import { countByStatus } from '../lib/srs';
 import { ActivityView, type AnswerEvent } from '../components/activities/ActivityView';
 import { Ar, Button, Card, EmptyState, LinkButton, Pill, ProgressBar, ProgressRing } from '../components/ui';
 import { Monster } from '../components/Monster';
+import { AnswerKey } from '../components/activities/AnswerKey';
+import { PresentView, PreviewBar, useAssignHere, useCanEdit, useShowAnswers } from '../components/StaffPreview';
 
 export default function LessonPlayer({ review = false }: { review?: boolean }) {
   const params = useParams();
@@ -33,9 +35,16 @@ export default function LessonPlayer({ review = false }: { review?: boolean }) {
 }
 
 function Player({ lesson, module, review }: { lesson: Lesson; module: Module; review: boolean }) {
-  const { me, updateStudent, update, data } = useApp();
+  const { me, updateStudent, update, data, isTeacher } = useApp();
   const nav = useNavigate();
-  const [i, setI] = useState(0);
+  const [params] = useSearchParams();
+  // teachers can open a lesson at any step (?a=3) and jump between steps without doing them
+  const [i, setI] = useState(() => (isTeacher ? Math.min(Math.max(0, Number(params.get('a') ?? 1) - 1 || 0), lesson.activities.length - 1) : 0));
+  const [present, setPresent] = useState(false);
+  const [showAnswers] = useShowAnswers();
+  const canEdit = useCanEdit();
+  const assignHere = useAssignHere();
+  const jump = (k: number) => { setI(Math.max(0, Math.min(k, lesson.activities.length - 1))); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const [score, setScore] = useState({ s: 0, t: 0 });
   const [finished, setFinished] = useState(false);
   const act = lesson.activities[i];
@@ -77,6 +86,10 @@ function Player({ lesson, module, review }: { lesson: Lesson; module: Module; re
         </div>
         <span className="text-sm font-bold text-navy-400">{i + 1}/{lesson.activities.length}</span>
       </div>
+      {isTeacher && (
+        <PreviewBar activities={lesson.activities} index={i} onJump={jump} onPresent={() => setPresent(true)}
+          onAssign={canEdit ? () => assignHere(review ? 'review' : 'lesson', lesson.id, `${review ? 'Review lesson' : 'Lesson'}: ${lesson.title}`) : undefined} />
+      )}
       <ProgressBar pct={(i / lesson.activities.length) * 100} colour="bg-coral" className="mb-5" label="Lesson progress" />
       {i === 0 && lesson.id.endsWith('-d1') && (
         <div className="mb-5 rounded-3xl bg-sky-50 p-4">
@@ -84,10 +97,16 @@ function Player({ lesson, module, review }: { lesson: Lesson; module: Module; re
           <ul className="mt-1 grid gap-1 sm:grid-cols-2">{module.goals.map((g) => <li key={g} className="text-navy">✔ {g}</li>)}</ul>
         </div>
       )}
-      {!me && <p className="mb-4"><Pill tone="sun">Teacher preview — answers are not saved</Pill></p>}
+      {!me && isTeacher && <p className="mb-4"><Pill tone="sun">Teacher preview — answers are not saved</Pill></p>}
       <Card className="p-5 sm:p-7">
         <ActivityView key={act.id} activity={act} onAnswer={onAnswer} onDone={onDone} />
       </Card>
+      {isTeacher && showAnswers && <div className="mt-4"><AnswerKey activity={act} /></div>}
+      {present && (
+        <PresentView activity={act} index={i} total={lesson.activities.length} onJump={jump} onClose={() => setPresent(false)}>
+          <ActivityView key={`${act.id}-class`} activity={act} onAnswer={() => undefined} onDone={() => (i + 1 < lesson.activities.length ? jump(i + 1) : setPresent(false))} />
+        </PresentView>
+      )}
       {data.session.role === 'teacher' && act.src && <p className="mt-2 text-xs text-navy-400">Source: {act.src.label} — {act.src.doc ?? act.src.file}</p>}
     </div>
   );

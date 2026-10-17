@@ -13,6 +13,10 @@ interface Ctx {
   replaceAll: (d: AppData) => void;
   me: Student | null;
   isTeacher: boolean;
+  /** Signed in as teacher / admin / observer, even while viewing as a student. */
+  isStaff: boolean;
+  /** A teacher looking at the app as a student sees it (nothing is saved). */
+  viewAsStudent: boolean;
   /** The class in use: the teacher's chosen class, or the learner's own class. */
   cls: ClassInfo | null;
   /** Learners in that class. */
@@ -93,7 +97,7 @@ export function AppProvider({ children, store = localStore }: { children: ReactN
   }, [me, data.activeClassId, data.classes]);
   const students = useMemo(() => (cls ? data.students.filter((s) => s.classId === cls.id) : []), [cls, data.students]);
 
-  const value: Ctx = { data, update, updateStudent, replaceAll, me, isTeacher: data.session.role === 'teacher', cls, students, toast, saveError };
+  const value: Ctx = { data, update, updateStudent, replaceAll, me, isTeacher: data.session.role === 'teacher' && !data.session.viewAsStudent, isStaff: data.session.role === 'teacher', viewAsStudent: data.session.role === 'teacher' && !!data.session.viewAsStudent, cls, students, toast, saveError };
 
   return (
     <AppContext.Provider value={value}>

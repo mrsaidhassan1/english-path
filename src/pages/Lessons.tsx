@@ -1,3 +1,4 @@
+import { KIND_LABEL } from '../components/activities/ActivityView';
 import { Link, useParams } from 'react-router-dom';
 import { BookOpen, Check, Clock, Lock, Play, Target, FileText } from 'lucide-react';
 import { MODULES, getModule, reviewAfterModule } from '../data/modules';
@@ -120,6 +121,13 @@ export function ModulePage() {
                     <Link to={`/lessons/${m.id}/${l.id}`} className="flex min-h-[60px] items-center gap-3 rounded-2xl border-2 border-navy-100 px-3 py-2 transition hover:border-coral">{inner}</Link>
                   ) : (
                     <div className="flex min-h-[60px] items-center gap-3 rounded-2xl border-2 border-dashed border-slate-200 px-3 py-2 opacity-70">{inner}</div>
+                  )}
+                  {isTeacher && (
+                    <div className="ml-14 mt-1 flex flex-wrap gap-1" aria-label={`Open a step of ${l.title}`}>
+                      {l.activities.map((a, j) => (
+                        <Link key={a.id} to={`/lessons/${m.id}/${l.id}?a=${j + 1}`} title={a.title} className="rounded-lg bg-navy-50 px-2 py-0.5 text-xs font-semibold text-navy hover:bg-navy-100">{j + 1}. {KIND_LABEL[a.kind]}</Link>
+                      ))}
+                    </div>
                   )}
                 </li>
               );
