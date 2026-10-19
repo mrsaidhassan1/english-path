@@ -2,10 +2,10 @@
 // store into this device (lib/online.ts, supabase/setup.sql + phase1_roles.sql). The teacher is already
 // signed in (Welcome → I'm the teacher); what they can see depends on their staff role.
 import { useState } from 'react';
-import { Cloud, CloudOff, Eye, RefreshCw, ShieldCheck } from 'lucide-react';
+import { Cloud, CloudOff, Eye, KeyRound, RefreshCw, ShieldCheck } from 'lucide-react';
 import { useApp } from '../store';
 import { applyStaffAccess, mergeOnlineClass } from '../lib/classes';
-import { classPermissions, fetchClass, fetchMyAccess, onlineEnabled, onlineError } from '../lib/online';
+import { classPermissions, fetchClass, fetchMyAccess, onlineEnabled, onlineError, setTeacherPassword } from '../lib/online';
 import { Button, Card, EmptyState, Pill } from '../components/ui';
 import { niceDate } from '../lib/date';
 
@@ -15,6 +15,8 @@ export function OnlineClassPanel() {
   const { data, cls, update, toast, students } = useApp();
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState('');
+  const [pw, setPw] = useState('');
+  const [pwOpen, setPwOpen] = useState(false);
   const [last, setLast] = useState<{ at: string; added: number; updated: number; writing: number; total: number } | null>(null);
   const staff = data.session.staff;
 
@@ -67,8 +69,22 @@ export function OnlineClassPanel() {
           <div className="flex flex-wrap gap-2">
             <Button onClick={load} disabled={busy || !cls || !perms.canRead}><RefreshCw size={18} className={busy ? 'animate-spin' : ''} /> Load the class now</Button>
             <Button variant="outline" onClick={recheck} disabled={busy}><ShieldCheck size={18} /> Check my access</Button>
+            <Button variant="soft" onClick={() => setPwOpen(!pwOpen)} aria-expanded={pwOpen}><KeyRound size={18} /> Change my password</Button>
           </div>
         </div>
+        {pwOpen && (
+          <form className="mt-3 flex flex-wrap items-end gap-2 rounded-2xl bg-navy-50 p-3" onSubmit={async (e) => {
+            e.preventDefault(); setErr('');
+            if (pw.length < 8) { setErr('Use at least 8 characters.'); return; }
+            setBusy(true);
+            try { await setTeacherPassword(pw); setPw(''); setPwOpen(false); toast('Password changed. Use it next time you sign in.', 'good'); }
+            catch (x) { setErr(onlineError(x)); } finally { setBusy(false); }
+          }}>
+            <label className="block flex-1"><span className="font-semibold text-navy">New password (8+ characters)</span>
+              <input type="password" autoComplete="new-password" value={pw} onChange={(e) => setPw(e.target.value)} className="mt-1 min-h-[48px] w-full rounded-2xl border-2 border-navy-100 px-3" /></label>
+            <Button type="submit" disabled={busy || !pw}>Save password</Button>
+          </form>
+        )}
         {!perms.canRead && <p className="mt-2 font-semibold text-coral-700">You don't have online access to this class. Choose one of your classes below, or ask the admin.</p>}
         {err && <p className="mt-2 font-semibold text-coral-700" role="alert">{err}</p>}
         {last && (

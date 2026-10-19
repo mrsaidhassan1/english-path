@@ -159,6 +159,8 @@ export const onlineError = (e: unknown) => {
   const m = (e as { message?: string })?.message ?? String(e);
   if (/invalid login/i.test(m)) return 'Wrong email or password.';
   if (/not a staff account/i.test(m)) return 'This login has no teacher access. Ask the admin to add you.';
+  if (/rate limit|too many/i.test(m)) return 'Too many emails were sent in the last hour. Please try again later, or ask the admin.';
+  if (/not authori[sz]ed/i.test(m) && /email|address/i.test(m)) return 'The app cannot email this address yet. Please ask the admin.';
   if (/unknown or closed class code/i.test(m)) return 'That class code is not open online.';
   if (/anonymous/i.test(m)) return 'Online saving is not switched on yet (anonymous sign-ins are off).';
   if (/fetch|network/i.test(m)) return 'No internet connection. Your work is saved on this phone and will be sent later.';
