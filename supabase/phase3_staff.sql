@@ -65,3 +65,14 @@ grant execute on function public.staff_remove(uuid) to authenticated;
 
 -- check: 3 = all three functions are in place
 select count(*) as staff_functions from pg_proc where proname in ('staff_list', 'staff_set', 'staff_remove') and pronamespace = 'public'::regnamespace;
+
+-- ------------------------------------------------------------------ joining a class that is new on this phone
+-- A learner types a code the phone has never seen (e.g. a class created in the Staff tab): the app asks for
+-- the class name. Only open classes answer, and only with their code and name.
+create or replace function public.class_info(p_code text)
+returns jsonb language sql stable security definer set search_path = public as $$
+  select jsonb_build_object('code', code, 'name', name) from public.classes
+   where upper(code) = upper(trim(p_code)) and allow_join limit 1;
+$$;
+revoke all on function public.class_info(text) from public;
+grant execute on function public.class_info(text) to anon, authenticated;

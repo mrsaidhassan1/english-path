@@ -1,12 +1,12 @@
 // Sign-in: choose your class, then your card (learners); join a class with a code; or enter as the teacher.
 // Local accounts only (see README → "Adding accounts and cloud storage").
 import { TeacherSignIn } from '../components/TeacherSignIn';
-import { onlineEnabled } from '../lib/online';
+import { classInfo, onlineEnabled, onlineError } from '../lib/online';
 import { useMemo, useState } from 'react';
 import { GraduationCap, Search, Lock, ArrowLeft, KeyRound, Users } from 'lucide-react';
 import type { ClassInfo } from '../types';
 import { useApp } from '../store';
-import { joinWithCode, nameOf, studentsIn } from '../lib/classes';
+import { findClassByCode, joinWithCode, nameOf, newClass, studentsIn } from '../lib/classes';
 import { LogoMark, APP_NAME, APP_SUBTITLE, APP_TAGLINE, APP_TAGLINE_AR } from '../components/Logo';
 import { Avatar } from '../components/Avatar';
 import { Ar, Button, Modal } from '../components/ui';
@@ -35,9 +35,25 @@ export default function Welcome() {
     update((d) => { d.session = { role: 'teacher', studentId: null }; });
   };
 
-  const join = () => {
+  const [joining, setJoining] = useState(false);
+  const join = async () => {
     const next = structuredClone(data);
-    const r = joinWithCode(next, code, fullName);
+    let r = joinWithCode(next, code, fullName);
+    // a class this phone has not seen yet (e.g. made in the Staff tab): ask the online class store
+    if (!r.student && onlineEnabled && fullName.trim() && !findClassByCode(next, code)) {
+      setJoining(true); setJoinErr('');
+      try {
+        const info = await classInfo(code);
+        if (info) {
+          next.classes.push({ ...newClass(info.name), code: info.code });
+          r = joinWithCode(next, info.code, fullName);
+        }
+      } catch (e) {
+        setJoining(false);
+        return setJoinErr(/fetch|network/i.test(String((e as Error)?.message)) ? 'No internet: the class code cannot be checked. Try again when you are online.' : onlineError(e));
+      }
+      setJoining(false);
+    }
     if (r.error || !r.student) return setJoinErr(r.error ?? 'Something went wrong.');
     next.session = { role: 'student', studentId: r.student.id };
     replaceAll(next);
@@ -149,7 +165,7 @@ export default function Welcome() {
               className="mt-1 min-h-[52px] w-full rounded-2xl border-2 border-navy-100 px-4 text-xl outline-none focus:border-navy" />
           </label>
           {joinErr && <p className="font-semibold text-coral-700" role="alert">{joinErr}</p>}
-          <Button type="submit" size="lg" className="w-full" disabled={!code.trim() || !fullName.trim()}>Join and start</Button>
+          <Button type="submit" size="lg" className="w-full" disabled={joining || !code.trim() || !fullName.trim()}>{joining ? 'Checking the code…' : 'Join and start'}</Button>
         </form>
       </Modal>
 

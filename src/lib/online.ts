@@ -54,6 +54,13 @@ export async function joinOnline(code: string, firstName: string, lastName?: str
   return session!.user.id;
 }
 
+/** An open class's name, for a code this phone does not know yet (null = no open class with that code). */
+export async function classInfo(code: string): Promise<{ code: string; name: string } | null> {
+  const { data, error } = await sb().rpc('class_info', { p_code: code });
+  if (error) throw error;
+  return (data as { code: string; name: string } | null) ?? null;
+}
+
 /** The online id of this phone's learner, if it has joined before. */
 export async function myOnlineId(): Promise<string | null> {
   if (!onlineEnabled) return null;
