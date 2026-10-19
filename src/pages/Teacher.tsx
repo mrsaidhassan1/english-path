@@ -1,8 +1,9 @@
 import { useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { LayoutDashboard, Presentation, Printer, Users, BarChart3, Send, PenLine, Database, Settings as Cog, Download, Upload, Trash2, RotateCcw, Copy, School, Cloud } from 'lucide-react';
+import { LayoutDashboard, Presentation, Printer, Users, BarChart3, Send, PenLine, Database, Settings as Cog, Download, Upload, Trash2, RotateCcw, Copy, School, Cloud, UserCog } from 'lucide-react';
 import { ClassesPanel } from './Classes';
 import { OnlineClassPanel } from './OnlineClass';
+import { StaffPanel } from './Staff';
 import { classPermissions, onlineEnabled, onlineError, saveMarkOnline } from '../lib/online';
 import type { Assignment, Skill, WritingSubmission } from '../types';
 import { CRITERIA, marksTotal, RUBRIC_SRC, WRITING_MAX, type WritingMarks } from '../data/writingRubric';
@@ -26,7 +27,7 @@ import { nameOf } from '../lib/classes';
 import { canDownload, canPrint } from '../lib/env';
 import { ask } from '../components/Confirm';
 
-type Tab = 'overview' | 'classes' | 'online' | 'students' | 'assign' | 'writing' | 'content' | 'settings';
+type Tab = 'overview' | 'classes' | 'online' | 'staff' | 'students' | 'assign' | 'writing' | 'content' | 'settings';
 
 export default function Teacher() {
   const [params, setParams] = useSearchParams();
@@ -34,7 +35,7 @@ export default function Teacher() {
   const { data, update, cls, students } = useApp();
   const ids = new Set(students.map((s) => s.id));
   const toMark = data.writing.filter((w) => w.teacherScore === undefined && ids.has(w.studentId)).length;
-  const shown: Tab = !cls && tab !== 'content' && tab !== 'settings' ? 'classes' : tab;
+  const shown: Tab = !cls && tab !== 'content' && tab !== 'settings' && tab !== 'staff' ? 'classes' : tab;
   return (
     <div>
       <PageHeader title="Teacher Dashboard" ar="لوحة المعلم" sub={cls ? `${cls.name} · ${students.length} students · join code ${cls.code}` : 'No class yet: create or import one'} icon={<LayoutDashboard />}>
@@ -51,6 +52,7 @@ export default function Teacher() {
         { id: 'overview', label: <span className="flex items-center gap-1"><BarChart3 size={16} /> Overview</span> },
         { id: 'classes', label: <span className="flex items-center gap-1"><School size={16} /> Classes ({data.classes.length})</span> },
         ...(onlineEnabled ? [{ id: 'online' as Tab, label: <span className="flex items-center gap-1"><Cloud size={16} /> Online class</span> }] : []),
+        ...(onlineEnabled && data.session.staff?.role === 'admin' ? [{ id: 'staff' as Tab, label: <span className="flex items-center gap-1"><UserCog size={16} /> Staff</span> }] : []),
         { id: 'students', label: <span className="flex items-center gap-1"><Users size={16} /> Students</span> },
         { id: 'assign', label: <span className="flex items-center gap-1"><Send size={16} /> Assign</span> },
         { id: 'writing', label: <span className="flex items-center gap-1"><PenLine size={16} /> Writing {toMark > 0 && <span className="rounded-full bg-coral px-1.5 text-xs text-white">{toMark}</span>}</span> },
@@ -60,6 +62,7 @@ export default function Teacher() {
       {shown === 'overview' && <Overview />}
       {shown === 'classes' && <ClassesPanel />}
       {shown === 'online' && <OnlineClassPanel />}
+      {shown === 'staff' && <StaffPanel />}
       {shown === 'students' && <Roster />}
       {shown === 'assign' && <Assign />}
       {shown === 'writing' && <WritingQueue />}

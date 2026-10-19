@@ -154,11 +154,69 @@ export async function saveMarkOnline(id: string, marks: WritingMarks, total: num
   if (error) throw error;
 }
 
+// ------------------------------------------------------------------ Staff tab (Admin; supabase/phase3_staff.sql + functions/staff-admin)
+export interface StaffMember {
+  user_id: string; email: string; role: StaffAccess['role']; status: 'active' | 'suspended'; created_at: string; last_sign_in_at: string | null;
+  classes: { code: string; name: string; role: 'owner' | 'teacher' | 'observer' }[];
+}
+export interface OnlineClassRow { code: string; name: string; allow_join: boolean }
+
+export async function staffList(): Promise<StaffMember[]> {
+  const { data, error } = await sb().rpc('staff_list');
+  if (error) throw error;
+  return (data ?? []) as StaffMember[];
+}
+export async function staffSet(userId: string, change: { role?: StaffAccess['role']; status?: 'active' | 'suspended' }): Promise<void> {
+  const { error } = await sb().rpc('staff_set', { p_user: userId, p_role: change.role ?? null, p_status: change.status ?? null });
+  if (error) throw error;
+}
+export async function staffRemove(userId: string): Promise<void> {
+  const { error } = await sb().rpc('staff_remove', { p_user: userId });
+  if (error) throw error;
+}
+/** Put a staff member in a class (or change their role there); null removes them from it. */
+export async function classStaffSet(userId: string, classCode: string, role: 'owner' | 'teacher' | 'observer' | null): Promise<void> {
+  const q = sb().from('class_staff');
+  const { error } = role
+    ? await q.upsert({ class_code: classCode, user_id: userId, role }, { onConflict: 'class_code,user_id' })
+    : await q.delete().eq('class_code', classCode).eq('user_id', userId);
+  if (error) throw error;
+}
+export async function onlineClasses(): Promise<OnlineClassRow[]> {
+  const { data, error } = await sb().from('classes').select('code, name, allow_join').order('name');
+  if (error) throw error;
+  return (data ?? []) as OnlineClassRow[];
+}
+export async function createOnlineClass(code: string, name: string): Promise<void> {
+  const { error } = await sb().from('classes').insert({ code, name, allow_join: true });
+  if (error) throw error;
+}
+async function staffAdmin<T>(body: Record<string, unknown>): Promise<T> {
+  const { data, error } = await sb().functions.invoke('staff-admin', { body });
+  if (error) {
+    // the function's own message, when there is one
+    const ctx = (error as { context?: Response }).context;
+    const msg = ctx && typeof ctx.json === 'function' ? await ctx.json().then((j: { error?: string }) => j.error).catch(() => undefined) : undefined;
+    throw new Error(msg ?? error.message);
+  }
+  return data as T;
+}
+/** Make (or reuse) a login and give it staff access. A new login comes back with a one-time temporary password. */
+export const staffCreate = (email: string, role: StaffAccess['role'], classCode?: string, classRole: 'owner' | 'teacher' | 'observer' = 'teacher') =>
+  staffAdmin<{ user_id: string; existing: boolean; password?: string }>({ action: 'create', email, role, class_code: classCode || null, class_role: classRole });
+/** A new temporary password for a staff member (no email needed). */
+export const staffResetPassword = (userId: string) => staffAdmin<{ password: string }>({ action: 'reset', user_id: userId });
+
 /** A short, friendly message for an online error. */
 export const onlineError = (e: unknown) => {
   const m = (e as { message?: string })?.message ?? String(e);
   if (/invalid login/i.test(m)) return 'Wrong email or password.';
   if (/not a staff account/i.test(m)) return 'This login has no teacher access. Ask the admin to add you.';
+  if (/admins only/i.test(m)) return 'Only an Admin can do this.';
+  if (/own admin access/i.test(m)) return 'You cannot remove your own Admin access.';
+  if (/at least one active admin/i.test(m)) return 'The app must keep at least one active Admin.';
+  if (/Failed to send a request to the Edge Function|FunctionsFetchError|Function not found|404/i.test(m)) return 'The staff service is not set up yet (Edge Function "staff-admin").';
+  if (/duplicate key|already exists/i.test(m)) return 'That already exists.';
   if (/rate limit|too many/i.test(m)) return 'Too many emails were sent in the last hour. Please try again later, or ask the admin.';
   if (/not authori[sz]ed/i.test(m) && /email|address/i.test(m)) return 'The app cannot email this address yet. Please ask the admin.';
   if (/unknown or closed class code/i.test(m)) return 'That class code is not open online.';
