@@ -3,12 +3,12 @@
 // New logins get a temporary password shown once to the Admin (the free email service cannot reach
 // other teachers); the teacher changes it in Online class → Change my password.
 import { useCallback, useEffect, useState } from 'react';
-import { Copy, KeyRound, PauseCircle, PlayCircle, Plus, RefreshCw, School, Trash2, UserPlus, Users } from 'lucide-react';
+import { Copy, History, KeyRound, PauseCircle, PlayCircle, Plus, RefreshCw, School, Trash2, UserPlus, Users } from 'lucide-react';
 import { useApp } from '../store';
 import { applyStaffAccess, makeCode } from '../lib/classes';
 import {
-  classStaffSet, createOnlineClass, fetchMyAccess, onlineClasses, onlineError, staffCreate, staffList, staffRemove, staffResetPassword, staffSet,
-  type OnlineClassRow, type StaffMember,
+  classStaffSet, createOnlineClass, fetchActivity, fetchMyAccess, onlineClasses, onlineError, staffCreate, staffList, staffRemove, staffResetPassword, staffSet,
+  type ActivityRow, type OnlineClassRow, type StaffMember,
 } from '../lib/online';
 import type { StaffRole } from '../types';
 import { ask } from '../components/Confirm';
@@ -30,6 +30,58 @@ export function welcomeMessage(email: string, password: string, classes: string[
     '3. Then change it: Teacher Dashboard → Online class → Change my password.',
     classes.length ? `Your class${classes.length > 1 ? 'es' : ''}: ${classes.join(', ')}.` : '',
   ].filter(Boolean).join('\n');
+}
+
+/** One line of the activity log in plain words. */
+export function describeActivity(r: ActivityRow, emails: Record<string, string>): string {
+  const row = (r.details.row ?? {}) as Record<string, string | boolean | null>;
+  const before = (r.details.before ?? {}) as Record<string, string | boolean | null>;
+  const who = (id: unknown) => emails[String(id)] ?? 'a login';
+  const changed = (keys: string[]) => keys.filter((k) => before[k] !== undefined && before[k] !== row[k]).map((k) => `${k.replace('_', ' ')}: ${before[k]} → ${row[k]}`).join(', ');
+  switch (r.action) {
+    case 'staff insert': return `${who(row.user_id)} added as ${row.role}`;
+    case 'staff update': return `${who(row.user_id)} changed (${changed(['role', 'status']) || 'details'})`;
+    case 'staff delete': return `${who(row.user_id)} lost staff access`;
+    case 'class_staff insert': return `${who(row.user_id)} added to ${row.class_code} as ${row.role}`;
+    case 'class_staff update': return `${who(row.user_id)} in ${row.class_code}: ${changed(['role']) || 'changed'}`;
+    case 'class_staff delete': return `${who(row.user_id)} removed from ${row.class_code}`;
+    case 'classes insert': return `Class ${row.name} created (${row.code})`;
+    case 'classes update': return `Class ${row.name} (${row.code}): ${changed(['name', 'allow_join', 'archived']) || 'changed'}`;
+    case 'classes delete': return `Class ${row.name} (${row.code}) deleted`;
+    case 'students insert': return `A learner (${row.first_name}) joined ${row.class_code}`;
+    case 'students delete': return `A learner (${row.first_name}) was removed from ${row.class_code}`;
+    case 'assignments insert': return `Task “${row.title}” set for ${row.class_code}`;
+    case 'assignments delete': return `Task “${row.title}” removed from ${row.class_code}`;
+    default: return `${r.action}${r.target ? ` · ${r.target}` : ''}`;
+  }
+}
+
+function ActivityLog({ emails }: { emails: Record<string, string> }) {
+  const [rows, setRows] = useState<ActivityRow[] | null>(null);
+  const [err, setErr] = useState('');
+  const [show, setShow] = useState(30);
+  useEffect(() => { fetchActivity(200).then(setRows).catch((e) => setErr(onlineError(e))); }, []);
+  return (
+    <Card>
+      <h3 className="mb-2 flex items-center gap-2 text-lg font-bold text-navy"><History /> Activity log</h3>
+      <p className="mb-3 text-sm text-navy-500">Changes to staff, classes, tasks and learners joining or being removed. Only Admins see this.</p>
+      {err && <p className="font-semibold text-coral-700">{err}</p>}
+      {rows === null ? (!err && <p className="text-navy-500">Loading…</p>) : rows.length === 0 ? <p className="text-navy-500">Nothing yet.</p> : (
+        <>
+          <ul className="divide-y divide-navy-100">
+            {rows.slice(0, show).map((r) => (
+              <li key={r.id} className="flex flex-wrap gap-x-3 py-1.5 text-sm">
+                <span className="w-36 shrink-0 text-navy-400">{new Date(r.at).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</span>
+                <span className="flex-1 text-navy">{describeActivity(r, emails)}</span>
+                <span className="text-navy-400">{r.actor ? emails[r.actor] ?? 'a learner or the system' : 'the system'}</span>
+              </li>
+            ))}
+          </ul>
+          {rows.length > show && <Button size="sm" variant="soft" className="mt-2" onClick={() => setShow(show + 50)}>Show more</Button>}
+        </>
+      )}
+    </Card>
+  );
 }
 
 export function StaffPanel() {
@@ -112,6 +164,8 @@ export function StaffPanel() {
           </ul>
         )}
       </Card>
+
+      {staff && <ActivityLog emails={Object.fromEntries(staff.map((m) => [m.user_id, m.email]))} />}
     </div>
   );
 }

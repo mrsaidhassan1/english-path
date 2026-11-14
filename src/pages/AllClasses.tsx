@@ -3,10 +3,10 @@
 // The Admin and the class owner can rename a class and open or close joining.
 import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Check, DoorClosed, DoorOpen, FolderOpen, Pencil, RefreshCw, School, X } from 'lucide-react';
+import { Archive, ArchiveRestore, Check, DoorClosed, DoorOpen, Eraser, FolderOpen, Pencil, RefreshCw, School, X } from 'lucide-react';
 import { useApp } from '../store';
 import { applyStaffAccess } from '../lib/classes';
-import { classesOverview, fetchMyAccess, onlineError, updateOnlineClass, type ClassOverview } from '../lib/online';
+import { classesOverview, clearOnlineClass, fetchMyAccess, onlineError, setClassArchived, updateOnlineClass, type ClassOverview } from '../lib/online';
 import { ask } from '../components/Confirm';
 import { Button, Card, EmptyState, Pill, Stat } from '../components/ui';
 
@@ -33,6 +33,11 @@ export function AllClassesPanel() {
     setBusy(true); setErr('');
     try { await updateOnlineClass(c.code, ch); toast(done, 'good'); await syncAccess(); await load(); }
     catch (e) { setErr(onlineError(e)); setBusy(false); }
+  };
+
+  const run = async (fn: () => Promise<unknown>, done: string) => {
+    setBusy(true); setErr('');
+    try { await fn(); toast(done, 'good'); await load(); } catch (e) { setErr(onlineError(e)); setBusy(false); }
   };
 
   const open = async (c: ClassOverview) => {
@@ -85,12 +90,12 @@ export function AllClassesPanel() {
                       </form>
                     ) : (
                       <h3 className="flex items-center gap-2 text-xl font-bold text-navy">{c.name}
-                        {canEdit && <button type="button" onClick={() => setRenaming({ code: c.code, name: c.name })} className="grid h-9 w-9 place-items-center rounded-lg text-navy-400 hover:bg-navy-50" aria-label={`Rename ${c.name}`}><Pencil size={16} /></button>}
+                        {canEdit && !c.archived && <button type="button" onClick={() => setRenaming({ code: c.code, name: c.name })} className="grid h-9 w-9 place-items-center rounded-lg text-navy-400 hover:bg-navy-50" aria-label={`Rename ${c.name}`}><Pencil size={16} /></button>}
                       </h3>
                     )}
                     <p className="text-navy-500">Join code <b className="font-mono">{c.code}</b>{c.my_role && <> · you: {ROLE[c.my_role]}</>}</p>
                   </div>
-                  <Pill tone={c.allow_join ? 'mint' : 'grey'}>{c.allow_join ? 'Joining open' : 'Joining closed'}</Pill>
+                  {c.archived ? <Pill tone="sun"><Archive size={14} className="mr-1 inline" />Archived (read-only)</Pill> : <Pill tone={c.allow_join ? 'mint' : 'grey'}>{c.allow_join ? 'Joining open' : 'Joining closed'}</Pill>}
                 </div>
 
                 <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -107,9 +112,25 @@ export function AllClassesPanel() {
 
                 <div className="mt-3 flex flex-wrap gap-2">
                   <Button size="sm" onClick={() => open(c)} disabled={busy}><FolderOpen size={16} /> Open this class</Button>
-                  {canEdit && (c.allow_join
+                  {canEdit && !c.archived && (c.allow_join
                     ? <Button size="sm" variant="outline" disabled={busy} onClick={async () => { if (await ask(`Close joining for ${c.name}? New learners cannot join with ${c.code}; learners who joined already keep working.`, 'Close joining')) change(c, { allow_join: false }, `Joining closed for ${c.name}.`); }}><DoorClosed size={16} /> Close joining</Button>
                     : <Button size="sm" variant="outline" disabled={busy} onClick={() => change(c, { allow_join: true }, `Joining open for ${c.name}.`)}><DoorOpen size={16} /> Open joining</Button>)}
+                  {canEdit && !c.archived && (
+                    <Button size="sm" variant="ghost" disabled={busy} onClick={async () => {
+                      if (!(await ask(`Archive ${c.name} at the end of term? It is kept for reference but becomes read-only: no new learners, no marking, no new tasks. You can bring it back later.`, 'Archive'))) return;
+                      run(() => setClassArchived(c.code, true), `${c.name} archived.`);
+                    }}><Archive size={16} /> Archive</Button>
+                  )}
+                  {canEdit && c.archived && (
+                    <>
+                      <Button size="sm" variant="outline" disabled={busy} onClick={() => run(() => setClassArchived(c.code, false), `${c.name} is active again (joining is still closed).`)}><ArchiveRestore size={16} /> Bring back</Button>
+                      <Button size="sm" variant="ghost" className="text-coral-700" disabled={busy || c.students === 0} onClick={async () => {
+                        if (!(await ask(`Remove all ${c.students} learners of ${c.name} from the online class, with their progress and writing? Do this only after exporting (Settings → Export). This cannot be undone.`, 'Continue', true))) return;
+                        if (!(await ask(`Last check: remove ${c.students} learners of ${c.name} for good?`, 'Remove all learners', true))) return;
+                        run(async () => { const n = await clearOnlineClass(c.code); toast(`${n} learners removed from ${c.name} online. Remove them from this laptop in Classes if you no longer need them.`, 'good'); }, 'Class cleared.');
+                      }}><Eraser size={16} /> Clear learners</Button>
+                    </>
+                  )}
                 </div>
               </Card>
             );

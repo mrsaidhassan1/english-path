@@ -1,0 +1,25 @@
+# Free Supabase projects pause after about a week without use (e.g. in the holidays). This sends one tiny,
+# harmless request (a class-code lookup for a code that does not exist) every 3 days to keep it awake.
+# It uses only the public key. Run it by hand from the Actions tab at any time.
+name: Keep the online class store awake
+on:
+  schedule:
+    - cron: '17 5 */3 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase
+        env:
+          URL: ${{ vars.SUPABASE_URL }}
+          KEY: ${{ vars.SUPABASE_ANON_KEY }}
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X POST "$URL/rest/v1/rpc/class_info" \
+            -H "apikey: $KEY" -H "Content-Type: application/json" -d '{"p_code":"KEEP-AWAKE"}')
+          echo "Supabase answered $code"
+          test "$code" = "200"

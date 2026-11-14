@@ -1,11 +1,12 @@
 import { useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { LayoutDashboard, Presentation, Printer, Users, BarChart3, Send, PenLine, Database, Settings as Cog, Download, Upload, Trash2, RotateCcw, Copy, School, Cloud, UserCog, LayoutGrid } from 'lucide-react';
+import { LayoutDashboard, Presentation, Printer, Users, BarChart3, Send, PenLine, Database, Settings as Cog, Download, Upload, Trash2, RotateCcw, Copy, School, Cloud, UserCog, LayoutGrid, FileSpreadsheet } from 'lucide-react';
 import { ClassesPanel } from './Classes';
 import { OnlineClassPanel } from './OnlineClass';
 import { StaffPanel } from './Staff';
 import { AllClassesPanel } from './AllClasses';
 import { useAssignments } from '../hooks/useAssignments';
+import { classReportRows, downloadFile, toCsv, writingRows } from '../lib/dataCare';
 import { classPermissions, onlineEnabled, onlineError, saveMarkOnline } from '../lib/online';
 import type { Assignment, Skill, WritingSubmission } from '../types';
 import { CRITERIA, marksTotal, RUBRIC_SRC, WRITING_MAX, type WritingMarks } from '../data/writingRubric';
@@ -521,6 +522,16 @@ function SettingsPanel() {
           <Button className="mt-2" size="sm">Save PIN</Button>
         </form>
       </Card>
+      {cls && canDownload && (
+        <Card className="space-y-3">
+          <h2 className="flex items-center gap-2 text-lg font-bold text-navy"><FileSpreadsheet size={20} /> Export {cls.name}</h2>
+          <p className="text-navy-500">Files that open in Excel, saved in your Downloads folder. They contain learners' names (and Student IDs from your class file): keep them on this laptop, in your private class folder. On the online version, press <b>Online class → Load the class now</b> first for the latest work.</p>
+          <div className="flex flex-wrap gap-2">
+            <Button variant="outline" onClick={() => { const f = `${cls.name.replace(/\W+/g, '')}-class-report-${today()}.csv`; downloadFile(f, toCsv(classReportRows(data, cls.id))); toast(`${f} saved (${students.length} learners).`, 'good'); }}><Download size={18} /> Class report</Button>
+            <Button variant="outline" onClick={() => { const rows = writingRows(data, cls.id); const f = `${cls.name.replace(/\W+/g, '')}-writing-${today()}.csv`; downloadFile(f, toCsv(rows)); toast(`${f} saved (${rows.length - 1} pieces of writing).`, 'good'); }}><Download size={18} /> All writing</Button>
+          </div>
+        </Card>
+      )}
       <Card className="space-y-3">
         <h2 className="text-lg font-bold text-navy">Data on this device</h2>
         {saveError && <p className="rounded-xl bg-coral-50 p-3 font-semibold text-coral-800">{saveError}</p>}

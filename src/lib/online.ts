@@ -234,7 +234,7 @@ export async function fetchAssignments(classCode: string): Promise<AssignmentRow
 export interface ClassOverview {
   code: string; name: string; allow_join: boolean; my_role: 'admin' | 'owner' | 'teacher' | 'observer' | null;
   teachers: { email: string; role: 'owner' | 'teacher' | 'observer'; status: string | null }[];
-  students: number; active_week: number; writing_total: number; to_mark: number; assignments: number;
+  students: number; active_week: number; writing_total: number; to_mark: number; assignments: number; archived?: boolean;
 }
 export async function classesOverview(): Promise<ClassOverview[]> {
   const { data, error } = await sb().rpc('classes_overview');
@@ -242,7 +242,7 @@ export async function classesOverview(): Promise<ClassOverview[]> {
   return (data ?? []) as ClassOverview[];
 }
 /** Rename a class or open / close joining (Admin or the class owner). */
-export async function updateOnlineClass(code: string, change: { name?: string; allow_join?: boolean }): Promise<void> {
+export async function updateOnlineClass(code: string, change: { name?: string; allow_join?: boolean; archived?: boolean }): Promise<void> {
   const { data, error } = await sb().from('classes').update(change).eq('code', code).select('code');
   if (error) throw error;
   if (!data?.length) throw new Error('Only the Admin or the class owner can change this class.');
@@ -254,12 +254,39 @@ export async function staffDirectory(): Promise<Record<string, string>> {
   return (data ?? {}) as Record<string, string>;
 }
 
+// ------------------------------------------------------------------ Phase 5: data care (supabase/phase5_data.sql)
+/** Remove a learner online for good (his writing goes with him). Teachers of the class only. */
+export async function deleteOnlineStudent(onlineId: string): Promise<void> {
+  const { data, error } = await sb().from('students').delete().eq('id', onlineId).select('id');
+  if (error) throw error;
+  if (!data?.length) throw new Error('This learner could not be removed online (the class may be archived, or you are not its teacher).');
+}
+/** Archive (read-only, joining closed) or bring back a class. Admin or class owner. */
+export async function setClassArchived(code: string, archived: boolean): Promise<void> {
+  await updateOnlineClass(code, archived ? { archived: true, allow_join: false } : { archived: false });
+}
+/** Remove every learner of an archived class. Returns how many. */
+export async function clearOnlineClass(code: string): Promise<number> {
+  const { data, error } = await sb().rpc('class_clear', { p_code: code });
+  if (error) throw error;
+  return Number(data ?? 0);
+}
+export interface ActivityRow { id: number; at: string; actor: string | null; action: string; target: string | null; details: { row?: Record<string, unknown>; before?: Record<string, unknown> } }
+export async function fetchActivity(limit = 100): Promise<ActivityRow[]> {
+  const { data, error } = await sb().from('activity_log').select('id, at, actor, action, target, details').order('at', { ascending: false }).limit(limit);
+  if (error) throw error;
+  return (data ?? []) as ActivityRow[];
+}
+
 /** A short, friendly message for an online error. */
 export const onlineError = (e: unknown) => {
   const m = (e as { message?: string })?.message ?? String(e);
   if (/invalid login/i.test(m)) return 'Wrong email or password.';
   if (/not a staff account/i.test(m)) return 'This login has no teacher access. Ask the admin to add you.';
   if (/admins only/i.test(m)) return 'Only an Admin can do this.';
+  if (/archive the class first/i.test(m)) return 'Archive the class first, then you can clear it.';
+  if (/only the Admin or the class owner/i.test(m)) return 'Only the Admin or the class owner can do this.';
+  if (/row-level security|violates row level/i.test(m)) return 'Not allowed: the class may be archived (read-only), or you are not its teacher.';
   if (/own admin access/i.test(m)) return 'You cannot remove your own Admin access.';
   if (/at least one active admin/i.test(m)) return 'The app must keep at least one active Admin.';
   if (/Failed to send a request to the Edge Function|FunctionsFetchError|Function not found|404/i.test(m)) return 'The staff service is not set up yet (Edge Function "staff-admin").';

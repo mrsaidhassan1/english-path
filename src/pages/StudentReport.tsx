@@ -1,7 +1,9 @@
 // Printable / shareable student progress report, with photo and monster-avatar management.
 import { useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, Camera, Printer, RefreshCw, Smile, Trash2, Copy, Award } from 'lucide-react';
+import { ArrowLeft, Camera, Printer, RefreshCw, Smile, Trash2, Copy, Award, Link2 } from 'lucide-react';
+import { linkToRosterCard } from '../lib/dataCare';
+import { classPermissions, deleteOnlineStudent, onlineEnabled, onlineError } from '../lib/online';
 import type { Cefr } from '../types';
 import { MODULES } from '../data/modules';
 import { getWord } from '../data/content';
@@ -32,6 +34,7 @@ export default function StudentReport() {
   const [busy, setBusy] = useState(false);
   const [name, setName] = useState(s?.firstName ?? '');
   const [surname, setSurname] = useState(s?.lastName ?? '');
+  const [linkTo, setLinkTo] = useState('');
   if (!s) return <EmptyState icon="🤔" title="Student not found" action={<LinkButton to="/teacher?tab=students">Back to students</LinkButton>} />;
 
   const m = currentModule(s);
@@ -53,6 +56,30 @@ export default function StudentReport() {
       toast(e instanceof Error ? e.message : 'Could not use this photo.', 'warn');
     }
     setBusy(false);
+  };
+
+  // roster cards in the same class that are not linked online yet
+  const cards = data.students.filter((x) => x.classId === s.classId && x.id !== s.id && !x.onlineId && (x.iatcId || x.rosterNo)).sort((a, b) => (a.rosterNo ?? 999) - (b.rosterNo ?? 999));
+  const link = async () => {
+    const card = data.students.find((x) => x.id === linkTo);
+    if (!card || !(await ask(`Link ${nameOf(s)} (joined online) to the roster card ${nameOf(card)}? His online progress and writing move onto that card.`, 'Link'))) return;
+    update((d) => { linkToRosterCard(d, s.id, card.id); });
+    toast(`Linked to ${nameOf(card)}.`, 'good');
+    nav(`/teacher/student/${card.id}`);
+  };
+  const cls = data.classes.find((c) => c.id === s.classId);
+  const onlineRemove = !!s.onlineId && onlineEnabled && !!cls && classPermissions(data.session.staff, cls.code).canMark;
+  const remove = async () => {
+    const msg = onlineRemove
+      ? `Delete ${nameOf(s)} from this device AND from the online class? His progress and writing are removed for good, and his phone stops saving online. This cannot be undone. (Tip: Settings → Export first.)`
+      : `Delete ${nameOf(s)} and all their results from this device?${s.onlineId ? ' He will come back at the next Load the class now, because you cannot remove him online.' : ''}`;
+    if (!(await ask(msg, 'Delete', true))) return;
+    if (onlineRemove) {
+      try { await deleteOnlineStudent(s.onlineId!); } catch (e) { toast(onlineError(e), 'warn'); return; }
+    }
+    update((d) => { d.students = d.students.filter((x) => x.id !== s.id); d.writing = d.writing.filter((w) => w.studentId !== s.id); d.assignments.forEach((a) => { a.done = a.done.filter((x) => x !== s.id); if (a.to !== 'class') a.to = a.to.filter((x) => x !== s.id); }); });
+    toast(onlineRemove ? `${nameOf(s)} removed here and online.` : `${nameOf(s)} removed from this device.`, 'good');
+    nav('/teacher?tab=students');
   };
 
   const summary = () => [
@@ -114,8 +141,21 @@ export default function StudentReport() {
               {partnerText && <div>Partner: {partnerText}</div>}
             </div>
           )}
-          <Button variant="ghost" className="text-coral-700" onClick={async () => { if (await ask(`Delete ${nameOf(s)} and all their results from this device?`, 'Delete', true)) { update((d) => { d.students = d.students.filter((x) => x.id !== s.id); d.writing = d.writing.filter((w) => w.studentId !== s.id); }); nav('/teacher?tab=students'); } }}><Trash2 size={18} /> Delete student</Button>
+          <Button variant="ghost" className="text-coral-700" onClick={remove}><Trash2 size={18} /> Delete student</Button>
         </div>
+        {/* a learner who joined online with a differently spelled name: link him to his roster card */}
+        {s.onlineId && !s.iatcId && cards.length > 0 && (
+          <div className="mt-4 flex flex-wrap items-end gap-2 rounded-2xl bg-sky-50 p-3">
+            <label className="block"><span className="text-sm font-semibold text-navy">Same learner as a roster card? Link him</span>
+              <select value={linkTo} onChange={(e) => setLinkTo(e.target.value)} className="mt-1 block min-h-[44px] rounded-xl border-2 border-navy-100 bg-white px-3">
+                <option value="">Choose the roster card…</option>
+                {cards.map((c) => <option key={c.id} value={c.id}>{c.rosterNo ? `#${c.rosterNo} ` : ''}{nameOf(c)}</option>)}
+              </select>
+            </label>
+            <Button variant="soft" disabled={!linkTo} onClick={link}><Link2 size={18} /> Link</Button>
+            <p className="w-full text-sm text-navy-500">His online progress and writing move onto the roster card (ID, number, group and photo stay). This extra entry is then removed.</p>
+          </div>
+        )}
       </Card>
 
       {/* Printable report */}
