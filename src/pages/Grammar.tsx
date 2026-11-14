@@ -9,7 +9,7 @@ import { recordAnswer, recordLesson } from '../lib/learner';
 import { summaryLine } from '../lib/feedback';
 import { shuffle } from '../lib/rng';
 import { ActivityView } from '../components/activities/ActivityView';
-import { Ar, Button, Card, PageHeader, Pill } from '../components/ui';
+import { Ar, Button, Card, PageHeader, Pill, Tabs } from '../components/ui';
 
 interface Item { part: ChallengePart; q: ChallengeQuestion }
 interface Run { id: string; ref: string; title: string; titleAr?: string; prompt: string; promptAr: string; set: ChallengeSet; part?: ChallengePart; items: Item[] }
@@ -26,6 +26,7 @@ export default function GrammarPage() {
   const [attempt, setAttempt] = useState(0);
   const [result, setResult] = useState<{ score: number; total: number; missed: Item[] } | null>(null);
   const answers = useRef<boolean[]>([]);
+  const [setId, setSetId] = useState(CHALLENGE_SETS[0].id);
 
   const start = (r: Run, intro = false) => {
     answers.current = [];
@@ -103,7 +104,10 @@ export default function GrammarPage() {
   return (
     <div>
       <PageHeader title="Grammar" ar="القواعد" sub="Answer the questions. If you make a mistake, you see the right answer and why." icon={<BookText />} />
-      {CHALLENGE_SETS.map((set) => {
+      {CHALLENGE_SETS.length > 1 && (
+        <Tabs className="mb-5" value={setId} onChange={setSetId} tabs={CHALLENGE_SETS.map((x) => ({ id: x.id, label: `Set ${x.set}` }))} />
+      )}
+      {CHALLENGE_SETS.filter((x) => x.id === setId).map((set) => {
         const parts = set.parts.map((p) => ({ p, res: s.lessons[partRef(set, p)] }));
         const done = parts.filter((x) => x.res).length;
         const best = s.lessons[`grammar-${set.id}-all`];

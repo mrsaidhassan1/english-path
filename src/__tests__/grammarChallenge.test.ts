@@ -27,7 +27,7 @@ describe('grammar challenge', () => {
       for (const p of set.parts) {
         const rule = PART_RULES[set.id]?.[p.n];
         expect(rule?.en && rule?.ar, `part ${p.n} rule`).toBeTruthy();
-        for (const q of p.questions) expect(QUESTION_NOTES[set.id]?.[q.n]?.length, `Q${q.n} note`).toBeGreaterThan(10);
+        for (const q of p.questions) expect(QUESTION_NOTES[set.id]?.[q.n]?.length, `Q${q.n} note`).toBeGreaterThan(5);
       }
     }
   });

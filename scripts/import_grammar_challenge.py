@@ -26,7 +26,7 @@ import docx
 
 sys.stdout.reconfigure(encoding="utf-8")
 
-SETS = [1]  # Sets 2 and 3 exist in the same folder; add them here once their notes are written
+SETS = [1, 2, 3]
 
 APP = Path(__file__).resolve().parents[1]
 FOLDER = APP.parents[1] / "IATC English" / "Resources" / "A1" / "A1 Grammar" / "Grammar Practice" / "A1 Full Grammar Practice"
@@ -38,9 +38,16 @@ AVOID = re.compile(
     re.I,
 )
 MARKS = "☐☑☒"
+# Questions about an avoid topic (a song, a birthday) test grammar that has nothing to do with the topic,
+# so one word is swapped and the question stays: {(set, question): {old word: new word}}.
+SWAPS = {
+    (2, 31): {"song": "film"},
+    (2, 57): {"birthday": "exam"},
+    (2, 91): {"birthday": "exam"},
+}
 
 
-def parts_of(path: Path):
+def parts_of(path: Path, set_no: int):
     """[(part number, instruction, Arabic instruction, {question number: (stem, options, marked index or None)})]"""
     d = docx.Document(str(path))
     parts = []
@@ -59,7 +66,10 @@ def parts_of(path: Path):
             options = [x.lstrip(MARKS).strip() for x in c[2:5]]
             if len(marked) > 1:
                 raise SystemExit(f"{path.name} question {n}: more than one option is marked")
-            qs[n] = (c[1], options, marked[0] if marked else None)
+            stem = c[1]
+            for old, new in SWAPS.get((set_no, n), {}).items():
+                stem, options = stem.replace(old, new), [o.replace(old, new) for o in options]
+            qs[n] = (stem, options, marked[0] if marked else None)
         parts.append((int(m[1]), m[2].strip(), m[5].strip(), qs))
     return d, parts
 
@@ -84,8 +94,8 @@ def focus_table(d):
 def build(set_no: int):
     key_path = FOLDER / f"Foundation_Grammar_Challenge_Set_{set_no}_100_Question_Answer_Key.docx"
     exam_path = FOLDER / f"Foundation_Grammar_Challenge_Set_{set_no}_100_Question_Exam.docx"
-    kd, key_parts = parts_of(key_path)
-    ed, exam_parts = parts_of(exam_path)
+    kd, key_parts = parts_of(key_path, set_no)
+    ed, exam_parts = parts_of(exam_path, set_no)
 
     # the quick-answer strip ("1: c  2: b ...") must agree with the marked options
     strip = {}
@@ -120,6 +130,9 @@ def build(set_no: int):
     for p in ed.paragraphs:
         if p.text.startswith("Topic:"):
             topic = p.text.split(":", 1)[1].strip()
+    for (sn, n), words in SWAPS.items():
+        if sn == set_no:
+            print(f"Set {sn} Q{n}: {', '.join(f'{a} -> {b}' for a, b in words.items())} (avoid topic): {key_q[n][0]}")
     parts = []
     for n, instruction, instruction_ar, qs in key_parts:
         parts.append({

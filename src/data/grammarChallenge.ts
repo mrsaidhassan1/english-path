@@ -4,6 +4,7 @@
 // sentence and why. Every question and every part has one (a test checks this).
 import raw from './generated/grammar-challenge.json';
 import type { McqItem } from '../types';
+import { SET2_NOTES, SET3_NOTES, SET2_RULE_CHANGES, SET3_RULE_CHANGES, SET2_QUESTION_GRAMMAR, SET3_QUESTION_GRAMMAR } from './grammarChallengeNotes';
 
 export interface ChallengeQuestion { n: number; q: string; options: string[]; answer: number }
 export interface ChallengePart { n: number; focus: string; focusAr: string; instruction: string; instructionAr: string; questions: ChallengeQuestion[] }
@@ -154,6 +155,16 @@ const PART_GRAMMAR: Record<string, Record<number, string>> = {
 const QUESTION_GRAMMAR: Record<string, Record<number, string>> = {
   set1: { 66: 'possessive-adj', 67: 'possessive-adj', 69: 'there-is', 70: 'there-is' },
 };
+
+// Sets 2 and 3 (notes in grammarChallengeNotes.ts). Their parts are the same 20 topics as Set 1, so the same grammar points are tracked.
+PART_RULES.set2 = { ...PART_RULES.set1, ...SET2_RULE_CHANGES };
+PART_RULES.set3 = { ...PART_RULES.set1, ...SET3_RULE_CHANGES };
+QUESTION_NOTES.set2 = SET2_NOTES;
+QUESTION_NOTES.set3 = SET3_NOTES;
+PART_GRAMMAR.set2 = PART_GRAMMAR.set1;
+PART_GRAMMAR.set3 = PART_GRAMMAR.set1;
+QUESTION_GRAMMAR.set2 = SET2_QUESTION_GRAMMAR;
+QUESTION_GRAMMAR.set3 = SET3_QUESTION_GRAMMAR;
 
 /** The question with its blanks filled in, e.g. “Khalid speaks English very well in class.” (none for questions without a blank). */
 export function completedSentence(q: ChallengeQuestion): string | null {

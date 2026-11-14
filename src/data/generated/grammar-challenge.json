@@ -1192,6 +1192,2390 @@
     "file": "Resources/A1/A1 Grammar/Grammar Practice/A1 Full Grammar Practice/Foundation_Grammar_Challenge_Set_1_100_Question_Answer_Key.docx",
     "label": "Foundation Grammar Challenge Set 1 (100 questions, answer key checked against the exam)"
    }
+  },
+  {
+   "id": "set2",
+   "set": 2,
+   "title": "Grammar Challenge · Set 2",
+   "topic": "Family, Home & Weekends",
+   "parts": [
+    {
+     "n": 1,
+     "focus": "Adjectives & Adverbs",
+     "focusAr": "الصفات والظروف",
+     "instruction": "Choose the correct word.",
+     "instructionAr": "اختر الكلمة الصحيحة",
+     "questions": [
+      {
+       "n": 1,
+       "q": "My grandfather walks ___ than he did last year.",
+       "options": [
+        "slowlier",
+        "more slowly",
+        "more slow"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 2,
+       "q": "She doesn't speak Spanish very ___, but she tries hard.",
+       "options": [
+        "fluently",
+        "fluent",
+        "fluency"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 3,
+       "q": "The soup tasted ___, so I added some salt.",
+       "options": [
+        "badly",
+        "badness",
+        "bad"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 4,
+       "q": "He kept ___ during the long family meeting.",
+       "options": [
+        "quiet",
+        "quietness",
+        "quietly"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 5,
+       "q": "She plays the oud ___ than her teacher.",
+       "options": [
+        "best",
+        "more good",
+        "better"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "focus": "Comparatives & Superlatives",
+     "focusAr": "المقارنة وصيغة التفضيل",
+     "instruction": "Choose the correct comparative or superlative.",
+     "instructionAr": "اختر صيغة المقارنة الصحيحة",
+     "questions": [
+      {
+       "n": 6,
+       "q": "My flat isn't ___ yours.",
+       "options": [
+        "as big as",
+        "bigger as",
+        "more big than"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 7,
+       "q": "This is by far ___ film I have ever seen.",
+       "options": [
+        "funnier",
+        "the most funny",
+        "the funniest"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 8,
+       "q": "The more we practise, ___ we speak.",
+       "options": [
+        "the best",
+        "the better",
+        "better"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 9,
+       "q": "Living in a village is ___ living in a city.",
+       "options": [
+        "more quiet than",
+        "quieter than",
+        "quieter as"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 10,
+       "q": "Of my three sisters, Mona is ___.",
+       "options": [
+        "the youngest",
+        "the younger",
+        "more young"
+       ],
+       "answer": 0
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "focus": "This / That / These / Those",
+     "focusAr": "أسماء الإشارة",
+     "instruction": "Choose this, that, these or those.",
+     "instructionAr": "اختر اسم الإشارة الصحيح",
+     "questions": [
+      {
+       "n": 11,
+       "q": "(On the phone)  \"Hello, ___ is Sami speaking.\"",
+       "options": [
+        "it",
+        "this",
+        "that"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 12,
+       "q": "You just heard a good idea.  \"___ is a great idea!\"",
+       "options": [
+        "This",
+        "That",
+        "These"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 13,
+       "q": "My grandmother's old photos? ___ are in the box over there.",
+       "options": [
+        "That",
+        "These",
+        "Those"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 14,
+       "q": "What is ___ noise? I can hear it from the kitchen.",
+       "options": [
+        "that",
+        "these",
+        "those"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 15,
+       "q": "How much are ___ biscuits here in my bag?",
+       "options": [
+        "these",
+        "those",
+        "this"
+       ],
+       "answer": 0
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "focus": "Present Simple",
+     "focusAr": "المضارع البسيط",
+     "instruction": "Choose the correct present simple form.",
+     "instructionAr": "اختر صيغة المضارع البسيط الصحيحة",
+     "questions": [
+      {
+       "n": 16,
+       "q": "Everyone in my family ___ early on Fridays.",
+       "options": [
+        "gets up",
+        "getting up",
+        "get up"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 17,
+       "q": "My parents ___ TV after dinner; they prefer reading.",
+       "options": [
+        "doesn't watch",
+        "not watch",
+        "don't watch"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 18,
+       "q": "How often ___ your uncle visit you?",
+       "options": [
+        "is",
+        "do",
+        "does"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 19,
+       "q": "She ___ any sugar in her tea.",
+       "options": [
+        "don't take",
+        "doesn't take",
+        "doesn't takes"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 20,
+       "q": "My sister and I ___ a room together.",
+       "options": [
+        "shares",
+        "share",
+        "sharing"
+       ],
+       "answer": 1
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "focus": "Present Simple",
+     "focusAr": "المضارع البسيط",
+     "instruction": "Choose the correct present simple form.",
+     "instructionAr": "اختر صيغة المضارع البسيط الصحيحة",
+     "questions": [
+      {
+       "n": 21,
+       "q": "Which sentence is correct?",
+       "options": [
+        "Does your father works on Saturdays?",
+        "Does your father work on Saturdays?",
+        "Do your father work on Saturdays?"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 22,
+       "q": "\"Do your cousins live nearby?\"  \"No, they ___.\"",
+       "options": [
+        "doesn't",
+        "aren't",
+        "don't"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 23,
+       "q": "Which sentence is correct?",
+       "options": [
+        "My brother doesn't never clean his room.",
+        "My brother never clean his room.",
+        "My brother never cleans his room."
+       ],
+       "answer": 2
+      },
+      {
+       "n": 24,
+       "q": "My uncle ___ his shop at 8 o'clock every morning.",
+       "options": [
+        "opening",
+        "open",
+        "opens"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 25,
+       "q": "Water ___ at 0 degrees.",
+       "options": [
+        "freeze",
+        "is freezing",
+        "freezes"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "focus": "Present Simple vs Present Continuous",
+     "focusAr": "المضارع البسيط والمستمر",
+     "instruction": "Choose the correct present tense.",
+     "instructionAr": "اختر زمن المضارع الصحيح",
+     "questions": [
+      {
+       "n": 26,
+       "q": "I ___ to my cousin right now, so I can't talk.",
+       "options": [
+        "talk",
+        "talks",
+        "am talking"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 27,
+       "q": "He ___ cartoons on Saturdays, but this week he is working.",
+       "options": [
+        "is usually watching",
+        "usually watches",
+        "usually watch"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 28,
+       "q": "Right now my mother ___ the kitchen.",
+       "options": [
+        "clean",
+        "is cleaning",
+        "cleans"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 29,
+       "q": "I ___ you. Please speak louder.",
+       "options": [
+        "can't hear",
+        "don't can hear",
+        "am not hearing"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 30,
+       "q": "Look! It ___ outside. Take an umbrella.",
+       "options": [
+        "is raining",
+        "rain",
+        "rains"
+       ],
+       "answer": 0
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "focus": "Present Simple vs Present Continuous",
+     "focusAr": "المضارع البسيط والمستمر",
+     "instruction": "Choose the correct present tense.",
+     "instructionAr": "اختر زمن المضارع الصحيح",
+     "questions": [
+      {
+       "n": 31,
+       "q": "Which sentence is correct?",
+       "options": [
+        "I like this film.",
+        "I liking this film.",
+        "I am liking this film."
+       ],
+       "answer": 0
+      },
+      {
+       "n": 32,
+       "q": "Where ___ your father usually ___ his car?",
+       "options": [
+        "does ... park",
+        "do ... park",
+        "is ... parking"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 33,
+       "q": "My uncle ___ in Qatar this month, so he isn't at home.",
+       "options": [
+        "works",
+        "is working",
+        "work"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 34,
+       "q": "We ___ for the exam at the moment.",
+       "options": [
+        "study",
+        "are studying",
+        "studies"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 35,
+       "q": "My grandmother never ___ the phone; she prefers to visit.",
+       "options": [
+        "uses",
+        "use",
+        "is using"
+       ],
+       "answer": 0
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "focus": "Past Simple",
+     "focusAr": "الماضي البسيط",
+     "instruction": "Choose the correct past form.",
+     "instructionAr": "اختر صيغة الماضي الصحيحة",
+     "questions": [
+      {
+       "n": 36,
+       "q": "My father ___ home late last night.",
+       "options": [
+        "got",
+        "gotten",
+        "getted"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 37,
+       "q": "We ___ a lot of money on that trip.",
+       "options": [
+        "spent",
+        "spended",
+        "spend"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 38,
+       "q": "Did she ___ you the news yesterday?",
+       "options": [
+        "told",
+        "tell",
+        "tells"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 39,
+       "q": "He ___ his leg while he was playing football.",
+       "options": [
+        "broke",
+        "broken",
+        "breaked"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 40,
+       "q": "They ___ all the juice before I arrived.",
+       "options": [
+        "drunk",
+        "drinked",
+        "drank"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "focus": "Past Simple",
+     "focusAr": "الماضي البسيط",
+     "instruction": "Choose the correct past form.",
+     "instructionAr": "اختر صيغة الماضي الصحيحة",
+     "questions": [
+      {
+       "n": 41,
+       "q": "I ___ my grandmother yesterday, but she wasn't at home.",
+       "options": [
+        "visited",
+        "visits",
+        "visit"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 42,
+       "q": "Which sentence is correct?",
+       "options": [
+        "She didn't hear the doorbell.",
+        "She didn't heard the doorbell.",
+        "She not heard the doorbell."
+       ],
+       "answer": 0
+      },
+      {
+       "n": 43,
+       "q": "What ___ you do after school yesterday?",
+       "options": [
+        "do",
+        "did",
+        "were"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 44,
+       "q": "Which sentence is correct?",
+       "options": [
+        "Does your uncle gave you a gift?",
+        "Did your uncle give you a gift?",
+        "Did your uncle gave you a gift?"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 45,
+       "q": "We ___ the bus, so we walked home.",
+       "options": [
+        "missed",
+        "miss",
+        "missing"
+       ],
+       "answer": 0
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "focus": "Past Continuous",
+     "focusAr": "الماضي المستمر",
+     "instruction": "Choose the correct past continuous answer.",
+     "instructionAr": "اختر إجابة الماضي المستمر الصحيحة",
+     "questions": [
+      {
+       "n": 46,
+       "q": "The phone rang while my parents ___ dinner.",
+       "options": [
+        "were having",
+        "was having",
+        "are having"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 47,
+       "q": "I ___ listening, so I didn't hear the news.",
+       "options": [
+        "didn't",
+        "wasn't",
+        "weren't"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 48,
+       "q": "___ your brother sleeping when you got home?",
+       "options": [
+        "Were",
+        "Did",
+        "Was"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 49,
+       "q": "What ___ they talking about when I came in?",
+       "options": [
+        "was",
+        "did",
+        "were"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 50,
+       "q": "He broke the glass while he ___ the dishes.",
+       "options": [
+        "is washing",
+        "were washing",
+        "was washing"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 11,
+     "focus": "Adverbs of Frequency",
+     "focusAr": "ظروف التكرار",
+     "instruction": "Choose the correct frequency word.",
+     "instructionAr": "اختر ظرف التكرار الصحيح",
+     "questions": [
+      {
+       "n": 51,
+       "q": "Which sentence is correct?",
+       "options": [
+        "My cousin wears never a watch.",
+        "My cousin doesn't never wear a watch.",
+        "My cousin never wears a watch."
+       ],
+       "answer": 2
+      },
+      {
+       "n": 52,
+       "q": "She is ___ at home on Fridays; she is usually out.",
+       "options": [
+        "always",
+        "rarely",
+        "often"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 53,
+       "q": "Which answer means 'seven days a week'?",
+       "options": [
+        "hardly ever",
+        "every day",
+        "once a week"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 54,
+       "q": "We ___ go to the beach in winter; it is too cold.",
+       "options": [
+        "always",
+        "usually",
+        "hardly ever"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 55,
+       "q": "My brother ___ visits us on Fridays; he comes about twice a month.",
+       "options": [
+        "never",
+        "always",
+        "sometimes"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 12,
+     "focus": "Prepositions of Time & Place",
+     "focusAr": "حروف الجر للزمان والمكان",
+     "instruction": "Choose the correct preposition.",
+     "instructionAr": "اختر حرف الجر الصحيح",
+     "questions": [
+      {
+       "n": 56,
+       "q": "The meeting starts ___ 3:30 p.m. ___ Sunday.",
+       "options": [
+        "on ... at",
+        "in ... on",
+        "at ... on"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 57,
+       "q": "My exam is ___ the 15th of March.",
+       "options": [
+        "at",
+        "on",
+        "in"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 58,
+       "q": "We always play cards ___ night.",
+       "options": [
+        "in",
+        "on",
+        "at"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 59,
+       "q": "My shoes are ___ the bed. I can't find them.",
+       "options": [
+        "at",
+        "between",
+        "under"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 60,
+       "q": "My cousin arrived ___ Riyadh ___ midnight.",
+       "options": [
+        "at ... in",
+        "in ... at",
+        "to ... on"
+       ],
+       "answer": 1
+      }
+     ]
+    },
+    {
+     "n": 13,
+     "focus": "Plural Nouns",
+     "focusAr": "صيغة الجمع",
+     "instruction": "Choose the correct plural.",
+     "instructionAr": "اختر صيغة الجمع الصحيحة",
+     "questions": [
+      {
+       "n": 61,
+       "q": "one wife → two ___",
+       "options": [
+        "wifes",
+        "wivies",
+        "wives"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 62,
+       "q": "one mouse → two ___",
+       "options": [
+        "mices",
+        "mice",
+        "mouses"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 63,
+       "q": "one leaf → many ___",
+       "options": [
+        "leafes",
+        "leafs",
+        "leaves"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 64,
+       "q": "one sheep → two ___",
+       "options": [
+        "sheeps",
+        "sheepes",
+        "sheep"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 65,
+       "q": "one potato → three ___",
+       "options": [
+        "potatoes",
+        "potatoies",
+        "potatos"
+       ],
+       "answer": 0
+      }
+     ]
+    },
+    {
+     "n": 14,
+     "focus": "Possessives & There is / There are",
+     "focusAr": "الملكية ووجود الأشياء",
+     "instruction": "Choose the correct word.",
+     "instructionAr": "اختر الكلمة الصحيحة",
+     "questions": [
+      {
+       "n": 66,
+       "q": "That pen isn't mine. It's ___. (It belongs to Noura.)",
+       "options": [
+        "Noura's",
+        "Noura",
+        "Nouras"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 67,
+       "q": "Are there ___ chairs in the living room?",
+       "options": [
+        "a",
+        "any",
+        "some"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 68,
+       "q": "There ___ some books on the shelf.",
+       "options": [
+        "are",
+        "has",
+        "is"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 69,
+       "q": "That bag isn't Ali's; it's ___.",
+       "options": [
+        "hers",
+        "she",
+        "her"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 70,
+       "q": "Sara and Noura love ___ new school.",
+       "options": [
+        "they're",
+        "their",
+        "there"
+       ],
+       "answer": 1
+      }
+     ]
+    },
+    {
+     "n": 15,
+     "focus": "Opposites",
+     "focusAr": "الأضداد",
+     "instruction": "Choose the opposite meaning.",
+     "instructionAr": "اختر الكلمة المضادة",
+     "questions": [
+      {
+       "n": 71,
+       "q": "The opposite of strong is ___.",
+       "options": [
+        "weak",
+        "light",
+        "thin"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 72,
+       "q": "The opposite of remember is ___.",
+       "options": [
+        "repeat",
+        "learn",
+        "forget"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 73,
+       "q": "The opposite of inside is ___.",
+       "options": [
+        "above",
+        "behind",
+        "outside"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 74,
+       "q": "The opposite of win is ___.",
+       "options": [
+        "finish",
+        "lose",
+        "draw"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 75,
+       "q": "The opposite of narrow is ___.",
+       "options": [
+        "thin",
+        "long",
+        "wide"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 16,
+     "focus": "Days, Months & Seasons",
+     "focusAr": "الأيام والشهور والفصول",
+     "instruction": "Choose the correct day, month or season.",
+     "instructionAr": "اختر اليوم أو الشهر أو الفصل الصحيح",
+     "questions": [
+      {
+       "n": 76,
+       "q": "Today is Thursday. What day was the day before yesterday?",
+       "options": [
+        "Tuesday",
+        "Wednesday",
+        "Monday"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 77,
+       "q": "Which of these months has 30 days?",
+       "options": [
+        "May",
+        "July",
+        "April"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 78,
+       "q": "Which is the third month of the year?",
+       "options": [
+        "March",
+        "February",
+        "April"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 79,
+       "q": "Which season comes just before summer?",
+       "options": [
+        "autumn",
+        "winter",
+        "spring"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 80,
+       "q": "Tomorrow is Monday. What day is today?",
+       "options": [
+        "Tuesday",
+        "Sunday",
+        "Saturday"
+       ],
+       "answer": 1
+      }
+     ]
+    },
+    {
+     "n": 17,
+     "focus": "Was / Were",
+     "focusAr": "كان / كانوا",
+     "instruction": "Choose was or were.",
+     "instructionAr": "اختر was أو were",
+     "questions": [
+      {
+       "n": 81,
+       "q": "There ___ a lot of cars in front of the house yesterday.",
+       "options": [
+        "are",
+        "were",
+        "was"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 82,
+       "q": "Everyone ___ happy at the family party.",
+       "options": [
+        "was",
+        "were",
+        "are"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 83,
+       "q": "My friends and I ___ at the park when it started to rain.",
+       "options": [
+        "were",
+        "was",
+        "are"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 84,
+       "q": "\"___ he at the park?\"  \"No, he ___ at the library.\"",
+       "options": [
+        "Was ... was",
+        "Were ... were",
+        "Was ... were"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 85,
+       "q": "Which sentence is correct?",
+       "options": [
+        "Were there any eggs in the fridge?",
+        "Was there any eggs in the fridge?",
+        "Did there were any eggs in the fridge?"
+       ],
+       "answer": 0
+      }
+     ]
+    },
+    {
+     "n": 18,
+     "focus": "Countries & Nationalities",
+     "focusAr": "الدول والجنسيات",
+     "instruction": "Choose the correct country or nationality.",
+     "instructionAr": "اختر الدولة أو الجنسية الصحيحة",
+     "questions": [
+      {
+       "n": 86,
+       "q": "A person from Switzerland is ___.",
+       "options": [
+        "Swissian",
+        "Swiss",
+        "Switzerlandish"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 87,
+       "q": "A person from the Netherlands is ___.",
+       "options": [
+        "Netherlandish",
+        "Dutch",
+        "Netherlandian"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 88,
+       "q": "A person from Lebanon is ___.",
+       "options": [
+        "Lebanese",
+        "Lebanonish",
+        "Lebanian"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 89,
+       "q": "A person from Peru is ___.",
+       "options": [
+        "Peruish",
+        "Peruvian",
+        "Peruan"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 90,
+       "q": "A person from Indonesia is ___.",
+       "options": [
+        "Indonesian",
+        "Indonesese",
+        "Indonesish"
+       ],
+       "answer": 0
+      }
+     ]
+    },
+    {
+     "n": 19,
+     "focus": "Ordinal Numbers",
+     "focusAr": "الأعداد الترتيبية",
+     "instruction": "Choose the correct ordinal number.",
+     "instructionAr": "اختر العدد الترتيبي الصحيح",
+     "questions": [
+      {
+       "n": 91,
+       "q": "My exam is on the 3rd of April. We say: the ___ of April.",
+       "options": [
+        "three",
+        "threeth",
+        "third"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 92,
+       "q": "15th is ___.",
+       "options": [
+        "fifthteenth",
+        "fifteenth",
+        "fifteen"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 93,
+       "q": "70th is ___.",
+       "options": [
+        "seventeenth",
+        "seventieth",
+        "seventyth"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 94,
+       "q": "101st is ___.",
+       "options": [
+        "one hundred and one",
+        "one hundredth first",
+        "one hundred and first"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 95,
+       "q": "He finished 2nd in the race. He finished ___.",
+       "options": [
+        "secondly",
+        "two",
+        "second"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 20,
+     "focus": "Irregular Past Verbs",
+     "focusAr": "الأفعال الشاذة في الماضي",
+     "instruction": "Choose the correct past form of the verb.",
+     "instructionAr": "اختر صيغة الماضي الصحيحة للفعل",
+     "questions": [
+      {
+       "n": 96,
+       "q": "The past of say is ___.",
+       "options": [
+        "said",
+        "sayd",
+        "sayed"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 97,
+       "q": "The past of forget is ___.",
+       "options": [
+        "forgeted",
+        "forgot",
+        "forgotted"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 98,
+       "q": "The past of sing is ___.",
+       "options": [
+        "singed",
+        "sung",
+        "sang"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 99,
+       "q": "The past of hold is ___.",
+       "options": [
+        "holded",
+        "held",
+        "hold"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 100,
+       "q": "The past of cut is ___.",
+       "options": [
+        "cut",
+        "cutten",
+        "cutted"
+       ],
+       "answer": 0
+      }
+     ]
+    }
+   ],
+   "src": {
+    "file": "Resources/A1/A1 Grammar/Grammar Practice/A1 Full Grammar Practice/Foundation_Grammar_Challenge_Set_2_100_Question_Answer_Key.docx",
+    "label": "Foundation Grammar Challenge Set 2 (100 questions, answer key checked against the exam)"
+   }
+  },
+  {
+   "id": "set3",
+   "set": 3,
+   "title": "Grammar Challenge · Set 3",
+   "topic": "Shopping, Food & Travel",
+   "parts": [
+    {
+     "n": 1,
+     "focus": "Adjectives & Adverbs",
+     "focusAr": "الصفات والظروف",
+     "instruction": "Choose the correct word.",
+     "instructionAr": "اختر الكلمة الصحيحة",
+     "questions": [
+      {
+       "n": 1,
+       "q": "The shop assistant spoke ___ because the customer was upset.",
+       "options": [
+        "gentleness",
+        "gentle",
+        "gently"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 2,
+       "q": "He looked at the price tag ___ and put the jacket back.",
+       "options": [
+        "angrily",
+        "anger",
+        "angry"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 3,
+       "q": "The bread smells ___. Is it fresh?",
+       "options": [
+        "strangely",
+        "strangeness",
+        "strange"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 4,
+       "q": "I can't hear you ___ in this noisy restaurant.",
+       "options": [
+        "proper",
+        "propriety",
+        "properly"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 5,
+       "q": "The tour guide was extremely ___ about the old city.",
+       "options": [
+        "enthusiastically",
+        "enthusiasm",
+        "enthusiastic"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "focus": "Comparatives & Superlatives",
+     "focusAr": "المقارنة وصيغة التفضيل",
+     "instruction": "Choose the correct comparative or superlative.",
+     "instructionAr": "اختر صيغة المقارنة الصحيحة",
+     "questions": [
+      {
+       "n": 6,
+       "q": "Taxis are much ___ than buses, but they are quicker.",
+       "options": [
+        "more expensive",
+        "expensiver",
+        "the most expensive"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 7,
+       "q": "This is the ___ airport I have ever visited.",
+       "options": [
+        "bigger",
+        "most big",
+        "biggest"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 8,
+       "q": "The more you walk, ___ you feel.",
+       "options": [
+        "healthier",
+        "the healthiest",
+        "the healthier"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 9,
+       "q": "Prices here are not as high ___ in the city centre.",
+       "options": [
+        "than",
+        "like",
+        "as"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 10,
+       "q": "That restaurant is a bit ___ than ours, but the food is worse.",
+       "options": [
+        "more cheap",
+        "cheaper",
+        "cheapest"
+       ],
+       "answer": 1
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "focus": "This / That / These / Those",
+     "focusAr": "أسماء الإشارة",
+     "instruction": "Choose this, that, these or those.",
+     "instructionAr": "اختر اسم الإشارة الصحيح",
+     "questions": [
+      {
+       "n": 11,
+       "q": "Is ___ seat taken? (You point to the seat next to you.)",
+       "options": [
+        "that",
+        "those",
+        "this"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 12,
+       "q": "Which of ___ two shirts in my hands do you prefer?",
+       "options": [
+        "those",
+        "this",
+        "these"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 13,
+       "q": "Do you see ___ birds in the sky over there?",
+       "options": [
+        "this",
+        "that",
+        "those"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 14,
+       "q": "Can you pass me ___ bag next to you, please?",
+       "options": [
+        "these",
+        "that",
+        "those"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 15,
+       "q": "How much is ___ scarf in the window over there?",
+       "options": [
+        "those",
+        "this",
+        "that"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "focus": "Present Simple",
+     "focusAr": "المضارع البسيط",
+     "instruction": "Choose the correct present simple form.",
+     "instructionAr": "اختر صيغة المضارع البسيط الصحيحة",
+     "questions": [
+      {
+       "n": 16,
+       "q": "The museum ___ at 5 p.m. on Fridays.",
+       "options": [
+        "closes",
+        "close",
+        "closing"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 17,
+       "q": "Neither shop ___ credit cards.",
+       "options": [
+        "accept",
+        "accepts",
+        "accepting"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 18,
+       "q": "My brother ___ eggs for breakfast, but I do.",
+       "options": [
+        "doesn't has",
+        "doesn't have",
+        "not have"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 19,
+       "q": "Which sentence is correct?",
+       "options": [
+        "She don't need a visa.",
+        "She doesn't needs a visa.",
+        "She doesn't need a visa."
+       ],
+       "answer": 2
+      },
+      {
+       "n": 20,
+       "q": "___ the shops accept dollars?",
+       "options": [
+        "Do",
+        "Are",
+        "Does"
+       ],
+       "answer": 0
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "focus": "Present Simple",
+     "focusAr": "المضارع البسيط",
+     "instruction": "Choose the correct present simple form.",
+     "instructionAr": "اختر صيغة المضارع البسيط الصحيحة",
+     "questions": [
+      {
+       "n": 21,
+       "q": "Which sentence is correct?",
+       "options": [
+        "How much does a ticket to Dubai cost?",
+        "How much costs a ticket to Dubai?",
+        "How much does a ticket to Dubai costs?"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 22,
+       "q": "\"Do you like seafood?\"  \"No, I ___, but my wife does.\"",
+       "options": [
+        "don't",
+        "doesn't",
+        "am not"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 23,
+       "q": "My friends and I ___ shopping every weekend.",
+       "options": [
+        "going",
+        "go",
+        "goes"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 24,
+       "q": "The train from Riyadh to Dammam ___ about four hours.",
+       "options": [
+        "take",
+        "taking",
+        "takes"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 25,
+       "q": "Which sentence is correct?",
+       "options": [
+        "What time does the flight lands?",
+        "What time does the flight land?",
+        "What time the flight lands?"
+       ],
+       "answer": 1
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "focus": "Present Simple vs Present Continuous",
+     "focusAr": "المضارع البسيط والمستمر",
+     "instruction": "Choose the correct present tense.",
+     "instructionAr": "اختر زمن المضارع الصحيح",
+     "questions": [
+      {
+       "n": 26,
+       "q": "At the moment, prices ___ everywhere, so people are buying less.",
+       "options": [
+        "are rising",
+        "rise",
+        "rises"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 27,
+       "q": "The bakery ___ fresh bread every morning at six.",
+       "options": [
+        "makes",
+        "make",
+        "is making"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 28,
+       "q": "There is a long queue outside. Everybody ___ for the new phone.",
+       "options": [
+        "is waiting",
+        "waits",
+        "wait"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 29,
+       "q": "I ___ this bag is too heavy for me.",
+       "options": [
+        "am thinking",
+        "thinks",
+        "think"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 30,
+       "q": "What ___ you usually ___ for breakfast?",
+       "options": [
+        "are ... having",
+        "does ... have",
+        "do ... have"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "focus": "Present Simple vs Present Continuous",
+     "focusAr": "المضارع البسيط والمستمر",
+     "instruction": "Choose the correct present tense.",
+     "instructionAr": "اختر زمن المضارع الصحيح",
+     "questions": [
+      {
+       "n": 31,
+       "q": "They ___ at a five-star hotel this week, so call them there.",
+       "options": [
+        "stays",
+        "are staying",
+        "stay"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 32,
+       "q": "Which sentence is correct?",
+       "options": [
+        "I am not understanding this menu.",
+        "I don't understand this menu.",
+        "I don't understanding this menu."
+       ],
+       "answer": 1
+      },
+      {
+       "n": 33,
+       "q": "She usually ___ coffee here, but today she is having tea.",
+       "options": [
+        "is ordering",
+        "orders",
+        "order"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 34,
+       "q": "\"Why ___ the waiter ___ at us?\"",
+       "options": [
+        "is ... look",
+        "does ... looking",
+        "is ... looking"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 35,
+       "q": "\"What ___ you ___?\"  \"I'm a pilot.\"",
+       "options": [
+        "do ... do",
+        "are ... doing",
+        "do ... doing"
+       ],
+       "answer": 0
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "focus": "Past Simple",
+     "focusAr": "الماضي البسيط",
+     "instruction": "Choose the correct past form.",
+     "instructionAr": "اختر صيغة الماضي الصحيحة",
+     "questions": [
+      {
+       "n": 36,
+       "q": "She ___ next to the window on the flight.",
+       "options": [
+        "sitted",
+        "sat",
+        "sit"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 37,
+       "q": "The shop ___ at 9 a.m. and ___ at 5 p.m. yesterday.",
+       "options": [
+        "open ... close",
+        "opened ... closed",
+        "opened ... closes"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 38,
+       "q": "We ___ for two hours before the plane finally took off.",
+       "options": [
+        "waited",
+        "wait",
+        "waits"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 39,
+       "q": "Which sentence is correct?",
+       "options": [
+        "Did you found a good hotel?",
+        "Do you found a good hotel?",
+        "Did you find a good hotel?"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 40,
+       "q": "I ___ the menu carefully, but I didn't understand it.",
+       "options": [
+        "readed",
+        "reads",
+        "read"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "focus": "Past Simple",
+     "focusAr": "الماضي البسيط",
+     "instruction": "Choose the correct past form.",
+     "instructionAr": "اختر صيغة الماضي الصحيحة",
+     "questions": [
+      {
+       "n": 41,
+       "q": "We ___ in the sea every morning of the holiday.",
+       "options": [
+        "swam",
+        "swimmed",
+        "swum"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 42,
+       "q": "Which sentence is correct?",
+       "options": [
+        "We didn't buy any souvenirs.",
+        "We didn't bought any souvenirs.",
+        "We not bought any souvenirs."
+       ],
+       "answer": 0
+      },
+      {
+       "n": 43,
+       "q": "We ___ a friendly family at the hotel.",
+       "options": [
+        "met",
+        "meeted",
+        "meet"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 44,
+       "q": "The waiter ___ us the bill after dinner.",
+       "options": [
+        "bringed",
+        "bring",
+        "brought"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 45,
+       "q": "Where ___ you stay in Dubai?",
+       "options": [
+        "were",
+        "do",
+        "did"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "focus": "Past Continuous",
+     "focusAr": "الماضي المستمر",
+     "instruction": "Choose the correct past continuous answer.",
+     "instructionAr": "اختر إجابة الماضي المستمر الصحيحة",
+     "questions": [
+      {
+       "n": 46,
+       "q": "I ___ for a taxi when I saw an old friend.",
+       "options": [
+        "were looking",
+        "looked",
+        "was looking"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 47,
+       "q": "While the children ___ in the pool, their parents were reading.",
+       "options": [
+        "were swimming",
+        "was swimming",
+        "are swimming"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 48,
+       "q": "The guests ___ in the lobby when the fire alarm rang.",
+       "options": [
+        "were waiting",
+        "are waiting",
+        "was waiting"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 49,
+       "q": "I ___ look at my phone while I was driving.",
+       "options": [
+        "didn't",
+        "wasn't",
+        "don't"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 50,
+       "q": "What ___ he wearing at the airport?",
+       "options": [
+        "did",
+        "is",
+        "was"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 11,
+     "focus": "Adverbs of Frequency",
+     "focusAr": "ظروف التكرار",
+     "instruction": "Choose the correct frequency word.",
+     "instructionAr": "اختر ظرف التكرار الصحيح",
+     "questions": [
+      {
+       "n": 51,
+       "q": "Which sentence is correct?",
+       "options": [
+        "We frequently eat out on weekdays.",
+        "We out frequently eat on weekdays.",
+        "We eat frequently out on weekdays."
+       ],
+       "answer": 0
+      },
+      {
+       "n": 52,
+       "q": "\"How often do you travel?\"  \"___, about once a year.\"",
+       "options": [
+        "Seldom",
+        "Usually",
+        "Every week"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 53,
+       "q": "Which word is the opposite of 'always'?",
+       "options": [
+        "often",
+        "never",
+        "usually"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 54,
+       "q": "She ___ shops on Fridays; she goes every single week.",
+       "options": [
+        "always",
+        "never",
+        "seldom"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 55,
+       "q": "We ___ eat out, perhaps once a month.",
+       "options": [
+        "always",
+        "usually",
+        "occasionally"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 12,
+     "focus": "Prepositions of Time & Place",
+     "focusAr": "حروف الجر للزمان والمكان",
+     "instruction": "Choose the correct preposition.",
+     "instructionAr": "اختر حرف الجر الصحيح",
+     "questions": [
+      {
+       "n": 56,
+       "q": "The shop is open ___ 9 a.m. ___ midnight.",
+       "options": [
+        "from ... until",
+        "at ... at",
+        "on ... to"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 57,
+       "q": "We are travelling ___ Jeddah ___ Friday.",
+       "options": [
+        "at ... in",
+        "to ... on",
+        "in ... at"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 58,
+       "q": "The cafe is ___ the bank. You can see it from the door.",
+       "options": [
+        "between",
+        "next to",
+        "at"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 59,
+       "q": "He paid ___ card, and I paid ___ cash.",
+       "options": [
+        "on ... in",
+        "by ... in",
+        "in ... by"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 60,
+       "q": "She lives ___ a small flat ___ the third floor.",
+       "options": [
+        "at ... on",
+        "on ... in",
+        "in ... on"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 13,
+     "focus": "Plural Nouns",
+     "focusAr": "صيغة الجمع",
+     "instruction": "Choose the correct plural.",
+     "instructionAr": "اختر صيغة الجمع الصحيحة",
+     "questions": [
+      {
+       "n": 61,
+       "q": "one dish → three ___",
+       "options": [
+        "dishies",
+        "dishes",
+        "dishs"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 62,
+       "q": "one half → two ___",
+       "options": [
+        "halfes",
+        "halfs",
+        "halves"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 63,
+       "q": "one country → many ___",
+       "options": [
+        "countries",
+        "countrys",
+        "countryes"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 64,
+       "q": "one thief → two ___",
+       "options": [
+        "thieves",
+        "thiefes",
+        "thiefs"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 65,
+       "q": "one address → two ___",
+       "options": [
+        "addresses",
+        "addresss",
+        "addressies"
+       ],
+       "answer": 0
+      }
+     ]
+    },
+    {
+     "n": 14,
+     "focus": "Possessives & There is / There are",
+     "focusAr": "الملكية ووجود الأشياء",
+     "instruction": "Choose the correct word.",
+     "instructionAr": "اختر الكلمة الصحيحة",
+     "questions": [
+      {
+       "n": 66,
+       "q": "Is this your ticket or ___? (It belongs to Ali.)",
+       "options": [
+        "his",
+        "he's",
+        "him"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 67,
+       "q": "Our flat is smaller than ___.",
+       "options": [
+        "them",
+        "theirs",
+        "their"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 68,
+       "q": "How many people ___ there on the plane yesterday?",
+       "options": [
+        "was",
+        "is",
+        "were"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 69,
+       "q": "There is ___ bread left, so I will make sandwiches.",
+       "options": [
+        "some",
+        "a",
+        "any"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 70,
+       "q": "There ___ a lot of traffic today.",
+       "options": [
+        "is",
+        "are",
+        "have"
+       ],
+       "answer": 0
+      }
+     ]
+    },
+    {
+     "n": 15,
+     "focus": "Opposites",
+     "focusAr": "الأضداد",
+     "instruction": "Choose the opposite meaning.",
+     "instructionAr": "اختر الكلمة المضادة",
+     "questions": [
+      {
+       "n": 71,
+       "q": "The opposite of fresh (food) is ___.",
+       "options": [
+        "raw",
+        "stale",
+        "sour"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 72,
+       "q": "The opposite of include is ___.",
+       "options": [
+        "exclude",
+        "contain",
+        "invite"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 73,
+       "q": "The opposite of departure is ___.",
+       "options": [
+        "travel",
+        "arrival",
+        "flight"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 74,
+       "q": "The opposite of mild (taste) is ___.",
+       "options": [
+        "salty",
+        "sweet",
+        "spicy"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 75,
+       "q": "The opposite of increase is ___.",
+       "options": [
+        "raise",
+        "decrease",
+        "repeat"
+       ],
+       "answer": 1
+      }
+     ]
+    },
+    {
+     "n": 16,
+     "focus": "Days, Months & Seasons",
+     "focusAr": "الأيام والشهور والفصول",
+     "instruction": "Choose the correct day, month or season.",
+     "instructionAr": "اختر اليوم أو الشهر أو الفصل الصحيح",
+     "questions": [
+      {
+       "n": 76,
+       "q": "Which day comes between Wednesday and Friday?",
+       "options": [
+        "Thursday",
+        "Saturday",
+        "Tuesday"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 77,
+       "q": "Which month is exactly four months after August?",
+       "options": [
+        "January",
+        "December",
+        "November"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 78,
+       "q": "Which season has the shortest days in the Northern Hemisphere?",
+       "options": [
+        "spring",
+        "winter",
+        "autumn"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 79,
+       "q": "Today is Tuesday. What day will it be in four days?",
+       "options": [
+        "Saturday",
+        "Sunday",
+        "Friday"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 80,
+       "q": "Which month comes right after July?",
+       "options": [
+        "September",
+        "June",
+        "August"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 17,
+     "focus": "Was / Were",
+     "focusAr": "كان / كانوا",
+     "instruction": "Choose was or were.",
+     "instructionAr": "اختر was أو were",
+     "questions": [
+      {
+       "n": 81,
+       "q": "Everyone on the plane ___ tired.",
+       "options": [
+        "are",
+        "was",
+        "were"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 82,
+       "q": "There ___ no tickets left, so we took the bus.",
+       "options": [
+        "was",
+        "were",
+        "are"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 83,
+       "q": "What ___ the weather like when you arrived?",
+       "options": [
+        "were",
+        "was",
+        "did"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 84,
+       "q": "\"___ you and your family on holiday last month?\"  \"Yes, we ___.\"",
+       "options": [
+        "Were ... was",
+        "Were ... were",
+        "Was ... was"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 85,
+       "q": "Which sentence is correct?",
+       "options": [
+        "There wasn't any food in the restaurant.",
+        "There weren't any food in the restaurant.",
+        "There didn't was any food in the restaurant."
+       ],
+       "answer": 0
+      }
+     ]
+    },
+    {
+     "n": 18,
+     "focus": "Countries & Nationalities",
+     "focusAr": "الدول والجنسيات",
+     "instruction": "Choose the correct country or nationality.",
+     "instructionAr": "اختر الدولة أو الجنسية الصحيحة",
+     "questions": [
+      {
+       "n": 86,
+       "q": "A person from Argentina is ___.",
+       "options": [
+        "Argentish",
+        "Argentinian",
+        "Argentinese"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 87,
+       "q": "A person from Thailand is ___.",
+       "options": [
+        "Thai",
+        "Thailandish",
+        "Thailander"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 88,
+       "q": "A person from Iraq is ___.",
+       "options": [
+        "Iraqese",
+        "Iraqi",
+        "Iraqian"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 89,
+       "q": "Which country is in Europe?",
+       "options": [
+        "Egypt",
+        "Portugal",
+        "Japan"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 90,
+       "q": "A person from Sweden is ___.",
+       "options": [
+        "Swedenish",
+        "Swedian",
+        "Swedish"
+       ],
+       "answer": 2
+      }
+     ]
+    },
+    {
+     "n": 19,
+     "focus": "Ordinal Numbers",
+     "focusAr": "الأعداد الترتيبية",
+     "instruction": "Choose the correct ordinal number.",
+     "instructionAr": "اختر العدد الترتيبي الصحيح",
+     "questions": [
+      {
+       "n": 91,
+       "q": "He lives on the 7th floor. We say: the ___ floor.",
+       "options": [
+        "seventh",
+        "sevent",
+        "seven"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 92,
+       "q": "My flight is on the 31st. We say: the ___.",
+       "options": [
+        "thirtieth-one",
+        "thirty-one",
+        "thirty-first"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 93,
+       "q": "80th is ___.",
+       "options": [
+        "eightyth",
+        "eighty-th",
+        "eightieth"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 94,
+       "q": "100th is ___.",
+       "options": [
+        "hundreth",
+        "hundredth",
+        "one hundred-th"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 95,
+       "q": "She came 3rd and he came 14th. He came ___.",
+       "options": [
+        "fourtheenth",
+        "fourteenth",
+        "fourteen"
+       ],
+       "answer": 1
+      }
+     ]
+    },
+    {
+     "n": 20,
+     "focus": "Irregular Past Verbs",
+     "focusAr": "الأفعال الشاذة في الماضي",
+     "instruction": "Choose the correct past form of the verb.",
+     "instructionAr": "اختر صيغة الماضي الصحيحة للفعل",
+     "questions": [
+      {
+       "n": 96,
+       "q": "The past of wear is ___.",
+       "options": [
+        "wore",
+        "worn",
+        "weared"
+       ],
+       "answer": 0
+      },
+      {
+       "n": 97,
+       "q": "The past of choose is ___.",
+       "options": [
+        "choosed",
+        "chose",
+        "chosen"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 98,
+       "q": "The past of fall is ___.",
+       "options": [
+        "falled",
+        "fell",
+        "fallen"
+       ],
+       "answer": 1
+      },
+      {
+       "n": 99,
+       "q": "The past of ride is ___.",
+       "options": [
+        "rided",
+        "ridden",
+        "rode"
+       ],
+       "answer": 2
+      },
+      {
+       "n": 100,
+       "q": "The past of feel is ___.",
+       "options": [
+        "feels",
+        "feeled",
+        "felt"
+       ],
+       "answer": 2
+      }
+     ]
+    }
+   ],
+   "src": {
+    "file": "Resources/A1/A1 Grammar/Grammar Practice/A1 Full Grammar Practice/Foundation_Grammar_Challenge_Set_3_100_Question_Answer_Key.docx",
+    "label": "Foundation Grammar Challenge Set 3 (100 questions, answer key checked against the exam)"
+   }
   }
  ]
 }
