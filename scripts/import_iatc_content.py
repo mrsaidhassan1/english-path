@@ -344,7 +344,8 @@ for n, line in enumerate(tp.read_text(encoding="utf-8").splitlines(), 1):
 
 # ---------------------------------------------------------------- grammar decks
 grammar = []
-for n in range(1, 21):
+# Decks 1-10 only: decks 11-14 exist but are a separate step (they need their own voices and keys)
+for n in range(1, 11):
     p = TOOLS / f"grammar-deck/content/grammar{n}.json"
     if not p.exists():
         continue

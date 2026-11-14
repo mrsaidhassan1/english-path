@@ -1,5 +1,5 @@
 // Units 1–8 = Weeks 1–8 of the A0 – A1 Weekly Materials (aligned to New Headway Beginner Units 1–8).
-// Each unit has one lesson per class day (Sunday–Thursday): the day's words, grammar, reading, word work
+// Each unit has five lessons (Lesson 1–5, one per class day): the day's words, grammar, reading, word work
 // and writing, all from that day's deck and reading handout. Then a conversation + listening lesson
 // and a "Check yourself" quiz. To change a unit's content, edit the weekly source files and re-run
 // scripts/import_iatc_content.py; this file only holds the titles, Arabic goals and chosen dialogues.
@@ -100,7 +100,11 @@ export const UNIT_CFG: UnitCfg[] = [
   },
 ];
 
-export const DAY_AR: Record<string, string> = { Sunday: 'الأحد', Monday: 'الاثنين', Tuesday: 'الثلاثاء', Wednesday: 'الأربعاء', Thursday: 'الخميس' };
+// The weekly materials number their lessons (Lesson 1-5); older copies used the weekday names.
+export const DAY_AR: Record<string, string> = {
+  'Lesson 1': 'الدرس الأول', 'Lesson 2': 'الدرس الثاني', 'Lesson 3': 'الدرس الثالث', 'Lesson 4': 'الدرس الرابع', 'Lesson 5': 'الدرس الخامس',
+  Sunday: 'الأحد', Monday: 'الاثنين', Tuesday: 'الثلاثاء', Wednesday: 'الأربعاء', Thursday: 'الخميس',
+};
 
 /** Grammar key for a day's grammar title (most specific first). */
 export function grammarKeyFor(title: string, fallback: string): string {
@@ -213,7 +217,7 @@ function dayLesson(n: number, d: IatcUnitDay, k: number, key0: string): Lesson {
   if (w?.prompt && w.model) {
     acts.push({
       kind: 'write', id: id('write'), title: w.title || 'Writing', prompt: w.prompt, promptAr: 'اكتب حوالي ٢٥ كلمة.',
-      task: { title: w.title || 'Writing', prompt: w.prompt, bullets: w.bullets ?? [], frame: w.frame, model: w.model, minWords: 20 },
+      task: { title: w.title || 'Writing', prompt: w.prompt, bullets: w.questions?.length ? w.questions : w.bullets ?? [], frame: w.frame, model: w.model, minWords: 20 },
       tags: tag(n, 'writing', topic), src: r.src,
     });
   }

@@ -39,7 +39,7 @@ export interface IatcUnitDay {
 }
 /** Unit N = Week N of the A0 – A1 Weekly Materials (aligned to New Headway Beginner Unit N). */
 export interface IatcUnit { n: number; week: number; collegeWeek: number; dates: string; focus: string; headwayUnit: number; review: string[]; days: IatcUnitDay[]; src: SourceRef }
-export interface IatcWriting { prompt: string; bullets: string[]; frame?: string; model: string; title?: string }
+export interface IatcWriting { prompt: string; bullets: string[]; questions?: string[]; frame?: string; model: string; title?: string }
 
 export interface IatcGrammar {
   id: string;

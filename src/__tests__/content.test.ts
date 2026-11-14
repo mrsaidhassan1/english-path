@@ -10,12 +10,12 @@ import type { Activity } from '../types';
 const allActivities: Activity[] = [...MODULES.flatMap((m) => m.lessons.flatMap((l) => l.activities)), ...REVIEWS.flatMap((r) => r.activities)];
 
 describe('units', () => {
-  it('has one unit per week (Weeks 1–14), each with a lesson for every class day (Sun–Thu), a conversation lesson and a check', () => {
+  it('has one unit per week (Weeks 1–14), each with five lessons (Lesson 1–5), a conversation lesson and a check', () => {
     expect(MODULES).toHaveLength(14);
     MODULES.forEach((m, i) => {
       expect(m.n).toBe(i + 1);
       expect(m.week).toBe(i + 1);
-      expect(m.lessons.filter((l) => l.type === 'day').map((l) => l.day)).toEqual(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday']);
+      expect(m.lessons.filter((l) => l.type === 'day').map((l) => l.day)).toEqual(['Lesson 1', 'Lesson 2', 'Lesson 3', 'Lesson 4', 'Lesson 5']);
       expect(m.lessons.at(-1)?.type).toBe('quiz');
       expect(m.goals.length).toBe(m.goalsAr.length);
       expect(m.vocab.length).toBeGreaterThanOrEqual(100);
