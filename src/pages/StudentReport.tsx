@@ -133,10 +133,11 @@ export default function StudentReport() {
           <label className="block"><span className="text-sm font-semibold text-navy">Level</span>
             <select value={s.level} onChange={(e) => updateStudent((x) => { x.level = e.target.value as Cefr; }, s.id)} className="mt-1 block min-h-[44px] rounded-xl border-2 border-navy-100 px-3"><option>A0</option><option>A1</option></select>
           </label>
-          {(s.iatcId || s.rosterNo || s.group) && (
+          {(s.iatcId || s.rosterNo || s.group || s.restoreCode) && (
             <div className="rounded-xl bg-navy-50 px-3 py-2 text-sm text-navy">
               {s.iatcId && <div>Student ID: <b>{s.iatcId}</b></div>}
               {s.rosterNo && <div>Roster no. {s.rosterNo}</div>}
+              {s.restoreCode && <div>Restore code: <b className="font-mono tracking-widest">{s.restoreCode}</b></div>}
               {s.group && <div>Group {s.group}{s.groupRole ? ` · ${s.groupRole}` : ''}</div>}
               {partnerText && <div>Partner: {partnerText}</div>}
             </div>

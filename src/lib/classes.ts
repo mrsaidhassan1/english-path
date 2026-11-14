@@ -200,7 +200,7 @@ const ONLINE_FIELDS = ['avatar', 'goal', 'interests', 'lessons', 'skillStats', '
  */
 export function mergeOnlineClass(
   d: AppData, classId: string,
-  rows: { id: string; first_name: string; last_name: string | null; progress: Partial<Student>; updated_at: string }[],
+  rows: { id: string; first_name: string; last_name: string | null; progress: Partial<Student>; updated_at: string; restore_code?: string | null }[],
   writing: { id: string; student_id: string; task_title: string | null; prompt: string | null; bullets: string[]; body: string; words: number | null; estimate: WritingSubmission['estimate'] | null; marks: WritingSubmission['marks'] | null; teacher_score: number | null; teacher_note: string | null; source: string | null; created_at: string }[],
 ): { added: number; updated: number; writing: number } {
   const key = (f: string, l?: string | null) => `${f.trim().toLowerCase()}|${(l ?? '').trim().toLowerCase()}`;
@@ -219,6 +219,7 @@ export function mergeOnlineClass(
     } else updated++;
     s.onlineId = r.id;
     s.onlineAt = r.updated_at;
+    if (r.restore_code) s.restoreCode = r.restore_code;
     const p = r.progress ?? {};
     for (const f of ONLINE_FIELDS) if (p[f] !== undefined) (s as unknown as Record<string, unknown>)[f] = p[f];
     localId.set(r.id, s.id);
@@ -233,16 +234,36 @@ export function mergeOnlineClass(
       if (w.marks && !have.marks) { have.marks = w.marks; have.teacherScore = w.teacher_score ?? undefined; have.teacherNote = w.teacher_note ?? undefined; }
       continue;
     }
-    d.writing.push({
-      id: w.id, studentId, taskTitle: w.task_title ?? 'Writing', prompt: w.prompt ?? '', bullets: w.bullets ?? [], text: w.body, words: w.words ?? 0,
-      selfCheck: 0, estimate: w.estimate ?? undefined, marks: w.marks ?? undefined, teacherScore: w.teacher_score ?? undefined, teacherNote: w.teacher_note ?? undefined,
-      createdAt: w.created_at, source: w.source ?? 'online', online: true,
-    });
+    d.writing.push({ ...writingFromRow(w, studentId), online: true });
     newWriting++;
   }
   d.writing.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   refreshNameFlags(d);
   return { added, updated, writing: newWriting };
+}
+
+type OnlineWriting = Parameters<typeof mergeOnlineClass>[3][number];
+/** An online piece of writing in this device's format. */
+export function writingFromRow(w: OnlineWriting, studentId: string): WritingSubmission {
+  return {
+    id: w.id, studentId, taskTitle: w.task_title ?? 'Writing', prompt: w.prompt ?? '', bullets: w.bullets ?? [], text: w.body, words: w.words ?? 0,
+    selfCheck: 0, estimate: w.estimate ?? undefined, marks: w.marks ?? undefined, teacherScore: w.teacher_score ?? undefined, teacherNote: w.teacher_note ?? undefined,
+    createdAt: w.created_at, source: w.source ?? 'online',
+  };
+}
+
+/**
+ * A learner's phone forgot him (the browser cleared its data) and he got his record back with his restore
+ * code: put his online progress and writing back on this phone.
+ */
+export function restoreOnPhone(d: AppData, studentId: string, onlineId: string, progress: Partial<Student>, restoreCode: string, writing: OnlineWriting[]): void {
+  const s = d.students.find((x) => x.id === studentId);
+  if (!s) return;
+  for (const f of ONLINE_FIELDS) if (progress[f] !== undefined) (s as unknown as Record<string, unknown>)[f] = structuredClone(progress[f]);
+  s.onlineId = onlineId;
+  s.restoreCode = restoreCode;
+  for (const w of writing) if (!d.writing.some((x) => x.id === w.id)) d.writing.push({ ...writingFromRow(w, s.id), sentOnline: true });
+  d.writing.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }
 
 /**

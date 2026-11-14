@@ -1,3 +1,4 @@
+import { BrowserWarning } from './KeepSafe';
 import { onlineEnabled, teacherSignOut } from '../lib/online';
 import { useEffect, useState, type ReactNode } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
@@ -91,6 +92,7 @@ export function Layout({ children }: { children: ReactNode }) {
 
       <div className="lg:pl-72">
       <ViewAsStudentBanner />
+      <BrowserWarning />
       {/* Top bar */}
       <header className="sticky top-0 z-30 border-b border-navy-100/60 bg-white/90 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-2 px-3 sm:gap-3 sm:px-4">

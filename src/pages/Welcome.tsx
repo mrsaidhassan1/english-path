@@ -1,19 +1,21 @@
 // Sign-in: choose your class, then your card (learners); join a class with a code; or enter as the teacher.
 // Local accounts only (see README → "Adding accounts and cloud storage").
+import { BrowserWarning } from '../components/KeepSafe';
 import { TeacherSignIn } from '../components/TeacherSignIn';
-import { classInfo, onlineEnabled, onlineError } from '../lib/online';
+import { classInfo, classNameTaken, fetchMyWriting, onlineEnabled, onlineError, restoreLearner } from '../lib/online';
 import { useMemo, useState } from 'react';
 import { GraduationCap, Search, Lock, ArrowLeft, KeyRound, Users } from 'lucide-react';
 import type { ClassInfo } from '../types';
 import { useApp } from '../store';
-import { findClassByCode, joinWithCode, nameOf, newClass, studentsIn } from '../lib/classes';
+import { findClassByCode, joinWithCode, nameOf, newClass, restoreOnPhone, splitName, studentsIn } from '../lib/classes';
+import { claimPhone, phoneOwner } from '../hooks/useOnlineSync';
 import { LogoMark, APP_NAME, APP_SUBTITLE, APP_TAGLINE, APP_TAGLINE_AR } from '../components/Logo';
 import { Avatar } from '../components/Avatar';
 import { Ar, Button, Modal } from '../components/ui';
 import { Monster } from '../components/Monster';
 
 export default function Welcome() {
-  const { data, update, replaceAll } = useApp();
+  const { data, update, replaceAll, toast } = useApp();
   const [q, setQ] = useState('');
   const [picked, setPicked] = useState<ClassInfo | null>(data.classes.length === 1 ? data.classes[0] : null);
   const [pinOpen, setPinOpen] = useState(false);
@@ -36,7 +38,34 @@ export default function Welcome() {
   };
 
   const [joining, setJoining] = useState(false);
-  const join = async () => {
+  // Restore: this name already has a record online, but this phone does not remember it
+  const [restoreFor, setRestoreFor] = useState<{ classCode: string } | null>(null);
+  const [restore, setRestore] = useState('');
+  const doRestore = async () => {
+    if (!restoreFor) return;
+    setJoining(true); setJoinErr('');
+    try {
+      const { firstName, lastName } = splitName(fullName);
+      const r = await restoreLearner(restoreFor.classCode, firstName, lastName, restore);
+      const writing = await fetchMyWriting().catch(() => []);
+      const next = structuredClone(data);
+      const j = joinWithCode(next, restoreFor.classCode, `${r.first_name} ${r.last_name ?? ''}`.trim());
+      if (!j.student) throw new Error(j.error ?? 'Something went wrong.');
+      restoreOnPhone(next, j.student.id, r.onlineId, r.progress ?? {}, r.restore_code, writing);
+      const st = next.students.find((x) => x.id === j.student!.id);
+      if (st) st.restoreCodeSaved = true; // he just typed it
+      next.session = { role: 'student', studentId: j.student.id };
+      claimPhone(j.student.id);
+      replaceAll(next);
+      toast('Welcome back! Your progress is here again.', 'good');
+    } catch (e) {
+      setJoinErr(onlineError(e));
+    } finally {
+      setJoining(false);
+    }
+  };
+
+  const join = async (asNew = false) => {
     const next = structuredClone(data);
     let r = joinWithCode(next, code, fullName);
     // a class this phone has not seen yet (e.g. made in the Staff tab): ask the online class store
@@ -55,12 +84,22 @@ export default function Welcome() {
       setJoining(false);
     }
     if (r.error || !r.student) return setJoinErr(r.error ?? 'Something went wrong.');
+    // a new learner on this phone whose name already has a record online: offer to bring it back
+    const isNew = !data.students.some((x) => x.id === r.student!.id);
+    const cls = next.classes.find((c) => c.id === r.student!.classId);
+    if (isNew && !asNew && onlineEnabled && cls && !phoneOwner()) {
+      setJoining(true);
+      const taken = await classNameTaken(cls.code, r.student.firstName, r.student.lastName).catch(() => false);
+      setJoining(false);
+      if (taken) { setRestoreFor({ classCode: cls.code }); return; }
+    }
     next.session = { role: 'student', studentId: r.student.id };
     replaceAll(next);
   };
 
   return (
     <div className="min-h-screen bg-paper">
+      <BrowserWarning />
       <div className="relative overflow-hidden bg-navy pb-24 pt-10 text-white">
         <div className="pointer-events-none absolute -right-10 -top-10 opacity-20"><Monster seed={77} size={260} /></div>
         <div className="pointer-events-none absolute -bottom-16 left-6 opacity-15"><Monster seed={4242} size={200} /></div>
@@ -152,7 +191,25 @@ export default function Welcome() {
         </section>
       </div>
 
-      <Modal open={joinOpen} onClose={() => setJoinOpen(false)} title="Join a class" labelledBy="join-title">
+      <Modal open={joinOpen} onClose={() => { setJoinOpen(false); setRestoreFor(null); setRestore(""); }} title="Join a class" labelledBy="join-title">
+        {restoreFor ? (
+          <form onSubmit={(e) => { e.preventDefault(); doRestore(); }} className="space-y-3">
+            <p className="text-lg font-bold text-navy">Welcome back, {splitName(fullName).firstName}!</p>
+            <p className="text-navy">Your work is saved online. Type your <b>restore code</b> to bring it back to this phone.</p>
+            <Ar>عملك محفوظ. اكتب رمز الاسترجاع لإعادته إلى هذا الهاتف.</Ar>
+            <label className="block"><span className="font-semibold text-navy">Restore code</span>
+              <input value={restore} onChange={(e) => { setRestore(e.target.value.toUpperCase()); setJoinErr(''); }} placeholder="e.g. K7P4" autoCapitalize="characters" spellCheck={false} autoFocus
+                className="mt-1 min-h-[52px] w-full rounded-2xl border-2 border-navy-100 px-4 font-mono text-3xl tracking-[0.3em] outline-none focus:border-navy" maxLength={6} /></label>
+            <p className="text-sm text-navy-500">You can find it on your old phone (Home or My Progress), or ask your teacher.</p>
+            <Ar className="text-sm">تجده في تطبيقك القديم أو اسأل معلمك.</Ar>
+            {joinErr && <p className="font-semibold text-coral-700" role="alert">{joinErr}</p>}
+            <Button type="submit" size="lg" className="w-full" disabled={joining || restore.trim().length < 4}>{joining ? 'Checking…' : 'Bring back my work'}</Button>
+            <div className="flex flex-wrap justify-between gap-2 text-sm">
+              <button type="button" className="font-semibold text-navy-500 underline" onClick={() => { setRestoreFor(null); setRestore(''); setJoinErr(''); }}>Back</button>
+              <button type="button" className="font-semibold text-navy-500 underline" onClick={() => { setRestoreFor(null); join(true); }}>I am a different learner with the same name</button>
+            </div>
+          </form>
+        ) : (
         <form onSubmit={(e) => { e.preventDefault(); join(); }} className="space-y-3">
           <p className="text-navy-500">Your teacher gives you the class code.</p>
           <Ar>اكتب رمز الفصل من معلمك واسمك.</Ar>
@@ -167,6 +224,7 @@ export default function Welcome() {
           {joinErr && <p className="font-semibold text-coral-700" role="alert">{joinErr}</p>}
           <Button type="submit" size="lg" className="w-full" disabled={joining || !code.trim() || !fullName.trim()}>{joining ? 'Checking the code…' : 'Join and start'}</Button>
         </form>
+        )}
       </Modal>
 
       {/* online version: a real teacher sign-in; offline copies: the optional PIN */}

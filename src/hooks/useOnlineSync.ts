@@ -4,7 +4,7 @@
 // anonymous login, so a second learner on the same phone keeps saving on the phone only.
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useApp } from '../store';
-import { ENTRY_GONE, fetchAssignments, fetchMyMarks, joinOnline, myOnlineId, onlineEnabled, onlineError, pushProgress, pushWriting } from '../lib/online';
+import { ENTRY_GONE, fetchAssignments, fetchMyMarks, fetchMyRestoreCode, joinOnline, myOnlineId, onlineEnabled, onlineError, pushProgress, pushWriting } from '../lib/online';
 import { mergeOnlineAssignments, refreshAssignmentDone } from '../lib/assignments';
 
 export type SyncState = { kind: 'off' | 'idle' | 'saving' | 'saved' | 'offline' | 'other' | 'error'; message?: string };
@@ -16,6 +16,10 @@ export const useSyncState = () => useSyncExternalStore((l) => { listeners.add(l)
 const OWNER_KEY = 'sh-english-path/online-owner';
 const owner = () => { try { return localStorage.getItem(OWNER_KEY); } catch { return null; } };
 const setOwner = (id: string) => { try { localStorage.setItem(OWNER_KEY, id); } catch { /* private mode */ } };
+/** The learner whose work this phone sends online (null = nobody yet). */
+export const phoneOwner = owner;
+/** This phone now sends this learner's work (after a restore). */
+export const claimPhone = setOwner;
 
 export function useOnlineSync() {
   const { data, me, update, updateStudent } = useApp();
@@ -118,6 +122,12 @@ export function useOnlineSync() {
     document.addEventListener('visibilitychange', again);
     return () => { window.clearInterval(timer); document.removeEventListener('visibilitychange', again); };
   }, [me?.onlineId]);
+
+  // 6. the learner's restore code (to get his record back if this phone forgets him)
+  useEffect(() => {
+    if (!onlineEnabled || !me?.onlineId || me.restoreCode || owner() !== me.id) return;
+    fetchMyRestoreCode(me.onlineId).then((c) => { if (c) updateStudent((s) => { s.restoreCode = c; }, me.id); }).catch(() => undefined);
+  }, [me?.onlineId, me?.restoreCode]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // retry when the connection comes back
   useEffect(() => {

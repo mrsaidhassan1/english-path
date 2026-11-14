@@ -24,7 +24,7 @@ function sb(): SupabaseClient {
 }
 
 // ------------------------------------------------------------------ rows
-export interface StudentRow { id: string; class_code: string; first_name: string; last_name: string | null; progress: Partial<Student>; updated_at: string }
+export interface StudentRow { id: string; class_code: string; first_name: string; last_name: string | null; progress: Partial<Student>; updated_at: string; restore_code?: string | null }
 export interface WritingRow {
   id: string; student_id: string; class_code: string; task_title: string | null; prompt: string | null; bullets: string[]; body: string; words: number | null;
   estimate: WritingMarks | null; marks: WritingMarks | null; teacher_score: number | null; teacher_note: string | null; source: string | null; created_at: string; marked_by?: string | null;
@@ -60,6 +60,40 @@ export async function classInfo(code: string): Promise<{ code: string; name: str
   const { data, error } = await sb().rpc('class_info', { p_code: code });
   if (error) throw error;
   return (data as { code: string; name: string } | null) ?? null;
+}
+
+// ------------------------------------------------------------------ restore codes (supabase/phase6_restore.sql)
+/** Does this open class already have a learner with this name (on another login)? */
+export async function classNameTaken(code: string, firstName: string, lastName?: string): Promise<boolean> {
+  const { data, error } = await sb().rpc('class_name_taken', { p_code: code, p_first: firstName, p_last: lastName ?? null });
+  if (error) throw error;
+  return !!data;
+}
+/** Bring a learner's online record onto this phone's login with his restore code. */
+export async function restoreLearner(code: string, firstName: string, lastName: string | undefined, restoreCode: string): Promise<{ onlineId: string; first_name: string; last_name: string | null; progress: Partial<Student>; restore_code: string }> {
+  const c = sb();
+  let { data: { session } } = await c.auth.getSession();
+  if (!session) {
+    const { data, error } = await c.auth.signInAnonymously();
+    if (error) throw error;
+    session = data.session;
+  }
+  const { data, error } = await c.rpc('restore_learner', { p_code: code, p_first: firstName, p_last: lastName ?? null, p_restore: restoreCode });
+  if (error) throw error;
+  if ((data as { error?: string } | null)?.error) throw new Error((data as { error: string }).error);
+  return { onlineId: session!.user.id, ...(data as { first_name: string; last_name: string | null; progress: Partial<Student>; restore_code: string }) };
+}
+/** All of this learner's own writing (marked or not). */
+export async function fetchMyWriting(): Promise<WritingRow[]> {
+  const { data, error } = await sb().from('writing').select('*');
+  if (error) throw error;
+  return (data ?? []) as WritingRow[];
+}
+/** This learner's restore code. */
+export async function fetchMyRestoreCode(onlineId: string): Promise<string | null> {
+  const { data, error } = await sb().from('students').select('restore_code').eq('id', onlineId).maybeSingle();
+  if (error) throw error;
+  return (data?.restore_code as string | undefined) ?? null;
 }
 
 /** The online id of this phone's learner, if it has joined before. */
@@ -294,6 +328,9 @@ export const onlineError = (e: unknown) => {
   if (/at least one active admin/i.test(m)) return 'The app must keep at least one active Admin.';
   if (/Failed to send a request to the Edge Function|FunctionsFetchError|Function not found|404/i.test(m)) return 'The staff service is not set up yet (Edge Function "staff-admin").';
   if (/duplicate key|already exists/i.test(m)) return 'That already exists.';
+  if (/wrong restore code/i.test(m)) return 'That restore code is not right. Check it, or ask your teacher for it.';
+  if (/too many tries/i.test(m)) return 'Too many wrong codes. Wait an hour, or ask your teacher.';
+  if (/belongs to another learner/i.test(m)) return 'This phone is already used by another learner. Use your own phone.';
   if (/rate limit|too many/i.test(m)) return 'Too many emails were sent in the last hour. Please try again later, or ask the admin.';
   if (/not authori[sz]ed/i.test(m) && /email|address/i.test(m)) return 'The app cannot email this address yet. Please ask the admin.';
   if (/unknown or closed class code/i.test(m)) return 'That class code is not open online.';

@@ -184,6 +184,8 @@ export interface Student {
   joinedBy?: 'teacher' | 'import' | 'code' | 'demo' | 'online';
   onlineId?: string; // the learner's id in the online class store (see lib/online.ts)
   onlineAt?: string; // when the teacher last loaded this learner's progress from online
+  restoreCode?: string; // short personal code to get his online record back on a phone that forgot him
+  restoreCodeSaved?: boolean; // the learner said he has written his code down
   level: Cefr;
   avatar: AvatarChoice;
   goal: string;

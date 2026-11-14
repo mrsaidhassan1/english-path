@@ -1,3 +1,4 @@
+import { RestoreCodeCard } from '../components/KeepSafe';
 import { useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { BarChart3, Award, Printer, Flame, Mic, Layers, Target, Pencil } from 'lucide-react';
@@ -54,6 +55,7 @@ export function ProgressPage() {
   return (
     <div className="space-y-6">
       <PageHeader title="My Progress" ar="تقدّمي" icon={<BarChart3 />} />
+      <RestoreCodeCard always />
       <Card className="grid gap-5 md:grid-cols-[auto,1fr]">
         <Avatar student={s} size={120} ring />
         <div>

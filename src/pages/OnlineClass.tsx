@@ -2,7 +2,8 @@
 // store into this device (lib/online.ts, supabase/setup.sql + phase1_roles.sql). The teacher is already
 // signed in (Welcome → I'm the teacher); what they can see depends on their staff role.
 import { useState } from 'react';
-import { Cloud, CloudOff, Eye, KeyRound, RefreshCw, ShieldCheck } from 'lucide-react';
+import { Cloud, CloudOff, Eye, KeyRound, Printer, RefreshCw, ShieldCheck } from 'lucide-react';
+import { canPrint } from '../lib/env';
 import { useApp } from '../store';
 import { applyStaffAccess, mergeOnlineClass } from '../lib/classes';
 import { classPermissions, fetchAssignments, fetchClass, fetchMyAccess, onlineEnabled, onlineError, setTeacherPassword, staffDirectory } from '../lib/online';
@@ -131,12 +132,30 @@ export function OnlineClassPanel() {
               })}
             </ul>}
       </Card>
+      {students.some((x) => x.restoreCode) && (
+        <Card>
+          <details>
+            <summary className="flex cursor-pointer items-center gap-2 text-lg font-bold text-navy"><KeyRound size={18} /> Restore codes ({students.filter((x) => x.restoreCode).length})</summary>
+            <p className="mt-2 text-sm text-navy-500">If a learner's phone forgets him (he starts at 0), he joins again with the same name and types his code to get his work back. Give a learner only his own code.</p>
+            <ul className="mt-3 grid gap-1 sm:grid-cols-2 lg:grid-cols-3 print:grid-cols-3">
+              {[...students].filter((x) => x.restoreCode).sort((a, b) => (a.rosterNo ?? 999) - (b.rosterNo ?? 999) || a.firstName.localeCompare(b.firstName)).map((x) => (
+                <li key={x.id} className="flex items-center justify-between rounded-xl bg-navy-50 px-3 py-1.5">
+                  <span className="text-navy">{x.rosterNo ? `#${x.rosterNo} ` : ''}{x.firstName} {x.lastName ?? ''}</span>
+                  <b className="font-mono tracking-widest text-navy">{x.restoreCode}</b>
+                </li>
+              ))}
+            </ul>
+            {canPrint && <Button size="sm" variant="outline" className="mt-3 print:hidden" onClick={() => window.print()}><Printer size={16} /> Print</Button>}
+          </details>
+        </Card>
+      )}
       <Card className="bg-navy-50">
         <ul className="list-disc space-y-1 pl-5 text-navy">
           <li>Learners join on their own phones with the code <b>{cls?.code}</b> and their name. No passwords.</li>
           <li>Their progress and writing are sent online automatically. Press <b>Load the class now</b> to bring them into this dashboard; then use Writing, Students and Overview as usual.</li>
           <li>Marks saved in <b>Writing</b> are sent back to the learner's phone; the server records which teacher marked each piece. Observers can read but not mark.</li>
           <li>Learners from your class file are linked by name. Check the Students list after the first load.</li>
+          <li>If a learner starts at 0 on his phone, he joins again with the same name and his <b>restore code</b> (list above) to get his work back.</li>
         </ul>
       </Card>
     </div>

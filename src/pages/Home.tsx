@@ -1,3 +1,4 @@
+import { HomeScreenTip, RestoreCodeCard } from '../components/KeepSafe';
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Flame, Layers, Mic, ClipboardCheck, Presentation, LayoutDashboard, Users, Sparkles } from 'lucide-react';
@@ -35,6 +36,8 @@ export default function Home() {
 
   return (
     <div className="space-y-6">
+      {!isTeacher && <RestoreCodeCard />}
+      {!isTeacher && <HomeScreenTip />}
       <section className="relative overflow-hidden rounded-[2rem] bg-navy p-6 text-white shadow-lift sm:p-10">
         <div className="pointer-events-none absolute -right-6 -top-8 hidden opacity-90 sm:block"><Monster seed={learner.avatar.seed + 1} size={180} /></div>
         <div className="relative max-w-2xl">
