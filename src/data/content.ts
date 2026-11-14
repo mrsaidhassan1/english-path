@@ -20,7 +20,7 @@ export interface IatcDay {
   dictation?: { words: string[]; sentences: string[] } | null;
   src: SourceRef;
 }
-/** One day of a weekly unit (Sunday–Thursday), from the Week N reading handout + the matching deck day. */
+/** One lesson of a weekly unit (Lesson 1–5), from the Week N reading handout + the matching deck day. */
 export interface IatcUnitDay {
   id: string; // u3d2
   day: string;

@@ -120,7 +120,7 @@ export interface Lesson {
   module: number; // unit number
   title: string;
   titleAr?: string;
-  day?: string; // class day (Sunday–Thursday) for day lessons
+  day?: string; // "Lesson 1" to "Lesson 5" for day lessons
   type: LessonType;
   minutes: number;
   activities: Activity[];
