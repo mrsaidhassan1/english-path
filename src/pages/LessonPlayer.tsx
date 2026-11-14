@@ -1,5 +1,5 @@
 // Plays a lesson (a list of activities), then shows the lesson or unit completion screen.
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Award, Lock, RotateCcw } from 'lucide-react';
 import type { Lesson, Module } from '../types';
@@ -34,20 +34,38 @@ export default function LessonPlayer({ review = false }: { review?: boolean }) {
   return <Player key={lesson.id} lesson={lesson} module={module} review={review} />;
 }
 
+function loadStep(key: string, steps: number): { i: number; s: number; t: number } {
+  try {
+    const v = JSON.parse(localStorage.getItem(key) ?? 'null') as { i?: number; s?: number; t?: number } | null;
+    if (v && Number.isInteger(v.i) && v.i! > 0 && v.i! < steps) return { i: v.i!, s: v.s ?? 0, t: v.t ?? 0 };
+  } catch { /* nothing saved */ }
+  return { i: 0, s: 0, t: 0 };
+}
+
 function Player({ lesson, module, review }: { lesson: Lesson; module: Module; review: boolean }) {
   const { me, updateStudent, update, data, isTeacher } = useApp();
   const nav = useNavigate();
   const [params] = useSearchParams();
+  // A learner who leaves a lesson comes back to the step (and score) they had reached.
+  const stepKey = `sh-english-path/step/${me?.id ?? 'preview'}/${lesson.id}`;
+  const [saved] = useState(() => loadStep(stepKey, lesson.activities.length));
   // teachers can open a lesson at any step (?a=3) and jump between steps without doing them
-  const [i, setI] = useState(() => (isTeacher ? Math.min(Math.max(0, Number(params.get('a') ?? 1) - 1 || 0), lesson.activities.length - 1) : 0));
+  const [i, setI] = useState(() => (isTeacher ? Math.min(Math.max(0, Number(params.get('a') ?? 1) - 1 || 0), lesson.activities.length - 1) : saved.i));
   const [present, setPresent] = useState(false);
   const [showAnswers] = useShowAnswers();
   const canEdit = useCanEdit();
   const assignHere = useAssignHere();
   const jump = (k: number) => { setI(Math.max(0, Math.min(k, lesson.activities.length - 1))); window.scrollTo({ top: 0, behavior: 'smooth' }); };
-  const [score, setScore] = useState({ s: 0, t: 0 });
+  const [score, setScore] = useState({ s: isTeacher ? 0 : saved.s, t: isTeacher ? 0 : saved.t });
   const [finished, setFinished] = useState(false);
   const act = lesson.activities[i];
+  useEffect(() => {
+    if (!me || isTeacher) return;
+    try {
+      if (finished || i === 0) localStorage.removeItem(stepKey);
+      else localStorage.setItem(stepKey, JSON.stringify({ i, s: score.s, t: score.t }));
+    } catch { /* storage blocked: the lesson just starts again next time */ }
+  }, [i, finished, score.s, score.t, me, isTeacher, stepKey]);
 
   const onAnswer = (a: AnswerEvent) => {
     if (me) updateStudent((s) => recordAnswer(s, a));
@@ -122,7 +140,11 @@ function Complete({ lesson, module, score, review, onAgain }: { lesson: Lesson; 
   const idx = module.lessons.findIndex((l) => l.id === lesson.id);
   const nextLesson = module.lessons[idx + 1];
   const nextModule = MODULES[module.n];
-  const rec = useMemo(() => recommend(learner, data.assignments)[0], [learner, data.assignments]);
+  // "Recommended next" follows the unit just finished: a grammar booster only if it is about this unit's grammar
+  const rec = useMemo(
+    () => recommend(learner, data.assignments).find((r) => r.kind !== 'grammar' || (r.key && module.grammarKeys.includes(r.key))),
+    [learner, data.assignments, module],
+  );
   const words = countByStatus(learner, module.vocab);
 
   return (
@@ -140,11 +162,11 @@ function Complete({ lesson, module, score, review, onAgain }: { lesson: Lesson; 
             {score.t > 0 && <div className="text-navy-500">{pct}%</div>}
           </div>
           <div className="rounded-3xl bg-sky-50 p-4">
-            <div className="text-sm font-bold text-navy-400">Words learned</div>
+            <div className="text-sm font-bold text-navy-400">Unit words practised</div>
             <div className="text-3xl font-bold text-navy">{words.learning + words.review + words.mastered}<span className="text-lg text-navy-400">/{module.vocab.length}</span></div>
           </div>
           <div className="flex flex-col items-center rounded-3xl bg-mint-50 p-4">
-            <div className="text-sm font-bold text-navy-400">Unit progress</div>
+            <div className="text-sm font-bold text-navy-400">Lessons finished</div>
             <ProgressRing pct={prog.pct} size={60} stroke={7} textClass="text-sm" />
           </div>
         </div>

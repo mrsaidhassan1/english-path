@@ -47473,7 +47473,6 @@
     "tour",
     "tourist-office",
     "villa",
-    "india",
     "fort",
     "old-town",
     "guidebook",
@@ -53160,10 +53159,6 @@
         "True"
        ],
        [
-        "Fahad's class is FND 86.",
-        "False"
-       ],
-       [
         "Fahad's teacher is Mr Adel.",
         "True"
        ],
@@ -53191,10 +53186,6 @@
       [
        "new",
        "old"
-      ],
-      [
-       "student",
-       "teacher"
       ],
       [
        "yes",
@@ -62371,7 +62362,6 @@
       "tour",
       "tourist-office",
       "villa",
-      "india",
       "fort",
       "old-town",
       "guidebook",
@@ -74548,7 +74538,7 @@
      "What is Omar's class?",
      "FND 66",
      "FND 68",
-     "FND 86",
+     "FND 72",
      "A"
     ],
     [
@@ -74841,7 +74831,7 @@
     [
      "What's his class?",
      "FND 68",
-     "FND 86",
+     "FND 72",
      "FND 66",
      "A"
     ],

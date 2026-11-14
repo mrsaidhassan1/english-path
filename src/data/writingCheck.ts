@@ -45,8 +45,15 @@ const STOP = new Set(('a an the and but or so because is am are was were be been
   + 'it its we us our they them their this that these those there here what where when who why how which very too also some any many much more most all every '
   + 'each other one two three four five six seven eight nine ten of in on at to from with for by about into near next than then just only can could will would '
   + 'should please thank thanks hello dear write words word talk say tell ask answer give describe person people thing things something place like now today idea ideas detail details more').split(' '));
+// Irregular past forms count as their base word ("What did you see?" is answered by "I saw …").
+const IRREGULAR: Record<string, string> = {
+  saw: 'see', seen: 'see', went: 'go', gone: 'go', ate: 'eat', eaten: 'eat', drank: 'drink', bought: 'buy', wrote: 'write', took: 'take', met: 'meet',
+  made: 'make', came: 'come', got: 'get', gave: 'give', said: 'say', told: 'tell', found: 'find', left: 'leave', read: 'read', sat: 'sit', won: 'win',
+  stood: 'stand', slept: 'sleep', woke: 'wake', swam: 'swim', ran: 'run', drove: 'drive', flew: 'fly', spent: 'spend', paid: 'pay', lost: 'lose',
+};
 const stem = (w: string) => {
   let s = w.toLowerCase().replace(/[^a-z']/g, '').replace(/'s$/, '');
+  s = IRREGULAR[s] ?? s;
   if (s.length > 4) s = s.replace(/ies$/, 'y').replace(/(ss|sh|ch|x)es$/, '$1').replace(/([^s])s$/, '$1').replace(/ing$/, '').replace(/ed$/, '');
   return s;
 };
@@ -113,6 +120,8 @@ function bulletCovered(bullet: string, text: string, stems: string[], others: st
     if (keys.length === 0 || keys.some((k) => qStems.some((s) => same(s, k))) || /\b(how much|what time|where|when)\b/i.test(questions) && /\b(price|cost|time|where|when)\b/i.test(b)) return true;
   }
   if (/^\s*ask\b/.test(b)) return false;
+  // "What are his answers?": any answer such as "Yes, he did." / "No, I didn't." counts, in any person
+  if (/\banswers?\b/.test(b) && /\b(yes|no)\b/i.test(text)) return true;
   // phrases quoted in the point: 'Excuse me', "Did you …?"
   for (const q of bullet.match(/['‘“"]([^'’”"]+)['’”"]/g) ?? []) {
     const phrase = q.slice(1, -1).replace(/…|\.\.\./g, '').replace(/[?!.]/g, '').trim().toLowerCase();

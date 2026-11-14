@@ -9,6 +9,7 @@ import { currentModule, grammarWeaknesses, lessonDone, moduleComplete, skillPct,
 export interface Recommendation {
   id: string;
   kind: 'assignment' | 'grammar' | 'vocab' | 'lesson' | 'review' | 'skill' | 'speaking' | 'exam';
+  key?: string; // grammar key, for 'grammar' recommendations
   title: string;
   reason: string;
   reasonAr: string;
@@ -56,7 +57,7 @@ export function recommend(s: Student, assignments: Assignment[] = []): Recommend
   if (weak) {
     const g = grammarKey(weak.key);
     recs.push({
-      id: `gr-${weak.key}`, kind: 'grammar', title: `Grammar booster: ${g?.label ?? weak.key}`,
+      id: `gr-${weak.key}`, kind: 'grammar', key: weak.key, title: `Grammar booster: ${g?.label ?? weak.key}`,
       reason: `You made ${weak.wrong} mistakes with ${g?.label ?? weak.key}. Let’s practise it.`,
       reasonAr: `لديك ${weak.wrong} أخطاء في ${g?.ar ?? weak.key}. لنتدرب عليها.`,
       to: g?.deck ? `/practice/grammar/${g.deck}?key=${weak.key}` : '/practice', priority: 80,

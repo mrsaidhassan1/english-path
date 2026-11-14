@@ -4,14 +4,14 @@ import { MODULES } from '../data/modules';
 import { review } from './srs';
 import { addDays, today } from './date';
 import { newSeed } from './rng';
-import { moduleScore } from './progress';
+import { moduleComplete, moduleScore } from './progress';
 
 export interface BadgeDef { id: string; title: string; titleAr: string; icon: string; desc: string }
 
 export const BADGES: BadgeDef[] = [
   { id: 'first-lesson', title: 'First Lesson', titleAr: 'الدرس الأول', icon: '🎉', desc: 'Finish your first lesson.' },
   { id: 'vocab-star', title: 'Vocabulary Star', titleAr: 'نجم المفردات', icon: '⭐', desc: 'Learn 25 words to Review or Mastered.' },
-  { id: 'brave-speaker', title: 'Brave Speaker', titleAr: 'المتحدث الشجاع', icon: '🎤', desc: 'Finish 5 speaking tasks.' },
+  { id: 'brave-speaker', title: 'Brave Speaker', titleAr: 'المتحدث الشجاع', icon: '🎤', desc: 'Record yourself in 5 speaking tasks.' },
   { id: 'five-day-streak', title: 'Five-Day Streak', titleAr: 'خمسة أيام متتالية', icon: '🔥', desc: 'Learn 5 days in a row.' },
   { id: 'module-master', title: 'Unit Master', titleAr: 'متقن الوحدة', icon: '🏆', desc: 'Score 80% or more in a unit check.' },
 ];
@@ -115,8 +115,11 @@ export function checkBadges(s: Student): string[] {
   };
   give('first-lesson', Object.keys(s.lessons).length >= 1);
   give('vocab-star', Object.values(s.vocab).filter((v) => v.box >= 3).length >= 25);
-  give('brave-speaker', s.speaking.tasks >= 5);
+  // a recording is needed: "I said it — next" without recording does not count towards the badge
+  give('brave-speaker', s.speaking.recordings >= 5);
   give('five-day-streak', s.streak.count >= 5);
   give('module-master', MODULES.some((m) => (moduleScore(s, m) ?? 0) >= 80));
+  // The A0 units are done (Units 1–5 are tagged A0 – A1): the learner is now A1. Never moves a learner down.
+  if (s.level === 'A0' && MODULES.slice(0, 5).every((m) => moduleComplete(s, m))) s.level = 'A1';
   return earned;
 }

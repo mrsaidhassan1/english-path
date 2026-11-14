@@ -3,8 +3,9 @@ import { pick } from './rng';
 
 const GOOD = ['Great job!', 'Well done!', 'Excellent!', 'You got it!', 'Super!', 'Perfect!', 'Brilliant!'];
 const GOOD_AR = ['أحسنت!', 'عمل رائع!', 'ممتاز!'];
-const TRY = ['Nice try! Look again.', 'Almost! Try once more.', 'Good effort. You can do it!', 'Not yet. Keep going!'];
-const TRY_AR = ['محاولة جيدة! حاول مرة أخرى.', 'اقتربت! حاول مجدداً.'];
+// Shown after the answer is revealed and the options are locked, so they must not promise another try.
+const TRY = ['Nice try!', 'Almost!', 'Good effort.', 'Not this time. Keep going!'];
+const TRY_AR = ['محاولة جيدة!', 'اقتربت!'];
 
 export const praise = () => pick(GOOD);
 export const praiseAr = () => pick(GOOD_AR);

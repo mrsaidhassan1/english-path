@@ -18,4 +18,10 @@ export function splitSentences(text: string): string[] {
 export const normalise = (s: string) =>
   stripMarkup(s).toLowerCase().replace(/[’']/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
 
-export const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+/** "The answer is “…”." without doubled quotes or a full stop after a question mark. */
+export function answerLine(a: string): string {
+  const t = a.replace(/^["“”]+|["“”]+$/g, '').trim();
+  return `The answer is “${t}”${/[.?!]$/.test(t) ? '' : '.'}`;
+}
+
+export const cap =(s: string) => s.charAt(0).toUpperCase() + s.slice(1);

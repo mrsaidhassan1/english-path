@@ -16,6 +16,7 @@ export function Match({ activity, onAnswer, onDone }: ActivityProps<'match'>) {
   const [done, setDone] = useState<Set<number>>(new Set());
   const [bad, setBad] = useState<number | null>(null);
   const [mistakes, setMistakes] = useState(0);
+  const [note, setNote] = useState('');
   const finished = done.size === pairs.length;
 
   const tryPair = (l: number, r: number) => {
@@ -23,8 +24,10 @@ export function Match({ activity, onAnswer, onDone }: ActivityProps<'match'>) {
       const nd = new Set(done).add(l);
       setDone(nd);
       setSel(null);
+      setNote('');
       onAnswer({ correct: true, skill: 'vocabulary' });
     } else {
+      setNote(`Not a match for “${pairs[l][0]}”. Try another one.`);
       setBad(r);
       setMistakes((m) => m + 1);
       onAnswer({ correct: false, skill: 'vocabulary' });
@@ -50,7 +53,8 @@ export function Match({ activity, onAnswer, onDone }: ActivityProps<'match'>) {
           ))}
         </div>
       </div>
-      {sel === null && !finished && <p className="mt-3 text-center text-navy-400">Tap a word on the left first.</p>}
+      {note && !finished && <p role="status" className="mt-3 text-center text-lg font-semibold text-sun-700">💪 {note}</p>}
+      {sel === null && !finished && !note && <p className="mt-3 text-center text-navy-400">Tap a word on the left first.</p>}
       {finished && (
         <div className="mt-4">
           <Feedback ok={mistakes === 0} en={mistakes === 0 ? praise() : `All matched! ${mistakes} mistake${mistakes > 1 ? 's' : ''} — good effort.`} ar={mistakes === 0 ? praiseAr() : encourageAr()} />
@@ -68,6 +72,7 @@ export function Sort({ activity, onAnswer, onDone }: ActivityProps<'sort'>) {
   const [sel, setSel] = useState<number | null>(null);
   const [bad, setBad] = useState<number | null>(null);
   const [wrongs, setWrongs] = useState<Set<number>>(new Set());
+  const [note, setNote] = useState('');
   const remaining = items.filter((x) => placed[x.k] === undefined);
 
   const drop = (itemK: number, group: number) => {
@@ -77,7 +82,9 @@ export function Sort({ activity, onAnswer, onDone }: ActivityProps<'sort'>) {
     if (ok) {
       setPlaced({ ...placed, [itemK]: group });
       setSel(null);
+      setNote('');
     } else {
+      setNote(`“${it.text}” does not go in “${activity.groups[group]}”. Try another box.`);
       setWrongs(new Set(wrongs).add(itemK));
       setBad(group);
       setTimeout(() => setBad(null), 600);
@@ -113,7 +120,8 @@ export function Sort({ activity, onAnswer, onDone }: ActivityProps<'sort'>) {
           </div>
         ))}
       </div>
-      {sel !== null && <p className="mt-3 text-center text-navy-400">Now tap a box.</p>}
+      {note && remaining.length > 0 && <p role="status" className="mt-3 text-center text-lg font-semibold text-sun-700">💪 {note}</p>}
+      {sel !== null && !note && <p className="mt-3 text-center text-navy-400">Now tap a box.</p>}
       {remaining.length === 0 && (
         <div className="mt-4">
           <Feedback ok={wrongs.size === 0} en={wrongs.size === 0 ? praise() : `Done! ${wrongs.size} needed a second try.`} ar={wrongs.size === 0 ? praiseAr() : encourageAr()} />

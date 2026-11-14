@@ -4,7 +4,7 @@ import { BrowserWarning } from '../components/KeepSafe';
 import { TeacherSignIn } from '../components/TeacherSignIn';
 import { classInfo, classNameTaken, fetchMyWriting, onlineEnabled, onlineError, restoreLearner } from '../lib/online';
 import { useMemo, useState } from 'react';
-import { GraduationCap, Search, Lock, ArrowLeft, KeyRound, Users } from 'lucide-react';
+import { GraduationCap, Search, Lock, ArrowLeft, KeyRound, Loader2, Users } from 'lucide-react';
 import type { ClassInfo } from '../types';
 import { useApp } from '../store';
 import { findClassByCode, joinWithCode, nameOf, newClass, restoreOnPhone, splitName, studentsIn } from '../lib/classes';
@@ -203,7 +203,7 @@ export default function Welcome() {
             <p className="text-sm text-navy-500">You can find it on your old phone (Home or My Progress), or ask your teacher.</p>
             <Ar className="text-sm">تجده في تطبيقك القديم أو اسأل معلمك.</Ar>
             {joinErr && <p className="font-semibold text-coral-700" role="alert">{joinErr}</p>}
-            <Button type="submit" size="lg" className="w-full" disabled={joining || restore.trim().length < 4}>{joining ? 'Checking…' : 'Bring back my work'}</Button>
+            <Button type="submit" size="lg" className="w-full" disabled={joining || restore.trim().length < 4}>{joining ? <><Loader2 size={20} className="animate-spin" aria-hidden="true" /> Checking…</> : 'Bring back my work'}</Button>
             <div className="flex flex-wrap justify-between gap-2 text-sm">
               <button type="button" className="font-semibold text-navy-500 underline" onClick={() => { setRestoreFor(null); setRestore(''); setJoinErr(''); }}>Back</button>
               <button type="button" className="font-semibold text-navy-500 underline" onClick={() => { setRestoreFor(null); join(true); }}>I am a different learner with the same name</button>
@@ -222,7 +222,7 @@ export default function Welcome() {
               className="mt-1 min-h-[52px] w-full rounded-2xl border-2 border-navy-100 px-4 text-xl outline-none focus:border-navy" />
           </label>
           {joinErr && <p className="font-semibold text-coral-700" role="alert">{joinErr}</p>}
-          <Button type="submit" size="lg" className="w-full" disabled={joining || !code.trim() || !fullName.trim()}>{joining ? 'Checking the code…' : 'Join and start'}</Button>
+          <Button type="submit" size="lg" className="w-full" disabled={joining || !code.trim() || !fullName.trim()}>{joining ? <><Loader2 size={20} className="animate-spin" aria-hidden="true" /> Checking the code…</> : 'Join and start'}</Button>
         </form>
         )}
       </Modal>

@@ -6,9 +6,9 @@ import { Feedback, Button } from '../ui';
 import { AudioButton } from '../AudioButton';
 import { Markup } from '../Markup';
 import { encourage, encourageAr, praise, praiseAr } from '../../lib/feedback';
-import { normalise } from '../../lib/text';
+import { answerLine, normalise, stripMarkup } from '../../lib/text';
 import { shuffle, rngFrom, hashString, optionOrder } from '../../lib/rng';
-import { speak } from '../../lib/speech';
+import { speak, ttsSupported } from '../../lib/speech';
 import { getWord } from '../../data/content';
 import { wordImage } from '../../data/images';
 import { NextButton, Option, Shell, type ActivityProps } from './common';
@@ -48,6 +48,9 @@ export function McqQuestion({ item, onResult, autoSay = false }: { item: McqItem
         {item.say && <AudioButton text={item.say} slow size="md" />}
         <p className="text-xl font-semibold text-navy sm:text-2xl"><Markup text={item.q} /></p>
       </div>
+      {item.say && !ttsSupported() && (
+        <p className="mb-4 rounded-xl bg-sky-50 px-4 py-3 text-lg text-navy" role="note">🔇 Sound is not available here. Read the words: <b>“{stripMarkup(item.say)}”</b></p>
+      )}
       <div className={`grid gap-3 ${item.options.length === 2 ? 'grid-cols-2' : 'sm:grid-cols-3'}`}>
         {order.map((k) => (
           <Option
@@ -65,7 +68,7 @@ export function McqQuestion({ item, onResult, autoSay = false }: { item: McqItem
       </div>
       {done && (
         <div className="mt-4">
-          <Feedback ok={ok} en={ok ? msg.good : `${msg.keep} The answer is “${item.options[item.answer]}”.`} ar={ok ? msg.goodAr : msg.keepAr} detail={item.explain} />
+          <Feedback ok={ok} en={ok ? msg.good : `${msg.keep} ${answerLine(item.options[item.answer])}`} ar={ok ? msg.goodAr : msg.keepAr} detail={item.explain ?? (item.say ? `You heard: “${stripMarkup(item.say)}”` : undefined)} />
         </div>
       )}
     </div>
@@ -140,7 +143,7 @@ function GapQ({ item, last, tagGrammar, onAnswer, onNext }: QProps<GapItem>) {
       )}
       {res !== null && (
         <div className="mt-4">
-          <Feedback ok={res} en={res ? 'Great job!' : `Nice try! The answer is “${item.answer}”.`} ar={res ? 'أحسنت!' : 'محاولة جيدة!'} />
+          <Feedback ok={res} en={res ? 'Great job!' : `Nice try! ${answerLine(item.answer)}`} ar={res ? 'أحسنت!' : 'محاولة جيدة!'} />
           <NextButton last={last} onClick={() => onNext(res)} />
         </div>
       )}
