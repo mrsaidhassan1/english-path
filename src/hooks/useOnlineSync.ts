@@ -4,7 +4,7 @@
 // anonymous login, so a second learner on the same phone keeps saving on the phone only.
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useApp } from '../store';
-import { fetchAssignments, fetchMyMarks, joinOnline, myOnlineId, onlineEnabled, onlineError, pushProgress, pushWriting } from '../lib/online';
+import { ENTRY_GONE, fetchAssignments, fetchMyMarks, joinOnline, myOnlineId, onlineEnabled, onlineError, pushProgress, pushWriting } from '../lib/online';
 import { mergeOnlineAssignments, refreshAssignmentDone } from '../lib/assignments';
 
 export type SyncState = { kind: 'off' | 'idle' | 'saving' | 'saved' | 'offline' | 'other' | 'error'; message?: string };
@@ -21,6 +21,7 @@ export function useOnlineSync() {
   const { data, me, update, updateStudent } = useApp();
   const cls = me ? data.classes.find((c) => c.id === me.classId) : undefined;
   const busy = useRef(false);
+  const rejoin = useRef(false);
   const [tick, setTick] = useState(0); // bumped when the connection comes back, to retry
   const marksFetched = useRef<string | null>(null);
   const timer = useRef<number | undefined>(undefined);
@@ -37,7 +38,9 @@ export function useOnlineSync() {
     (async () => {
       try {
         const existing = await myOnlineId();
-        const id = existing && owner() === me.id ? existing : await joinOnline(cls.code, me.firstName, me.lastName);
+        // rejoin.current: the online entry was removed (e.g. a duplicate), so join the class again
+        const id = existing && owner() === me.id && !rejoin.current ? existing : await joinOnline(cls.code, me.firstName, me.lastName);
+        rejoin.current = false;
         setOwner(me.id);
         updateStudent((s) => { s.onlineId = id; }, me.id);
         setState({ kind: 'saved' });
@@ -55,7 +58,10 @@ export function useOnlineSync() {
     window.clearTimeout(timer.current);
     timer.current = window.setTimeout(async () => {
       setState({ kind: 'saving' });
-      try { await pushProgress(me); setState({ kind: 'saved' }); } catch (e) { setState({ kind: 'offline', message: onlineError(e) }); }
+      try { await pushProgress(me); setState({ kind: 'saved' }); } catch (e) {
+        if ((e as Error)?.message === ENTRY_GONE) { rejoin.current = true; updateStudent((s) => { s.onlineId = undefined; }, me.id); return; } // join again, then resend
+        setState({ kind: 'offline', message: onlineError(e) });
+      }
     }, 4000);
     return () => window.clearTimeout(timer.current);
   }, [progressKey, me?.onlineId, tick]); // eslint-disable-line react-hooks/exhaustive-deps

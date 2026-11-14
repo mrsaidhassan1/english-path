@@ -69,9 +69,12 @@ export async function myOnlineId(): Promise<string | null> {
   return data.session?.user.is_anonymous ? data.session.user.id : null;
 }
 
+/** Thrown when this phone's online entry no longer exists (e.g. a teacher removed a duplicate): rejoin. */
+export const ENTRY_GONE = 'online entry missing';
 export async function pushProgress(s: Student): Promise<void> {
-  const { error } = await sb().from('students').update({ progress: progressOf(s), updated_at: new Date().toISOString() }).eq('id', s.onlineId!);
+  const { data, error } = await sb().from('students').update({ progress: progressOf(s), updated_at: new Date().toISOString() }).eq('id', s.onlineId!).select('id');
   if (error) throw error;
+  if (!data?.length) throw new Error(ENTRY_GONE);
 }
 
 export async function pushWriting(w: WritingSubmission, onlineId: string, classCode: string): Promise<void> {
