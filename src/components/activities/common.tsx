@@ -21,7 +21,14 @@ export function Shell({ activity, step, steps, children }: { activity: Activity;
           <p className="text-lg text-navy-500">{activity.prompt}</p>
           <Ar>{activity.promptAr}</Ar>
         </div>
-        {steps !== undefined && steps > 1 && (
+        {steps !== undefined && steps > 30 && (
+          // very long sets (the 100-question grammar exam): a counter and a bar instead of one dot per question
+          <div className="w-40 pt-2" aria-label={`Question ${(step ?? 0) + 1} of ${steps}`}>
+            <div className="text-right text-sm font-bold text-navy-400">{(step ?? 0) + 1} / {steps}</div>
+            <div className="mt-1 h-2.5 overflow-hidden rounded-full bg-navy-100"><div className="h-full rounded-full bg-mint transition-all" style={{ width: `${((step ?? 0) / steps) * 100}%` }} /></div>
+          </div>
+        )}
+        {steps !== undefined && steps > 1 && steps <= 30 && (
           <div className="flex items-center gap-1.5 pt-2" aria-label={`Question ${(step ?? 0) + 1} of ${steps}`}>
             {Array.from({ length: steps }, (_, i) => (
               <span key={i} className={`h-2.5 rounded-full transition-all ${i < (step ?? 0) ? 'w-2.5 bg-mint' : i === step ? 'w-6 bg-navy' : 'w-2.5 bg-navy-100'}`} />

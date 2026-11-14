@@ -179,7 +179,9 @@ describe('online class store merge', () => {
   it('never sends photos or teacher-only fields online', () => {
     const s = demoData().students[0];
     const p = progressOf({ ...s, avatar: { kind: 'photo', dataUrl: 'data:image/jpeg;base64,xx', seed: 5 }, iatcId: '123', group: 'G1' });
-    expect(JSON.stringify(p)).not.toMatch(/dataUrl|iatcId|group|level/);
+    // check the fields that are sent, not the text: a vocabulary word such as "group" is a legitimate key in the learner's saved words
+    for (const k of ['iatcId', 'group', 'groupRole', 'level', 'photo']) expect(p, k).not.toHaveProperty(k);
+    expect(JSON.stringify(p)).not.toMatch(/dataUrl|data:image/);
   });
 });
 

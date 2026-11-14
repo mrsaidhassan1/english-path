@@ -3,7 +3,7 @@ import { onlineEnabled, teacherSignOut } from '../lib/online';
 import { useEffect, useState, type ReactNode } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {
-  Home, Route, BookOpen, Layers, Mic, Dumbbell, RefreshCcw, ClipboardCheck, BarChart3, LayoutDashboard, Presentation, MoreHorizontal, LogOut, Languages, X,
+  Home, Route, BookOpen, Layers, Mic, Dumbbell, RefreshCcw, ClipboardCheck, BarChart3, LayoutDashboard, Presentation, MoreHorizontal, LogOut, Languages, X, BookText,
 } from 'lucide-react';
 import { useSyncState } from '../hooks/useOnlineSync';
 import { Cloud, CloudOff, RefreshCw, UserRound } from 'lucide-react';
@@ -18,6 +18,7 @@ export const NAV = [
   { to: '/learning', label: 'My Learning', ar: 'تعلّمي', icon: Route },
   { to: '/lessons', label: 'Lessons', ar: 'الدروس', icon: BookOpen },
   { to: '/vocabulary', label: 'Vocabulary', ar: 'المفردات', icon: Layers },
+  { to: '/grammar', label: 'Grammar', ar: 'القواعد', icon: BookText },
   { to: '/speaking', label: 'Speaking', ar: 'التحدث', icon: Mic },
   { to: '/practice', label: 'Practice', ar: 'التدريب', icon: Dumbbell },
   { to: '/review', label: 'Review', ar: 'المراجعة', icon: RefreshCcw },
@@ -55,7 +56,7 @@ export function Layout({ children }: { children: ReactNode }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [loc.pathname]);
-  const mobileMain = items.filter((n) => ['/', '/learning', '/lessons', '/vocabulary'].includes(n.to));
+  const mobileMain = items.filter((n) => ['/', '/learning', '/lessons', '/vocabulary', '/grammar'].includes(n.to));
   const viewAs = useViewAsStudent();
   const signOut = () => {
     // a teacher on the online version also leaves their staff sign-in
@@ -133,7 +134,7 @@ export function Layout({ children }: { children: ReactNode }) {
       </div>
 
       {/* Mobile bottom nav */}
-      <nav className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-5 border-t border-navy-100 bg-white pb-[env(safe-area-inset-bottom)] lg:hidden" aria-label="Main">
+      <nav className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-6 border-t border-navy-100 bg-white pb-[env(safe-area-inset-bottom)] lg:hidden" aria-label="Main">
         {mobileMain.map((n) => {
           const Icon = n.icon;
           return (

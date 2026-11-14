@@ -142,6 +142,7 @@ def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     os.makedirs(CACHE, exist_ok=True)
     manifest, made, voices = {}, 0, {}
+    previous = json.load(open(MANIFEST, encoding="utf-8")) if os.path.exists(MANIFEST) else {}
     singles = [r for r in reqs if not r.get("bundle")]
     bundles = {}
     for r in reqs:
@@ -167,6 +168,15 @@ def main():
         sig = "|".join(f"{v}:{sp}:{say}" for _, v, sp, say in parts)
         name = f"vb-{b}-" + hashlib.sha1(sig.encode("utf-8")).hexdigest()[:10] + ".mp3"
         path = os.path.join(OUT_DIR, name)
+        # An unchanged bundle (same name = same voices, speeds and texts) already has its file, and the
+        # manifest from the last run has the time of every clip in it: no need to record it again.
+        keys = [r["key"] for r, _, _, _ in parts]
+        if os.path.exists(path) and all(previous.get(k, "").startswith(name + "#") for k in keys):
+            for r, v, _, _ in parts:
+                manifest[r["key"]] = previous[r["key"]]
+                voices[v] = voices.get(v, 0) + 1
+            print(f"  bundle {bi}/{len(bundles)} {b}: {len(parts)} clips (unchanged)", flush=True)
+            continue
         gap = np.zeros(int(SR * BUNDLE_GAP), dtype=np.float32)
         lead = np.zeros(int(SR * 0.25), dtype=np.float32)
         chunks, t, spans = [lead], len(lead) / SR, []

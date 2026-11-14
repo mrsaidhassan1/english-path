@@ -20,6 +20,8 @@ import { Option } from '../components/activities/common';
 
 type Tab = 'words' | 'review' | 'daily' | 'again' | 'oxford';
 const STATUS_TONE: Record<WordStatus, 'grey' | 'sun' | 'sky' | 'mint'> = { new: 'grey', learning: 'sun', review: 'sky', mastered: 'mint' };
+/** Week 15 of the vocabulary booklet is a consolidation bank (the last A1 words), not a unit. */
+const WEEK15_WORDS = IATC.vocab.filter((v) => v.week === 15).map((v) => v.id);
 
 export default function Vocabulary() {
   const [params, setParams] = useSearchParams();
@@ -99,6 +101,7 @@ function WordBrowser({ initialModule, initialTopic }: { initialModule: string | 
     let base: string[];
     if (topic) base = IATC.vocab.filter((v) => v.topic === topic).map((v) => v.id);
     else if (mod === 'all') base = [...new Set(MODULES.flatMap((m) => m.vocab))];
+    else if (mod === 'week15') base = WEEK15_WORDS;
     else base = MODULES[Number(mod) - 1]?.vocab ?? [];
     if (q.trim()) {
       const t = q.trim().toLowerCase();
@@ -120,6 +123,7 @@ function WordBrowser({ initialModule, initialTopic }: { initialModule: string | 
         <select value={mod} onChange={(e) => { setMod(e.target.value); setPage(0); }} className="min-h-[48px] rounded-2xl border-2 border-navy-100 bg-white px-3 font-semibold text-navy" aria-label="Topic">
           <option value="all">All units</option>
           {MODULES.map((m) => <option key={m.n} value={m.n}>Unit {m.n}: {m.title}</option>)}
+          {WEEK15_WORDS.length > 0 && <option value="week15">Week 15: extra A1 words ({WEEK15_WORDS.length})</option>}
         </select>
         <select value={status} onChange={(e) => { setStatus(e.target.value as 'all' | WordStatus); setPage(0); }} className="min-h-[48px] rounded-2xl border-2 border-navy-100 bg-white px-3 font-semibold text-navy" aria-label="Status">
           <option value="all">All status</option><option value="new">New</option><option value="learning">Learning</option><option value="review">Review</option><option value="mastered">Mastered</option>
