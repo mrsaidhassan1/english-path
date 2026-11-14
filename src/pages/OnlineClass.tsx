@@ -5,7 +5,8 @@ import { useState } from 'react';
 import { Cloud, CloudOff, Eye, KeyRound, RefreshCw, ShieldCheck } from 'lucide-react';
 import { useApp } from '../store';
 import { applyStaffAccess, mergeOnlineClass } from '../lib/classes';
-import { classPermissions, fetchClass, fetchMyAccess, onlineEnabled, onlineError, setTeacherPassword } from '../lib/online';
+import { classPermissions, fetchAssignments, fetchClass, fetchMyAccess, onlineEnabled, onlineError, setTeacherPassword, staffDirectory } from '../lib/online';
+import { mergeOnlineAssignments, refreshAssignmentDone } from '../lib/assignments';
 import { Button, Card, EmptyState, Pill } from '../components/ui';
 import { niceDate } from '../lib/date';
 
@@ -45,9 +46,19 @@ export function OnlineClassPanel() {
     if (!cls || !perms.canRead) return;
     setBusy(true); setErr('');
     try {
-      const { students: rows, writing } = await fetchClass(cls.code);
+      const [{ students: rows, writing }, tasks, names] = await Promise.all([
+        fetchClass(cls.code),
+        fetchAssignments(cls.code).catch(() => null), // older databases have no assignments table yet
+        staffDirectory().catch(() => ({} as Record<string, string>)),
+      ]);
       const r = mergeOnlineClass(structuredClone(data), cls.id, rows, writing); // counts for the summary
-      update((d) => { mergeOnlineClass(d, cls.id, rows, writing); });
+      update((d) => {
+        mergeOnlineClass(d, cls.id, rows, writing);
+        // who marked each piece of writing
+        for (const w of writing) if (w.marked_by && names[w.marked_by]) { const x = d.writing.find((y) => y.id === w.id); if (x) x.markedBy = names[w.marked_by]; }
+        if (tasks) mergeOnlineAssignments(d, cls.id, tasks);
+        refreshAssignmentDone(d, cls.id);
+      });
       setLast({ at: new Date().toISOString(), ...r, total: rows.length });
       toast(`Loaded ${rows.length} learners and ${writing.length} pieces of writing.`, 'good');
     } catch (e) { setErr(onlineError(e)); } finally { setBusy(false); }

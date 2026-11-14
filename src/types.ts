@@ -214,6 +214,7 @@ export interface Assignment {
   due?: string;
   createdAt: string;
   done: string[]; // student ids
+  online?: boolean; // also in the online class store, so it reaches learners' own phones
 }
 
 export interface WritingSubmission {
@@ -233,6 +234,7 @@ export interface WritingSubmission {
   source: string; // lesson or exam id
   sentOnline?: boolean; // the learner's phone has sent it to the online class store
   online?: boolean; // the teacher loaded it from the online class store (marks are saved back online)
+  markedBy?: string; // email of the teacher who marked it (online)
 }
 
 export interface Settings {

@@ -4,7 +4,8 @@
 // anonymous login, so a second learner on the same phone keeps saving on the phone only.
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useApp } from '../store';
-import { fetchMyMarks, joinOnline, myOnlineId, onlineEnabled, onlineError, pushProgress, pushWriting } from '../lib/online';
+import { fetchAssignments, fetchMyMarks, joinOnline, myOnlineId, onlineEnabled, onlineError, pushProgress, pushWriting } from '../lib/online';
+import { mergeOnlineAssignments, refreshAssignmentDone } from '../lib/assignments';
 
 export type SyncState = { kind: 'off' | 'idle' | 'saving' | 'saved' | 'offline' | 'other' | 'error'; message?: string };
 let state: SyncState = { kind: onlineEnabled ? 'idle' : 'off' };
@@ -87,6 +88,30 @@ export function useOnlineSync() {
       });
     }).catch(() => { marksFetched.current = null; });
   }, [me?.onlineId]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // 5. the teacher's tasks for this learner (when the app opens, every 5 minutes, and when it comes back on screen)
+  const [taskTick, setTaskTick] = useState(0);
+  useEffect(() => {
+    if (!onlineEnabled || !me?.onlineId || !cls || owner() !== me.id) return;
+    let live = true;
+    fetchAssignments(cls.code).then((rows) => {
+      if (!live) return;
+      update((d) => {
+        const self = d.students.find((x) => x.id === me.id);
+        if (!self) return;
+        mergeOnlineAssignments(d, self.classId, rows, self);
+        refreshAssignmentDone(d, self.classId);
+      });
+    }).catch(() => undefined); // no internet, or no assignments table yet: keep what is on the phone
+    return () => { live = false; };
+  }, [me?.onlineId, cls?.code, taskTick, tick]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (!onlineEnabled || !me?.onlineId) return;
+    const again = () => { if (document.visibilityState === 'visible') setTaskTick((t) => t + 1); };
+    const timer = window.setInterval(again, 5 * 60 * 1000);
+    document.addEventListener('visibilitychange', again);
+    return () => { window.clearInterval(timer); document.removeEventListener('visibilitychange', again); };
+  }, [me?.onlineId]);
 
   // retry when the connection comes back
   useEffect(() => {

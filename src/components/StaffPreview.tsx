@@ -11,6 +11,7 @@ import { AnswerKey } from './activities/AnswerKey';
 import { Button } from './ui';
 import { LogoMark } from './Logo';
 import { ask } from './Confirm';
+import { useAssignments } from '../hooks/useAssignments';
 
 /** Answers start on; each teacher's choice is remembered on their device. */
 export function useShowAnswers(): [boolean, (v: boolean) => void] {
@@ -33,14 +34,14 @@ export function useViewAsStudent() {
 
 /** Assign something to the whole class from where the teacher is looking at it. */
 export function useAssignHere() {
-  const { cls, update, toast, data } = useApp();
+  const { cls, data } = useApp();
+  const assignments = useAssignments();
   return async (kind: Assignment['kind'], ref: string, title: string) => {
     if (!cls) return;
     if (data.assignments.some((a) => a.classId === cls.id && a.ref === ref && a.done.length === 0)) {
       if (!(await ask(`“${title}” is already assigned to ${cls.name}. Assign it again?`, 'Assign again'))) return;
     } else if (!(await ask(`Assign “${title}” to ${cls.name}, due ${addDays(today(), 3)}?`, 'Assign'))) return;
-    update((d) => { d.assignments.unshift({ id: `as-${Date.now()}`, classId: cls.id, kind, ref, title, to: 'class', due: addDays(today(), 3), createdAt: new Date().toISOString(), done: [] }); });
-    toast(onlineEnabled ? 'Assigned on this device. Learners using this device see it on My Learning.' : 'Task assigned. Students see it on My Learning.', 'good');
+    await assignments.create({ kind, ref, title, to: 'class', due: addDays(today(), 3) });
   };
 }
 

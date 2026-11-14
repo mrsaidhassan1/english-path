@@ -8,6 +8,7 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import type { StaffAccess, Student, WritingSubmission } from '../types';
 import type { WritingMarks } from '../data/writingRubric';
+import type { AssignmentRow } from './assignments';
 
 const URL = (import.meta.env.VITE_SUPABASE_URL as string | undefined)?.trim();
 const KEY = (import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined)?.trim();
@@ -26,7 +27,7 @@ function sb(): SupabaseClient {
 export interface StudentRow { id: string; class_code: string; first_name: string; last_name: string | null; progress: Partial<Student>; updated_at: string }
 export interface WritingRow {
   id: string; student_id: string; class_code: string; task_title: string | null; prompt: string | null; bullets: string[]; body: string; words: number | null;
-  estimate: WritingMarks | null; marks: WritingMarks | null; teacher_score: number | null; teacher_note: string | null; source: string | null; created_at: string;
+  estimate: WritingMarks | null; marks: WritingMarks | null; teacher_score: number | null; teacher_note: string | null; source: string | null; created_at: string; marked_by?: string | null;
 }
 
 /** The learner's own progress, without teacher-only fields or photos. */
@@ -213,6 +214,45 @@ export const staffCreate = (email: string, role: StaffAccess['role'], classCode?
   staffAdmin<{ user_id: string; existing: boolean; password?: string }>({ action: 'create', email, role, class_code: classCode || null, class_role: classRole });
 /** A new temporary password for a staff member (no email needed). */
 export const staffResetPassword = (userId: string) => staffAdmin<{ password: string }>({ action: 'reset', user_id: userId });
+
+// ------------------------------------------------------------------ Phase 4: assignments, classes overview
+export async function pushAssignment(row: AssignmentRow): Promise<void> {
+  const { error } = await sb().from('assignments').upsert(row, { onConflict: 'id' });
+  if (error) throw error;
+}
+export async function deleteAssignmentOnline(id: string): Promise<void> {
+  const { error } = await sb().from('assignments').delete().eq('id', id);
+  if (error) throw error;
+}
+/** A class's assignments (a learner only gets the ones the server lets him see). */
+export async function fetchAssignments(classCode: string): Promise<AssignmentRow[]> {
+  const { data, error } = await sb().from('assignments').select('id, class_code, kind, ref, title, to_all, to_students, due, created_at').eq('class_code', classCode).order('created_at', { ascending: false });
+  if (error) throw error;
+  return (data ?? []) as AssignmentRow[];
+}
+
+export interface ClassOverview {
+  code: string; name: string; allow_join: boolean; my_role: 'admin' | 'owner' | 'teacher' | 'observer' | null;
+  teachers: { email: string; role: 'owner' | 'teacher' | 'observer'; status: string | null }[];
+  students: number; active_week: number; writing_total: number; to_mark: number; assignments: number;
+}
+export async function classesOverview(): Promise<ClassOverview[]> {
+  const { data, error } = await sb().rpc('classes_overview');
+  if (error) throw error;
+  return (data ?? []) as ClassOverview[];
+}
+/** Rename a class or open / close joining (Admin or the class owner). */
+export async function updateOnlineClass(code: string, change: { name?: string; allow_join?: boolean }): Promise<void> {
+  const { data, error } = await sb().from('classes').update(change).eq('code', code).select('code');
+  if (error) throw error;
+  if (!data?.length) throw new Error('Only the Admin or the class owner can change this class.');
+}
+/** Staff emails by login id (for "marked by"). */
+export async function staffDirectory(): Promise<Record<string, string>> {
+  const { data, error } = await sb().rpc('staff_directory');
+  if (error) throw error;
+  return (data ?? {}) as Record<string, string>;
+}
 
 /** A short, friendly message for an online error. */
 export const onlineError = (e: unknown) => {

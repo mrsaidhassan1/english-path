@@ -255,7 +255,7 @@ export function applyStaffAccess(d: AppData, access: StaffAccess) {
   for (const c of access.classes) {
     const have = d.classes.find((x) => x.code.toUpperCase() === c.code.toUpperCase())
       ?? d.classes.find((x) => x.name.replace(/\s+/g, '').toLowerCase() === c.name.replace(/\s+/g, '').toLowerCase());
-    if (have) { have.code = c.code; continue; }
+    if (have) { have.code = c.code; have.name = c.name; continue; } // a class renamed online gets its new name here too
     d.classes.push({ ...newClass(c.name), code: c.code });
   }
   const open = (id: string) => {

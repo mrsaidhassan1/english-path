@@ -1,9 +1,11 @@
 import { useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { LayoutDashboard, Presentation, Printer, Users, BarChart3, Send, PenLine, Database, Settings as Cog, Download, Upload, Trash2, RotateCcw, Copy, School, Cloud, UserCog } from 'lucide-react';
+import { LayoutDashboard, Presentation, Printer, Users, BarChart3, Send, PenLine, Database, Settings as Cog, Download, Upload, Trash2, RotateCcw, Copy, School, Cloud, UserCog, LayoutGrid } from 'lucide-react';
 import { ClassesPanel } from './Classes';
 import { OnlineClassPanel } from './OnlineClass';
 import { StaffPanel } from './Staff';
+import { AllClassesPanel } from './AllClasses';
+import { useAssignments } from '../hooks/useAssignments';
 import { classPermissions, onlineEnabled, onlineError, saveMarkOnline } from '../lib/online';
 import type { Assignment, Skill, WritingSubmission } from '../types';
 import { CRITERIA, marksTotal, RUBRIC_SRC, WRITING_MAX, type WritingMarks } from '../data/writingRubric';
@@ -27,7 +29,7 @@ import { nameOf } from '../lib/classes';
 import { canDownload, canPrint } from '../lib/env';
 import { ask } from '../components/Confirm';
 
-type Tab = 'overview' | 'classes' | 'online' | 'staff' | 'students' | 'assign' | 'writing' | 'content' | 'settings';
+type Tab = 'overview' | 'classes' | 'all' | 'online' | 'staff' | 'students' | 'assign' | 'writing' | 'content' | 'settings';
 
 export default function Teacher() {
   const [params, setParams] = useSearchParams();
@@ -35,7 +37,7 @@ export default function Teacher() {
   const { data, update, cls, students } = useApp();
   const ids = new Set(students.map((s) => s.id));
   const toMark = data.writing.filter((w) => w.teacherScore === undefined && ids.has(w.studentId)).length;
-  const shown: Tab = !cls && tab !== 'content' && tab !== 'settings' && tab !== 'staff' ? 'classes' : tab;
+  const shown: Tab = !cls && tab !== 'content' && tab !== 'settings' && tab !== 'staff' && tab !== 'all' ? 'classes' : tab;
   return (
     <div>
       <PageHeader title="Teacher Dashboard" ar="لوحة المعلم" sub={cls ? `${cls.name} · ${students.length} students · join code ${cls.code}` : 'No class yet: create or import one'} icon={<LayoutDashboard />}>
@@ -51,6 +53,7 @@ export default function Teacher() {
       <Tabs<Tab> className="mb-6 print:hidden" value={shown} onChange={(t) => setParams({ tab: t })} tabs={[
         { id: 'overview', label: <span className="flex items-center gap-1"><BarChart3 size={16} /> Overview</span> },
         { id: 'classes', label: <span className="flex items-center gap-1"><School size={16} /> Classes ({data.classes.length})</span> },
+        ...(onlineEnabled && data.session.staff ? [{ id: 'all' as Tab, label: <span className="flex items-center gap-1"><LayoutGrid size={16} /> All classes</span> }] : []),
         ...(onlineEnabled ? [{ id: 'online' as Tab, label: <span className="flex items-center gap-1"><Cloud size={16} /> Online class</span> }] : []),
         ...(onlineEnabled && data.session.staff?.role === 'admin' ? [{ id: 'staff' as Tab, label: <span className="flex items-center gap-1"><UserCog size={16} /> Staff</span> }] : []),
         { id: 'students', label: <span className="flex items-center gap-1"><Users size={16} /> Students</span> },
@@ -61,6 +64,7 @@ export default function Teacher() {
       ]} />
       {shown === 'overview' && <Overview />}
       {shown === 'classes' && <ClassesPanel />}
+      {shown === 'all' && <AllClassesPanel />}
       {shown === 'online' && <OnlineClassPanel />}
       {shown === 'staff' && <StaffPanel />}
       {shown === 'students' && <Roster />}
@@ -221,7 +225,7 @@ function Overview() {
 const KIND_LABELS: Record<Assignment['kind'], string> = { lesson: 'Lesson', module: 'Whole unit', vocab: 'Vocabulary set', review: 'Review lesson', exam: 'Exam', grammar: 'Grammar booster' };
 
 function Assign() {
-  const { data, update, toast, cls, students } = useApp();
+  const { data, cls, students } = useApp();
   const [params] = useSearchParams();
   const [kind, setKind] = useState<Assignment['kind']>((params.get('kind') as Assignment['kind']) ?? 'lesson');
   const [ref, setRef] = useState(params.get('ref') ?? '');
@@ -240,11 +244,10 @@ function Assign() {
   }, [kind]);
   const current = ref && options.some((o) => o.value === ref) ? ref : options[0]?.value ?? '';
 
+  const assignments = useAssignments();
   const save = () => {
     const label = options.find((o) => o.value === current)?.label ?? current;
-    if (!cls) return;
-    update((d) => { d.assignments.unshift({ id: `as-${Date.now()}`, classId: cls.id, kind, ref: current, title: `${KIND_LABELS[kind]}: ${label}`, to, due, createdAt: new Date().toISOString(), done: [] }); });
-    toast('Task assigned. Students see it on My Learning.', 'good');
+    assignments.create({ kind, ref: current, title: `${KIND_LABELS[kind]}: ${label}`, to, due });
   };
   const sel = 'mt-1 block min-h-[48px] w-full rounded-2xl border-2 border-navy-100 bg-white px-3 text-navy';
   const classTasks = data.assignments.filter((a) => a.classId === cls?.id);
@@ -285,8 +288,8 @@ function Assign() {
               return (
                 <li key={a.id} className="rounded-2xl border border-navy-100 p-3">
                   <div className="flex items-start justify-between gap-2">
-                    <div><b className="text-navy">{a.title}</b><div className="text-sm text-navy-400">{a.to === 'class' ? 'Whole class' : a.to.map((id) => data.students.find((s) => s.id === id)).filter(Boolean).map((s) => nameOf(s!)).join(', ')}{a.due && ` · due ${niceDate(a.due)}`}</div></div>
-                    <button onClick={() => update((d) => { d.assignments = d.assignments.filter((x) => x.id !== a.id); })} className="grid h-11 w-11 place-items-center rounded-xl text-navy-400 hover:bg-coral-50 hover:text-coral-700" aria-label="Remove task"><Trash2 size={18} /></button>
+                    <div><b className="text-navy">{a.title}</b>{a.online && <Pill tone="sky">On students' phones</Pill>}<div className="text-sm text-navy-400">{a.to === 'class' ? 'Whole class' : a.to.map((id) => data.students.find((s) => s.id === id)).filter(Boolean).map((s) => nameOf(s!)).join(', ')}{a.due && ` · due ${niceDate(a.due)}`}</div></div>
+                    <button onClick={() => assignments.remove(a)} className="grid h-11 w-11 place-items-center rounded-xl text-navy-400 hover:bg-coral-50 hover:text-coral-700" aria-label="Remove task"><Trash2 size={18} /></button>
                   </div>
                   <ProgressBar pct={(a.done.length / Math.max(1, n)) * 100} className="mt-2" label="Done" />
                   <div className="mt-1 text-xs text-navy-400">{a.done.length}/{n} done</div>
@@ -325,7 +328,7 @@ function WritingQueue() {
     const total = marksTotal(m);
     const prev = w.marks ? marksTotal(w.marks) : undefined;
     const note = notes[w.id] ?? w.teacherNote ?? '';
-    update((d) => { const x = d.writing.find((y) => y.id === w.id); if (x) { x.marks = m; x.teacherScore = total; x.teacherNote = note; } });
+    update((d) => { const x = d.writing.find((y) => y.id === w.id); if (x) { x.marks = m; x.teacherScore = total; x.teacherNote = note; x.markedBy = d.session.staff?.email ?? x.markedBy; } });
     // writing that came from a learner's phone: send the mark back online
     if (w.online) saveMarkOnline(w.id, m, total, note).catch((e) => toast(`Mark saved here, but not online: ${onlineError(e)}`, 'warn'));
     updateStudent((s) => {
@@ -371,7 +374,7 @@ function WritingQueue() {
                 <div className="text-sm text-navy-400">{niceDate(w.createdAt)} · {w.words} words · {w.source}{w.selfCheck ? ` · self-check ${w.selfCheck}/5` : ''}</div>
               </div>
               {w.teacherScore !== undefined
-                ? <Pill tone="mint">Marked: {w.teacherScore}/{oldScale ? 5 : WRITING_MAX}{w.marks ? ` (C${w.marks.content} O${w.marks.organisation} L${w.marks.language})` : ''}</Pill>
+                ? <Pill tone="mint">Marked: {w.teacherScore}/{oldScale ? 5 : WRITING_MAX}{w.marks ? ` (C${w.marks.content} O${w.marks.organisation} L${w.marks.language})` : ''}{w.markedBy ? ` · by ${w.markedBy}` : ''}</Pill>
                 : <Pill tone="sun">To mark</Pill>}
             </div>
             <p className="mt-2 text-sm text-navy-500">{w.prompt} {w.bullets.length > 0 && `(${w.bullets.join(' · ')})`}</p>
