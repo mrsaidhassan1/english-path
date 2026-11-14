@@ -63,7 +63,7 @@ export function ModulePage() {
         <div className="flex flex-wrap items-center gap-5 p-6 sm:p-8" style={{ background: `linear-gradient(135deg, ${m.colour}2a, #fff 70%)` }}>
           <span className="grid h-20 w-20 place-items-center rounded-3xl text-white shadow-lift" style={{ background: m.colour }}><ModuleIcon name={m.icon} size={40} /></span>
           <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-2 font-bold text-navy-400">Unit {m.n}{m.dates && <span className="rounded-full bg-white/80 px-2.5 py-0.5 text-sm text-navy-500">{m.dates}</span>}</div>
+            <div className="flex flex-wrap items-center gap-2 font-bold text-navy-400">Unit {m.n}</div>
             <h1 className="text-3xl font-bold text-navy sm:text-4xl">{m.title}</h1>
             <Ar className="text-lg">{m.titleAr}</Ar>
             <p className="mt-1 text-lg text-navy-500">{m.subtitle}</p>
