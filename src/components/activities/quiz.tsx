@@ -129,6 +129,7 @@ function GapQ({ item, last, tagGrammar, skill = 'grammar', onAnswer, onNext }: Q
           <AudioButton text={item.say} slow size="md" />
         </div>
       )}
+      {item.instruction && res === null && <p className="mb-3 text-lg font-bold text-coral-700">✏️ {item.instruction}</p>}
       <p className="mb-5 rounded-2xl bg-navy-50 p-5 text-2xl font-semibold leading-relaxed text-navy sm:text-3xl">
         {before}
         <span className={`mx-1 inline-block min-w-[4ch] rounded-lg border-b-4 px-2 ${res === null ? 'border-navy-300' : res ? 'border-mint bg-mint-50 text-mint-700' : 'border-coral bg-coral-50 text-coral-800'}`}>{filled}</span>

@@ -136,14 +136,45 @@ function practiceToGap(q: string, a: string, grammar: string): GapItem {
   };
 }
 
+/** A short instruction for one gap item: what exactly to write (or choose). */
+function hintFor(g: GapItem, q: string, title: string): string {
+  if (g.options) return 'Choose the right word.';
+  const t = title.toLowerCase();
+  const arrow = q.match(/^(.+?)\s*→/);
+  if (arrow) {
+    if (/past simple|-ed|irregular|\bwas\b/.test(t)) return 'Write the past simple form.';
+    if (/he \/ she|spelling|-s\b/.test(t)) return 'Write the he / she form.';
+    if (/adverb/.test(t)) return 'Write the adverb.';
+    if (/comparative|smaller/.test(t)) return 'Write the comparative.';
+    if (/continuous|-ing/.test(t)) return 'Write the -ing form.';
+    if (/nationalit/.test(t)) return 'Write the nationality.';
+    return 'Write the word.';
+  }
+  const verb = q.match(/\(([a-z]+)\)/i)?.[1];
+  if (/\(not\)/i.test(q)) return 'Write the negative form (for example isn’t).';
+  if (verb) return /past simple|-ed|irregular|\bwas\b|last |yesterday|ago/.test(`${t} ${q.toLowerCase()}`) ? `Write the past simple of “${verb}”.` : `Write the correct form of “${verb}”.`;
+  return 'Write the missing word.';
+}
+
+/** The instruction above a set of gap items. */
+function gapPrompt(items: GapItem[]): { en: string; ar: string } {
+  const choose = items.filter((g) => g.options).length;
+  if (choose === items.length) return { en: 'Choose the right word.', ar: 'اختر الكلمة الصحيحة.' };
+  if (choose === 0) return { en: 'Write the missing word.', ar: 'اكتب الكلمة الناقصة.' };
+  return { en: 'Choose or write the right word.', ar: 'اختر أو اكتب الكلمة الصحيحة.' };
+}
+
 /** A day's grammar practice → gap items, plus "Put in order: …" items for the sentence builder. */
 function practiceOf(d: IatcUnitDay, gKey: string): { gaps: GapItem[]; order: string[] } {
   const gaps: GapItem[] = [];
   const order: string[] = [];
   for (const [q, a] of d.grammar?.practice ?? []) {
     if (/^put in order:/i.test(q)) order.push(a);
-    else if (/'s = \?$/.test(q)) gaps.push({ text: q.replace(/\?$/, '___'), answer: a, options: ['is', 'possessive'], grammar: gKey });
-    else if (q.includes('__')) gaps.push(practiceToGap(q, a, gKey)); // "Correct it: …" items stay in the handout only
+    else if (/'s = \?$/.test(q)) gaps.push({ text: q.replace(/\?$/, '___'), answer: a, options: ['is', 'possessive'], grammar: gKey, instruction: 'Choose: is or possessive?' });
+    else if (q.includes('__')) { // "Correct it: …" items stay in the handout only
+      const g = practiceToGap(q, a, gKey);
+      gaps.push({ ...g, instruction: hintFor(g, q, d.grammarTitle) });
+    }
   }
   return { gaps, order };
 }
@@ -168,7 +199,7 @@ function dayLesson(n: number, d: IatcUnitDay, k: number, key0: string): Lesson {
       tags: tag(n, 'grammar', topic, gKey), src: d.src,
     });
     const { gaps, order } = practiceOf(d, gKey);
-    if (gaps.length) acts.push({ kind: 'gap', id: id('gap'), title: 'Grammar practice', prompt: 'Write or choose the right word.', promptAr: 'اكتب أو اختر الكلمة الصحيحة.', items: gaps, tags: tag(n, 'grammar', topic, gKey), src: d.src });
+    if (gaps.length) acts.push({ kind: 'gap', id: id('gap'), title: 'Grammar practice', prompt: gapPrompt(gaps).en, promptAr: gapPrompt(gaps).ar, items: gaps, tags: tag(n, 'grammar', topic, gKey), src: d.src });
     // short example sentences (one sentence, 3–9 words) → put the words in order
     const sentences = d.grammar.examples.map(stripMarkup).filter((t) => { const w = t.split(' ').length; return w >= 3 && w <= 9 && (t.match(/[.?!]/g) ?? []).length <= 1; });
     const toOrder = [...order, ...sentences].slice(0, 3);
