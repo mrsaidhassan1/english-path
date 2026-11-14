@@ -29,19 +29,14 @@ export function currentModule(s: Student): Module {
   return MODULES.find((m) => !moduleComplete(s, m)) ?? MODULES[MODULES.length - 1];
 }
 
-export function moduleUnlocked(s: Student, m: Module, opts: { unlockAll?: boolean; assigned?: Set<string> } = {}): boolean {
-  if (opts.unlockAll || m.n === 1 || m.open) return true;
-  if (opts.assigned?.has(m.id)) return true;
-  const prev = MODULES[m.n - 2];
-  const quiz = prev.lessons.find((l) => l.type === 'quiz')!;
-  return lessonDone(s, quiz.id) || moduleProgress(s, prev).done >= prev.lessons.length - 1;
+/** Every unit is open to every student: they choose the unit they want. */
+export function moduleUnlocked(_s: Student, _m: Module, _opts: { unlockAll?: boolean; assigned?: Set<string> } = {}): boolean {
+  return true;
 }
 
-export function lessonUnlocked(s: Student, m: Module, l: Lesson, opts: { unlockAll?: boolean; assigned?: Set<string> } = {}): boolean {
-  if (!moduleUnlocked(s, m, opts)) return false;
-  if (opts.unlockAll || m.open || opts.assigned?.has(l.id)) return true;
-  const i = m.lessons.indexOf(l);
-  return i === 0 || lessonDone(s, m.lessons[i - 1].id) || lessonDone(s, l.id);
+/** Every lesson is open too: students can go straight to any lesson of any unit. */
+export function lessonUnlocked(_s: Student, _m: Module, _l: Lesson, _opts: { unlockAll?: boolean; assigned?: Set<string> } = {}): boolean {
+  return true;
 }
 
 export function reviewUnlocked(s: Student, reviewIndex: number, unlockAll = false): boolean {
