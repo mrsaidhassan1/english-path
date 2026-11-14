@@ -1,8 +1,8 @@
 // Question activities: multiple choice, gap-fill, sentence order, error correction, picture choice, reading.
 import { useEffect, useMemo, useState } from 'react';
 import { RotateCcw, Volume2 } from 'lucide-react';
-import type { ErrorItem, GapItem, McqItem, OrderItem } from '../../types';
-import { Feedback, Button } from '../ui';
+import type { ErrorItem, GapItem, McqItem, OrderItem, Skill } from '../../types';
+import { Ar, Feedback, Button } from '../ui';
 import { AudioButton } from '../AudioButton';
 import { Markup } from '../Markup';
 import { encourage, encourageAr, praise, praiseAr } from '../../lib/feedback';
@@ -104,12 +104,12 @@ export function Gap({ activity, onAnswer, onDone }: ActivityProps<'gap'>) {
   const { i, next } = useSteps(activity.items.length, onDone);
   return (
     <Shell activity={activity} step={i} steps={activity.items.length}>
-      <GapQ key={i} item={activity.items[i]} last={i + 1 === activity.items.length} tagGrammar={activity.tags.grammar} onAnswer={onAnswer} onNext={next} />
+      <GapQ key={i} item={activity.items[i]} last={i + 1 === activity.items.length} tagGrammar={activity.tags.grammar} skill={activity.tags.skill} onAnswer={onAnswer} onNext={next} />
     </Shell>
   );
 }
 
-function GapQ({ item, last, tagGrammar, onAnswer, onNext }: QProps<GapItem>) {
+function GapQ({ item, last, tagGrammar, skill = 'grammar', onAnswer, onNext }: QProps<GapItem> & { skill?: Skill }) {
   const [val, setVal] = useState('');
   const [res, setRes] = useState<boolean | null>(null);
   const order = useMemo(() => (item.options ? optionOrder(item.options, item.text) : []), [item]);
@@ -117,16 +117,23 @@ function GapQ({ item, last, tagGrammar, onAnswer, onNext }: QProps<GapItem>) {
     const ok = normalise(answer) === normalise(item.answer);
     setVal(answer);
     setRes(ok);
-    onAnswer({ correct: ok, skill: 'grammar', grammar: item.grammar ?? tagGrammar });
+    onAnswer({ correct: ok, skill: item.grammar ?? tagGrammar ? 'grammar' : skill, grammar: item.grammar ?? tagGrammar });
   };
   const [before, after] = item.text.split('___');
   const filled = res !== null ? (res ? val : item.answer) : val || '_____';
   return (
     <>
+      {item.say && (
+        <div className="mb-4 flex items-center gap-3">
+          <AudioButton text={item.say} size="lg" label="Listen" />
+          <AudioButton text={item.say} slow size="md" />
+        </div>
+      )}
       <p className="mb-5 rounded-2xl bg-navy-50 p-5 text-2xl font-semibold leading-relaxed text-navy sm:text-3xl">
         {before}
         <span className={`mx-1 inline-block min-w-[4ch] rounded-lg border-b-4 px-2 ${res === null ? 'border-navy-300' : res ? 'border-mint bg-mint-50 text-mint-700' : 'border-coral bg-coral-50 text-coral-800'}`}>{filled}</span>
         {after ?? ''}
+        {item.hint && <Ar className="mt-2 text-lg">{item.hint}</Ar>}
       </p>
       {item.options ? (
         <div className="grid gap-3 sm:grid-cols-3">
@@ -143,7 +150,7 @@ function GapQ({ item, last, tagGrammar, onAnswer, onNext }: QProps<GapItem>) {
       )}
       {res !== null && (
         <div className="mt-4">
-          <Feedback ok={res} en={res ? 'Great job!' : `Nice try! ${answerLine(item.answer)}`} ar={res ? 'أحسنت!' : 'محاولة جيدة!'} />
+          <Feedback ok={res} en={res ? 'Great job!' : `Nice try! ${answerLine(item.answer)}`} ar={res ? 'أحسنت!' : 'محاولة جيدة!'} detail={item.explain} />
           <NextButton last={last} onClick={() => onNext(res)} />
         </div>
       )}

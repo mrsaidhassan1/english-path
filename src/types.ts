@@ -60,7 +60,7 @@ interface ActivityBase {
 }
 
 export interface McqItem { q: string; options: string[]; answer: number; explain?: string; say?: string; grammar?: string; word?: string }
-export interface GapItem { text: string; answer: string; options?: string[]; grammar?: string; hint?: string }
+export interface GapItem { text: string; answer: string; options?: string[]; grammar?: string; hint?: string; say?: string; explain?: string } // hint = Arabic meaning; say = word to play
 export interface OrderItem { answer: string; grammar?: string }
 export interface ErrorItem { sentence: string; wrong: string; right: string; options: string[]; grammar?: string }
 export interface PictureItem { word: string; options: string[]; answer: string } // vocab ids

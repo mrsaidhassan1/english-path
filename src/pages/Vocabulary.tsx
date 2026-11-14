@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { lazy, Suspense, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Layers, Search, Eye, RotateCcw, Check, Trophy } from 'lucide-react';
 import { MODULES } from '../data/modules';
@@ -18,7 +18,8 @@ import { AudioButton } from '../components/AudioButton';
 import { Ar, Button, Card, EmptyState, Feedback, PageHeader, Pill, Tabs } from '../components/ui';
 import { Option } from '../components/activities/common';
 
-type Tab = 'words' | 'review' | 'daily' | 'again' | 'oxford';
+const VocabQuizzes = lazy(() => import('./VocabQuizzes'));
+type Tab = 'words' | 'review' | 'daily' | 'again' | 'oxford' | 'quizzes';
 const STATUS_TONE: Record<WordStatus, 'grey' | 'sun' | 'sky' | 'mint'> = { new: 'grey', learning: 'sun', review: 'sky', mastered: 'mint' };
 /** Week 15 of the vocabulary booklet is a consolidation bank (the last A1 words), not a unit. */
 const WEEK15_WORDS = IATC.vocab.filter((v) => v.week === 15).map((v) => v.id);
@@ -26,7 +27,7 @@ const WEEK15_WORDS = IATC.vocab.filter((v) => v.week === 15).map((v) => v.id);
 export default function Vocabulary() {
   const [params, setParams] = useSearchParams();
   const list = params.get('list');
-  const initial: Tab = list === 'again' ? 'again' : list === 'due' ? 'review' : list === 'daily' ? 'daily' : 'words';
+  const initial: Tab = list === 'again' ? 'again' : list === 'due' ? 'review' : list === 'daily' ? 'daily' : list === 'quizzes' ? 'quizzes' : 'words';
   const [tab, setTab] = useState<Tab>(initial);
   const { learner: s } = useLearner();
   const due = dueWords(s);
@@ -54,6 +55,7 @@ export default function Vocabulary() {
           { id: 'daily', label: '⭐ Daily 5' },
           { id: 'review', label: `🔁 Review (${due.length})` },
           { id: 'again', label: `Practise again (${s.practiseAgain.length})` },
+          { id: 'quizzes', label: 'Quizzes' },
           { id: 'oxford', label: 'Oxford 3000 A1' },
         ]}
       />
@@ -61,6 +63,7 @@ export default function Vocabulary() {
       {tab === 'review' && <ReviewSession ids={due} title="Spaced review" empty="No words to review today. Great work! Come back tomorrow." />}
       {tab === 'again' && <ReviewSession ids={s.practiseAgain} title="Practise again" empty="Your Practise again list is empty. 🎉" />}
       {tab === 'daily' && <DailyFive />}
+      {tab === 'quizzes' && <Suspense fallback={<p className="p-6 text-center text-navy-400">Loading…</p>}><VocabQuizzes /></Suspense>}
       {tab === 'oxford' && <OxfordList />}
     </div>
   );
