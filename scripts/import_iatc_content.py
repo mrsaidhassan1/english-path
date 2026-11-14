@@ -12,6 +12,11 @@ original. Run again after editing the sources:
 
     python scripts/import_iatc_content.py
 
+Vocabulary comes from the A1 Vocabulary Weeks 1-15 booklet (tools/weekly-pack/content/headway-words/weekN.txt).
+To refresh only the vocabulary and leave every other imported item as it is:
+
+    python scripts/import_iatc_content.py --only-vocab
+
 Rules applied on import
 - The teacher's personal name is never copied into the app ("Mr Said" -> "Mr Adel").
 - Items that touch IATC "AVOID" topics (music, birthdays, dating, etc.) are skipped
@@ -29,10 +34,18 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8")
 
 APP = Path(__file__).resolve().parents[1]
-ROOT = APP.parents[1]  # .../IATC English
+ROOT = APP.parents[1] / "IATC English"  # the teacher's resource folder, next to the English Path folder
 TOOLS = ROOT / "tools"
-WEEKS = ROOT / "FND68" / "CLass FND 68" / "A0 - A1 Resources" / "A0 - A1 Weekly Materials"
+WEEKS = ROOT / "Resources" / "A1" / "A1 Weekly Materials"
+HEADWAY = TOOLS / "weekly-pack/content/headway-words"  # the word lists behind A1_Vocabulary_Weeks_1-15.pdf
+VOCAB_PDF = "Resources/A1/A1 Vocabulay/A1_Vocabulary_Weeks_1-15.pdf"
 OUT = APP / "src" / "data" / "generated" / "iatc-content.json"
+for a in sys.argv[1:]:
+    if a.startswith("--out="):
+        OUT = Path(a[6:])
+# --only-vocab: rebuild only the vocabulary (and each day's word list) inside the existing content file.
+# Everything else (readings, dialogues, grammar ...) is kept exactly as it was.
+ONLY_VOCAB = "--only-vocab" in sys.argv
 
 AVOID = re.compile(
     r"\b(music|musician|musicians|song|songs|singing|singer|guitar|piano|birthday|birthdays|christmas|"
@@ -85,6 +98,40 @@ def slug(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 
+def headway_lessons(week: int) -> list[tuple[str, list[list[str]]]]:
+    """The lessons of one week of A1_Vocabulary_Weeks_1-15: [(lesson title, [[word, ar, pos, meaning, example], ...])].
+    Source lines look like  H|word|Arabic|part of speech|simple meaning|model sentence  (H = Headway word, T = topic word)."""
+    p = HEADWAY / f"week{week}.txt"
+    lessons: list[tuple[str, list[list[str]]]] = []
+    if not p.exists():
+        return lessons
+    for n, line in enumerate(p.read_text(encoding="utf-8-sig").splitlines(), 1):
+        if line.startswith("## "):
+            lessons.append((line[3:].split("|", 1)[-1].strip(), []))
+        elif len(line) > 2 and line[1] == "|" and lessons:
+            parts = line.split("|")
+            if len(parts) != 6:
+                raise SystemExit(f"{p.name} line {n}: expected 6 fields, found {len(parts)}: {line}")
+            lessons[-1][1].append(parts[1:])
+    return lessons
+
+
+def add_headway_word(row: list[str], week: int, lesson: int, title: str, j: int, topic: str, day_id: str | None) -> str | None:
+    """Add one word of the vocabulary booklet; returns its id (or None if it is left out)."""
+    word, ar, pos, meaning, example = clean(row)
+    entry = {"word": word, "ar": ar, "pos": pos, "meaning": meaning, "example": example}
+    if not is_safe(entry, f"word '{word}' (week {week} lesson {lesson})"):
+        return None
+    wid = slug(word)
+    if wid not in vocab:
+        vocab[wid] = {
+            "id": wid, **entry, "topic": topic, "week": week, "day": day_id, "oxfordA1": in_oxford(word),
+            "src": {"file": rel(HEADWAY / f"week{week}.txt"), "at": f"lesson {lesson}, word {j + 1}",
+                    "doc": VOCAB_PDF, "label": f"A1 Vocabulary Weeks 1–15 · Week {week} Lesson {lesson}: {title}"},
+        }
+    return wid
+
+
 # ---------------------------------------------------------------- Oxford 3000 A1
 ox_path = TOOLS / "weekly-pack/content/oxford3000_A1.txt"
 oxford = []
@@ -124,35 +171,34 @@ for week in UNIT_WEEKS:
     wk = clean(load(p))
     rd_path = TOOLS / f"weekly-pack/content/readings/week{week}.json"
     readings = clean(load(rd_path))["days"] if rd_path.exists() else []
-    words_doc = week_doc(week, "FND_68_Week_*_Words.docx")
+    words_doc = week_doc(week, "*Week_*_Words.docx")
     deck_days = []
+    hw = headway_lessons(week)  # the vocabulary booklet's lessons for this week (replaces the older deck word lists)
     for i, d in enumerate(wk["days"]):
         day_id = f"w{week}d{i + 1}"
         word_ids = []
-        for j, row in enumerate(d.get("words", [])):
-            word, ar, pos, meaning, example = (row + [""] * 5)[:5]
-            entry = {"word": word, "ar": ar, "pos": pos, "meaning": meaning, "example": example}
-            if not is_safe(entry, f"word '{word}' (week {week} {d['day']})"):
-                continue
-            wid = slug(word)
-            if wid in vocab:
+        if i < len(hw):
+            same = len({r[0] for r in hw[i][1]} & {r[0] for r in d.get("words", [])})
+            if d.get("words") and same < 15:
+                print(f"WARNING week {week} lesson {i + 1}: only {same} words in common with the lesson deck")
+            for j, row in enumerate(hw[i][1]):
+                wid = add_headway_word(row, week, i + 1, hw[i][0], j, d["theme"], day_id)
+                if wid:
+                    word_ids.append(wid)
+        else:  # no booklet for this week: the deck's own list
+            for j, row in enumerate(d.get("words", [])):
+                word, ar, pos, meaning, example = (row + [""] * 5)[:5]
+                entry = {"word": word, "ar": ar, "pos": pos, "meaning": meaning, "example": example}
+                if not is_safe(entry, f"word '{word}' (week {week} {d['day']})"):
+                    continue
+                wid = slug(word)
+                if wid not in vocab:
+                    vocab[wid] = {
+                        "id": wid, **entry, "topic": d["theme"], "week": week, "day": day_id, "oxfordA1": in_oxford(word),
+                        "src": {"file": rel(p), "at": f"days[{i}].words[{j}]", "doc": words_doc,
+                                "label": f"Week {week} word list · {d['day']}: {d['theme']}"},
+                    }
                 word_ids.append(wid)
-                continue
-            vocab[wid] = {
-                "id": wid,
-                **entry,
-                "topic": d["theme"],
-                "week": week,
-                "day": day_id,
-                "oxfordA1": in_oxford(word),
-                "src": {
-                    "file": rel(p),
-                    "at": f"days[{i}].words[{j}]",
-                    "doc": words_doc,
-                    "label": f"Week {week} word list · {d['day']}: {d['theme']}",
-                },
-            }
-            word_ids.append(wid)
         alt = next((r for r in readings if r.get("day") == d["day"]), None)
         lesson = {
             "id": day_id,
@@ -169,7 +215,7 @@ for week in UNIT_WEEKS:
             "writing": {**(d.get("writing") or {}), "title": d.get("writingTitle", "")},
             "speaking": d.get("speaking", []),
             "dictation": d.get("dictation"),
-            "src": {"file": rel(p), "at": f"days[{i}]", "doc": week_doc(week, "FND_68_Week_*_A1_Lesson_Slides.pptx"),
+            "src": {"file": rel(p), "at": f"days[{i}]", "doc": week_doc(week, "*Week_*_A1_Lesson_Slides.pptx"),
                     "label": f"Week {week} · {d['day']} lesson: {d['theme']}"},
         }
         if alt and is_safe(alt.get("reading", ""), f"reading '{alt.get('readingTitle')}' (week {week})"):
@@ -181,13 +227,21 @@ for week in UNIT_WEEKS:
                 "tf": alt.get("tf", []),
                 "writing": alt.get("writing"),
                 "src": {"file": rel(rd_path), "at": f"days[{readings.index(alt)}]",
-                        "doc": week_doc(week, f"FND68_Week{week}_Reading_{readings.index(alt) + 1}_*.pdf"),
+                        "doc": week_doc(week, f"*Week{week}_Reading_{readings.index(alt) + 1}_*.pdf"),
                         "label": f"Week {week} reading {readings.index(alt) + 1}: {alt.get('readingTitle', '')}"},
             }
         if not is_safe(lesson["reading"], f"reading '{lesson['reading']['title']}' (week {week})"):
             lesson["reading"] = None
         days.append(lesson)
         deck_days.append(lesson)
+    # Booklet lessons beyond the deck's days (Week 1 has a fifth lesson, "Class language"): their words
+    # belong to the unit, so they join the end of its last day.
+    extra_ids: list[str] = []
+    for i in range(len(wk["days"]), len(hw)):
+        for j, row in enumerate(hw[i][1]):
+            wid = add_headway_word(row, week, i + 1, hw[i][0], j, hw[i][0], None)
+            if wid:
+                extra_ids.append(wid)
     # ---- Unit N = Week N (New Headway Beginner Unit N): one lesson per reading day, Sunday–Thursday
     unit_days = []
     for k, r in enumerate(readings):
@@ -200,7 +254,7 @@ for week in UNIT_WEEKS:
         if not is_safe({kk: r.get(kk) for kk in ("reading", "comp", "tf", "writing")}, f"reading '{r.get('readingTitle')}' (week {week})"):
             continue
         rsrc = {"file": rel(rd_path), "at": f"days[{k}]",
-                "doc": week_doc(week, f"FND68_Week{week}_Reading_{k + 1}_*.pdf"),
+                "doc": week_doc(week, f"*Week{week}_Reading_{k + 1}_*.pdf"),
                 "label": f"Week {week} reading {k + 1} ({r['day']}): {r.get('readingTitle', '')}"}
         unit_days.append({
             "id": f"u{week}d{k + 1}",
@@ -220,6 +274,8 @@ for week in UNIT_WEEKS:
             "speaking": dd["speaking"],
             "src": dd["src"],
         })
+    if extra_ids and unit_days:
+        unit_days[-1]["words"] = unit_days[-1]["words"] + [w for w in extra_ids if w not in unit_days[-1]["words"]]
     units.append({
         "n": week, "week": week, "collegeWeek": wk.get("collegeWeek"), "dates": wk.get("dates", ""),
         "focus": re.sub(r"^Headway Beginner Unit \d+:\s*", "", wk.get("focus", "")),
@@ -241,9 +297,19 @@ for week in UNIT_WEEKS:
             "p4": m.get("p4", []), "p5": m.get("p5", []),
             "writing": m.get("writing"),
             "src": {"file": rel(p), "at": "mock",
-                    "doc": week_doc(week, "FND_68_Week_*_Teacher_Version.docx"),
+                    "doc": week_doc(week, "*Week_*_Teacher_Version.docx"),
                     "label": f"Week {week} {m.get('shortTag', 'mock')} (teacher version has the key)"},
         })
+
+# ---------------------------------------------------------------- vocabulary-only weeks (Week 15)
+# Week 15 is a consolidation bank: the last A1 words from the Oxford 3000 list that Weeks 1–14 did not cover.
+# It has no unit, so its words are only in the vocabulary list (week 15, topic = the lesson's title).
+for week in range(1, 40):
+    if week in UNIT_WEEKS or not (HEADWAY / f"week{week}.txt").exists():
+        continue
+    for i, (title, rows) in enumerate(headway_lessons(week)):
+        for j, row in enumerate(rows):
+            add_headway_word(row, week, i + 1, title, j, title, None)
 
 # ---------------------------------------------------------------- topic words (A1 Vocabulary Topics)
 topics = []
@@ -311,14 +377,14 @@ for week in UNIT_WEEKS:
             dialogues.append({"id": f"dlg-{base}", "week": week, "theme": d.get("theme"), "grammar": d.get("grammar"),
                               "title": conv["title"], "setting": conv.get("setting", ""), "lines": conv["lines"],
                               "src": {"file": rel(p), "at": f"days[{i}].conv",
-                                      "doc": week_doc(week, "FND_68_Week_*_Conversations_A1.pdf"),
+                                      "doc": week_doc(week, "*Week_*_Conversations_A1.pdf"),
                                       "label": f"Week {week} conversation: {conv['title']}"}})
         ls = d.get("listen")
         if ls and is_safe(ls, f"listening '{ls.get('title')}' (week {week})"):
             listening.append({"id": f"lst-{base}", "week": week, "theme": d.get("theme"), **{k: ls.get(k) for k in
                               ("title", "type", "script", "mc", "notesTitle", "notes", "tip")},
                               "src": {"file": rel(p), "at": f"days[{i}].listen",
-                                      "doc": week_doc(week, "FND_68_Week_*_Listening_A1_Teacher_Version.pdf"),
+                                      "doc": week_doc(week, "*Week_*_Listening_A1_Teacher_Version.pdf"),
                                       "label": f"Week {week} listening: {ls['title']}"}})
         sp = d.get("speak")
         if sp and "p1" in sp:
@@ -330,7 +396,7 @@ for week in UNIT_WEEKS:
         if sp and is_safe(sp, f"speaking (week {week} {d.get('theme')})"):
             speaking.append({"id": f"spk-{base}", "week": week, "theme": d.get("theme"), **sp,
                              "src": {"file": rel(p), "at": f"days[{i}].speak",
-                                     "doc": week_doc(week, "FND_68_Week_*_Speaking_A1.pdf"),
+                                     "doc": week_doc(week, "*Week_*_Speaking_A1.pdf"),
                                      "label": f"Week {week} speaking: {d.get('theme')}"}})
 
 # ---------------------------------------------------------------- listening practice exams
@@ -362,10 +428,25 @@ out = {
     "listeningExams": listening_exams,
     "report": report,
 }
+if ONLY_VOCAB:
+    # keep the existing file; replace just the vocabulary and the word lists of the days
+    base = json.loads(OUT.read_text(encoding="utf-8"))
+    day_words = {d["id"]: d["words"] for d in days}
+    for d in base["days"]:
+        d["words"] = day_words[d["id"]]
+    unit_words = {(u["n"], d["id"]): d["words"] for u in units for d in u["days"]}
+    for u in base["units"]:
+        for d in u["days"]:
+            d["words"] = unit_words[(u["n"], d["id"])]
+    base["vocab"] = out["vocab"]
+    vocab_skips = ("word '", "topic word '")
+    base["report"]["skipped"] = [s for s in base["report"]["skipped"] if not s["item"].startswith(vocab_skips)] + \
+                                [s for s in report["skipped"] if s["item"].startswith(vocab_skips)]
+    out = base
 out["counts"] = {k: len(v) for k, v in out.items() if isinstance(v, list)}
 OUT.parent.mkdir(parents=True, exist_ok=True)
 OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
-print("Wrote", OUT.relative_to(APP))
+print("Wrote", OUT)
 print(json.dumps(out["counts"], indent=1))
 print("Teacher-name replacements:", report["nameReplacements"])
 print("Skipped items:", len(report["skipped"]))

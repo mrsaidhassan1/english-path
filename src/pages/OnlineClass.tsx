@@ -58,7 +58,12 @@ export function OnlineClassPanel() {
         for (const w of writing) if (w.marked_by && names[w.marked_by]) { const x = d.writing.find((y) => y.id === w.id); if (x) x.markedBy = names[w.marked_by]; }
         if (tasks) mergeOnlineAssignments(d, cls.id, tasks);
         refreshAssignmentDone(d, cls.id);
+        // learners removed online (e.g. duplicates): they stay here, unlinked, so they can be checked or deleted
+        const online = new Set(rows.map((x) => x.id));
+        for (const st of d.students) if (st.classId === cls.id && st.onlineId && !online.has(st.onlineId)) { st.onlineId = undefined; st.onlineAt = undefined; }
       });
+      const gone = students.filter((x) => x.onlineId && !rows.some((r) => r.id === x.onlineId)).length;
+      if (gone) toast(`${gone} learner${gone === 1 ? ' is' : 's are'} no longer in the online class (removed or duplicates). Check them in Students and delete any you do not need.`, 'info');
       setLast({ at: new Date().toISOString(), ...r, total: rows.length });
       toast(`Loaded ${rows.length} learners and ${writing.length} pieces of writing.`, 'good');
     } catch (e) { setErr(onlineError(e)); } finally { setBusy(false); }
