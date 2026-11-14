@@ -75,7 +75,7 @@
      "questions": [
       {
        "n": 6,
-       "q": "Riyadh is ___ than Jeddah in summer.",
+       "q": "In Riyadh, August is ___ than April.",
        "options": [
         "more hot",
         "hoter",
@@ -252,7 +252,7 @@
      "questions": [
       {
        "n": 21,
-       "q": "What time ___ the college finish?",
+       "q": "What time ___ the lesson finish?",
        "options": [
         "is",
         "do",
@@ -630,7 +630,7 @@
        "options": [
         "She sometimes is tired after class.",
         "She is sometimes tired after class.",
-        "She is tired sometimes after class."
+        "She is tired after sometimes class."
        ],
        "answer": 1
       },
@@ -2666,11 +2666,11 @@
       },
       {
        "n": 24,
-       "q": "The train from Riyadh to Dammam ___ about four hours.",
+       "q": "The bus to the airport ___ every thirty minutes.",
        "options": [
-        "take",
-        "taking",
-        "takes"
+        "leave",
+        "leaving",
+        "leaves"
        ],
        "answer": 2
       },
@@ -3305,11 +3305,11 @@
       },
       {
        "n": 78,
-       "q": "Which season has the shortest days in the Northern Hemisphere?",
+       "q": "Which season comes right after autumn?",
        "options": [
         "spring",
         "winter",
-        "autumn"
+        "summer"
        ],
        "answer": 1
       },

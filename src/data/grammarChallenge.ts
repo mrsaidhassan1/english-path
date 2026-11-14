@@ -64,7 +64,7 @@ export const QUESTION_NOTES: Record<string, Record<number, string>> = {
     18: '“My classes” is plural, so there is no -s on the verb: start.',
     19: 'Your brother = he. A question with he / she / it uses Does.',
     20: 'They + not → do not. “does” is only for he / she / it.',
-    21: 'The college = it. Question word + does + subject + base verb.',
+    21: 'The lesson = it. Question word + does + subject + base verb.',
     22: 'My sister = she, so do → does. “dos” is not a word.',
     23: 'After doesn’t we use the base verb: doesn’t live (not lives).',
     24: 'After Does we use the base verb: Does Sam study (not studies).',
