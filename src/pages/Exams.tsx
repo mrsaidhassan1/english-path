@@ -87,10 +87,10 @@ export function ExamsPage() {
           <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
             <h2 className="flex items-center gap-2 text-xl font-bold text-navy">{KIND_META[g].icon} {KIND_META[g].label}</h2>
             {g === 'listening' && LISTENING_WEEKS.length > 1 && (
-              <label className="flex items-center gap-2 font-semibold text-navy">Week
-                <select value={week} onChange={(e) => setWeek(Number(e.target.value))} aria-label="Choose the week"
+              <label className="flex items-center gap-2 font-semibold text-navy">Unit
+                <select value={week} onChange={(e) => setWeek(Number(e.target.value))} aria-label="Choose the unit"
                   className="min-h-[44px] rounded-2xl border-2 border-navy-100 bg-white px-3 font-bold text-navy">
-                  {LISTENING_WEEKS.map((w) => <option key={w} value={w}>Week {w}</option>)}
+                  {LISTENING_WEEKS.map((w) => <option key={w} value={w}>Unit {w}</option>)}
                 </select>
               </label>
             )}

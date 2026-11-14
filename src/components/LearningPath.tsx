@@ -26,7 +26,7 @@ export function LearningPath({ s, recommendedId, unlockAll, assigned, limit }: {
             <div className="mb-3 flex items-center gap-3">
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl text-white" style={{ background: m.colour }}><ModuleIcon name={m.icon} size={22} /></span>
               <div className="min-w-0 flex-1">
-                <Link to={`/lessons/${m.id}`} className="font-bold text-navy hover:underline">Unit {m.n}: {m.title}</Link>{m.week && <span className="ml-2 rounded-full bg-navy-50 px-2 py-0.5 text-xs font-bold text-navy-500">Week {m.week}</span>}
+                <Link to={`/lessons/${m.id}`} className="font-bold text-navy hover:underline">Unit {m.n}: {m.title}</Link>
                 <Ar className="text-sm">{m.titleAr}</Ar>
               </div>
               <span className="text-sm font-bold text-navy-400">{prog.done}/{prog.total}</span>

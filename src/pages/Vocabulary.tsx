@@ -123,7 +123,7 @@ function WordBrowser({ initialModule, initialTopic }: { initialModule: string | 
         <select value={mod} onChange={(e) => { setMod(e.target.value); setPage(0); }} className="min-h-[48px] rounded-2xl border-2 border-navy-100 bg-white px-3 font-semibold text-navy" aria-label="Topic">
           <option value="all">All units</option>
           {MODULES.map((m) => <option key={m.n} value={m.n}>Unit {m.n}: {m.title}</option>)}
-          {WEEK15_WORDS.length > 0 && <option value="week15">Week 15: extra A1 words ({WEEK15_WORDS.length})</option>}
+          {WEEK15_WORDS.length > 0 && <option value="week15">Extra A1 words ({WEEK15_WORDS.length})</option>}
         </select>
         <select value={status} onChange={(e) => { setStatus(e.target.value as 'all' | WordStatus); setPage(0); }} className="min-h-[48px] rounded-2xl border-2 border-navy-100 bg-white px-3 font-semibold text-navy" aria-label="Status">
           <option value="all">All status</option><option value="new">New</option><option value="learning">Learning</option><option value="review">Review</option><option value="mastered">Mastered</option>

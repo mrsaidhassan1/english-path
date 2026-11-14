@@ -13,7 +13,7 @@ export function LessonsPage() {
   const { learner: s, unlockAll, assigned } = useLearner();
   return (
     <div>
-      <PageHeader title="Lessons" ar="الدروس" sub={`${MODULES.length} units from A0 to A1, one for each week (Week 1–${MODULES.length}). Each unit has a lesson for every class day, Sunday to Thursday.`} icon={<BookOpen />} />
+      <PageHeader title="Lessons" ar="الدروس" sub={`${MODULES.length} units from A0 to A1. Each unit has a lesson for every class day, Sunday to Thursday.`} icon={<BookOpen />} />
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {MODULES.map((m) => {
           const open = moduleUnlocked(s, m, { unlockAll, assigned });
@@ -23,7 +23,7 @@ export function LessonsPage() {
               <div className="flex items-center gap-4 p-5" style={{ background: `linear-gradient(135deg, ${m.colour}22, transparent)` }}>
                 <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl text-white shadow-card" style={{ background: m.colour }}><ModuleIcon name={m.icon} size={28} /></span>
                 <div className="min-w-0 flex-1">
-                  <div className="text-sm font-bold text-navy-400">Unit {m.n}{m.week && <span className="ml-2 rounded-full bg-white/80 px-2 py-0.5 text-xs text-navy-500">Week {m.week}</span>}</div>
+                  <div className="text-sm font-bold text-navy-400">Unit {m.n}</div>
                   <h2 className="text-xl font-bold leading-tight text-navy">{m.title}</h2>
                   <Ar className="text-sm">{m.titleAr}</Ar>
                 </div>
@@ -63,7 +63,7 @@ export function ModulePage() {
         <div className="flex flex-wrap items-center gap-5 p-6 sm:p-8" style={{ background: `linear-gradient(135deg, ${m.colour}2a, #fff 70%)` }}>
           <span className="grid h-20 w-20 place-items-center rounded-3xl text-white shadow-lift" style={{ background: m.colour }}><ModuleIcon name={m.icon} size={40} /></span>
           <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-2 font-bold text-navy-400">Unit {m.n}{m.week && <span className="rounded-full bg-white/80 px-2.5 py-0.5 text-sm text-navy-500">Week {m.week}{m.dates ? ` · ${m.dates}` : ''}</span>}</div>
+            <div className="flex flex-wrap items-center gap-2 font-bold text-navy-400">Unit {m.n}{m.dates && <span className="rounded-full bg-white/80 px-2.5 py-0.5 text-sm text-navy-500">{m.dates}</span>}</div>
             <h1 className="text-3xl font-bold text-navy sm:text-4xl">{m.title}</h1>
             <Ar className="text-lg">{m.titleAr}</Ar>
             <p className="mt-1 text-lg text-navy-500">{m.subtitle}</p>
@@ -150,7 +150,7 @@ export function ModulePage() {
       {isTeacher && (
         <Card>
           <h2 className="flex items-center gap-2 text-lg font-bold text-navy"><FileText size={20} /> Sources (teacher only)</h2>
-          <p className="text-sm text-navy-400">{m.full ? `Built from the Week ${m.week} materials (A0 – A1 Weekly Materials).` : 'Built from the reusable template using these IATC files.'}</p>
+          <p className="text-sm text-navy-400">{m.full ? 'Built from the A0 – A1 Weekly Materials for this unit.' : 'Built from the reusable template using these IATC files.'}</p>
           <ul className="mt-2 space-y-1 text-sm">
             {[...new Map(m.sources.map((x) => [x.label, x])).values()].map((x) => (
               <li key={x.label} className="rounded-xl bg-navy-50 px-3 py-2"><b className="text-navy">{x.label}</b><br /><span className="break-all text-navy-400">{x.doc ?? x.file}</span></li>

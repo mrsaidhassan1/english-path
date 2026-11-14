@@ -74,7 +74,7 @@ function mockExam(m: (typeof IATC.mocks)[number]): Exam {
   }
   return {
     id: m.id, kind: 'mock', minutes: 45, src: m.src,
-    title: m.title.replace(/—.*$/, '').trim(),
+    title: m.title.replace(/—.*$/, '').replace(/\bWeek (\d+)/, 'Unit $1').trim(),
     description: `ELEM-style Reading (Parts 1–5, 25 marks)${m.writing ? ' + Writing (15 marks: Content, Organisation, Language)' : ''}.`,
     sections,
   };
@@ -87,7 +87,7 @@ function listeningExam(e: (typeof IATC.listeningExams)[number]): Exam {
   return {
     id: e.id, kind: 'listening', minutes: 20, src: e.src,
     title: `Listening: ${e.theme}`,
-    description: `A1 Listening practice (Week ${e.week}, ${e.day}). Every recording plays twice.`,
+    description: `A1 Listening practice (${e.day}). Every recording plays twice.`,
     sections: [
       {
         id: 'l1', title: 'Listening Part 1', skill: 'listening', kind: 'choice',

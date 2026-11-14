@@ -60,10 +60,10 @@ export function buildContentIndex(): ContentRecord[] {
   }
   for (const d of IATC.days) {
     const module = Math.min(UNIT_COUNT, d.week);
-    out.push(rec({ id: `day:${d.id}`, type: 'Daily lesson', title: `Week ${d.week} ${d.day}: ${d.theme}`, topic: d.theme, vocabTheme: d.theme, skill: 'reading', module, status: 'lesson', src: d.src }));
+    out.push(rec({ id: `day:${d.id}`, type: 'Daily lesson', title: `Unit ${module} ${d.day}: ${d.theme}`, topic: d.theme, vocabTheme: d.theme, skill: 'reading', module, status: 'lesson', src: d.src }));
   }
   for (const u of IATC.units) for (const d of u.days) {
-    out.push(rec({ id: `reading:${d.id}`, type: 'Reading handout', title: `Week ${u.week} ${d.day}: ${d.reading.title}`, topic: d.theme, vocabTheme: d.theme, skill: 'reading', module: u.n, status: 'lesson', src: d.reading.src }));
+    out.push(rec({ id: `reading:${d.id}`, type: 'Reading handout', title: `Unit ${u.n} ${d.day}: ${d.reading.title}`, topic: d.theme, vocabTheme: d.theme, skill: 'reading', module: u.n, status: 'lesson', src: d.reading.src }));
   }
   for (const g of IATC.grammar) {
     const key = GRAMMAR_KEYS.find((k) => k.deck === g.id);
@@ -82,10 +82,10 @@ export function buildContentIndex(): ContentRecord[] {
     out.push(rec({ id: `speaking:${s.id}`, type: 'Speaking task', title: s.talk.topic, topic: s.theme, vocabTheme: s.theme, skill: 'speaking', module, status: 'lesson', src: s.src }));
   }
   for (const m of IATC.mocks) {
-    out.push(rec({ id: `mock:${m.id}`, type: 'Mock exam', title: m.title, topic: 'ELEM Reading & Writing', vocabTheme: 'mixed', skill: 'reading', module: Math.min(UNIT_COUNT, m.week), status: 'exam', src: m.src, cefr: 'A1' }));
+    out.push(rec({ id: `mock:${m.id}`, type: 'Mock exam', title: m.title.replace(/\bWeek (\d+)/, 'Unit $1'), topic: 'ELEM Reading & Writing', vocabTheme: 'mixed', skill: 'reading', module: Math.min(UNIT_COUNT, m.week), status: 'exam', src: m.src, cefr: 'A1' }));
   }
   for (const e of IATC.listeningExams) {
-    out.push(rec({ id: `lexam:${e.id}`, type: 'Listening exam', title: `Week ${e.week} ${e.day}: ${e.theme}`, topic: e.theme, vocabTheme: e.theme, skill: 'listening', module: e.week ? Math.min(UNIT_COUNT, e.week) : moduleForTheme(e.theme), status: 'exam', src: e.src, cefr: 'A1' }));
+    out.push(rec({ id: `lexam:${e.id}`, type: 'Listening exam', title: `${e.week ? `Unit ${Math.min(UNIT_COUNT, e.week)} ` : ''}${e.day}: ${e.theme}`, topic: e.theme, vocabTheme: e.theme, skill: 'listening', module: e.week ? Math.min(UNIT_COUNT, e.week) : moduleForTheme(e.theme), status: 'exam', src: e.src, cefr: 'A1' }));
   }
   for (const t of IATC.topics) {
     out.push(rec({ id: `topic:${t.id}`, type: 'Topic list', title: t.title, topic: t.title, vocabTheme: t.title, skill: 'writing', module: moduleForTheme(t.title), status: 'revision', src: { file: 'tools/weekly-pack/content/topic-words/a1_topics.txt', label: `A1 Vocabulary Topics · ${t.title}`, doc: 'FND68/CLass FND 68/A0 - A1 Resources/A1 Vocabulay/A1 Vocabulary Topics/FND_68_A1_Vocabulary_Topics_Words.docx' } }));
