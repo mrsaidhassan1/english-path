@@ -8,7 +8,8 @@ import { Markup } from '../Markup';
 import { encourage, encourageAr, praise, praiseAr } from '../../lib/feedback';
 import { answerLine, normalise, stripMarkup } from '../../lib/text';
 import { shuffle, rngFrom, hashString, optionOrder } from '../../lib/rng';
-import { speak, ttsSupported } from '../../lib/speech';
+import { filledSentence, speak, ttsSupported } from '../../lib/speech';
+import { useSay } from '../../hooks/useSay';
 import { getWord } from '../../data/content';
 import { wordImage } from '../../data/images';
 import { NextButton, Option, Shell, type ActivityProps } from './common';
@@ -29,8 +30,17 @@ function useSteps(total: number, onDone: (r: { score: number; total: number }) =
 }
 
 // ------------------------------------------------------------------ multiple choice
+/** What to read aloud once a question is answered: the right answer (in its sentence if the question has a gap). */
+function mcqSpoken(item: McqItem): string | null {
+  if (item.say) return null; // a listening question: the learner has already heard it
+  const a = item.options[item.answer];
+  if (/^(true|false|yes|no)$/i.test(a.trim())) return null;
+  return item.q.includes('___') ? filledSentence(item.q, a) : a;
+}
+
 export function McqQuestion({ item, onResult, autoSay = false }: { item: McqItem; onResult: (correct: boolean) => void; autoSay?: boolean }) {
   const { data } = useApp();
+  const say = useSay();
   const [picked, setPicked] = useState<number | null>(null);
   useEffect(() => {
     setPicked(null);
@@ -60,6 +70,7 @@ export function McqQuestion({ item, onResult, autoSay = false }: { item: McqItem
             onClick={() => {
               setPicked(k);
               onResult(k === item.answer);
+              say(mcqSpoken(item));
             }}
           >
             {item.options[k]}
@@ -110,13 +121,16 @@ export function Gap({ activity, onAnswer, onDone }: ActivityProps<'gap'>) {
 }
 
 function GapQ({ item, last, tagGrammar, skill = 'grammar', onAnswer, onNext }: QProps<GapItem> & { skill?: Skill }) {
+  const say = useSay();
   const [val, setVal] = useState('');
   const [res, setRes] = useState<boolean | null>(null);
   const order = useMemo(() => (item.options ? optionOrder(item.options, item.text) : []), [item]);
+  const spoken = filledSentence(item.text, item.answer);
   const check = (answer: string) => {
     const ok = normalise(answer) === normalise(item.answer);
     setVal(answer);
     setRes(ok);
+    say(spoken); // read the finished sentence (with the right answer)
     onAnswer({ correct: ok, skill: item.grammar ?? tagGrammar ? 'grammar' : skill, grammar: item.grammar ?? tagGrammar });
   };
   const [before, after] = item.text.split('___');
@@ -152,6 +166,7 @@ function GapQ({ item, last, tagGrammar, skill = 'grammar', onAnswer, onNext }: Q
       {res !== null && (
         <div className="mt-4">
           <Feedback ok={res} en={res ? 'Great job!' : `Nice try! ${answerLine(item.answer)}`} ar={res ? 'أحسنت!' : 'محاولة جيدة!'} detail={item.explain} />
+          {!item.say && ttsSupported() && <div className="mt-2 flex gap-2"><AudioButton text={spoken} size="sm" label={`Listen: ${spoken}`} /><AudioButton text={spoken} slow size="sm" /></div>}
           <NextButton last={last} onClick={() => onNext(res)} />
         </div>
       )}
@@ -180,12 +195,14 @@ function OrderQ({ item, last, tagGrammar, onAnswer, onNext }: QProps<OrderItem>)
     if (s.every((x, k) => x.k === k) && t.length > 1) s = [...s.slice(1), s[0]];
     return s;
   }, [item]);
+  const say = useSay();
   const [built, setBuilt] = useState<number[]>([]);
   const [res, setRes] = useState<boolean | null>(null);
   const sentence = built.map((k) => words[k].w).join(' ').replace(/ ([?.!,])/g, '$1');
   const check = () => {
     const ok = normalise(sentence) === normalise(item.answer);
     setRes(ok);
+    say(item.answer); // read the right sentence
     onAnswer({ correct: ok, skill: 'grammar', grammar: item.grammar ?? tagGrammar });
   };
   return (
@@ -199,7 +216,7 @@ function OrderQ({ item, last, tagGrammar, onAnswer, onNext }: QProps<OrderItem>)
       </div>
       <div className="flex flex-wrap gap-2">
         {words.map((x, k) => (
-          <button key={k} disabled={built.includes(k) || res !== null} onClick={() => setBuilt([...built, k])}
+          <button key={k} disabled={built.includes(k) || res !== null} onClick={() => { setBuilt([...built, k]); say(x.w); }}
             className="min-h-[52px] rounded-xl border-2 border-navy-100 bg-white px-4 text-xl font-semibold text-navy shadow-card transition hover:border-navy-300 disabled:opacity-25">{x.w}</button>
         ))}
       </div>
@@ -211,7 +228,7 @@ function OrderQ({ item, last, tagGrammar, onAnswer, onNext }: QProps<OrderItem>)
       ) : (
         <div className="mt-4">
           <Feedback ok={res} en={res ? 'Excellent!' : 'Good effort. Look at the right order.'} ar={res ? 'ممتاز!' : 'محاولة جيدة!'} detail={!res && <span>Correct order: <b>{item.answer}</b></span>} />
-          <div className="mt-2"><AudioButton text={item.answer} size="sm" /></div>
+          <div className="mt-2 flex gap-2"><AudioButton text={item.answer} size="sm" /><AudioButton text={item.answer} slow size="sm" /></div>
           <NextButton last={last} onClick={() => onNext(res)} />
         </div>
       )}
@@ -230,6 +247,7 @@ export function ErrorFix({ activity, onAnswer, onDone }: ActivityProps<'error'>)
 }
 
 function ErrorQ({ item, last, tagGrammar, onAnswer, onNext }: QProps<ErrorItem>) {
+  const say = useSay();
   const toks = item.sentence.split(' ');
   const [tapped, setTapped] = useState<number | null>(null);
   const [miss, setMiss] = useState<number | null>(null);
@@ -259,6 +277,7 @@ function ErrorQ({ item, last, tagGrammar, onAnswer, onNext }: QProps<ErrorItem>)
               <Option key={o} disabled={res !== null} state={res === null ? 'idle' : o === item.right ? (res ? 'correct' : 'reveal') : 'idle'}
                 onClick={() => {
                   setRes(o === item.right);
+                  say(fixed);
                   onAnswer({ correct: o === item.right && firstTry, skill: 'grammar', grammar: item.grammar ?? tagGrammar });
                 }}>{o}</Option>
             ))}
@@ -268,6 +287,7 @@ function ErrorQ({ item, last, tagGrammar, onAnswer, onNext }: QProps<ErrorItem>)
       {res !== null && (
         <div className="mt-4">
           <Feedback ok={res} en={res ? 'Well done!' : 'Nice try!'} ar={res ? 'أحسنت!' : 'محاولة جيدة!'} detail={<span>Correct: <b>{fixed}</b></span>} />
+          <div className="mt-2"><AudioButton text={fixed} size="sm" /></div>
           <NextButton last={last} onClick={() => onNext(res && firstTry)} />
         </div>
       )}

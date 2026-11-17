@@ -92,6 +92,31 @@ function playClip(clip: string, rate: number): Promise<boolean> {
   });
 }
 
+// ------------------------------------------------------------------ what to read aloud in exercises
+const ARABIC = /[؀-ۿ]/;
+
+/** English text worth reading aloud: has letters, no Arabic (the Arabic side of a match is not spoken). */
+export const speakable = (t: string | undefined | null): t is string => !!t && !ARABIC.test(t) && /[a-z]/i.test(stripMarkup(t));
+
+/**
+ * The finished sentence of a gap item, ready to read aloud.
+ * "one student → two ___" + "students" → "one student, two students";
+ * "I ___ (visit) my aunt." + "visited" → "I visited my aunt.";
+ * "Omar's car. 's = ___" → "Omar's car." (the "is or possessive?" question is not read).
+ */
+export function filledSentence(text: string, answer: string): string {
+  let t = stripMarkup(text);
+  if (/'s\s*=/.test(t)) t = t.slice(0, t.search(/\s*'s\s*=/)) || t;
+  else t = t.replace(/_{2,}/, answer);
+  return t
+    .replace(/_{2,}/g, ' ')
+    .replace(/\s*\([^)]*\)/g, '')
+    .replace(/\s*(→|->)\s*/g, ', ')
+    .replace(/\s+([?.!,])/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 // ------------------------------------------------------------------ public API
 let token = 0;
 

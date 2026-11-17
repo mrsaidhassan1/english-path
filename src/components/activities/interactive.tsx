@@ -6,11 +6,16 @@ import { Markup } from '../Markup';
 import { praise, praiseAr, encourageAr } from '../../lib/feedback';
 import { hashString, rngFrom, shuffle } from '../../lib/rng';
 import { stripMarkup } from '../../lib/text';
+import { speakable } from '../../lib/speech';
+import { useSay } from '../../hooks/useSay';
 import { NextButton, Option, Shell, type ActivityProps } from './common';
 
 // ------------------------------------------------------------------ matching
 export function Match({ activity, onAnswer, onDone }: ActivityProps<'match'>) {
+  const say = useSay();
   const pairs = activity.pairs;
+  /** The English side of a pair (the left normally; the right if the left is Arabic). */
+  const english = (k: number) => (speakable(pairs[k][0]) ? pairs[k][0] : pairs[k][1]);
   const right = useMemo(() => shuffle(pairs.map((p, k) => ({ t: p[1], k })), rngFrom(hashString(activity.id))), [pairs, activity.id]);
   const [sel, setSel] = useState<number | null>(null);
   const [done, setDone] = useState<Set<number>>(new Set());
@@ -25,6 +30,7 @@ export function Match({ activity, onAnswer, onDone }: ActivityProps<'match'>) {
       setDone(nd);
       setSel(null);
       setNote('');
+      say(english(l)); // a match: hear the word again
       onAnswer({ correct: true, skill: 'vocabulary' });
     } else {
       setNote(`Not a match for “${pairs[l][0]}”. Try another one.`);
@@ -41,7 +47,7 @@ export function Match({ activity, onAnswer, onDone }: ActivityProps<'match'>) {
         <div className="space-y-3">
           <div className="text-sm font-bold uppercase tracking-wide text-navy-400">{activity.leftLabel ?? 'A'}</div>
           {pairs.map((p, k) => (
-            <Option key={k} disabled={done.has(k)} state={done.has(k) ? 'correct' : sel === k ? 'selected' : 'idle'} onClick={() => setSel(k)}>{p[0]}</Option>
+            <Option key={k} disabled={done.has(k)} state={done.has(k) ? 'correct' : sel === k ? 'selected' : 'idle'} onClick={() => { setSel(k); say(p[0]); }}>{p[0]}</Option>
           ))}
         </div>
         <div className="space-y-3">
@@ -67,6 +73,7 @@ export function Match({ activity, onAnswer, onDone }: ActivityProps<'match'>) {
 
 // ------------------------------------------------------------------ drag & drop sorting (tap also works)
 export function Sort({ activity, onAnswer, onDone }: ActivityProps<'sort'>) {
+  const say = useSay();
   const items = useMemo(() => shuffle(activity.items.map((x, k) => ({ ...x, k })), rngFrom(hashString(activity.id))), [activity]);
   const [placed, setPlaced] = useState<Record<number, number>>({});
   const [sel, setSel] = useState<number | null>(null);
@@ -101,7 +108,7 @@ export function Sort({ activity, onAnswer, onDone }: ActivityProps<'sort'>) {
       <div className="mb-5 flex min-h-[64px] flex-wrap gap-2 rounded-2xl bg-navy-50 p-3" aria-label="Words to sort">
         {remaining.length === 0 && <span className="px-2 py-3 text-lg font-semibold text-mint-700">All sorted! 🎉</span>}
         {remaining.map((x) => (
-          <button key={x.k} draggable onDragStart={(e) => e.dataTransfer.setData('text/plain', String(x.k))} onClick={() => setSel(sel === x.k ? null : x.k)}
+          <button key={x.k} draggable onDragStart={(e) => e.dataTransfer.setData('text/plain', String(x.k))} onClick={() => { if (sel !== x.k) say(x.text); setSel(sel === x.k ? null : x.k); }}
             aria-pressed={sel === x.k}
             className={`min-h-[52px] cursor-grab rounded-xl border-2 bg-white px-4 text-lg font-semibold text-navy shadow-card active:cursor-grabbing ${sel === x.k ? 'border-navy ring-2 ring-navy' : 'border-navy-100'}`}>{x.text}</button>
         ))}
@@ -134,6 +141,7 @@ export function Sort({ activity, onAnswer, onDone }: ActivityProps<'sort'>) {
 
 // ------------------------------------------------------------------ dialogue building
 export function DialogueBuild({ activity, onAnswer, onDone }: ActivityProps<'dialogue'>) {
+  const say = useSay();
   const lines = activity.dialogue.lines;
   const [shown, setShown] = useState(1);
   const [pick, setPick] = useState<number | null>(null);
@@ -167,7 +175,7 @@ export function DialogueBuild({ activity, onAnswer, onDone }: ActivityProps<'dia
           <div className="grid gap-2">
             {step.options.map((o, k) => (
               <Option key={k} disabled={pick !== null} state={pick === null ? 'idle' : k === step.answer ? (pick === k ? 'correct' : 'reveal') : k === pick ? 'wrong' : 'idle'}
-                onClick={() => { setPick(k); const ok = k === step.answer; if (ok) setScore(score + 1); onAnswer({ correct: ok, skill: 'speaking' }); }}>{o}</Option>
+                onClick={() => { setPick(k); const ok = k === step.answer; if (ok) setScore(score + 1); say(stripMarkup(step.options[step.answer])); onAnswer({ correct: ok, skill: 'speaking' }); }}>{o}</Option>
             ))}
           </div>
           {pick !== null && <NextButton onClick={advance} label="Continue" />}
