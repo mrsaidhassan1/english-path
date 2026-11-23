@@ -1,4 +1,4 @@
-// A1 Graded Readers (Weeks 1-15): one short story per week, shown on the Vocabulary page.
+// A1 Graded Readers (Weeks 1-15): one short story per week, shown on the Reading page (/reading?week=N).
 // Data: src/data/generated/graded-readers.json, made by scripts/import_graded_readers.py (student version: no teacher notes).
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -30,7 +30,7 @@ export default function GradedReaders() {
   const reader = READERS.find((r) => r.week === week);
   const open = (w: number | null) => {
     stopSpeaking();
-    setParams(w ? { list: 'readers', week: String(w) } : { list: 'readers' });
+    setParams(w ? { week: String(w) } : {});
   };
   return reader ? <ReaderView reader={reader} open={open} /> : <ReaderList open={open} />;
 }
@@ -38,10 +38,7 @@ export default function GradedReaders() {
 function ReaderList({ open }: { open: (w: number) => void }) {
   return (
     <div>
-      <Card className="mb-4 bg-navy-50/60">
-        <h2 className="flex items-center gap-2 text-lg font-bold text-navy"><BookOpen size={22} /> A1 Graded Readers</h2>
-        <p className="mt-1 text-navy-500">One short story for every week. Read it, listen to it, then check the new words.</p>
-      </Card>
+      <h2 className="mb-3 flex items-center gap-2 text-lg font-bold text-navy"><BookOpen size={22} /> A1 Graded Readers · Weeks 1–15</h2>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {READERS.map((r) => (
           <button key={r.week} type="button" onClick={() => open(r.week)} className="text-left">

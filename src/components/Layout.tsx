@@ -3,7 +3,7 @@ import { onlineEnabled, teacherSignOut } from '../lib/online';
 import { useEffect, useState, type ReactNode } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {
-  Home, Route, BookOpen, Layers, Mic, Dumbbell, RefreshCcw, ClipboardCheck, BarChart3, LayoutDashboard, Presentation, MoreHorizontal, LogOut, Languages, X, BookText,
+  Home, Route, BookOpen, Layers, Mic, Dumbbell, RefreshCcw, ClipboardCheck, BarChart3, LayoutDashboard, Presentation, MoreHorizontal, LogOut, Languages, X, BookText, LibraryBig,
 } from 'lucide-react';
 import { useSyncState } from '../hooks/useOnlineSync';
 import { Cloud, CloudOff, RefreshCw, UserRound } from 'lucide-react';
@@ -18,6 +18,7 @@ export const NAV = [
   { to: '/learning', label: 'My Learning', ar: 'تعلّمي', icon: Route },
   { to: '/lessons', label: 'Lessons', ar: 'الدروس', icon: BookOpen },
   { to: '/vocabulary', label: 'Vocabulary', ar: 'المفردات', icon: Layers },
+  { to: '/reading', label: 'Reading', ar: 'القراءة', icon: LibraryBig },
   { to: '/grammar', label: 'Grammar', ar: 'القواعد', icon: BookText },
   { to: '/speaking', label: 'Speaking', ar: 'التحدث', icon: Mic },
   { to: '/practice', label: 'Practice', ar: 'التدريب', icon: Dumbbell },
@@ -56,7 +57,7 @@ export function Layout({ children }: { children: ReactNode }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [loc.pathname]);
-  const mobileMain = items.filter((n) => ['/', '/learning', '/lessons', '/vocabulary', '/grammar'].includes(n.to));
+  const mobileMain = items.filter((n) => ['/', '/learning', '/lessons', '/vocabulary', '/reading', '/grammar'].includes(n.to));
   const viewAs = useViewAsStudent();
   const signOut = () => {
     // a teacher on the online version also leaves their staff sign-in
@@ -134,17 +135,17 @@ export function Layout({ children }: { children: ReactNode }) {
       </div>
 
       {/* Mobile bottom nav */}
-      <nav className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-6 border-t border-navy-100 bg-white pb-[env(safe-area-inset-bottom)] lg:hidden" aria-label="Main">
+      <nav className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-7 border-t border-navy-100 bg-white pb-[env(safe-area-inset-bottom)] lg:hidden" aria-label="Main">
         {mobileMain.map((n) => {
           const Icon = n.icon;
           return (
-            <NavLink key={n.to} to={n.to} end={n.end} className={({ isActive }) => `flex min-h-[60px] flex-col items-center justify-center gap-0.5 text-xs font-semibold ${isActive ? 'text-coral-700' : 'text-navy-400'}`}>
+            <NavLink key={n.to} to={n.to} end={n.end} className={({ isActive }) => `flex min-h-[60px] min-w-0 flex-col items-center justify-center gap-0.5 text-[11px] font-semibold sm:text-xs ${isActive ? 'text-coral-700' : 'text-navy-400'}`}>
               <Icon size={22} aria-hidden="true" />
               {n.label.replace('My ', '')}
             </NavLink>
           );
         })}
-        <button onClick={() => setMore(true)} className="flex min-h-[60px] flex-col items-center justify-center gap-0.5 text-xs font-semibold text-navy-400" aria-haspopup="dialog">
+        <button onClick={() => setMore(true)} className="flex min-h-[60px] min-w-0 flex-col items-center justify-center gap-0.5 text-[11px] font-semibold sm:text-xs text-navy-400" aria-haspopup="dialog">
           <MoreHorizontal size={22} /> More
         </button>
       </nav>
