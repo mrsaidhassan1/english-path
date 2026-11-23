@@ -24,6 +24,7 @@ describe('recorded voices', () => {
     for (const m of MODULES) for (const l of m.lessons) for (const a of l.activities) {
       if (a.kind === 'reading') need(a.text);
       if (a.kind === 'watch') a.dialogue.lines.forEach(([who, t]) => need(t, who));
+      if (a.kind === 'listening') a.parts.forEach((p) => [...(p.audio ?? []), ...p.items.flatMap((q) => q.say ?? [])].forEach(([who, t]) => need(t, who)));
     }
     expect(missing).toEqual([]);
   });

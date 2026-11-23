@@ -7,6 +7,7 @@ import type { Activity, Dialogue, GapItem, Lesson, McqItem, Module, SourceRef, S
 import { existingWords, getDialogue, getListening, getUnitData, getWord, IATC, type IatcUnitDay } from '../content';
 import { autoMatch, autoOrder, autoPicture, dialogueBuilder, optionsWith, tag } from './builder';
 import { stripMarkup } from '../../lib/text';
+import { listeningParts } from '../listeningParts';
 
 interface UnitCfg {
   n: number;
@@ -244,6 +245,15 @@ function dayLesson(n: number, d: IatcUnitDay, k: number, key0: string): Lesson {
     });
   }
 
+  // The lesson's A1 Listening practice paper (Week N Lesson M), just before the writing
+  const lx = IATC.listeningExams.find((e) => e.week === n && e.day === d.day);
+  if (lx) {
+    acts.push({
+      kind: 'listening', id: id('listen'), title: `Listening: ${lx.theme}`, prompt: 'Listen and answer the questions.', promptAr: 'استمع وأجب عن الأسئلة.',
+      parts: listeningParts(lx), tags: tag(n, 'listening', topic, undefined, 'exam'), src: lx.src,
+    });
+  }
+
   const w = d.writing;
   if (w?.prompt && w.model) {
     acts.push({
@@ -255,7 +265,7 @@ function dayLesson(n: number, d: IatcUnitDay, k: number, key0: string): Lesson {
 
   return {
     id: `u${n}-d${k + 1}`, module: n, title: `${d.day}: ${r.title || d.theme}`, titleAr: DAY_AR[d.day], day: d.day, type: 'day',
-    minutes: Math.max(10, acts.length * 3), activities: acts,
+    minutes: Math.max(10, acts.length * 3 + (lx ? 7 : 0)), activities: acts, // a listening paper takes about 10 minutes
   };
 }
 

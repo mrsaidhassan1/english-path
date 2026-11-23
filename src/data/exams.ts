@@ -4,6 +4,7 @@ import { IATC, getUnitData } from './content';
 import { MODULES } from './modules';
 import { SPEAKING_PART1, SPEAKING_SRC } from './speaking';
 import { WRITING_MAX } from './writingRubric';
+import { listeningParts } from './listeningParts';
 
 export interface ExamQuestion {
   q: string;
@@ -81,33 +82,11 @@ function mockExam(m: (typeof IATC.mocks)[number]): Exam {
 }
 
 function listeningExam(e: (typeof IATC.listeningExams)[number]): Exam {
-  const p3items = (e.p3.items as [string, string | boolean][]).map(([q, a]) => ({ q, options: TF, answer: a === true || a === 'True' || a === 'T' ? 0 : 1 }));
-  const p2Sentences = e.p2.sentences;
-  const p2Script: DialogueLine[] = [[e.p2.speaker, p2Sentences.map((s) => s.text.replace(/[{}]/g, '')).join(' ')]];
   return {
     id: e.id, kind: 'listening', minutes: 20, src: e.src,
     title: `Listening: ${e.theme}`,
     description: `A1 Listening practice (${e.day}). Every recording plays twice.`,
-    sections: [
-      {
-        id: 'l1', title: 'Listening Part 1', skill: 'listening', kind: 'choice',
-        instructions: 'Listen to each short dialogue. Choose the right answer.', instructionsAr: 'استمع لكل حوار قصير واختر الإجابة الصحيحة.',
-        items: e.p1.items.map((it) => ({ q: it.q, options: it.opts, answer: it.ans, say: it.lines })),
-      },
-      {
-        id: 'l2', title: `Listening Part 2 — ${e.p2.title}`, skill: 'listening', kind: 'choice', audio: p2Script,
-        instructions: 'Listen. Choose the word you hear for each gap.', instructionsAr: 'استمع واختر الكلمة التي تسمعها لكل فراغ.',
-        items: p2Sentences.filter((s) => s.opts).map((s) => {
-          const ans = s.text.match(/\{([^}]+)\}/)?.[1] ?? '';
-          return { q: s.text.replace(/\{[^}]+\}/, '______'), options: s.opts!, answer: s.opts!.indexOf(ans) };
-        }),
-      },
-      {
-        id: 'l3', title: `Listening Part 3 — ${e.p3.title}`, skill: 'listening', kind: 'choice', audio: e.p3.lines,
-        instructions: 'Listen to the conversation. Are the sentences True or False?', instructionsAr: 'استمع للمحادثة. هل الجمل صحيحة أم خاطئة؟',
-        items: p3items,
-      },
-    ],
+    sections: listeningParts(e).map((p) => ({ ...p, skill: 'listening' as const, kind: 'choice' as const })),
   };
 }
 

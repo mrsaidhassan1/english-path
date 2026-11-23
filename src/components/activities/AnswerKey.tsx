@@ -22,6 +22,10 @@ export function answerLines(a: Activity): KeyLine[] {
     case 'dialogue': return Object.entries(a.steps).map(([n, s]) => ({ q: `${a.dialogue.lines[Number(n)]?.[0] ?? 'Line'} (line ${Number(n) + 1})`, a: stripMarkup(s.options[s.answer]) }));
     case 'write': return [{ q: 'Model answer', a: a.task.model, note: a.task.bullets.length ? `Points: ${a.task.bullets.join(' · ')}` : undefined }];
     case 'speak': return a.task.model ? [{ q: 'Model answer', a: a.task.model }] : [];
+    case 'listening': return a.parts.flatMap((p, pi) => p.items.map((x) => ({
+      q: `Part ${pi + 1}: ${stripMarkup(x.q)}`, a: x.options[x.answer],
+      note: x.say ? x.say.map(([who, t]) => `${who}: ${stripMarkup(t)}`).join(' / ') : undefined,
+    })));
     default: return [];
   }
 }

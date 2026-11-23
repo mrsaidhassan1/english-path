@@ -23,6 +23,19 @@ describe('units', () => {
     expect(REVIEWS).toHaveLength(7);
   });
 
+  it('puts each A1 Listening paper (Week N Lesson M) in its lesson, just before the writing', () => {
+    const missing: string[] = [];
+    for (const m of MODULES) for (const l of m.lessons.filter((x) => x.type === 'day')) {
+      const kinds = l.activities.map((a) => a.kind);
+      const k = kinds.indexOf('listening');
+      if (k < 0) { missing.push(l.id); continue; }
+      expect(kinds[k + 1], l.id).toBe('write');
+      const a = l.activities[k];
+      if (a.kind === 'listening') for (const p of a.parts) for (const q of p.items) expect(q.answer, `${l.id} ${q.q}`).toBeGreaterThanOrEqual(0);
+    }
+    expect(missing).toEqual(['u1-d1']); // the Week 1 papers start at Lesson 2
+  });
+
   it('every day lesson has its reading (from the Week N handout) and a writing task', () => {
     for (const m of MODULES) for (const l of m.lessons.filter((x) => x.type === 'day')) {
       const kinds = l.activities.map((a) => a.kind);

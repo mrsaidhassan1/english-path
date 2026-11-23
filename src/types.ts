@@ -65,6 +65,10 @@ export interface OrderItem { answer: string; grammar?: string }
 export interface ErrorItem { sentence: string; wrong: string; right: string; options: string[]; grammar?: string }
 export interface PictureItem { word: string; options: string[]; answer: string } // vocab ids
 export interface DialogueStep { options: string[]; answer: number }
+/** One question of a listening paper: `say` = its own short recording (Part 1). */
+export interface ListeningQ { q: string; options: string[]; answer: number; say?: DialogueLine[] }
+/** One part of a listening paper: `audio` = one recording for the whole part (Parts 2 and 3). */
+export interface ListeningPart { id: string; title: string; instructions: string; instructionsAr: string; audio?: DialogueLine[]; items: ListeningQ[] }
 
 export type Activity =
   | (ActivityBase & { kind: 'mcq'; items: McqItem[] })
@@ -81,6 +85,7 @@ export type Activity =
   | (ActivityBase & { kind: 'flashcards'; words: string[] })
   | (ActivityBase & { kind: 'grammar'; points: GrammarPoint[] })
   | (ActivityBase & { kind: 'watch'; dialogue: Dialogue })
+  | (ActivityBase & { kind: 'listening'; parts: ListeningPart[] })
   | (ActivityBase & { kind: 'reading'; text: string; textTitle: string; questions: McqItem[] });
 
 export type ActivityKind = Activity['kind'];
