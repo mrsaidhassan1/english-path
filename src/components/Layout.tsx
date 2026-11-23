@@ -18,8 +18,8 @@ export const NAV = [
   { to: '/learning', label: 'My Learning', ar: 'تعلّمي', icon: Route },
   { to: '/lessons', label: 'Lessons', ar: 'الدروس', icon: BookOpen },
   { to: '/vocabulary', label: 'Vocabulary', ar: 'المفردات', icon: Layers },
-  { to: '/reading', label: 'Reading', ar: 'القراءة', icon: LibraryBig },
   { to: '/grammar', label: 'Grammar', ar: 'القواعد', icon: BookText },
+  { to: '/reading', label: 'Reading', ar: 'القراءة', icon: LibraryBig },
   { to: '/speaking', label: 'Speaking', ar: 'التحدث', icon: Mic },
   { to: '/practice', label: 'Practice', ar: 'التدريب', icon: Dumbbell },
   { to: '/review', label: 'Review', ar: 'المراجعة', icon: RefreshCcw },
@@ -57,7 +57,7 @@ export function Layout({ children }: { children: ReactNode }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [loc.pathname]);
-  const mobileMain = items.filter((n) => ['/', '/learning', '/lessons', '/vocabulary', '/reading', '/grammar'].includes(n.to));
+  const mobileMain = items.filter((n) => ['/', '/learning', '/lessons', '/vocabulary', '/grammar', '/reading'].includes(n.to));
   const viewAs = useViewAsStudent();
   const signOut = () => {
     // a teacher on the online version also leaves their staff sign-in
