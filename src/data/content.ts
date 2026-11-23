@@ -1,5 +1,6 @@
 // Typed access to the IATC resources imported by scripts/import_iatc_content.py.
 import raw from './generated/iatc-content.json';
+import extraListening from './extraListening.json';
 import type { DialogueLine, SourceRef, VocabItem } from '../types';
 
 export interface IatcDay {
@@ -113,7 +114,14 @@ interface RawContent {
   report: { skipped: { item: string; reason: string }[]; nameReplacements: number };
 }
 
-export const IATC = raw as unknown as RawContent;
+// Papers written for the app where the weekly pack has none (Week 1 Lesson 2), in week / lesson order.
+const rawIatc = raw as unknown as RawContent;
+const lessonOf = (e: IatcListeningExam) => Number(e.day.match(/\d+/)?.[0] ?? 0);
+export const IATC: RawContent = {
+  ...rawIatc,
+  listeningExams: [...rawIatc.listeningExams, ...(extraListening as unknown as IatcListeningExam[])]
+    .sort((a, b) => a.week - b.week || lessonOf(a) - lessonOf(b)),
+};
 
 const vocabById = new Map(IATC.vocab.map((v) => [v.id, v]));
 const dayById = new Map(IATC.days.map((d) => [d.id, d]));

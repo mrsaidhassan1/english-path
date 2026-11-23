@@ -33,7 +33,7 @@ describe('units', () => {
       const a = l.activities[k];
       if (a.kind === 'listening') for (const p of a.parts) for (const q of p.items) expect(q.answer, `${l.id} ${q.q}`).toBeGreaterThanOrEqual(0);
     }
-    expect(missing).toEqual(['u1-d1']); // the Week 1 papers start at Lesson 2
+    expect(missing).toEqual([]); // Week 1 Lesson 2's paper is written for the app (extraListening.json)
   });
 
   it('every day lesson has its reading (from the Week N handout) and a writing task', () => {

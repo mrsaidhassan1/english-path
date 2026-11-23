@@ -1,0 +1,130 @@
+[
+  {
+    "id": "lx-w1d1b",
+    "week": 1, "day": "Lesson 2", "version": "0.1",
+    "theme": "Greetings: How are you?",
+    "grammar": "How are you? • am / is / are • I'm / he's / we're",
+    "reading": "How Are You Today?",
+    "cast": { "Mr Hamid": "am_fenrir", "Nasser": "am_puck", "Rakan": "am_puck", "Majed": "am_michael", "Omar": "am_michael",
+              "Yasser": "am_puck", "Teacher": "am_fenrir", "Hamad": "am_michael", "Waleed": "am_puck", "Ali": "am_michael", "Saleh": "am_fenrir" },
+    "p1": {
+      "example": {
+        "q": "How is Nasser today?",
+        "opts": ["fine", "very well", "OK", "good"], "ans": 0,
+        "lines": [
+          ["Mr Hamid", "Hello, Nasser. How are you today?"],
+          ["Nasser", "I'm fine, thank you. And you?"],
+          ["Mr Hamid", "Very well, thanks."]
+        ]
+      },
+      "items": [
+        {
+          "q": "How is Majed?",
+          "opts": ["fine", "very well", "OK", "good"], "ans": 2,
+          "focus": "How are you? • OK / very well • trap: the other speaker's answer",
+          "lines": [
+            ["Rakan", "Hello, Majed! How are you?"],
+            ["Majed", "Hello, Rakan. I'm OK, thanks. And you?"],
+            ["Rakan", "I'm very well, thank you."]
+          ]
+        },
+        {
+          "q": "Who is fine today?",
+          "opts": ["Omar", "Yasser", "Ali", "Rakan"], "ans": 0,
+          "focus": "I'm / he's • who says fine? • names that are mentioned but wrong",
+          "lines": [
+            ["Omar", "Yasser, how are you today?"],
+            ["Yasser", "I'm OK, thanks. And you, Omar?"],
+            ["Omar", "I'm fine, thank you. And Ali is very well today."],
+            ["Yasser", "Lovely!"]
+          ]
+        },
+        {
+          "q": "How are Hamad and Waleed?",
+          "opts": ["fine", "very well", "OK", "good"], "ans": 0,
+          "focus": "we're = we are • the answer changes in the dialogue",
+          "lines": [
+            ["Teacher", "Hamad and Waleed, how are you today?"],
+            ["Hamad", "We're OK, thanks."],
+            ["Waleed", "No, Hamad! We're fine. It's a lovely day."],
+            ["Hamad", "Yes. We're fine, thank you."]
+          ]
+        },
+        {
+          "q": "Who is Saleh?",
+          "opts": ["the teacher", "Ali's partner", "Ali's classmate", "Nasser's partner"], "ans": 1,
+          "focus": "he's = he is • partner, classmate",
+          "lines": [
+            ["Ali", "Hello, Nasser! This is Saleh. He's my partner."],
+            ["Nasser", "Hello, Saleh. How are you?"],
+            ["Saleh", "Fine, thanks. Ali is my partner, and Majed is my classmate."]
+          ]
+        },
+        {
+          "q": "How is Rakan today?",
+          "opts": ["fine", "very well", "OK", "good"], "ans": 1,
+          "focus": "How is he? • the speaker corrects himself",
+          "lines": [
+            ["Mr Hamid", "Omar, how are you today? Are you OK?"],
+            ["Omar", "Yes, I'm OK, thanks."],
+            ["Mr Hamid", "And Rakan? How is he?"],
+            ["Omar", "He's fine. No, sorry. He's very well today."]
+          ]
+        }
+      ]
+    },
+    "p2": {
+      "title": "In English class", "speaker": "Nasser",
+      "sentences": [
+        { "text": "Hello! My name's Nasser." },
+        { "text": "I'm a {student} at IATC.", "opts": ["teacher", "student", "man"], "focus": "I'm a student" },
+        { "text": "I'm in English {class} today.", "opts": ["class", "day", "name"], "focus": "class, today" },
+        { "text": "Our teacher {is} Mr Hamid.", "opts": ["am", "is", "are"], "focus": "he / she / it → is" },
+        { "text": "He says, 'Hello, class! How {are} you today?'", "opts": ["am", "is", "are"], "focus": "How are you?" },
+        { "text": "We say, 'We're {fine}, thank you!'", "opts": ["fine", "OK", "lovely"], "focus": "We're fine, thank you." },
+        { "text": "My {partner} is Majed.", "opts": ["classmate", "partner", "teacher"], "focus": "partner" },
+        { "text": "I say, 'Hello, Majed. How are you?'" },
+        { "text": "He says, 'I'm very {well}, thanks.'", "opts": ["good", "well", "fine"], "focus": "very well, thanks" },
+        { "text": "Then he says, 'And {you}?'", "opts": ["you", "your", "I"], "focus": "And you?" },
+        { "text": "I say, 'I'm {OK}, thank you.'", "opts": ["OK", "lovely", "well"], "focus": "I'm OK." },
+        { "text": "It's a lovely {day} at IATC!", "opts": ["day", "class", "name"], "focus": "a lovely day" }
+      ]
+    },
+    "p3": {
+      "title": "Hello, everyone!",
+      "focus": "Listening for detail: How are you? fine / very well / OK, I'm / he's / we're, partner",
+      "lines": [
+        ["Mr Hamid", "Hello, everyone! How are you today?"],
+        ["Rakan", "We're fine, thank you, Mr Hamid. And you?"],
+        ["Mr Hamid", "I'm very well, thanks. It's a lovely day today."],
+        ["Mr Hamid", "Saleh, how are you?"],
+        ["Saleh", "I'm OK, thanks."],
+        ["Mr Hamid", "OK. Sit down with your partner, please."],
+        ["Saleh", "Yes. My partner is Yasser. Hello, Yasser! How are you?"],
+        ["Yasser", "Hello, Saleh! I'm fine, thanks. And you?"],
+        ["Saleh", "I'm OK. And how is Rakan?"],
+        ["Yasser", "Rakan is very well today."],
+        ["Saleh", "Very well? Lovely!"],
+        ["Mr Hamid", "OK, class. Thank you!"]
+      ],
+      "items": [
+        ["Mr Hamid is very well.", "True", "\"I'm very well, thanks. It's a lovely day today.\""],
+        ["Saleh is fine.", "False", "Saleh says \"I'm OK, thanks.\" Yasser is fine."],
+        ["Yasser is Saleh's partner.", "True", "\"My partner is Yasser.\""],
+        ["Yasser is OK.", "False", "\"I'm fine, thanks.\""],
+        ["Rakan is OK today.", "False", "\"Rakan is very well today.\""]
+      ]
+    },
+    "teacherNotes": [
+      "Written for the English Path app (not part of the IATC weekly pack). Same format as the A1 Listening practice papers.",
+      "All names are made up. The language stays inside Week 1 Lessons 1-2: How are you?, fine, very well, OK, thanks, lovely, today, day, am / is / are, I'm / he's / we're.",
+      "Exam Skills tricks built in: the other speaker's answer (Q1), mentioned-but-wrong names (Q2), the answer changes during the dialogue (Q3), the speaker corrects himself (Q5)."
+    ],
+    "src": {
+      "file": "app/src/data/extraListening.json",
+      "at": "",
+      "doc": null,
+      "label": "A1 Listening Practice · Week 1 Lesson 2: Greetings: How are you? (written for English Path)"
+    }
+  }
+]

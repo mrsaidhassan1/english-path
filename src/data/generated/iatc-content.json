@@ -99921,7 +99921,7 @@
   {
    "id": "lx-w1d1",
    "week": 1,
-   "day": "Lesson 2",
+   "day": "Lesson 1",
    "theme": "Hello! Names & Greetings",
    "grammar": "I'm • my / your • What's your name?",
    "cast": {
@@ -99942,7 +99942,7 @@
    },
    "p1": {
     "example": {
-     "q": "What is the new student's name?",
+     "q": "What is the student's name?",
      "opts": [
       "Fahad",
       "Faisal",
@@ -99971,7 +99971,7 @@
     },
     "items": [
      {
-      "q": "How is Saad today?",
+      "q": "How is Saad?",
       "opts": [
        "fine",
        "very well",
@@ -99983,7 +99983,7 @@
       "lines": [
        [
         "Omar",
-        "Hello, Saad. How are you today?"
+        "Hello, Saad. How are you?"
        ],
        [
         "Saad",
@@ -99995,7 +99995,7 @@
        ],
        [
         "Saad",
-        "Good. See you in class."
+        "Good."
        ]
       ]
      },
@@ -100177,7 +100177,7 @@
       "focus": "teacher, Mr"
      },
      {
-      "text": "In the morning, he says, '{Welcome} to the class!'",
+      "text": "In class, he says, '{Welcome} to the class!'",
       "opts": [
        "Hello",
        "Welcome",
@@ -100224,7 +100224,7 @@
     ]
    },
    "p3": {
-    "title": "The first day",
+    "title": "In the classroom",
     "focus": "Listening for detail: names, I'm / my / your, How are you?, teacher / student / classmate / partner",
     "lines": [
      [
@@ -100237,7 +100237,7 @@
      ],
      [
       "Ziyad",
-      "Nice to meet you, too. How are you today?"
+      "Nice to meet you, too. How are you?"
      ],
      [
       "Turki",
@@ -100245,11 +100245,11 @@
      ],
      [
       "Ziyad",
-      "Very well, thank you. Are you a student here?"
+      "Very well, thank you. Are you a student in this class?"
      ],
      [
       "Turki",
-      "Yes, I am. I'm a new student. This is my first day."
+      "Yes, I am. I'm a student in Class A."
      ],
      [
       "Ziyad",
@@ -100286,12 +100286,12 @@
     ],
     "items": [
      [
-      "Turki is a new student.",
+      "Turki is a student in Class A.",
       "True",
-      "\"I'm a new student. This is my first day.\""
+      "\"Yes, I am. I'm a student in Class A.\""
      ],
      [
-      "Ziyad is OK today.",
+      "Ziyad is OK.",
       "False",
       "Ziyad says \"Very well, thank you.\" Turki is fine."
      ],
@@ -100316,7 +100316,7 @@
     "file": "tools/listening-exam/content/w1d1.json",
     "at": "",
     "doc": "FND68/CLass FND 68/A0 - A1 Resources/A1 Exam/A1 Listening Exam/Week 1/",
-    "label": "A1 Listening Practice Exam · Week 1 Lesson 2: Hello! Names & Greetings"
+    "label": "A1 Listening Practice Exam · Week 1 Lesson 1: Hello! Names & Greetings"
    }
   },
   {
