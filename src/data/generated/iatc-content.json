@@ -53080,10 +53080,6 @@
       "what",
       "this",
       "nice-to-meet-you",
-      "how-are-you",
-      "fine",
-      "thanks",
-      "very-well",
       "ok",
       "and",
       "with",
@@ -53188,6 +53184,10 @@
        "old"
       ],
       [
+       "student",
+       "teacher"
+      ],
+      [
        "yes",
        "no"
       ],
@@ -53214,8 +53214,8 @@
        "cities"
       ],
       [
-       "bus",
-       "buses"
+       "partner",
+       "partners"
       ]
      ],
      "writing": {
@@ -53254,19 +53254,13 @@
      "grammarTitle": "How are you? • am / is / are",
      "smart": "By the end of the lesson, students will be able to greet people at different times of day and ask and answer How are you? using am / is / are correctly.",
      "words": [
-      "good-morning",
-      "good-afternoon",
-      "good-night",
-      "goodbye",
-      "bye",
-      "see-you-later",
-      "have-a-nice-day",
-      "sleep-well",
-      "thank-you",
-      "please",
+      "how-are-you",
+      "fine",
+      "very-well",
+      "thanks",
       "lovely",
-      "day",
-      "today"
+      "today",
+      "day"
      ],
      "grammar": {
       "rules": [
@@ -53353,46 +53347,46 @@
      },
      "opp": [
       [
-       "yes",
-       "no"
-      ],
-      [
-       "sit down",
-       "stand up"
-      ],
-      [
-       "hello",
-       "goodbye"
-      ],
-      [
        "morning",
        "evening"
       ],
       [
        "good",
        "bad"
+      ],
+      [
+       "happy",
+       "sad"
+      ],
+      [
+       "early",
+       "late"
+      ],
+      [
+       "fine",
+       "tired"
       ]
      ],
      "plur": [
       [
-       "book",
-       "books"
+       "day",
+       "days"
       ],
       [
-       "partner",
-       "partners"
+       "morning",
+       "mornings"
       ],
       [
-       "glass",
-       "glasses"
+       "friend",
+       "friends"
       ],
       [
        "story",
        "stories"
       ],
       [
-       "child",
-       "children"
+       "boy",
+       "boys"
       ]
      ],
      "writing": {
@@ -53428,9 +53422,19 @@
      "day": "Lesson 3",
      "theme": "Everyday English: Good morning! Good night!",
      "deckDay": "w1d2",
-     "grammarTitle": "How are you? • am / is / are",
-     "smart": "By the end of the lesson, students will be able to greet people at different times of day and ask and answer How are you? using am / is / are correctly.",
+     "grammarTitle": "please • thank you • a cup of …",
+     "smart": "By the end of the lesson, students will be able to greet people at different times of the day and ask politely for a drink with please and a cup / glass of.",
      "words": [
+      "good-morning",
+      "good-afternoon",
+      "good-night",
+      "goodbye",
+      "bye",
+      "see-you-later",
+      "have-a-nice-day",
+      "sleep-well",
+      "thank-you",
+      "please",
       "everyday",
       "biscuit",
       "cake",
@@ -53444,7 +53448,32 @@
       "hungry",
       "thirsty"
      ],
-     "grammar": null,
+     "grammar": {
+      "rules": [
+       "please = a polite word when you ask: A cup of tea, please.",
+       "Thank you = when you get something. Here you are = when you give something.",
+       "Drinks and food: a cup of tea • a glass of water • a piece of cake"
+      ],
+      "examples": [
+       "A cup of tea, please.",
+       "A glass of water, please.",
+       "Here you are. — Thank you."
+      ],
+      "practice": [
+       [
+        "A glass ___ water, please. (of / at)",
+        "of"
+       ],
+       [
+        "Here you are. — ___ you. (Thank / Sorry)",
+        "Thank"
+       ],
+       [
+        "Good ___! (8 a.m.) (morning / night)",
+        "morning"
+       ]
+      ]
+     },
      "reading": {
       "title": "From Good Morning to Good Night",
       "text": "Hamad is a student at IATC.\nIn the morning: \"Good morning, Dad!\" \"Good morning, Hamad. Have a nice day!\"\nAt the college café: \"A cup of tea, please.\" \"With milk and sugar?\" \"Milk, please. No sugar, thanks.\" \"Here you are.\" \"Thank you.\"\nIn the afternoon: \"Good afternoon, Mr Adel. Goodbye!\" \"Bye, Hamad! See you later!\"\nIn the evening, Hamad is at home. It is a lovely day.\nAt night: \"Good night, Dad.\" \"Good night, Hamad. Sleep well!\"",
@@ -53512,16 +53541,16 @@
        "without"
       ],
       [
-       "morning",
-       "evening"
-      ],
-      [
-       "good",
-       "bad"
-      ],
-      [
        "hot",
        "cold"
+      ],
+      [
+       "hungry",
+       "full"
+      ],
+      [
+       "please",
+       "sorry"
       ]
      ],
      "plur": [
@@ -53530,12 +53559,12 @@
        "cups"
       ],
       [
-       "sandwich",
-       "sandwiches"
-      ],
-      [
        "glass",
        "glasses"
+      ],
+      [
+       "biscuit",
+       "biscuits"
       ],
       [
        "country",
@@ -53563,9 +53592,9 @@
       "title": "My Day: What I Say"
      },
      "speaking": [
-      "How are you today?",
-      "Is it 'Good morning' or 'Good afternoon' now?",
-      "Tea or coffee? What's your drink?"
+      "Say good morning, good afternoon and good night.",
+      "Ask for a drink: A glass of water, please.",
+      "Say goodbye to your partner."
      ],
      "src": {
       "file": "tools/weekly-pack/content/week1.json",
@@ -53705,8 +53734,8 @@
        "small"
       ],
       [
-       "new",
-       "old"
+       "full",
+       "empty"
       ],
       [
        "open",
@@ -53723,16 +53752,16 @@
        "sandwiches"
       ],
       [
-       "box",
-       "boxes"
-      ],
-      [
        "dictionary",
        "dictionaries"
       ],
       [
        "woman",
        "women"
+      ],
+      [
+       "camera",
+       "cameras"
       ]
      ],
      "writing": {
@@ -53919,8 +53948,8 @@
        "small letter"
       ],
       [
-       "big",
-       "small"
+       "one",
+       "many"
       ],
       [
        "singular",

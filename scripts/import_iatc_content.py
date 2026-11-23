@@ -261,17 +261,17 @@ for week in UNIT_WEEKS:
             "day": r["day"],
             "theme": r.get("theme", dd["theme"]),
             "deckDay": dd["id"],
-            "grammarTitle": dd["grammarTitle"],
-            "smart": dd["smart"],
-            "words": words,
+            "grammarTitle": r.get("grammarTitle") or dd["grammarTitle"],
+            "smart": r.get("smart") or dd["smart"],
+            "words": r.get("wordIds") or words,
             # the shared deck day's grammar is taught once (Monday)
-            "grammar": None if (week == 1 and k == 2) else dd["grammar"],
+            "grammar": r.get("grammar") or (None if (week == 1 and k == 2) else dd["grammar"]),
             "reading": {"title": r.get("readingTitle", ""), "text": r.get("reading", ""), "keywords": r.get("keywords", []),
                         "comp": r.get("comp", []), "tf": r.get("tf", []), "src": rsrc},
             "opp": r.get("opp", []) or dd["opp"],
             "plur": r.get("plur", []) or dd["plur"],
             "writing": {**(r.get("writing") or {}), "title": r.get("writingTitle", "")},
-            "speaking": dd["speaking"],
+            "speaking": r.get("speaking") or dd["speaking"],
             "src": dd["src"],
         })
     if extra_ids and unit_days:
