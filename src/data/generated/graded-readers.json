@@ -1,0 +1,3740 @@
+[
+ {
+  "week": 1,
+  "title": "Is This Your Bag?",
+  "setting": "A first English class",
+  "focus": [
+   "hello",
+   "my / your",
+   "name",
+   "Nice to meet you.",
+   "How are you?",
+   "fine",
+   "Good morning!",
+   "please",
+   "What's this?",
+   "bag",
+   "hungry / thirsty",
+   "first name / surname"
+  ],
+  "story": [
+   {
+    "text": "This is a **classroom**. It's a **lovely** **day** **today**."
+   },
+   {
+    "text": "This is Mr Adel. **Mr** Adel is a **teacher**. This is Saad, **and** this is Fahad. Saad and Fahad are **students**. Saad and Fahad are **classmates**."
+   },
+   {
+    "speaker": "Mr Adel",
+    "text": "**Good morning**, **class**! **Welcome**!"
+   },
+   {
+    "speaker": "Saad and Fahad",
+    "text": "Good morning, Mr Adel."
+   },
+   {
+    "speaker": "Mr Adel",
+    "text": "**Sit down**, **please**."
+   },
+   {
+    "text": "Saad is at a **table** **with** Fahad."
+   },
+   {
+    "speaker": "Saad",
+    "text": "**Hello**! **My** **name** is Saad. **What**'s **your** name?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "My name is Fahad. **Nice to meet you**."
+   },
+   {
+    "speaker": "Saad",
+    "text": "Nice to meet you, Fahad. **How are you?**"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "I'm **fine**, **thanks**. And you?"
+   },
+   {
+    "speaker": "Saad",
+    "text": "I'm **OK**. I'm **hungry**!"
+   },
+   {
+    "text": "Mr Adel is at the **board**."
+   },
+   {
+    "speaker": "Mr Adel",
+    "text": "OK, class. This is an **English** **book**. And **what's this**?"
+   },
+   {
+    "speaker": "Saad",
+    "text": "It's a **pen**."
+   },
+   {
+    "speaker": "Mr Adel",
+    "text": "**Yes**! And this?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "It's a **notebook**."
+   },
+   {
+    "speaker": "Mr Adel",
+    "text": "And what's this?"
+   },
+   {
+    "speaker": "Saad",
+    "text": "It's a **computer**."
+   },
+   {
+    "speaker": "Mr Adel",
+    "text": "**No**, Saad. It's a **television**!"
+   },
+   {
+    "speaker": "Saad",
+    "text": "Oh! A television!"
+   },
+   {
+    "speaker": "Mr Adel",
+    "text": "**Thank you**, class. **Goodbye**! **See you later!**"
+   },
+   {
+    "text": "Saad and Fahad are at the table. This is a bag, and this is a bag."
+   },
+   {
+    "speaker": "Saad",
+    "text": "Fahad, is this your **bag**?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "My bag? What's this? It's a **sandwich**. And this is a **cake**. And this is a **bottle** of **water**."
+   },
+   {
+    "speaker": "Saad",
+    "text": "Yes! It's my bag. My sandwich, my cake and my water!"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "And this is my bag. What's this? It's a **phone**. This is a **key**. And this is an **ID card**."
+   },
+   {
+    "speaker": "Saad",
+    "text": "What's the **first name**?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "The first name is Fahad. The **surname** is Al-Qahtani. Yes, it's my bag!"
+   },
+   {
+    "speaker": "Saad",
+    "text": "A sandwich, Fahad?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Yes, please! I'm hungry and **thirsty**!"
+   },
+   {
+    "speaker": "Saad",
+    "text": "And a bottle of water?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Thank you, Saad!"
+   },
+   {
+    "text": "Saad and Fahad are at the table with a sandwich, a cake and a bottle of water. It's a lovely day!"
+   },
+   {
+    "speaker": "Saad",
+    "text": "**Have a nice day**, Fahad!"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Thanks, Saad. See you later!"
+   }
+  ],
+  "check": [
+   "Is Mr Adel a teacher or a student?",
+   "Saad: \"I'm OK. I'm ______!\" (hungry / thirsty)",
+   "Bag 1: a sandwich, a cake and a bottle of water. Bag 2: a phone, a key and an ID card. Bag 1 is Saad or Fahad? Bag 2 is Saad or Fahad?"
+  ],
+  "talk": [
+   "What's your name? What's your surname?",
+   "With your partner: A: \"What's this in English?\" B: \"It's a / an …\" (pen, book, phone, key, bottle, bag)"
+  ],
+  "vocab": [
+   {
+    "word": "hello",
+    "ar": "مرحباً",
+    "meaning": "a word to greet someone",
+    "example": "Hello! My name is Saad."
+   },
+   {
+    "word": "my / your",
+    "ar": "ـي (ملكي) / ـك (ملكك)",
+    "meaning": "belongs to me / belongs to you",
+    "example": "Is this your bag?"
+   },
+   {
+    "word": "name",
+    "ar": "اسم",
+    "meaning": "what people call you",
+    "example": "My name is Fahad."
+   },
+   {
+    "word": "Nice to meet you.",
+    "ar": "سعيد بلقائك.",
+    "meaning": "said when you meet a new person",
+    "example": "Nice to meet you, Fahad."
+   },
+   {
+    "word": "How are you?",
+    "ar": "كيف حالك؟",
+    "meaning": "asks if a person is well",
+    "example": "How are you?"
+   },
+   {
+    "word": "fine",
+    "ar": "بخير",
+    "meaning": "well, OK",
+    "example": "I'm fine, thanks."
+   },
+   {
+    "word": "Good morning!",
+    "ar": "صباح الخير!",
+    "meaning": "hello before 12 o'clock",
+    "example": "Good morning, class!"
+   },
+   {
+    "word": "please",
+    "ar": "من فضلك",
+    "meaning": "a polite word when you ask",
+    "example": "Sit down, please."
+   },
+   {
+    "word": "What's this?",
+    "ar": "ما هذا؟",
+    "meaning": "asks about a thing",
+    "example": "What's this? It's a pen."
+   },
+   {
+    "word": "bag",
+    "ar": "حقيبة",
+    "meaning": "you carry things in it",
+    "example": "Fahad, is this your bag?"
+   },
+   {
+    "word": "hungry / thirsty",
+    "ar": "جائع / عطشان",
+    "meaning": "you want to eat / you want to drink",
+    "example": "I'm hungry and thirsty!"
+   },
+   {
+    "word": "first name / surname",
+    "ar": "الاسم الأول / اسم العائلة",
+    "meaning": "your name / your family name",
+    "example": "The surname is Al-Qahtani."
+   }
+  ],
+  "more": [
+   {
+    "word": "cup",
+    "meaning": "you drink tea from it"
+   },
+   {
+    "word": "tea",
+    "meaning": "a hot drink"
+   },
+   {
+    "word": "coffee",
+    "meaning": "a hot brown drink"
+   },
+   {
+    "word": "pencil",
+    "meaning": "you write with it"
+   },
+   {
+    "word": "chair",
+    "meaning": "you sit on it"
+   },
+   {
+    "word": "window",
+    "meaning": "glass in a wall"
+   },
+   {
+    "word": "car",
+    "meaning": "you drive it"
+   },
+   {
+    "word": "bus",
+    "meaning": "a big car for many people"
+   },
+   {
+    "word": "camera",
+    "meaning": "a machine for photos"
+   },
+   {
+    "word": "house",
+    "meaning": "a building where people live"
+   },
+   {
+    "word": "milk",
+    "meaning": "a white drink from cows"
+   },
+   {
+    "word": "juice",
+    "meaning": "a drink from fruit"
+   },
+   {
+    "word": "sugar",
+    "meaning": "it makes tea sweet"
+   },
+   {
+    "word": "number",
+    "meaning": "1, 2, 3 …"
+   },
+   {
+    "word": "Good night!",
+    "meaning": "said before you go to bed"
+   }
+  ]
+ },
+ {
+  "week": 2,
+  "title": "A Photo at the Tower",
+  "setting": "Tourists at a famous tower in Riyadh",
+  "focus": [
+   "he / his",
+   "where? / from",
+   "capital",
+   "city",
+   "famous",
+   "tower",
+   "building",
+   "tourist",
+   "on holiday",
+   "How old …?",
+   "photo",
+   "awful / fantastic"
+  ],
+  "story": [
+   {
+    "text": "This is Omar. **He** is **from** Riyadh. Riyadh is the **capital** **city** of **Saudi** Arabia. Omar is an **engineer**."
+   },
+   {
+    "text": "Today, Omar is at a **famous** **tower** in Riyadh. It's a **beautiful**, **tall** **building**. The **weather** is **fantastic**. It's **windy**, and the **sun** is beautiful."
+   },
+   {
+    "text": "Two **tourists** are at the tower, **too**. **They** are **on holiday**."
+   },
+   {
+    "speaker": "Marco",
+    "text": "Hello! A **photo**, please?"
+   },
+   {
+    "speaker": "Omar",
+    "text": "Yes, OK. **Where** are you from?"
+   },
+   {
+    "speaker": "Marco",
+    "text": "I'm from **Italy**. My name is Marco. And this is Ken. He's from **Japan**."
+   },
+   {
+    "speaker": "Omar",
+    "text": "Nice to meet you. Welcome to Saudi Arabia!"
+   },
+   {
+    "speaker": "Ken",
+    "text": "Thank you!"
+   },
+   {
+    "speaker": "Omar",
+    "text": "**How old** are you, Ken?"
+   },
+   {
+    "speaker": "Ken",
+    "text": "I'm **nineteen**. I'm a **teenager**! I'm a student."
+   },
+   {
+    "speaker": "Ken",
+    "text": "And Marco is **thirty**. He's **married**. He's a **doctor**. **His** **hospital** is in Rome."
+   },
+   {
+    "speaker": "Omar",
+    "text": "Rome? Is it the capital of Italy?"
+   },
+   {
+    "speaker": "Marco",
+    "text": "Yes, it is. It's a beautiful city, too."
+   },
+   {
+    "speaker": "Ken",
+    "text": "And this is my **umbrella**. In Japan, the weather is **rainy**!"
+   },
+   {
+    "speaker": "Omar",
+    "text": "In Riyadh, an umbrella is for the sun!"
+   },
+   {
+    "speaker": "Marco",
+    "text": "This is my camera. Thank you, Omar!"
+   },
+   {
+    "speaker": "Omar",
+    "text": "OK. **Look at** the camera, please. One, two, three!"
+   },
+   {
+    "speaker": "Ken",
+    "text": "Look at the photo! Oh no! It's **awful**! Where's the tower?"
+   },
+   {
+    "text": "The tower is tall. In the photo: Marco and Ken. The tower? No tower!"
+   },
+   {
+    "speaker": "Omar",
+    "text": "Ha! OK. Sit down, please. Marco, sit down. Ken, sit down. Look at the camera. One, two, three!"
+   },
+   {
+    "speaker": "Marco",
+    "text": "Look at the photo! Marco, Ken and the tower!"
+   },
+   {
+    "speaker": "Ken",
+    "text": "Fantastic! It's a beautiful photo!"
+   },
+   {
+    "speaker": "Marco",
+    "text": "Omar, where's the **market**? And where's the **mall**?"
+   },
+   {
+    "speaker": "Omar",
+    "text": "The mall is in the tower!"
+   },
+   {
+    "speaker": "Ken",
+    "text": "In the tower? Fantastic!"
+   },
+   {
+    "speaker": "Omar",
+    "text": "And the market? Look at the **map**. This is the tower, and this is the market. And this is a famous **mosque**."
+   },
+   {
+    "speaker": "Marco",
+    "text": "Thank you, Omar. Riyadh is a fantastic city!"
+   },
+   {
+    "speaker": "Omar",
+    "text": "Goodbye! Have a nice day!"
+   }
+  ],
+  "check": [
+   "Where is Ken from?",
+   "How old is Ken?",
+   "Photo 1: Is it awful or fantastic? Where's the tower?"
+  ],
+  "talk": [
+   "Where are you from? How old are you?",
+   "With your partner: Look at a photo of a famous building. Say: \"It's beautiful / awful / fantastic. It's in …\""
+  ],
+  "vocab": [
+   {
+    "word": "he / his",
+    "ar": "هو / ـه (له)",
+    "meaning": "a man or boy / belongs to him",
+    "example": "His hospital is in Rome."
+   },
+   {
+    "word": "where? / from",
+    "ar": "أين؟ / من",
+    "meaning": "asks about a place / your country or city",
+    "example": "Where are you from?"
+   },
+   {
+    "word": "capital",
+    "ar": "العاصمة",
+    "meaning": "the main city of a country",
+    "example": "Riyadh is the capital city."
+   },
+   {
+    "word": "city",
+    "ar": "مدينة",
+    "meaning": "a big town",
+    "example": "It's a beautiful city."
+   },
+   {
+    "word": "famous",
+    "ar": "مشهور",
+    "meaning": "many people know it",
+    "example": "a famous tower"
+   },
+   {
+    "word": "tower",
+    "ar": "برج",
+    "meaning": "a very tall building",
+    "example": "The mall is in the tower!"
+   },
+   {
+    "word": "building",
+    "ar": "مبنى",
+    "meaning": "a house, office or tower",
+    "example": "It's a tall building."
+   },
+   {
+    "word": "tourist",
+    "ar": "سائح",
+    "meaning": "a person on holiday in a new place",
+    "example": "Two tourists are at the tower."
+   },
+   {
+    "word": "on holiday",
+    "ar": "في إجازة",
+    "meaning": "not at work; on a trip",
+    "example": "They are on holiday."
+   },
+   {
+    "word": "How old …?",
+    "ar": "كم عمرك؟",
+    "meaning": "asks about age",
+    "example": "How old are you, Ken?"
+   },
+   {
+    "word": "photo",
+    "ar": "صورة",
+    "meaning": "a picture from a camera",
+    "example": "A photo, please?"
+   },
+   {
+    "word": "awful / fantastic",
+    "ar": "فظيع / رائع",
+    "meaning": "very bad / very good",
+    "example": "It's awful! / Fantastic!"
+   }
+  ],
+  "more": [
+   {
+    "word": "country",
+    "meaning": "Saudi Arabia, Egypt, Japan …"
+   },
+   {
+    "word": "world",
+    "meaning": "all the countries"
+   },
+   {
+    "word": "woman",
+    "meaning": "an adult female"
+   },
+   {
+    "word": "people",
+    "meaning": "men, women and children"
+   },
+   {
+    "word": "twenty",
+    "meaning": "20"
+   },
+   {
+    "word": "young",
+    "meaning": "not old"
+   },
+   {
+    "word": "short",
+    "meaning": "not tall"
+   },
+   {
+    "word": "road",
+    "meaning": "cars go on it"
+   },
+   {
+    "word": "river",
+    "meaning": "a long line of water"
+   },
+   {
+    "word": "bridge",
+    "meaning": "it goes over a river or road"
+   },
+   {
+    "word": "cloudy",
+    "meaning": "the sky is grey with clouds"
+   },
+   {
+    "word": "trip",
+    "meaning": "a short journey"
+   },
+   {
+    "word": "school",
+    "meaning": "children learn here"
+   },
+   {
+    "word": "listen",
+    "meaning": "use your ears"
+   },
+   {
+    "word": "read",
+    "meaning": "look at words and understand them"
+   }
+  ]
+ },
+ {
+  "week": 3,
+  "title": "The Charity Walk",
+  "setting": "A charity walk in Abha",
+  "focus": [
+   "charity",
+   "brother",
+   "excited",
+   "tired",
+   "far",
+   "Don't worry.",
+   "Excuse me.",
+   "Can I help you?",
+   "Here you are.",
+   "kind",
+   "Well done! / Congratulations!",
+   "interesting / boring"
+  ],
+  "story": [
+   {
+    "text": "This is Khalid. He is a **nurse** at a hospital in Abha. This is his **brother**, Faisal. Faisal is a **boy**. He's twelve."
+   },
+   {
+    "text": "Today is a **charity** walk for the hospital. It's a walk in the hills of Abha. Khalid and Faisal are **excited**. **All** the people are excited. Khalid and Faisal are at the hill with a **backpack** and two bottles of water."
+   },
+   {
+    "text": "A woman is at a table with a **form**."
+   },
+   {
+    "speaker": "Woman",
+    "text": "**Hi**! Your **full name**, please?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "Khalid Al-Ghamdi."
+   },
+   {
+    "speaker": "Woman",
+    "text": "Your **nationality**?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "Saudi."
+   },
+   {
+    "speaker": "Woman",
+    "text": "And your **mobile** number?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "**Wait a minute** … It's 055 123 4567."
+   },
+   {
+    "speaker": "Woman",
+    "text": "And your **address**?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "**Sorry**? **I don't understand**."
+   },
+   {
+    "speaker": "Khalid",
+    "text": "Your house, Faisal. Number 12, Al-Nahda Street."
+   },
+   {
+    "speaker": "Woman",
+    "text": "**Thanks a lot**. **You're** number **forty** and forty-one. **Good luck**!"
+   },
+   {
+    "speaker": "Woman",
+    "text": "Is your brother a nurse, too?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "No, he isn't. He's a student."
+   },
+   {
+    "speaker": "Woman",
+    "text": "Are you **ready**?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Yes! We're ready!"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "**Let's go**, Faisal!"
+   },
+   {
+    "text": "The walk is **difficult**. Faisal is **tired** and thirsty. His bottle is **empty**."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Khalid, I'm tired. Is it **far**?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "No, it isn't far. **Don't worry**."
+   },
+   {
+    "text": "This is a **guard**. He is **kind**."
+   },
+   {
+    "speaker": "Guard",
+    "text": "**Excuse me**. **Can I help you?**"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "**Yes, please**. My brother is thirsty."
+   },
+   {
+    "speaker": "Guard",
+    "text": "Water? **Here you are**."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Thanks a lot! You're **very** kind."
+   },
+   {
+    "speaker": "Khalid",
+    "text": "Are you OK, Faisal?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Yes, I'm OK **now**. I'm **strong**!"
+   },
+   {
+    "text": "Now Khalid and Faisal aren't tired. They're **happy**."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "**Great!** We're **here**!"
+   },
+   {
+    "speaker": "Woman",
+    "text": "**Well done**! **Congratulations**!"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "The walk isn't **boring**. It's **interesting**!"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "And it's **important** for the hospital."
+   },
+   {
+    "speaker": "Woman",
+    "text": "Faisal, how old are you?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "I'm twelve."
+   },
+   {
+    "speaker": "Woman",
+    "text": "Twelve? You're very **brave**!"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Yes, I'm brave! And I'm not tired now. I'm happy, Khalid."
+   },
+   {
+    "speaker": "Khalid",
+    "text": "**Me too**! Faisal, you're a great brother."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "And you're a great nurse!"
+   }
+  ],
+  "check": [
+   "Is Khalid a doctor or a nurse?",
+   "Is Faisal thirsty? Is his bottle empty?",
+   "Is the walk boring or interesting?"
+  ],
+  "talk": [
+   "Are you tired today? Are you happy today?",
+   "With your partner: A is a woman with a form. B is at the charity walk. A: \"Your full name, please? Your nationality? Your mobile number?\""
+  ],
+  "vocab": [
+   {
+    "word": "charity",
+    "ar": "جمعية خيرية",
+    "meaning": "a group that helps people",
+    "example": "a charity walk for the hospital"
+   },
+   {
+    "word": "brother",
+    "ar": "أخ",
+    "meaning": "a boy or man in your family, with the same parents",
+    "example": "This is his brother, Faisal."
+   },
+   {
+    "word": "excited",
+    "ar": "متحمس",
+    "meaning": "very happy about something",
+    "example": "Khalid and Faisal are excited."
+   },
+   {
+    "word": "tired",
+    "ar": "متعب",
+    "meaning": "you want to rest",
+    "example": "Faisal is tired and thirsty."
+   },
+   {
+    "word": "far",
+    "ar": "بعيد",
+    "meaning": "not near",
+    "example": "Is it far?"
+   },
+   {
+    "word": "Don't worry.",
+    "ar": "لا تقلق.",
+    "meaning": "it's OK; don't be sad",
+    "example": "No, it isn't far. Don't worry."
+   },
+   {
+    "word": "Excuse me.",
+    "ar": "عفواً / لو سمحت",
+    "meaning": "said to start talking to a person",
+    "example": "Excuse me. Can I help you?"
+   },
+   {
+    "word": "Can I help you?",
+    "ar": "هل أستطيع مساعدتك؟",
+    "meaning": "asks if a person wants help",
+    "example": "Can I help you?"
+   },
+   {
+    "word": "Here you are.",
+    "ar": "تفضّل.",
+    "meaning": "said when you give something",
+    "example": "Water? Here you are."
+   },
+   {
+    "word": "kind",
+    "ar": "لطيف",
+    "meaning": "good and helpful to people",
+    "example": "You're very kind."
+   },
+   {
+    "word": "Well done! / Congratulations!",
+    "ar": "أحسنت! / مبروك!",
+    "meaning": "said when a person does a good thing",
+    "example": "Well done! Congratulations!"
+   },
+   {
+    "word": "interesting / boring",
+    "ar": "ممتع / ممل",
+    "meaning": "not boring / not interesting",
+    "example": "The walk isn't boring. It's interesting!"
+   }
+  ],
+  "more": [
+   {
+    "word": "job",
+    "meaning": "the work you do"
+   },
+   {
+    "word": "police",
+    "meaning": "people who keep the law"
+   },
+   {
+    "word": "driver",
+    "meaning": "a person who drives"
+   },
+   {
+    "word": "address",
+    "meaning": "the number and street of your house"
+   },
+   {
+    "word": "email",
+    "meaning": "a message on the computer"
+   },
+   {
+    "word": "hill",
+    "meaning": "a small mountain"
+   },
+   {
+    "word": "climb",
+    "meaning": "go up"
+   },
+   {
+    "word": "worker",
+    "meaning": "a person who works"
+   },
+   {
+    "word": "sick",
+    "meaning": "not well"
+   },
+   {
+    "word": "afraid",
+    "meaning": "feeling fear"
+   },
+   {
+    "word": "I don't know.",
+    "meaning": "I have no answer"
+   },
+   {
+    "word": "over there",
+    "meaning": "in that place"
+   },
+   {
+    "word": "clean / dirty",
+    "meaning": "not dirty / not clean"
+   },
+   {
+    "word": "open / closed",
+    "meaning": "not closed / not open"
+   },
+   {
+    "word": "ready",
+    "meaning": "OK to start"
+   }
+  ]
+ },
+ {
+  "week": 4,
+  "title": "The Big Match",
+  "setting": "A football match at the stadium",
+  "focus": [
+   "best friends",
+   "hobby",
+   "football",
+   "team",
+   "match",
+   "stadium",
+   "fans",
+   "late",
+   "Can I speak to …?",
+   "Hold on.",
+   "really good",
+   "together"
+  ],
+  "story": [
+   {
+    "text": "Yousef and Bandar are **best friends**. They are from the same **village** in the **north** of Saudi Arabia. Now they are in Riyadh. Yousef is a **manager** at a **bank**. Bandar is an engineer at a big **company**."
+   },
+   {
+    "text": "Yousef and Bandar **have** a **hobby**. It's **football**! **Their** **team** is Al-Hilal."
+   },
+   {
+    "text": "Today is a big **match** at the **stadium**. It's in the **evening**. Yousef is at the stadium with **a lot of** **fans**. Where is Bandar? Bandar is **late**!"
+   },
+   {
+    "text": "Yousef has a phone. It's a **call** to Bandar's **home**."
+   },
+   {
+    "speaker": "Bandar's mother",
+    "text": "Hello?"
+   },
+   {
+    "speaker": "Yousef",
+    "text": "Hello. **Can I speak to** Bandar, please?"
+   },
+   {
+    "speaker": "Bandar's mother",
+    "text": "**Of course**. **Hold on** … Oh, sorry. Bandar isn't at home. He's at the **office**."
+   },
+   {
+    "speaker": "Yousef",
+    "text": "At the office? The match is now!"
+   },
+   {
+    "speaker": "Bandar's mother",
+    "text": "Yes. His manager is with **him**."
+   },
+   {
+    "speaker": "Yousef",
+    "text": "OK. Thank you."
+   },
+   {
+    "text": "It's a **message** from Bandar: \"Sorry! I'm late. I'm **near** the stadium now.\""
+   },
+   {
+    "text": "And now Bandar is here! He has two burgers and two bottles of water."
+   },
+   {
+    "speaker": "Bandar",
+    "text": "Sorry, Yousef! A burger for you."
+   },
+   {
+    "speaker": "Yousef",
+    "text": "Thanks! I'm hungry. I **like** burgers!"
+   },
+   {
+    "speaker": "Bandar",
+    "text": "And I **want** a **goal**!"
+   },
+   {
+    "text": "The match is fantastic. The **players** are **really** **good**. Salem is a **new** player. He is young and **clever**."
+   },
+   {
+    "text": "Salem has the **ball** … It's a goal! Al-Hilal: one. Al-Nassr: zero."
+   },
+   {
+    "text": "Yousef and Bandar are happy. All the fans are happy. The **coach** is happy, too."
+   },
+   {
+    "speaker": "Bandar",
+    "text": "**Our** team is the winner!"
+   },
+   {
+    "speaker": "Yousef",
+    "text": "Yes! A really good match. And we're **together**!"
+   },
+   {
+    "speaker": "Bandar",
+    "text": "Sorry, I'm late, Yousef."
+   },
+   {
+    "speaker": "Yousef",
+    "text": "That's OK. You're here, and you have burgers!"
+   },
+   {
+    "text": "Bandar is a **funny** friend. He has his phone."
+   },
+   {
+    "speaker": "Bandar",
+    "text": "Yousef, **give** **me** a **smile**! A photo, please!"
+   },
+   {
+    "text": "In the photo: two best friends and a lot of happy fans."
+   }
+  ],
+  "check": [
+   "Is Yousef a manager or an engineer?",
+   "Where is Bandar? (at home / at the office)",
+   "Al-Hilal: one. Al-Nassr: ______. Is Bandar late or on time?"
+  ],
+  "talk": [
+   "What's your hobby? My hobby is …",
+   "With your partner: Your best friend: What's his name? Is he funny? Is he clever? What's his hobby?"
+  ],
+  "vocab": [
+   {
+    "word": "best friends",
+    "ar": "أعزّ الأصدقاء",
+    "meaning": "two people who are very good friends",
+    "example": "Yousef and Bandar are best friends."
+   },
+   {
+    "word": "hobby",
+    "ar": "هواية",
+    "meaning": "a thing you like in your free time",
+    "example": "It's football!"
+   },
+   {
+    "word": "football",
+    "ar": "كرة القدم",
+    "meaning": "a sport with a ball and two teams",
+    "example": "Yousef and Bandar have a hobby. It's football!"
+   },
+   {
+    "word": "team",
+    "ar": "فريق",
+    "meaning": "a group of players",
+    "example": "Their team is Al-Hilal."
+   },
+   {
+    "word": "match",
+    "ar": "مباراة",
+    "meaning": "a game of sport",
+    "example": "Today is a big match."
+   },
+   {
+    "word": "stadium",
+    "ar": "ملعب / استاد",
+    "meaning": "a big place for sport and fans",
+    "example": "at the stadium"
+   },
+   {
+    "word": "fans",
+    "ar": "مشجعون",
+    "meaning": "people who like a team",
+    "example": "a lot of fans"
+   },
+   {
+    "word": "late",
+    "ar": "متأخر",
+    "meaning": "not on time",
+    "example": "Bandar is late!"
+   },
+   {
+    "word": "Can I speak to …?",
+    "ar": "هل يمكنني التحدث إلى …؟",
+    "meaning": "asks for a person on the phone",
+    "example": "Can I speak to Bandar, please?"
+   },
+   {
+    "word": "Hold on.",
+    "ar": "انتظر (على الهاتف)",
+    "meaning": "wait a little (on the phone)",
+    "example": "Of course. Hold on …"
+   },
+   {
+    "word": "really good",
+    "ar": "جيد جداً",
+    "meaning": "very good",
+    "example": "The players are really good."
+   },
+   {
+    "word": "together",
+    "ar": "معاً",
+    "meaning": "with each other",
+    "example": "And we're together!"
+   }
+  ],
+  "more": [
+   {
+    "word": "father",
+    "meaning": "your male parent"
+   },
+   {
+    "word": "parents",
+    "meaning": "your mother and father"
+   },
+   {
+    "word": "son",
+    "meaning": "a boy child of a parent"
+   },
+   {
+    "word": "sister",
+    "meaning": "a girl in your family with the same parents"
+   },
+   {
+    "word": "family",
+    "meaning": "mother, father, brothers, sisters …"
+   },
+   {
+    "word": "lunch",
+    "meaning": "food in the middle of the day"
+   },
+   {
+    "word": "hour",
+    "meaning": "60 minutes"
+   },
+   {
+    "word": "small",
+    "meaning": "not big"
+   },
+   {
+    "word": "laugh",
+    "meaning": "make a happy sound"
+   },
+   {
+    "word": "talk",
+    "meaning": "speak with a person"
+   },
+   {
+    "word": "win / lose",
+    "meaning": "be the best in a game / not win"
+   },
+   {
+    "word": "text",
+    "meaning": "a short phone message"
+   },
+   {
+    "word": "spell",
+    "meaning": "say the letters of a word"
+   },
+   {
+    "word": "slowly",
+    "meaning": "not fast"
+   },
+   {
+    "word": "again",
+    "meaning": "one more time"
+   }
+  ]
+ },
+ {
+  "week": 5,
+  "title": "The Arabic Menu",
+  "setting": "A restaurant in Jeddah",
+  "focus": [
+   "waiter",
+   "restaurant",
+   "speak",
+   "menu",
+   "delicious",
+   "spicy",
+   "Do you like …?",
+   "love",
+   "order",
+   "full",
+   "bill",
+   "How much is it?"
+  ],
+  "story": [
+   {
+    "text": "My name is Nasser. I'm Saudi, and I'm a **waiter**. I work at a small **restaurant** in Jeddah. We **love** **food** here, and our restaurant is very **popular**."
+   },
+   {
+    "text": "People from a lot of countries **eat** at our restaurant. I **speak** **Arabic** and English. I speak **a little** **Urdu**, too. Our chef, Imran, is **Pakistani**. He is a very good chef, and he is my friend."
+   },
+   {
+    "text": "Today, a man and a woman **come** to the restaurant. They are tourists. They are **British**."
+   },
+   {
+    "speaker": "Man",
+    "text": "Hello! The **menu**, please."
+   },
+   {
+    "text": "I give them the menu. They look at it. But the menu is in Arabic!"
+   },
+   {
+    "speaker": "Woman",
+    "text": "Oh no! We **don't** speak Arabic. I don't understand."
+   },
+   {
+    "speaker": "Nasser",
+    "text": "Don't worry. I speak English. This is **kabsa**. It's **rice** with **chicken** or **meat**. It's **delicious**!"
+   },
+   {
+    "speaker": "Woman",
+    "text": "Is it **spicy**?"
+   },
+   {
+    "speaker": "Nasser",
+    "text": "A little."
+   },
+   {
+    "speaker": "Woman",
+    "text": "I don't like spicy food."
+   },
+   {
+    "speaker": "Nasser",
+    "text": "**Do you like** **fish**?"
+   },
+   {
+    "speaker": "Woman",
+    "text": "Yes, I do! I love fish."
+   },
+   {
+    "speaker": "Man",
+    "text": "I like chicken. And I like spicy food!"
+   },
+   {
+    "text": "They **order** fish and rice for the woman, chicken kabsa for the man and two **orange** juices."
+   },
+   {
+    "speaker": "Man",
+    "text": "Excuse me. A **fork** and a **spoon**, please."
+   },
+   {
+    "speaker": "Nasser",
+    "text": "Here you are."
+   },
+   {
+    "text": "They eat, and they **enjoy** the food."
+   },
+   {
+    "speaker": "Nasser",
+    "text": "Do you like the food?"
+   },
+   {
+    "speaker": "Man",
+    "text": "Yes, I do! The kabsa is **the best**!"
+   },
+   {
+    "speaker": "Woman",
+    "text": "The fish is delicious. I'm **full**!"
+   },
+   {
+    "speaker": "Nasser",
+    "text": "And **dessert**? We have **dates** and **chocolate** cake."
+   },
+   {
+    "speaker": "Man",
+    "text": "Dates, please!"
+   },
+   {
+    "speaker": "Man",
+    "text": "The **bill**, please. **How much** is it?"
+   },
+   {
+    "speaker": "Nasser",
+    "text": "It's **ninety**-five **riyals**."
+   },
+   {
+    "speaker": "Man",
+    "text": "Here you are. One hundred riyals, **cash**."
+   },
+   {
+    "speaker": "Nasser",
+    "text": "Thank you. And this is your **change**: five riyals."
+   },
+   {
+    "text": "They smile."
+   },
+   {
+    "speaker": "Woman",
+    "text": "Thank you, Nasser. You're very kind!"
+   },
+   {
+    "text": "I love my job. I enjoy **languages**, and I love food!"
+   }
+  ],
+  "check": [
+   "Is Nasser a waiter or a chef?",
+   "Do the tourists speak Arabic?",
+   "How much is the bill? (95 riyals / 100 riyals)"
+  ],
+  "talk": [
+   "Do you like spicy food? I like … / I don't like …",
+   "With your partner: A is a waiter. B orders food. A: \"Do you like …?\" B: \"Yes, I do. / No, I don't.\" Then: \"The bill, please. How much is it?\""
+  ],
+  "vocab": [
+   {
+    "word": "waiter",
+    "ar": "نادل",
+    "meaning": "a man who brings food in a restaurant",
+    "example": "I'm a waiter."
+   },
+   {
+    "word": "restaurant",
+    "ar": "مطعم",
+    "meaning": "a place where you buy and eat food",
+    "example": "I work at a small restaurant."
+   },
+   {
+    "word": "speak",
+    "ar": "يتكلم",
+    "meaning": "say words in a language",
+    "example": "I speak Arabic and English."
+   },
+   {
+    "word": "menu",
+    "ar": "قائمة الطعام",
+    "meaning": "a list of food in a restaurant",
+    "example": "The menu, please."
+   },
+   {
+    "word": "delicious",
+    "ar": "لذيذ",
+    "meaning": "very good to eat",
+    "example": "It's delicious!"
+   },
+   {
+    "word": "spicy",
+    "ar": "حار (بالتوابل)",
+    "meaning": "hot in your mouth",
+    "example": "Is it spicy?"
+   },
+   {
+    "word": "Do you like …?",
+    "ar": "هل تحب …؟",
+    "meaning": "asks what a person likes",
+    "example": "Do you like fish?"
+   },
+   {
+    "word": "love",
+    "ar": "يحب كثيراً",
+    "meaning": "like very much",
+    "example": "I love fish."
+   },
+   {
+    "word": "order",
+    "ar": "يطلب (طعاماً)",
+    "meaning": "ask for food in a restaurant",
+    "example": "They order fish and rice."
+   },
+   {
+    "word": "full",
+    "ar": "شبعان",
+    "meaning": "you can't eat more",
+    "example": "I'm full!"
+   },
+   {
+    "word": "bill",
+    "ar": "الفاتورة / الحساب",
+    "meaning": "paper that shows how much to pay",
+    "example": "The bill, please."
+   },
+   {
+    "word": "How much is it?",
+    "ar": "كم سعره؟",
+    "meaning": "asks the price",
+    "example": "How much is it?"
+   }
+  ],
+  "more": [
+   {
+    "word": "drink",
+    "meaning": "take water, tea or juice into your mouth"
+   },
+   {
+    "word": "bread",
+    "meaning": "a food made from flour"
+   },
+   {
+    "word": "apple",
+    "meaning": "a red or green fruit"
+   },
+   {
+    "word": "banana",
+    "meaning": "a long yellow fruit"
+   },
+   {
+    "word": "cheese",
+    "meaning": "a food made from milk"
+   },
+   {
+    "word": "knife",
+    "meaning": "you cut food with it"
+   },
+   {
+    "word": "plate",
+    "meaning": "you put food on it"
+   },
+   {
+    "word": "soup",
+    "meaning": "hot liquid food"
+   },
+   {
+    "word": "translate",
+    "meaning": "change words into a different language"
+   },
+   {
+    "word": "Egyptian",
+    "meaning": "from Egypt"
+   },
+   {
+    "word": "Japanese",
+    "meaning": "from Japan"
+   },
+   {
+    "word": "price",
+    "meaning": "how much a thing costs"
+   },
+   {
+    "word": "receipt",
+    "meaning": "paper that shows you paid"
+   },
+   {
+    "word": "free",
+    "meaning": "you don't pay"
+   },
+   {
+    "word": "sometimes",
+    "meaning": "not always"
+   }
+  ]
+ },
+ {
+  "week": 6,
+  "title": "A Day in the Desert",
+  "setting": "A busy week and a desert trip",
+  "focus": [
+   "busy",
+   "wake up",
+   "has breakfast",
+   "leaves home",
+   "gets home",
+   "always / usually / often / never",
+   "go out",
+   "Let's …",
+   "Good idea!",
+   "desert",
+   "tent",
+   "relax"
+  ],
+  "story": [
+   {
+    "text": "Khalid is a manager at a bank in Riyadh. He is very **busy**."
+   },
+   {
+    "text": "From **Sunday** to **Thursday**, Khalid has the same **routine**. He **always** **wakes up** at five **o'clock**. He **prays**, and then he **has a shower**. He **has breakfast** at **half past** six: **eggs**, bread and tea. He **leaves** home at seven o'clock, and he **drives** to work."
+   },
+   {
+    "text": "Khalid **usually** **gets home** at six in the evening. He is tired. He **often** **watches** **TV**, and he **goes to bed** at ten o'clock."
+   },
+   {
+    "text": "Khalid's son, Saad, is ten. Saad **studies** in the evening."
+   },
+   {
+    "text": "\"**Dad**, **when** do we **go out**?\" says Saad. \"We **never** go out!\""
+   },
+   {
+    "text": "\"That's true,\" says Khalid."
+   },
+   {
+    "text": "Does Khalid **relax**? No, he **doesn't**. He never relaxes!"
+   },
+   {
+    "text": "On Thursday evening, Saad talks to his dad."
+   },
+   {
+    "text": "\"Dad, **tomorrow** is **Friday**. **Let's** go to the **desert**!\""
+   },
+   {
+    "text": "\"The desert? **Why not**?\" says Khalid. \"**Good idea**!\""
+   },
+   {
+    "text": "On Friday, Khalid doesn't wake up **early**. He **gets up** at eight o'clock. In the **morning**, Khalid and Saad **go shopping**. They **buy** water, **fruit**, chicken and bread."
+   },
+   {
+    "text": "In the afternoon, they drive to the desert. The **sand** is beautiful. Saad helps his dad with the **tent**. Khalid **cooks** the chicken. They **walk** in the sand, and they **stay** in the desert **all day**."
+   },
+   {
+    "text": "Khalid doesn't watch TV. He doesn't read emails. He relaxes!"
+   },
+   {
+    "text": "\"Dad, are you happy?\" asks Saad."
+   },
+   {
+    "text": "\"Yes, I'm very happy,\" says Khalid. \"I love the desert!\""
+   },
+   {
+    "text": "\"**Next** Friday, let's go to the **beach**!\" says Saad."
+   },
+   {
+    "text": "\"**Sure**!\" says Khalid."
+   },
+   {
+    "text": "Now Khalid **sometimes** works late on Thursdays. But on Fridays, he always goes out with Saad."
+   }
+  ],
+  "check": [
+   "What time does Khalid wake up on Sunday?",
+   "What do Khalid and Saad buy on Friday morning?",
+   "Where do they go next Friday? (to the desert / to the beach)"
+  ],
+  "talk": [
+   "What time do you get up? What time do you go to bed?",
+   "With your partner: Ask about your partner's week. \"Does your father always work on Friday? Do you often go out?\""
+  ],
+  "vocab": [
+   {
+    "word": "busy",
+    "ar": "مشغول",
+    "meaning": "with a lot of work",
+    "example": "He is very busy."
+   },
+   {
+    "word": "wake up",
+    "ar": "يستيقظ",
+    "meaning": "stop sleeping",
+    "example": "He always wakes up at five o'clock."
+   },
+   {
+    "word": "have breakfast",
+    "ar": "يتناول الفطور",
+    "meaning": "eat in the morning",
+    "example": "He has breakfast at half past six."
+   },
+   {
+    "word": "leave",
+    "ar": "يغادر",
+    "meaning": "go from a place",
+    "example": "He leaves home at seven o'clock."
+   },
+   {
+    "word": "get home",
+    "ar": "يصل إلى البيت",
+    "meaning": "arrive at your house",
+    "example": "He usually gets home at six."
+   },
+   {
+    "word": "always / usually / often / never",
+    "ar": "دائماً / عادةً / غالباً / أبداً",
+    "meaning": "100% / 90% / 70% / 0%",
+    "example": "We never go out!"
+   },
+   {
+    "word": "go out",
+    "ar": "يخرج",
+    "meaning": "leave home for fun",
+    "example": "When do we go out?"
+   },
+   {
+    "word": "Let's …",
+    "ar": "هيا بنا …",
+    "meaning": "an idea for you and me",
+    "example": "Let's go to the desert!"
+   },
+   {
+    "word": "Good idea!",
+    "ar": "فكرة جيدة!",
+    "meaning": "said when you like a plan",
+    "example": "Why not? Good idea!"
+   },
+   {
+    "word": "desert",
+    "ar": "صحراء",
+    "meaning": "a big, dry place with sand",
+    "example": "The desert? Why not?"
+   },
+   {
+    "word": "tent",
+    "ar": "خيمة",
+    "meaning": "a small house for camping",
+    "example": "Saad helps his dad with the tent."
+   },
+   {
+    "word": "relax",
+    "ar": "يسترخي",
+    "meaning": "rest and feel calm",
+    "example": "He relaxes!"
+   }
+  ],
+  "more": [
+   {
+    "word": "dinner",
+    "meaning": "food in the evening"
+   },
+   {
+    "word": "lunch",
+    "meaning": "food in the middle of the day"
+   },
+   {
+    "word": "go to work",
+    "meaning": "leave home for your job"
+   },
+   {
+    "word": "study",
+    "meaning": "learn"
+   },
+   {
+    "word": "lesson",
+    "meaning": "a time in class to learn"
+   },
+   {
+    "word": "quarter past",
+    "meaning": "15 minutes after the hour"
+   },
+   {
+    "word": "healthy",
+    "meaning": "good for your body"
+   },
+   {
+    "word": "fast food",
+    "meaning": "burgers, pizza, chips"
+   },
+   {
+    "word": "vegetables",
+    "meaning": "carrots, potatoes, onions …"
+   },
+   {
+    "word": "visit",
+    "meaning": "go to see a person or place"
+   },
+   {
+    "word": "sea",
+    "meaning": "a very big area of salt water"
+   },
+   {
+    "word": "farm",
+    "meaning": "a place for animals and food"
+   },
+   {
+    "word": "garden",
+    "meaning": "land with flowers and trees next to a house"
+   },
+   {
+    "word": "island",
+    "meaning": "land with water all around it"
+   },
+   {
+    "word": "Why not?",
+    "meaning": "yes, OK"
+   }
+  ]
+ },
+ {
+  "week": 7,
+  "title": "A Jacket for Hail",
+  "setting": "A train journey to Hail",
+  "focus": [
+   "railway station",
+   "return ticket",
+   "platform",
+   "timetable",
+   "journey",
+   "Why …? / Because …",
+   "cold / hot",
+   "coat",
+   "Can I try on …?",
+   "jacket",
+   "cheap / expensive",
+   "comfortable"
+  ],
+  "story": [
+   {
+    "text": "Saad lives in Riyadh. His best friend, Majed, lives in Hail. Majed has a new **baby**, and Saad wants to visit them."
+   },
+   {
+    "text": "Saad goes to the **railway** station."
+   },
+   {
+    "text": "\"Hello. **Can I** have a **return ticket** to Hail, please?\""
+   },
+   {
+    "text": "\"Sure. That's ninety riyals. Cash or **card**?\" says the man."
+   },
+   {
+    "text": "\"Card, please. Which **platform**?\""
+   },
+   {
+    "text": "\"Platform two. Look at the **timetable**. The **train** leaves at half past eight.\""
+   },
+   {
+    "text": "\"**How long** is the **journey**?\""
+   },
+   {
+    "text": "\"Four hours.\""
+   },
+   {
+    "text": "The train is **fast** and **comfortable**. A **friendly** **passenger** talks to Saad. He is an **old** man."
+   },
+   {
+    "text": "\"**Why** do you go to Hail?\" asks the old man."
+   },
+   {
+    "text": "\"**Because** my friend has a new baby!\" says Saad."
+   },
+   {
+    "text": "\"**Wonderful**! But where is your **coat**? Hail is very **cold**!\""
+   },
+   {
+    "text": "\"My coat? It's in Riyadh! Riyadh is **hot**.\""
+   },
+   {
+    "text": "\"Ha! In Hail, it's five **degrees** today.\""
+   },
+   {
+    "text": "In Hail, it's cold and **wet**. Saad goes to a **clothes** shop."
+   },
+   {
+    "text": "\"Excuse me. Can I **try on** **that** **jacket**? The **black** one.\""
+   },
+   {
+    "text": "\"Sure,\" says the shop worker. \"But it's very **expensive**. It's four hundred riyals.\""
+   },
+   {
+    "text": "\"Oh! And that **grey** jacket?\""
+   },
+   {
+    "text": "\"This grey jacket is **cheap**. It's one hundred riyals.\""
+   },
+   {
+    "text": "Saad tries on the grey jacket. It's comfortable."
+   },
+   {
+    "text": "\"I love it. Thank you **very much**!\""
+   },
+   {
+    "text": "\"**No problem**.\""
+   },
+   {
+    "text": "Then Saad **meets** Majed at a **café**."
+   },
+   {
+    "text": "\"Saad! Welcome to Hail!\" says Majed. \"**Whose** jacket is that?\""
+   },
+   {
+    "text": "\"It's my new jacket! I **hate** cold weather!\""
+   },
+   {
+    "text": "Majed laughs."
+   },
+   {
+    "text": "At Majed's house, Saad looks at the baby. He is in a small **white** **hat**. Saad has a **present** for him: a **red** **jumper**."
+   },
+   {
+    "text": "\"Thank you, Saad!\" says Majed. \"It's a wonderful present.\""
+   },
+   {
+    "text": "\"Your baby is **amazing**!\" says Saad. \"And Hail is amazing, too. But it's very cold!\""
+   }
+  ],
+  "check": [
+   "How long is the journey to Hail?",
+   "Why does Saad go to Hail?",
+   "Which jacket does Saad buy: the black jacket or the grey jacket? Why?"
+  ],
+  "talk": [
+   "What's your favourite place in Saudi Arabia? Why?",
+   "With your partner: A is a shop worker. B: \"Can I try on that jacket?\" A: \"Sure. It's … riyals.\" B: \"Is it cheap or expensive?\""
+  ],
+  "vocab": [
+   {
+    "word": "railway station",
+    "ar": "محطة القطار",
+    "meaning": "a place where you catch a train",
+    "example": "Saad goes to the railway station."
+   },
+   {
+    "word": "return ticket",
+    "ar": "تذكرة ذهاب وعودة",
+    "meaning": "a ticket to a place and back again",
+    "example": "Can I have a return ticket to Hail?"
+   },
+   {
+    "word": "platform",
+    "ar": "رصيف (المحطة)",
+    "meaning": "where you wait for and get on a train",
+    "example": "Platform two."
+   },
+   {
+    "word": "timetable",
+    "ar": "جدول المواعيد",
+    "meaning": "a list of times for trains or buses",
+    "example": "Look at the timetable."
+   },
+   {
+    "word": "journey",
+    "ar": "رحلة",
+    "meaning": "going from one place to another",
+    "example": "How long is the journey?"
+   },
+   {
+    "word": "Why …? / Because …",
+    "ar": "لماذا؟ / لأن",
+    "meaning": "asks for a reason / gives a reason",
+    "example": "Why do you go to Hail? Because my friend has a new baby!"
+   },
+   {
+    "word": "cold / hot",
+    "ar": "بارد / حار",
+    "meaning": "not warm / very warm",
+    "example": "Hail is very cold! Riyadh is hot."
+   },
+   {
+    "word": "coat",
+    "ar": "معطف",
+    "meaning": "a long, warm jacket",
+    "example": "Where is your coat?"
+   },
+   {
+    "word": "Can I try on …?",
+    "ar": "هل يمكنني تجربة …؟",
+    "meaning": "asks to wear clothes in a shop before you buy",
+    "example": "Can I try on that jacket?"
+   },
+   {
+    "word": "jacket",
+    "ar": "جاكيت / سترة",
+    "meaning": "a short coat",
+    "example": "that grey jacket"
+   },
+   {
+    "word": "cheap / expensive",
+    "ar": "رخيص / غالٍ",
+    "meaning": "not much money / a lot of money",
+    "example": "It's very expensive. This grey jacket is cheap."
+   },
+   {
+    "word": "comfortable",
+    "ar": "مريح",
+    "meaning": "nice to wear or sit in",
+    "example": "The train is fast and comfortable."
+   }
+  ],
+  "more": [
+   {
+    "word": "free time",
+    "meaning": "time when you don't work"
+   },
+   {
+    "word": "favourite",
+    "meaning": "the one you like the most"
+   },
+   {
+    "word": "rain",
+    "meaning": "water from the sky"
+   },
+   {
+    "word": "sandstorm",
+    "meaning": "a storm with a lot of sand"
+   },
+   {
+    "word": "thobe",
+    "meaning": "a long white dress for men in Saudi Arabia"
+   },
+   {
+    "word": "shoes",
+    "meaning": "you wear them on your feet"
+   },
+   {
+    "word": "T-shirt",
+    "meaning": "a short shirt with no buttons"
+   },
+   {
+    "word": "chemist's",
+    "meaning": "a shop for medicine"
+   },
+   {
+    "word": "headache",
+    "meaning": "pain in your head"
+   },
+   {
+    "word": "post office",
+    "meaning": "a place to send letters and parcels"
+   },
+   {
+    "word": "stamp",
+    "meaning": "you put it on a letter"
+   },
+   {
+    "word": "single ticket",
+    "meaning": "a ticket to a place (not back)"
+   },
+   {
+    "word": "passenger",
+    "meaning": "a person on a train, bus or plane"
+   },
+   {
+    "word": "neighbour",
+    "meaning": "a person who lives near you"
+   },
+   {
+    "word": "who?",
+    "meaning": "asks about a person"
+   }
+  ]
+ },
+ {
+  "week": 8,
+  "title": "Where Are the Car Keys?",
+  "setting": "A new flat and lost car keys",
+  "focus": [
+   "There is … / There are …",
+   "kitchen",
+   "living room",
+   "sofa",
+   "fridge",
+   "tidy",
+   "directions",
+   "turn left",
+   "go past",
+   "opposite",
+   "under / behind / next to",
+   "car keys"
+  ],
+  "story": [
+   {
+    "text": "Majed has a new flat in Riyadh. It's in a **modern** building near a **park**."
+   },
+   {
+    "text": "**There are** five **rooms**: a **kitchen**, a **bathroom**, a **living room** and two bedrooms. **There is** a small **balcony**, too."
+   },
+   {
+    "text": "Today, Majed's friend Turki visits him. Turki doesn't drive. He takes the **metro**."
+   },
+   {
+    "text": "Turki calls Majed. \"I'm at the metro station. I **need** **directions**!\""
+   },
+   {
+    "text": "\"OK,\" says Majed. \"**Go straight on**. **Turn** **left** at the **roundabout**. **Go past** the **supermarket**. My building is on the **right**, **opposite** the park. It's ten **minutes** **on foot**.\""
+   },
+   {
+    "text": "Turki is at the door. \"Welcome! Come in!\" says Majed."
+   },
+   {
+    "text": "\"This is the living room. There's a big **sofa** and two **armchairs**. There's a **lamp** **next to** the sofa.\""
+   },
+   {
+    "text": "\"It's very **tidy**!\" says Turki."
+   },
+   {
+    "text": "\"And this is the kitchen. There's a new **cooker** and a big **fridge**.\""
+   },
+   {
+    "text": "\"Your flat is fantastic!\" says Turki. \"Is there a café near here?\""
+   },
+   {
+    "text": "\"Yes, there is. There are **some** nice cafés in the **square**,\" says Majed. \"Let's go. Where are my **car keys**?\""
+   },
+   {
+    "text": "Majed looks at the table. The keys aren't **on** the table. He looks in the **drawer**. They aren't in the drawer."
+   },
+   {
+    "text": "\"Are they **under** the sofa?\" asks Turki."
+   },
+   {
+    "text": "\"No, they aren't.\""
+   },
+   {
+    "text": "\"Are they **behind** the **curtains**?\""
+   },
+   {
+    "text": "\"No.\""
+   },
+   {
+    "text": "\"Are they in your **wardrobe**?\""
+   },
+   {
+    "text": "\"No! There aren't **any** keys in the wardrobe.\""
+   },
+   {
+    "text": "Turki is thirsty. He opens the fridge. \"Majed! Look! There are some car keys in the fridge, **in front of** the milk!\""
+   },
+   {
+    "text": "\"Ha! My keys!\" says Majed. \"My flat is tidy, but I'm not!\""
+   },
+   {
+    "text": "It's a **cool**, **sunny** **winter** day. Majed and Turki go to the **car park**. They drive to a café in the square."
+   }
+  ],
+  "check": [
+   "How many rooms are there in Majed's flat?",
+   "Is Majed's building next to the park or opposite the park?",
+   "Where are the car keys?"
+  ],
+  "talk": [
+   "What's in your living room? There is … / There are …",
+   "With your partner: Give directions from your college to a café. Use: Go straight on. Turn left / right. Go past …"
+  ],
+  "vocab": [
+   {
+    "word": "There is … / There are …",
+    "ar": "يوجد (مفرد) / يوجد (جمع)",
+    "meaning": "says a thing or things are in a place",
+    "example": "There are five rooms. There is a small balcony."
+   },
+   {
+    "word": "kitchen",
+    "ar": "مطبخ",
+    "meaning": "the room where you cook",
+    "example": "And this is the kitchen."
+   },
+   {
+    "word": "living room",
+    "ar": "غرفة الجلوس",
+    "meaning": "the room where you sit and relax",
+    "example": "This is the living room."
+   },
+   {
+    "word": "sofa",
+    "ar": "كنبة",
+    "meaning": "a long, soft seat for two or three people",
+    "example": "There's a big sofa."
+   },
+   {
+    "word": "fridge",
+    "ar": "ثلاجة",
+    "meaning": "it keeps food and drinks cold",
+    "example": "There's a big fridge."
+   },
+   {
+    "word": "tidy",
+    "ar": "مرتب",
+    "meaning": "everything is in the right place",
+    "example": "It's very tidy!"
+   },
+   {
+    "word": "directions",
+    "ar": "الاتجاهات",
+    "meaning": "how to go to a place",
+    "example": "I need directions!"
+   },
+   {
+    "word": "turn left",
+    "ar": "انعطف يساراً",
+    "meaning": "go to the left",
+    "example": "Turn left at the roundabout."
+   },
+   {
+    "word": "go past",
+    "ar": "يمر بـ",
+    "meaning": "go next to and then away from",
+    "example": "Go past the supermarket."
+   },
+   {
+    "word": "opposite",
+    "ar": "مقابل",
+    "meaning": "on the other side",
+    "example": "opposite the park"
+   },
+   {
+    "word": "under / behind / next to",
+    "ar": "تحت / خلف / بجانب",
+    "meaning": "below / at the back of / near, at the side of",
+    "example": "Are they under the sofa? Behind the curtains?"
+   },
+   {
+    "word": "car keys",
+    "ar": "مفاتيح السيارة",
+    "meaning": "keys you use to open and start a car",
+    "example": "Where are my car keys?"
+   }
+  ],
+  "more": [
+   {
+    "word": "floor",
+    "meaning": "you walk on it in a room"
+   },
+   {
+    "word": "mirror",
+    "meaning": "you look in it and see your face"
+   },
+   {
+    "word": "shelf",
+    "meaning": "a board on a wall for books"
+   },
+   {
+    "word": "cupboard",
+    "meaning": "a small place with a door for plates and food"
+   },
+   {
+    "word": "desk",
+    "meaning": "a table for work or study"
+   },
+   {
+    "word": "clock",
+    "meaning": "it shows the time"
+   },
+   {
+    "word": "museum",
+    "meaning": "a building with old and interesting things"
+   },
+   {
+    "word": "library",
+    "meaning": "a place with a lot of books"
+   },
+   {
+    "word": "traffic",
+    "meaning": "a lot of cars on the road"
+   },
+   {
+    "word": "cross",
+    "meaning": "go from one side to the other"
+   },
+   {
+    "word": "corner",
+    "meaning": "where two streets meet"
+   },
+   {
+    "word": "summer",
+    "meaning": "the hot season"
+   },
+   {
+    "word": "spring",
+    "meaning": "the season after winter"
+   },
+   {
+    "word": "picnic",
+    "meaning": "food you eat outside"
+   },
+   {
+    "word": "home town",
+    "meaning": "the town where you are from"
+   }
+  ]
+ },
+ {
+  "week": 9,
+  "title": "Grandfather's Old Photo",
+  "setting": "Eid with Grandfather",
+  "focus": [
+   "grandfather",
+   "was / were",
+   "born",
+   "date of birth",
+   "childhood",
+   "village",
+   "palm trees",
+   "sheep / goats",
+   "toy",
+   "eldest",
+   "story",
+   "the first day of Eid"
+  ],
+  "story": [
+   {
+    "text": "Today is the **first** day of **Eid**. Ali is at his **grandfather**'s house in Riyadh. All the family is there."
+   },
+   {
+    "text": "Grandfather has a **gift** for Ali. It's an old photo. In the photo, there is a small boy with two **goats**."
+   },
+   {
+    "text": "\"Who is this boy?\" asks Ali."
+   },
+   {
+    "text": "\"That boy is me!\" says Grandfather. \"I **was** eight in this photo.\""
+   },
+   {
+    "text": "\"Really? When **were** you **born**, Grandfather?\""
+   },
+   {
+    "text": "\"I was born in nineteen fifty-two.\""
+   },
+   {
+    "text": "\"And what's your **date of birth**?\""
+   },
+   {
+    "text": "\"I don't know!\" says Grandfather. \"In my **childhood**, there were no **calendars** in our village. My mother only **said**, 'You were born in **Ramadan**.'\""
+   },
+   {
+    "text": "\"Was your village big?\" asks Ali."
+   },
+   {
+    "text": "\"No, it **wasn't**. It was small and **simple**. There were **palm trees**, **sheep** and goats. There **weren't** any cars.\""
+   },
+   {
+    "text": "\"Were there any **toys**?\""
+   },
+   {
+    "text": "\"**Only** one! My **toy** was a small camel. My father **made** it from **wood**.\""
+   },
+   {
+    "text": "\"Was there a school?\""
+   },
+   {
+    "text": "\"Yes, there was a small **primary** school. I was the **eldest** son. I **did** a lot of **housework**, too.\""
+   },
+   {
+    "text": "\"Were you **naughty**?\" asks Ali."
+   },
+   {
+    "text": "Grandfather smiles. \"Sometimes!\""
+   },
+   {
+    "text": "\"Were there any lamps?\""
+   },
+   {
+    "text": "\"No, there weren't. We **had** **candles**. At night, all the family was by the **fire**. My **grandmother** had a lot of **stories**. They were wonderful.\""
+   },
+   {
+    "text": "\"You **still** have a lot of stories, Grandfather!\""
+   },
+   {
+    "text": "Grandfather laughs. \"Last year, I **went** to the village with your **uncle**. We **saw** the old school. And the palm trees are still there!\""
+   },
+   {
+    "text": "\"Grandfather, next Eid, let's go to the village together,\" says Ali."
+   },
+   {
+    "text": "\"Good idea!\""
+   },
+   {
+    "text": "Ali puts the old photo on his desk. It's the best Eid gift."
+   }
+  ],
+  "check": [
+   "When was Grandfather born?",
+   "Was Grandfather's village big or small?",
+   "What was Grandfather's toy?"
+  ],
+  "talk": [
+   "When were you born? Where were you born?",
+   "With your partner: Talk about your childhood. \"Was your house big? Were there any palm trees? What was your favourite toy?\""
+  ],
+  "vocab": [
+   {
+    "word": "grandfather",
+    "ar": "الجد",
+    "meaning": "the father of your mother or father",
+    "example": "Ali is at his grandfather's house."
+   },
+   {
+    "word": "was / were",
+    "ar": "كان / كانوا",
+    "meaning": "past of is / are",
+    "example": "I was eight in this photo. There were palm trees."
+   },
+   {
+    "word": "born",
+    "ar": "وُلِد",
+    "meaning": "when you start your life",
+    "example": "I was born in nineteen fifty-two."
+   },
+   {
+    "word": "date of birth",
+    "ar": "تاريخ الميلاد",
+    "meaning": "the day, month and year you were born",
+    "example": "What's your date of birth?"
+   },
+   {
+    "word": "childhood",
+    "ar": "الطفولة",
+    "meaning": "the time when you are a child",
+    "example": "In my childhood, there were no calendars."
+   },
+   {
+    "word": "village",
+    "ar": "قرية",
+    "meaning": "a very small town",
+    "example": "Was your village big?"
+   },
+   {
+    "word": "palm trees",
+    "ar": "أشجار النخيل",
+    "meaning": "trees that give dates",
+    "example": "There were palm trees."
+   },
+   {
+    "word": "sheep / goats",
+    "ar": "خراف / ماعز",
+    "meaning": "farm animals",
+    "example": "There were sheep and goats."
+   },
+   {
+    "word": "toy",
+    "ar": "لعبة (أطفال)",
+    "meaning": "a thing children play with",
+    "example": "My toy was a small camel."
+   },
+   {
+    "word": "eldest",
+    "ar": "الأكبر (سناً)",
+    "meaning": "the oldest child in a family",
+    "example": "I was the eldest son."
+   },
+   {
+    "word": "story",
+    "ar": "قصة",
+    "meaning": "words about people and things that happen",
+    "example": "My grandmother had a lot of stories."
+   },
+   {
+    "word": "the first day of Eid",
+    "ar": "أول يوم من العيد",
+    "meaning": "day 1 of Eid",
+    "example": "Today is the first day of Eid."
+   }
+  ],
+  "more": [
+   {
+    "word": "year",
+    "meaning": "365 days"
+   },
+   {
+    "word": "last year",
+    "meaning": "the year before this year"
+   },
+   {
+    "word": "calendar",
+    "meaning": "a page with all the days and months"
+   },
+   {
+    "word": "Hijri",
+    "meaning": "the Islamic calendar"
+   },
+   {
+    "word": "January / March / May",
+    "meaning": "months of the year"
+   },
+   {
+    "word": "holiday",
+    "meaning": "days with no work or school"
+   },
+   {
+    "word": "celebrate",
+    "meaning": "have a party for a special day"
+   },
+   {
+    "word": "second / third",
+    "meaning": "number 2 / number 3 in order"
+   },
+   {
+    "word": "grandmother",
+    "meaning": "the mother of your mother or father"
+   },
+   {
+    "word": "uncle",
+    "meaning": "the brother of your mother or father"
+   },
+   {
+    "word": "yesterday",
+    "meaning": "the day before today"
+   },
+   {
+    "word": "ate / drank",
+    "meaning": "past of eat / drink"
+   },
+   {
+    "word": "bought",
+    "meaning": "past of buy"
+   },
+   {
+    "word": "gave",
+    "meaning": "past of give"
+   },
+   {
+    "word": "alone",
+    "meaning": "with no other people"
+   }
+  ]
+ },
+ {
+  "week": 10,
+  "title": "A Weekend in AlUla",
+  "setting": "A weekend in AlUla",
+  "focus": [
+   "weekend",
+   "travelled",
+   "stayed",
+   "visited",
+   "Did you …?",
+   "didn't",
+   "sightseeing",
+   "old town",
+   "ancient",
+   "crowded",
+   "lucky",
+   "view"
+  ],
+  "story": [
+   {
+    "text": "It's Sunday morning. Fahad is at the office. His friend Sami **talks** to him."
+   },
+   {
+    "text": "\"Hi, Fahad! Did you have a good **weekend**?\""
+   },
+   {
+    "text": "\"Yes, I did! I **travelled** to AlUla with my brother. We **stayed** there for three days.\""
+   },
+   {
+    "text": "\"AlUla? Fantastic! **Did you** go **sightseeing**?\""
+   },
+   {
+    "text": "\"Yes, we did. On Thursday, we **visited** the **old town**. It's very **ancient**. We **walked** there for two hours.\""
+   },
+   {
+    "text": "\"Did you visit Hegra, too?\""
+   },
+   {
+    "text": "\"We **wanted** to visit Hegra on Friday. But we **didn't** have tickets. The **entrance** was very **crowded**. We were sad.\""
+   },
+   {
+    "text": "\"Oh no!\""
+   },
+   {
+    "text": "\"Then a **guide** **helped** us. He **called** a friend, and we got two tickets for the **bus tour**. We were **lucky**!\""
+   },
+   {
+    "text": "\"What did you see?\""
+   },
+   {
+    "text": "\"We saw big **rocks**, a green **valley** and an **oasis** with palm trees. The guide talked about the **heritage** of AlUla. I was very **interested**.\""
+   },
+   {
+    "text": "\"Did you go **hiking**?\""
+   },
+   {
+    "text": "\"Yes, we did. On Saturday morning, we walked in the valley for three hours. It was hot, but the view was beautiful.\""
+   },
+   {
+    "text": "\"Did you take photos?\""
+   },
+   {
+    "text": "\"**Lots** of photos! The **view** from the **viewpoint** was amazing.\""
+   },
+   {
+    "text": "\"And the food?\""
+   },
+   {
+    "text": "\"In the evening, we ate **outside**. I had **grilled** **lamb** with rice. My brother had chicken. It was very **tasty**.\""
+   },
+   {
+    "text": "\"Did you sleep in a hotel?\""
+   },
+   {
+    "text": "\"No, we didn't. We stayed in a small **villa** near the old town. It was **relaxing**.\""
+   },
+   {
+    "text": "\"Great!\""
+   },
+   {
+    "text": "\"And you, Sami? What did you do?\""
+   },
+   {
+    "text": "\"Me? **Nothing** **special**! I stayed at home. I **watched** TV, and I **cleaned** my car.\""
+   },
+   {
+    "text": "\"**Not bad**!\" says Fahad."
+   },
+   {
+    "text": "Sami smiles. \"I visited AlUla ten years **ago**. Next weekend, I want to go again!\""
+   }
+  ],
+  "check": [
+   "Who did Fahad travel to AlUla with?",
+   "Did Fahad and his brother have tickets for Hegra on Friday?",
+   "What did Sami do at the weekend?"
+  ],
+  "talk": [
+   "What did you do last weekend? I visited … / I stayed … / I watched …",
+   "With your partner: Ask about a trip. \"Where did you go? Did you go sightseeing? What did you eat?\""
+  ],
+  "vocab": [
+   {
+    "word": "weekend",
+    "ar": "عطلة نهاية الأسبوع",
+    "meaning": "Friday and Saturday",
+    "example": "Did you have a good weekend?"
+   },
+   {
+    "word": "travelled",
+    "ar": "سافر",
+    "meaning": "went to another place (past)",
+    "example": "I travelled to AlUla with my brother."
+   },
+   {
+    "word": "stayed",
+    "ar": "بقي / أقام",
+    "meaning": "was in a place for some time (past)",
+    "example": "We stayed there for three days."
+   },
+   {
+    "word": "visited",
+    "ar": "زار",
+    "meaning": "went to see a place (past)",
+    "example": "We visited the old town."
+   },
+   {
+    "word": "Did you …?",
+    "ar": "هل … ؟ (سؤال عن الماضي)",
+    "meaning": "a past question",
+    "example": "Did you go sightseeing?"
+   },
+   {
+    "word": "didn't",
+    "ar": "لم (نفي الماضي)",
+    "meaning": "did not",
+    "example": "We didn't have tickets."
+   },
+   {
+    "word": "sightseeing",
+    "ar": "زيارة المعالم السياحية",
+    "meaning": "visiting famous places",
+    "example": "Did you go sightseeing?"
+   },
+   {
+    "word": "old town",
+    "ar": "البلدة القديمة",
+    "meaning": "the old part of a city",
+    "example": "We visited the old town."
+   },
+   {
+    "word": "ancient",
+    "ar": "قديم جداً",
+    "meaning": "very, very old",
+    "example": "It's very ancient."
+   },
+   {
+    "word": "crowded",
+    "ar": "مزدحم",
+    "meaning": "with too many people",
+    "example": "The entrance was very crowded."
+   },
+   {
+    "word": "lucky",
+    "ar": "محظوظ",
+    "meaning": "good things happen to you",
+    "example": "We were lucky!"
+   },
+   {
+    "word": "view",
+    "ar": "منظر",
+    "meaning": "what you see from a high place",
+    "example": "The view was amazing."
+   }
+  ],
+  "more": [
+   {
+    "word": "ago",
+    "meaning": "before now (ten years ago)"
+   },
+   {
+    "word": "guidebook",
+    "meaning": "a book for tourists"
+   },
+   {
+    "word": "monument",
+    "meaning": "a building or stone for a famous person or time"
+   },
+   {
+    "word": "cave",
+    "meaning": "a big hole in a mountain or rock"
+   },
+   {
+    "word": "landmark",
+    "meaning": "a famous building or place"
+   },
+   {
+    "word": "tour",
+    "meaning": "a trip to see a place"
+   },
+   {
+    "word": "meal",
+    "meaning": "breakfast, lunch or dinner"
+   },
+   {
+    "word": "lemon",
+    "meaning": "a yellow, sour fruit"
+   },
+   {
+    "word": "honey",
+    "meaning": "a sweet food from bees"
+   },
+   {
+    "word": "swimming",
+    "meaning": "moving in water"
+   },
+   {
+    "word": "last night",
+    "meaning": "yesterday evening"
+   },
+   {
+    "word": "nobody",
+    "meaning": "no person"
+   },
+   {
+    "word": "borrow",
+    "meaning": "take and give back later"
+   },
+   {
+    "word": "finished",
+    "meaning": "past of finish"
+   }
+  ]
+ },
+ {
+  "week": 11,
+  "title": "Grandma's Video Call",
+  "setting": "A video call to Canada",
+  "focus": [
+   "can / can't",
+   "really well",
+   "slowly / fast",
+   "video call",
+   "Wi-Fi",
+   "password",
+   "download",
+   "app",
+   "click",
+   "button",
+   "battery",
+   "safe"
+  ],
+  "story": [
+   {
+    "text": "Majed's **grandma** is seventy. She **can** cook **really well**. Her kabsa is the best in the family. She can tell wonderful stories, too."
+   },
+   {
+    "text": "But Grandma **can't** use the Internet. She has a new **tablet**, but it is in her bedroom with no **apps**."
+   },
+   {
+    "text": "Majed's brother, Hamad, is a student in Canada. Grandma **misses** him a lot."
+   },
+   {
+    "text": "\"Majed, **can you help me**?\" asks Grandma. \"I want to see Hamad.\""
+   },
+   {
+    "text": "\"Of course!\" says Majed. \"We can make a **video call**.\""
+   },
+   {
+    "text": "\"First, we need the **Wi-Fi**. What's the **password**?\""
+   },
+   {
+    "text": "\"I don't know! It's on a paper in the kitchen.\""
+   },
+   {
+    "text": "Majed finds the paper. Now the tablet is on the Wi-Fi."
+   },
+   {
+    "text": "\"OK, Grandma. Now we **download** an app. Look. **Click** this **button**.\""
+   },
+   {
+    "text": "Grandma **tries**. She clicks very **slowly**."
+   },
+   {
+    "text": "\"Can you do it **fast**?\" asks Majed."
+   },
+   {
+    "text": "\"No, I can't!\" laughs Grandma. \"But I can do it slowly!\""
+   },
+   {
+    "text": "Then the **screen** is black."
+   },
+   {
+    "text": "\"**What's the matter**?\" asks Grandma. \"Is it **broken**?\""
+   },
+   {
+    "text": "\"No, it isn't broken. Don't worry. The **battery** is empty. We need thirty minutes.\""
+   },
+   {
+    "text": "In thirty minutes, the battery is full. Grandma **pushes** the green button. And there is Hamad!"
+   },
+   {
+    "text": "\"Grandma! Can you hear me?\""
+   },
+   {
+    "text": "\"Yes, I can! And I can see you, too!\" says Grandma. \"Are you OK? Can you cook?\""
+   },
+   {
+    "text": "\"I can cook **a little bit**,\" says Hamad. \"But your kabsa is **better**!\""
+   },
+   {
+    "text": "Grandma is very happy."
+   },
+   {
+    "text": "Now Grandma can make video calls. She can **also** send messages. She calls Hamad every Friday."
+   },
+   {
+    "text": "\"Grandma, you learn fast!\" says Majed."
+   },
+   {
+    "text": "\"Yes!\" says Grandma. \"And I can **type** with one **finger**!\""
+   },
+   {
+    "text": "\"Be **careful**, Grandma,\" says Majed. \"Never give your password to people **online**. It isn't **safe**.\""
+   }
+  ],
+  "check": [
+   "Can Grandma cook well?",
+   "What's the matter with the tablet? (It's broken. / The battery is empty.)",
+   "Where is Hamad?"
+  ],
+  "talk": [
+   "What can you do well? What can't you do? I can … / I can't …",
+   "With your partner: \"Can you make a video call? Can you type fast? Can you download an app?\""
+  ],
+  "vocab": [
+   {
+    "word": "can / can't",
+    "ar": "يستطيع / لا يستطيع",
+    "meaning": "is / isn't able to",
+    "example": "She can cook. Grandma can't use the Internet."
+   },
+   {
+    "word": "really well",
+    "ar": "جيداً جداً",
+    "meaning": "very well",
+    "example": "She can cook really well."
+   },
+   {
+    "word": "slowly / fast",
+    "ar": "ببطء / بسرعة",
+    "meaning": "not fast / quickly",
+    "example": "She clicks very slowly. Can you do it fast?"
+   },
+   {
+    "word": "video call",
+    "ar": "مكالمة فيديو",
+    "meaning": "a phone call where you see the person",
+    "example": "We can make a video call."
+   },
+   {
+    "word": "Wi-Fi",
+    "ar": "واي فاي",
+    "meaning": "Internet with no cable",
+    "example": "First, we need the Wi-Fi."
+   },
+   {
+    "word": "password",
+    "ar": "كلمة المرور",
+    "meaning": "a secret word for a phone or computer",
+    "example": "What's the password?"
+   },
+   {
+    "word": "download",
+    "ar": "يحمّل (من الإنترنت)",
+    "meaning": "put an app or file on your phone from the Internet",
+    "example": "Now we download an app."
+   },
+   {
+    "word": "app",
+    "ar": "تطبيق",
+    "meaning": "a program on a phone or tablet",
+    "example": "Now we download an app."
+   },
+   {
+    "word": "click",
+    "ar": "ينقر",
+    "meaning": "press a button on a screen or mouse",
+    "example": "Click this button."
+   },
+   {
+    "word": "button",
+    "ar": "زر",
+    "meaning": "a small thing you press",
+    "example": "Grandma pushes the green button."
+   },
+   {
+    "word": "battery",
+    "ar": "بطارية",
+    "meaning": "it gives power to a phone or tablet",
+    "example": "The battery is empty."
+   },
+   {
+    "word": "safe",
+    "ar": "آمن",
+    "meaning": "not dangerous",
+    "example": "It isn't safe."
+   }
+  ],
+  "more": [
+   {
+    "word": "pilot",
+    "meaning": "a person who flies a plane"
+   },
+   {
+    "word": "mechanic",
+    "meaning": "a person who repairs cars"
+   },
+   {
+    "word": "repair",
+    "meaning": "make a broken thing good again"
+   },
+   {
+    "word": "fluently",
+    "meaning": "speaking very well and easily"
+   },
+   {
+    "word": "chess",
+    "meaning": "a board game with kings and queens"
+   },
+   {
+    "word": "swim",
+    "meaning": "move in water"
+   },
+   {
+    "word": "search",
+    "meaning": "look for something on the Internet"
+   },
+   {
+    "word": "social media",
+    "meaning": "apps where people share photos and messages"
+   },
+   {
+    "word": "dangerous",
+    "meaning": "not safe"
+   },
+   {
+    "word": "heavy",
+    "meaning": "it weighs a lot"
+   },
+   {
+    "word": "history",
+    "meaning": "things from the past"
+   },
+   {
+    "word": "hand / head / leg",
+    "meaning": "parts of the body"
+   },
+   {
+    "word": "hurt",
+    "meaning": "feel pain"
+   },
+   {
+    "word": "lost",
+    "meaning": "you can't find it"
+   },
+   {
+    "word": "passport",
+    "meaning": "a small book for travel to other countries"
+   }
+  ]
+ },
+ {
+  "week": 12,
+  "title": "Too Much Sugar!",
+  "setting": "Healthy shopping",
+  "focus": [
+   "feel",
+   "too much / too many",
+   "sweets",
+   "crisps",
+   "trolley",
+   "some / any",
+   "I'd like …",
+   "Would you like …?",
+   "kilo",
+   "No parking",
+   "steps",
+   "smaller / better"
+  ],
+  "story": [
+   {
+    "text": "Adel is forty-five. Last month, he **felt** tired every day. He visited his doctor."
+   },
+   {
+    "text": "\"Adel, you eat **too much** sugar and **too many** **sweets**,\" said the doctor. \"Please walk every day, and eat more vegetables.\""
+   },
+   {
+    "text": "On Saturday, Adel and his son Hamza go to the supermarket. Hamza takes a **trolley**."
+   },
+   {
+    "text": "Adel puts **crisps** and chocolate in the trolley."
+   },
+   {
+    "text": "\"Dad! That's too many crisps!\" says Hamza."
+   },
+   {
+    "text": "\"OK, OK,\" says Adel. He puts them back."
+   },
+   {
+    "text": "They buy some **tomatoes**, **cucumbers**, **onions**, **lettuce** and olive **oil**."
+   },
+   {
+    "text": "\"Are there any **potatoes**?\" asks Hamza."
+   },
+   {
+    "text": "\"Yes, there are some here,\" says a worker."
+   },
+   {
+    "text": "\"A **kilo**, please,\" says Hamza."
+   },
+   {
+    "text": "At the **bakery** **counter**, a man smiles at Adel."
+   },
+   {
+    "text": "\"**Would you like** some cake, sir? It's very good today.\""
+   },
+   {
+    "text": "Adel looks at the cake. Then he looks at Hamza."
+   },
+   {
+    "text": "\"No, thank you,\" says Adel. \"**I'd like** some brown bread, please.\""
+   },
+   {
+    "text": "They go outside to the car. There is a **sign** next to the car: \"**No parking**\"."
+   },
+   {
+    "text": "A guard comes. \"Sir, please read the sign. You can't park here.\""
+   },
+   {
+    "text": "\"Sorry!\" says Adel. \"We can go now.\" He drives to the **car park**."
+   },
+   {
+    "text": "In the evening, Adel and Hamza walk in the park. They walk four **kilometres**. That's about five thousand **steps**!"
+   },
+   {
+    "text": "Now they walk every evening at **sunset**. Adel **feels** better. He has more **energy**. His **weight** is lower, and his **heart** is **healthier**."
+   },
+   {
+    "text": "\"Dad, you're more **active** now,\" says Hamza. \"And your stomach is **smaller**!\""
+   },
+   {
+    "text": "Adel laughs. \"Yes, and I'm happier, too!\""
+   },
+   {
+    "text": "At home, Hamza opens the fridge. \"Dad, would you like a chocolate?\""
+   },
+   {
+    "text": "\"No, thank you,\" says Adel. \"I'd like an apple!\""
+   }
+  ],
+  "check": [
+   "What did the doctor say to Adel?",
+   "What does Adel want at the bakery counter: cake or brown bread?",
+   "Is Adel more active or less active now?"
+  ],
+  "talk": [
+   "Do you eat too much sugar or too many sweets? Is your life healthy?",
+   "With your partner: A is a worker in a shop. A: \"Would you like some …?\" B: \"No, thank you. I'd like some …, please.\""
+  ],
+  "vocab": [
+   {
+    "word": "feel",
+    "ar": "يشعر",
+    "meaning": "have a feeling in your body or mind",
+    "example": "Adel feels better."
+   },
+   {
+    "word": "too much / too many",
+    "ar": "أكثر من اللازم (غير معدود) / أكثر من اللازم (معدود)",
+    "meaning": "more than is good (too much + sugar, too many + sweets)",
+    "example": "You eat too much sugar and too many sweets."
+   },
+   {
+    "word": "sweets",
+    "ar": "حلويات",
+    "meaning": "small sugary things to eat",
+    "example": "too many sweets"
+   },
+   {
+    "word": "crisps",
+    "ar": "رقائق البطاطس",
+    "meaning": "thin, dry pieces of potato in a packet",
+    "example": "That's too many crisps!"
+   },
+   {
+    "word": "trolley",
+    "ar": "عربة التسوق",
+    "meaning": "a big basket with wheels in a supermarket",
+    "example": "Hamza takes a trolley."
+   },
+   {
+    "word": "some / any",
+    "ar": "بعض / أي",
+    "meaning": "a number or amount of something",
+    "example": "Are there any potatoes? Yes, there are some here."
+   },
+   {
+    "word": "I'd like …",
+    "ar": "أودّ …",
+    "meaning": "a polite way to say \"I want\"",
+    "example": "I'd like some brown bread, please."
+   },
+   {
+    "word": "Would you like …?",
+    "ar": "هل تودّ …؟",
+    "meaning": "a polite way to offer something",
+    "example": "Would you like some cake, sir?"
+   },
+   {
+    "word": "kilo",
+    "ar": "كيلو",
+    "meaning": "1,000 grams",
+    "example": "A kilo, please."
+   },
+   {
+    "word": "No parking",
+    "ar": "ممنوع الوقوف",
+    "meaning": "you can't put your car here",
+    "example": "There is a sign: \"No parking\"."
+   },
+   {
+    "word": "steps",
+    "ar": "خطوات",
+    "meaning": "when you walk, one foot goes forward",
+    "example": "about five thousand steps"
+   },
+   {
+    "word": "smaller / better",
+    "ar": "أصغر / أفضل",
+    "meaning": "more small / more good",
+    "example": "Your stomach is smaller! Adel feels better."
+   }
+  ],
+  "more": [
+   {
+    "word": "bakery",
+    "meaning": "a shop for bread and cakes"
+   },
+   {
+    "word": "butcher's",
+    "meaning": "a shop for meat"
+   },
+   {
+    "word": "pharmacy",
+    "meaning": "a shop for medicine"
+   },
+   {
+    "word": "basket",
+    "meaning": "a small bag for shopping"
+   },
+   {
+    "word": "salt",
+    "meaning": "a white thing that makes food salty"
+   },
+   {
+    "word": "garlic",
+    "meaning": "a small, strong vegetable"
+   },
+   {
+    "word": "sparkling water",
+    "meaning": "water with bubbles"
+   },
+   {
+    "word": "waitress",
+    "meaning": "a woman who brings food in a restaurant"
+   },
+   {
+    "word": "bowl",
+    "meaning": "a deep dish for soup or rice"
+   },
+   {
+    "word": "exit",
+    "meaning": "the door to go out"
+   },
+   {
+    "word": "emergency",
+    "meaning": "a dangerous situation; you need help now"
+   },
+   {
+    "word": "wait",
+    "meaning": "stay in a place for a time"
+   },
+   {
+    "word": "forget",
+    "meaning": "not remember"
+   },
+   {
+    "word": "body",
+    "meaning": "all of you: head, arms, legs …"
+   },
+   {
+    "word": "muscle",
+    "meaning": "it helps your body move"
+   }
+  ]
+ },
+ {
+  "week": 13,
+  "title": "Warm Blankets",
+  "setting": "Volunteers at a winter shelter",
+  "focus": [
+   "volunteer",
+   "charity",
+   "homeless",
+   "shelter",
+   "blanket",
+   "What are you doing right now?",
+   "wearing",
+   "put on",
+   "take off",
+   "have a cold",
+   "sneezing / coughing",
+   "worried / pleased"
+  ],
+  "story": [
+   {
+    "text": "It's a cold winter night in Riyadh. Yasser is a **volunteer** at a **charity**. Every Thursday, he helps at a **shelter** for **homeless** people. Tonight, he is **helping** with **blankets**."
+   },
+   {
+    "text": "His phone rings. It's his mother."
+   },
+   {
+    "text": "\"Hello, Yasser. What are you doing **right now**?\""
+   },
+   {
+    "text": "\"I'm at the shelter with my friend Ahmed. We're carrying blankets. People **donate** them every winter.\""
+   },
+   {
+    "text": "\"Are you **wearing** your coat? It's very cold.\""
+   },
+   {
+    "text": "\"Yes, I'm wearing my coat and my **gloves**.\""
+   },
+   {
+    "text": "\"And Ahmed?\""
+   },
+   {
+    "text": "\"Ahmed is wearing only a thobe. He isn't wearing a jacket. Listen! He's **sneezing** and **coughing**. He **has a cold**.\""
+   },
+   {
+    "text": "\"Oh no! I'm **worried**,\" says his mother. \"Please tell him to **put on** a **scarf**.\""
+   },
+   {
+    "text": "\"Ahmed!\" says Yasser. \"Put on my scarf!\""
+   },
+   {
+    "text": "Ahmed smiles. He is putting on the scarf now. \"Thank you, Yasser. Now I'm warm!\""
+   },
+   {
+    "text": "\"Mother, an old man is standing at the door. He's **lonely** and cold. Ahmed is giving him a blanket. The man is smiling. He's very **pleased**.\""
+   },
+   {
+    "text": "\"That's wonderful,\" says his mother. \"Your father pays **zakat** to this charity every year.\""
+   },
+   {
+    "text": "\"Yes! And now we're helping, too.\""
+   },
+   {
+    "text": "\"Are you tired?\""
+   },
+   {
+    "text": "\"A little. But we're happy. Look! Two children are **waving** at us. They're **holding** their new blankets.\""
+   },
+   {
+    "text": "\"Good. Please come home at ten o'clock. And Ahmed, **get better** soon!\""
+   },
+   {
+    "text": "At ten o'clock, Yasser and Ahmed are driving home. Ahmed is still sneezing, but he is happy."
+   },
+   {
+    "text": "He **takes off** the scarf. \"Here you are, Yasser. Thank you.\""
+   },
+   {
+    "text": "\"No, **keep** it,\" says Yasser. \"It's a cold night!\""
+   },
+   {
+    "text": "\"Thank you, Yasser. You're a very good friend,\" says Ahmed."
+   }
+  ],
+  "check": [
+   "Where is Yasser right now?",
+   "What is Ahmed wearing? Is he wearing a jacket?",
+   "How does the old man feel? (lonely / pleased)"
+  ],
+  "talk": [
+   "What are you wearing today? I'm wearing …",
+   "With your partner: Look at the classroom. \"What is … doing right now? He's …\""
+  ],
+  "vocab": [
+   {
+    "word": "volunteer",
+    "ar": "متطوع",
+    "meaning": "a person who helps and is not paid",
+    "example": "Yasser is a volunteer."
+   },
+   {
+    "word": "charity",
+    "ar": "جمعية خيرية",
+    "meaning": "a group that helps people",
+    "example": "at a charity"
+   },
+   {
+    "word": "homeless",
+    "ar": "بلا مأوى",
+    "meaning": "with no home",
+    "example": "a shelter for homeless people"
+   },
+   {
+    "word": "shelter",
+    "ar": "مأوى",
+    "meaning": "a safe place to sleep",
+    "example": "Every Thursday, he helps at a shelter."
+   },
+   {
+    "word": "blanket",
+    "ar": "بطانية",
+    "meaning": "a big warm cover for a bed",
+    "example": "We're carrying blankets."
+   },
+   {
+    "word": "What are you doing right now?",
+    "ar": "ماذا تفعل الآن؟",
+    "meaning": "asks about an action at this time",
+    "example": "What are you doing right now?"
+   },
+   {
+    "word": "wearing",
+    "ar": "يرتدي",
+    "meaning": "having clothes on your body",
+    "example": "Are you wearing your coat?"
+   },
+   {
+    "word": "put on / take off",
+    "ar": "يلبس / يخلع",
+    "meaning": "start to wear / stop wearing",
+    "example": "Put on my scarf! He takes off the scarf."
+   },
+   {
+    "word": "have a cold",
+    "ar": "مصاب بالزكام",
+    "meaning": "be a little ill, with a cough and sneezes",
+    "example": "He has a cold."
+   },
+   {
+    "word": "sneezing / coughing",
+    "ar": "يعطس / يسعل",
+    "meaning": "\"Atchoo!\" / \"Cough, cough!\"",
+    "example": "He's sneezing and coughing."
+   },
+   {
+    "word": "worried",
+    "ar": "قلق",
+    "meaning": "thinking about a problem; not happy",
+    "example": "I'm worried."
+   },
+   {
+    "word": "pleased",
+    "ar": "مسرور",
+    "meaning": "happy",
+    "example": "He's very pleased."
+   }
+  ],
+  "more": [
+   {
+    "word": "shirt",
+    "meaning": "you wear it on the top of your body"
+   },
+   {
+    "word": "socks",
+    "meaning": "you wear them on your feet, under shoes"
+   },
+   {
+    "word": "boots",
+    "meaning": "big shoes"
+   },
+   {
+    "word": "shemagh / ghutra",
+    "meaning": "a cloth men wear on the head"
+   },
+   {
+    "word": "clap",
+    "meaning": "hit your hands together"
+   },
+   {
+    "word": "shout",
+    "meaning": "speak very loudly"
+   },
+   {
+    "word": "knock",
+    "meaning": "hit a door to ask to come in"
+   },
+   {
+    "word": "traffic jam",
+    "meaning": "a lot of cars that can't move"
+   },
+   {
+    "word": "arrive",
+    "meaning": "come to a place"
+   },
+   {
+    "word": "remember",
+    "meaning": "not forget"
+   },
+   {
+    "word": "switch on / switch off",
+    "meaning": "start / stop a machine"
+   },
+   {
+    "word": "fever",
+    "meaning": "your body is very hot when you are ill"
+   },
+   {
+    "word": "flu",
+    "meaning": "a bad cold"
+   },
+   {
+    "word": "sore throat",
+    "meaning": "pain in your throat"
+   },
+   {
+    "word": "cheer up",
+    "meaning": "be happy again"
+   }
+  ]
+ },
+ {
+  "week": 14,
+  "title": "Going to Canada",
+  "setting": "Studying abroad",
+  "focus": [
+   "going to",
+   "abroad",
+   "scholarship",
+   "flight",
+   "check in",
+   "luggage",
+   "suitcase",
+   "nervous",
+   "semester",
+   "graduate",
+   "dream",
+   "Have a good trip!"
+  ],
+  "story": [
+   {
+    "text": "Turki is eighteen. He has a **scholarship** to study **abroad**. He is **going to** study **chemistry** at a university in Canada. Tonight, he is going to take an **overnight** **flight**."
+   },
+   {
+    "text": "Turki's mother and father are at the airport with him. Turki is **nervous**."
+   },
+   {
+    "text": "\"Are you OK, Turki?\" asks his father."
+   },
+   {
+    "text": "\"I'm a little nervous. It's a big day.\""
+   },
+   {
+    "text": "At **check-in**, a woman smiles at Turki. \"Your passport, please. And your **luggage**?\""
+   },
+   {
+    "text": "\"This **suitcase**.\""
+   },
+   {
+    "text": "\"It's thirty-two kilos. That's too heavy. You can only take twenty-three kilos.\""
+   },
+   {
+    "text": "Turki opens the suitcase. There are five kilos of dates and three kilos of Saudi coffee!"
+   },
+   {
+    "text": "\"Mother!\" says Turki."
+   },
+   {
+    "text": "His mother laughs. \"**Never mind**. Take one kilo of dates. Your father can keep the other dates.\""
+   },
+   {
+    "text": "Now the suitcase is twenty-three kilos."
+   },
+   {
+    "text": "\"So, what are you going to do in Canada?\" asks his father."
+   },
+   {
+    "text": "\"First, I'm going to study English for one **semester**. Then I'm going to **begin** my chemistry **lectures**. I'm going to work hard in the **laboratory**.\""
+   },
+   {
+    "text": "\"And then?\" asks his mother."
+   },
+   {
+    "text": "\"I'm going to **graduate**, and I'm going to come back to Saudi Arabia. My **dream** is to **become** a scientist. I **hope** to work in Riyadh. **One day**, I'm going to have my own laboratory!\""
+   },
+   {
+    "text": "His father smiles. \"We're very happy for you.\""
+   },
+   {
+    "text": "Then they hear: \"Flight 25 to Toronto. **Boarding** now at Gate 15.\""
+   },
+   {
+    "text": "\"**Have a good trip**, Turki!\" says his father. \"**Take care**!\""
+   },
+   {
+    "text": "\"**Have a safe journey**, my son,\" says his mother. \"Call us every day!\""
+   },
+   {
+    "text": "\"I'm going to call you every evening,\" says Turki. \"**See you again soon**!\""
+   },
+   {
+    "text": "\"**All the best**!\""
+   },
+   {
+    "text": "Turki waves. He isn't nervous now. He's excited about his **future**."
+   }
+  ],
+  "check": [
+   "What is Turki going to study?",
+   "Why is the suitcase a problem?",
+   "What is Turki's dream?"
+  ],
+  "talk": [
+   "What are you going to do next year? I'm going to …",
+   "With your partner: \"Are you going to study abroad? Where are you going to go? What are you going to study?\""
+  ],
+  "vocab": [
+   {
+    "word": "going to",
+    "ar": "سوف (للخطط المستقبلية)",
+    "meaning": "for future plans",
+    "example": "He is going to study chemistry."
+   },
+   {
+    "word": "abroad",
+    "ar": "في الخارج",
+    "meaning": "in another country",
+    "example": "He has a scholarship to study abroad."
+   },
+   {
+    "word": "scholarship",
+    "ar": "منحة دراسية",
+    "meaning": "money to pay for your studies",
+    "example": "He has a scholarship."
+   },
+   {
+    "word": "flight",
+    "ar": "رحلة جوية",
+    "meaning": "a journey by plane",
+    "example": "an overnight flight"
+   },
+   {
+    "word": "check in",
+    "ar": "يسجّل الوصول",
+    "meaning": "give your bags and passport at the airport",
+    "example": "At check-in …"
+   },
+   {
+    "word": "luggage",
+    "ar": "أمتعة",
+    "meaning": "bags and suitcases for travel",
+    "example": "And your luggage?"
+   },
+   {
+    "word": "suitcase",
+    "ar": "حقيبة سفر",
+    "meaning": "a big bag for clothes when you travel",
+    "example": "This suitcase."
+   },
+   {
+    "word": "nervous",
+    "ar": "متوتر",
+    "meaning": "a little afraid and worried",
+    "example": "Turki is nervous."
+   },
+   {
+    "word": "semester",
+    "ar": "فصل دراسي",
+    "meaning": "half of a university year",
+    "example": "I'm going to study English for one semester."
+   },
+   {
+    "word": "graduate",
+    "ar": "يتخرّج",
+    "meaning": "finish university",
+    "example": "I'm going to graduate."
+   },
+   {
+    "word": "dream",
+    "ar": "حلم",
+    "meaning": "a thing you really want in the future",
+    "example": "My dream is to become a scientist."
+   },
+   {
+    "word": "Have a good trip!",
+    "ar": "رحلة سعيدة!",
+    "meaning": "said to a person before a journey",
+    "example": "Have a good trip, Turki!"
+   }
+  ],
+  "more": [
+   {
+    "word": "transport",
+    "meaning": "cars, buses, trains and planes"
+   },
+   {
+    "word": "departures / arrivals",
+    "meaning": "where people leave / come in at an airport"
+   },
+   {
+    "word": "delay",
+    "meaning": "when a plane or train is late"
+   },
+   {
+    "word": "cabin crew",
+    "meaning": "people who help passengers on a plane"
+   },
+   {
+    "word": "plans",
+    "meaning": "things you want to do in the future"
+   },
+   {
+    "word": "career",
+    "meaning": "the jobs you do in your life"
+   },
+   {
+    "word": "apply",
+    "meaning": "ask for a job or a place at university"
+   },
+   {
+    "word": "campus",
+    "meaning": "the land and buildings of a university"
+   },
+   {
+    "word": "exam",
+    "meaning": "a test at school or university"
+   },
+   {
+    "word": "pass / fail",
+    "meaning": "do well / not do well in an exam"
+   },
+   {
+    "word": "souvenir",
+    "meaning": "a small gift from a trip"
+   },
+   {
+    "word": "visa",
+    "meaning": "a paper to enter a country"
+   },
+   {
+    "word": "pack / unpack",
+    "meaning": "put clothes in / take clothes out of a suitcase"
+   },
+   {
+    "word": "Get well soon!",
+    "meaning": "said to a person who is ill"
+   },
+   {
+    "word": "What a pity!",
+    "meaning": "said about a sad thing"
+   }
+  ]
+ },
+ {
+  "week": 15,
+  "title": "The English Play",
+  "setting": "The English club play",
+  "focus": [
+   "join",
+   "actor",
+   "theatre",
+   "prepare",
+   "advice",
+   "should",
+   "believe in yourself",
+   "improve",
+   "perfect",
+   "success",
+   "think",
+   "agree"
+  ],
+  "story": [
+   {
+    "text": "Hamad is a student at a college in Riyadh. He is a little shy. His English is good, but he doesn't speak a lot in class."
+   },
+   {
+    "text": "One day, his teacher, Mr Adel, has a plan."
+   },
+   {
+    "text": "\"Our English club is going to do a short play at the college **theatre**,\" says Mr Adel. \"It's about an old king and his three sons. Who wants to **join**?\""
+   },
+   {
+    "text": "Hamad thinks about it. Then he **decides** to join. He is going to be the king!"
+   },
+   {
+    "text": "But it isn't easy. Hamad is a new **actor**. He is nervous, and he can't remember his words."
+   },
+   {
+    "text": "\"I can't do it,\" says Hamad. \"My English isn't good enough.\""
+   },
+   {
+    "text": "Mr Adel gives him some **advice**. \"You **should** practise every day. Read your words slowly. And **believe in yourself**!\""
+   },
+   {
+    "text": "His classmate Fahad helps him, too. Every evening, they **prepare** together **upstairs** in Hamad's room. Hamad reads his words again and again. Slowly, his English **improves**."
+   },
+   {
+    "text": "On the night of the play, the theatre is full. Hamad's mother and father are there. Hamad is wearing a long, red king's coat and a big, funny **nose**."
+   },
+   {
+    "text": "The play begins. Hamad's first words are **perfect**. The people laugh at his funny nose."
+   },
+   {
+    "text": "Then, **during** the play, Hamad forgets his words!"
+   },
+   {
+    "text": "His **face** is red. Everyone is quiet. Then Fahad whispers the words to him. Hamad smiles and continues."
+   },
+   {
+    "text": "At the end, everyone claps. The play is a big **success**!"
+   },
+   {
+    "text": "\"That was **perfect**, Hamad!\" says Mr Adel. \"I **think** you're a real actor now!\""
+   },
+   {
+    "text": "\"I **agree**!\" says Fahad."
+   },
+   {
+    "text": "Hamad laughs. \"Thank you for your advice. I think I **prefer** the theatre to the **cinema** now!\""
+   }
+  ],
+  "check": [
+   "Who is Hamad in the play?",
+   "What advice does Mr Adel give Hamad?",
+   "What happens during the play? How does Fahad help?"
+  ],
+  "talk": [
+   "What should a new student do to improve his English? He should …",
+   "With your partner: \"Do you prefer the theatre or the cinema? Why? Do you agree with your partner?\""
+  ],
+  "vocab": [
+   {
+    "word": "join",
+    "ar": "ينضم",
+    "meaning": "become a member of a group or club",
+    "example": "Who wants to join?"
+   },
+   {
+    "word": "actor",
+    "ar": "ممثل",
+    "meaning": "a man who acts in a play or film",
+    "example": "Hamad is a new actor."
+   },
+   {
+    "word": "theatre",
+    "ar": "مسرح",
+    "meaning": "a building where people watch plays",
+    "example": "at the college theatre"
+   },
+   {
+    "word": "prepare",
+    "ar": "يستعد",
+    "meaning": "get ready",
+    "example": "they prepare together upstairs"
+   },
+   {
+    "word": "advice",
+    "ar": "نصيحة",
+    "meaning": "words that help a person decide",
+    "example": "Mr Adel gives him some advice."
+   },
+   {
+    "word": "should",
+    "ar": "ينبغي",
+    "meaning": "it is a good idea to …",
+    "example": "You should practise every day."
+   },
+   {
+    "word": "believe in yourself",
+    "ar": "ثِق بنفسك",
+    "meaning": "think \"I can do it\"",
+    "example": "And believe in yourself!"
+   },
+   {
+    "word": "improve",
+    "ar": "يحسّن",
+    "meaning": "get better",
+    "example": "Slowly, his English improves."
+   },
+   {
+    "word": "perfect",
+    "ar": "مثالي",
+    "meaning": "with no mistakes; very, very good",
+    "example": "Hamad's first words are perfect."
+   },
+   {
+    "word": "success",
+    "ar": "نجاح",
+    "meaning": "a very good result",
+    "example": "The play is a big success!"
+   },
+   {
+    "word": "think",
+    "ar": "يفكر / يظن",
+    "meaning": "have an idea or opinion",
+    "example": "I think you're a real actor now!"
+   },
+   {
+    "word": "agree",
+    "ar": "يوافق",
+    "meaning": "have the same opinion",
+    "example": "\"I agree!\" says Fahad."
+   }
+  ],
+  "more": [
+   {
+    "word": "actress",
+    "meaning": "a woman who acts in a play or film"
+   },
+   {
+    "word": "adult",
+    "meaning": "a grown-up person"
+   },
+   {
+    "word": "health",
+    "meaning": "how well your body is"
+   },
+   {
+    "word": "flower",
+    "meaning": "the beautiful, coloured part of a plant"
+   },
+   {
+    "word": "star",
+    "meaning": "a small light in the night sky"
+   },
+   {
+    "word": "space",
+    "meaning": "the place outside the Earth"
+   },
+   {
+    "word": "website",
+    "meaning": "a page on the Internet"
+   },
+   {
+    "word": "culture",
+    "meaning": "the ideas and ways of a group of people"
+   },
+   {
+    "word": "useful",
+    "meaning": "it helps you"
+   },
+   {
+    "word": "similar",
+    "meaning": "nearly the same"
+   },
+   {
+    "word": "common",
+    "meaning": "you see it a lot"
+   },
+   {
+    "word": "create",
+    "meaning": "make something new"
+   },
+   {
+    "word": "opinion",
+    "meaning": "what you think about something"
+   },
+   {
+    "word": "rule",
+    "meaning": "what you must or must not do"
+   },
+   {
+    "word": "without",
+    "meaning": "not with"
+   }
+  ]
+ }
+]
