@@ -13,14 +13,42 @@ function findIn(example: string, word: string) {
 /** A word that is the whole example sentence ("Don't worry.") makes no gap. */
 const wholeSentence = (example: string, word: string) => example.replace(/[^a-z]/gi, '').toLowerCase() === word.replace(/[^a-z]/gi, '').toLowerCase();
 
+/** Wrong choices that would also fit the sentence, so they are never offered for that answer (checked by hand). */
+const ALSO_FITS: Record<number, Record<string, string[]>> = {
+  2: { capital: ['famous'], city: ['tower', 'building', 'photo', 'capital'], tower: ['capital', 'city', 'building'] },
+  3: { excited: ['kind', 'tired'], tired: ['kind', 'excited'] },
+  4: { team: ['stadium'] },
+  5: { delicious: ['full', 'spicy'], menu: ['order', 'bill'] },
+  7: { 'railway station': ['platform'], timetable: ['coat', 'jacket', 'railway station'], journey: ['jacket', 'railway station', 'return ticket', 'platform'] },
+  8: { 'living room': ['kitchen', 'fridge', 'sofa'], kitchen: ['living room', 'fridge', 'sofa'] },
+  9: { 'date of birth': ['village', 'toy'], village: ['grandfather'] },
+  11: { download: ['click'], 'video call': ['password'], password: ['app', 'button'] },
+  12: { crisps: ['steps', 'sweets'], sweets: ['crisps'] },
+  13: { charity: ['shelter'], shelter: ['charity'] },
+  14: { scholarship: ['suitcase'], luggage: ['semester'] },
+  15: { advice: ['success'] },
+};
+
+/** Example sentences where almost any noun fits the gap ("Look at the ___."): not used as gaps. */
+const NO_GAP: Record<number, string[]> = { 7: ['timetable'] };
+
 export function gapItems(r: Reader, max = 5): GapItem[] {
-  const usable = r.vocab.filter((v) => findIn(v.example, v.word) && !wholeSentence(v.example, v.word));
+  const usable = r.vocab.filter((v) => findIn(v.example, v.word) && !wholeSentence(v.example, v.word) && !NO_GAP[r.week]?.includes(v.word.toLowerCase()));
   return usable.slice(0, max).map((v, i) => {
     const hit = findIn(v.example, v.word)!;
-    const others = usable.filter((_, k) => k !== i).map((o) => o.word.toLowerCase());
-    // two wrong choices from the same story, picked the same way every time
-    const wrong = [others[(i + 1) % others.length], others[(i + 3) % others.length]].filter((w, k, a) => w && a.indexOf(w) === k && w !== hit.text.toLowerCase());
+    // wrong choices: other words from the story, not whole phrases ("Don't worry.") that could never fit a gap
+    const pool = usable.filter((_, k) => k !== i).map((o) => o.word.toLowerCase());
+    const short = pool.filter((w) => !/[.?!]$/.test(w) && w.split(' ').length <= 2);
+    const others = short.length >= 2 ? short : pool;
     const answer = hit.text;
+    const avoid = new Set([answer.toLowerCase(), ...(ALSO_FITS[r.week]?.[v.word.toLowerCase()] ?? [])]);
+    // two wrong choices from the same story, picked the same way every time
+    const wrong: string[] = [];
+    for (let k = 1; k <= others.length && wrong.length < 2; k += 2) {
+      for (const w of [others[(i + k) % others.length], others[(i + k + 1) % others.length]]) {
+        if (wrong.length < 2 && !avoid.has(w) && !wrong.includes(w)) wrong.push(w);
+      }
+    }
     const match = (w: string) => (answer[0] === answer[0].toUpperCase() ? w[0].toUpperCase() + w.slice(1) : w);
     return {
       text: v.example.slice(0, hit.at) + '___' + v.example.slice(hit.at + hit.text.length),
