@@ -1,7 +1,7 @@
 import { HomeScreenTip, RestoreCodeCard } from '../components/KeepSafe';
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Flame, Layers, Mic, ClipboardCheck, Presentation, LayoutDashboard, Users, Sparkles } from 'lucide-react';
+import { ArrowRight, Flame, Layers, Mic, ClipboardCheck, MessagesSquare, Presentation, LayoutDashboard, Users, Sparkles } from 'lucide-react';
 import { useApp } from '../store';
 import { useLearner } from '../hooks/useLearner';
 import { recommend, todayMessage } from '../lib/recommend';
@@ -88,9 +88,10 @@ export default function Home() {
         </div>
       )}
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <Tile to={`/lessons/${m.id}`} icon={<ModuleIcon name={m.icon} size={28} />} title={`Unit ${m.n}`} ar={m.titleAr} text={m.title} tone="bg-navy text-white" />
         <Tile to="/vocabulary?list=daily" icon={<Layers size={28} />} title="Daily 5 words" ar="خمس كلمات يومياً" text="Five new words. Two minutes." tone="bg-sky-100 text-sky-800" />
+        <Tile to="/conversations" icon={<MessagesSquare size={28} />} title="Conversations" ar="المحادثات" text="70 short chats. Listen and act them out." tone="bg-sun-50 text-sun-700" />
         <Tile to="/speaking" icon={<Mic size={28} />} title="Speaking" ar="التحدث" text="Listen, repeat, record." tone="bg-coral-50 text-coral-700" />
         <Tile to="/exams" icon={<ClipboardCheck size={28} />} title="Exam practice" ar="التدريب على الاختبار" text="A1 reading, writing and listening." tone="bg-mint-50 text-mint-700" />
       </div>
