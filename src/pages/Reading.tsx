@@ -6,7 +6,7 @@ import GradedReaders from './GradedReaders';
 export default function ReadingPage() {
   return (
     <div>
-      <PageHeader title="Reading" ar="القراءة" sub="A short story for every week. Read, listen, then check the words." icon={<LibraryBig />} />
+      <PageHeader title="Reading" ar="القراءة" sub="15 short stories. Read, listen, then check the words." icon={<LibraryBig />} />
       <GradedReaders />
     </div>
   );

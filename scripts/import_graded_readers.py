@@ -1,11 +1,11 @@
 # Imports the A1 Graded Readers (Weeks 1-15) into src/data/generated/graded-readers.json for the Vocabulary page.
-#   python scripts/import_graded_readers.py [path-to-A1_Graded_Readers_Weeks_1-15.md]
+#   python scripts/import_graded_readers.py [path-to-A1_Graded_Readers_Stories_1-15.md]
 # Student version only: Teacher Notes are dropped. The teacher's own name never appears in the app,
 # so the class teacher in the stories becomes "Mr Adel" (same rule as import_iatc_content.py).
 import json, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DEFAULT_SRC = os.path.join(HERE, "..", "..", "..", "EFL Instructor Agent", "Graded_Readers", "A1_Graded_Readers_Weeks_1-15.md")
+DEFAULT_SRC = os.path.join(HERE, "..", "..", "..", "EFL Instructor Agent", "Graded_Readers", "A1_Graded_Readers_Stories_1-15.md")
 OUT = os.path.join(HERE, "..", "src", "data", "generated", "graded-readers.json")
 
 SETTINGS = {1: "A first English class", 2: "Tourists at a famous tower in Riyadh", 3: "A charity walk in Abha",

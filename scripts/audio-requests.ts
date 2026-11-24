@@ -7,6 +7,9 @@ import { ROLE_PLAYS, SPEAKING_PART1 } from '../src/data/speaking';
 import { IATC } from '../src/data/content';
 import { EXAMS } from '../src/data/exams';
 import { audioKey } from '../src/lib/audioKey';
+import { NARRATORS, READERS, readerLine } from '../src/data/narrators';
+import { readerActivities } from '../src/data/readerActivities';
+import { filledSentence } from '../src/lib/speech';
 import type { Activity, DialogueLine } from '../src/types';
 
 interface Req { key: string; text: string; speaker: string; group: string; kind: 'dialogue' | 'model' | 'teacher' | 'listening' | 'word' | 'example' | 'reading' | 'talk'; cast?: string[]; bundle?: string; voice?: string }
@@ -92,6 +95,33 @@ for (const e of IATC.listeningExams) {
 // (mock emails in Reading Part 1 and the diagnostic reading), joined exactly as the exam screen shows them.
 for (const a of acts) if (a.kind === 'reading') add(a.text, '', a.id, 'reading');
 for (const ex of EXAMS) for (const s of ex.sections) if (s.text?.length) add(s.text.join('\n'), '', `${ex.id}/${s.id}`, 'reading');
+
+// Graded readers (Reading page): every story read by each narrator, one file per story per narrator.
+// The narrator reads each line as it is shown, with the speaker's name first ("Mr Adel: Good morning!").
+for (const n of NARRATORS) {
+  for (const r of READERS) {
+    r.story.forEach((l) => {
+      const key = audioKey(readerLine(l), n.speaker);
+      if (!key.text || reqs.has(key.id)) return;
+      reqs.set(key.id, { key: key.id, text: key.spoken, speaker: n.speaker, group: `reader-${r.week}`, kind: 'reading', voice: n.voice, bundle: `rd-${n.id}-w${String(r.week).padStart(2, '0')}` });
+    });
+  }
+}
+
+// Graded reader practice and word lists: the words, their examples, and what the activities read aloud
+// (the right answer of each question, the finished gap sentence).
+for (const r of READERS) {
+  const b = `rq-w${String(r.week).padStart(2, '0')}`;
+  for (const v of r.vocab) { addTo(b, v.word.replace(/…/g, ''), 'word'); addTo(b, v.example, 'example'); }
+  for (const a of readerActivities(r)) {
+    if (a.kind === 'mcq') for (const it of a.items) {
+      const ans = it.options[it.answer];
+      if (!/^(true|false|yes|no)$/i.test(ans.trim())) addTo(b, it.q.includes('___') ? filledSentence(it.q, ans) : ans, 'example');
+    }
+    if (a.kind === 'gap') for (const it of a.items) addTo(b, filledSentence(it.text, it.answer), 'example');
+    if (a.kind === 'match') for (const [w] of a.pairs) addTo(b, w, 'word');
+  }
+}
 
 function addTo(bundle: string, text: string, kind: 'word' | 'example') {
   const key = audioKey(text);
