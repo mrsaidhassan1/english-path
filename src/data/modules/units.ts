@@ -16,6 +16,8 @@ interface UnitCfg {
   icon: string;
   colour: string;
   goalsAr: string[];
+  // The goal for the lessons' Listening step [English, Arabic]; it goes before the writing goal.
+  listenGoal: [string, string];
   grammarKeys: string[];
   open?: boolean; // open to every student now (all its lessons), without finishing the units before it
   // From the Week N Conversations / Listening / Speaking pack (Headway-aligned since Oct 2026).
@@ -31,71 +33,85 @@ const speakingId = (c: UnitCfg) => c.speaking ?? `spk-s${c.n}d1`;
 export const UNIT_CFG: UnitCfg[] = [
   {
     n: 1, title: 'Hello!', titleAr: 'مرحباً!', icon: 'hand', colour: '#FF5151',
+    listenGoal: ['I can listen and understand greetings, names and numbers 1–10.', 'أستطيع أن أستمع وأفهم التحيات والأسماء والأرقام من ١ إلى ١٠.'],
     grammarKeys: ['be', 'possessive-adj', 'a-an', 'plurals', 'numbers'],
     goalsAr: ['أستطيع أن أُلقي التحية وأعرّف بنفسي.', 'أستطيع أن أسأل عن الحال وأجيب.', 'أستطيع أن أستخدم تحيات الصباح والمساء والوداع.', 'أستطيع أن أسأل «ما هذا؟» وأجيب بـ a / an.', 'أستطيع أن أعدّ من ١ إلى ١٠ وأكوّن الجمع.', 'أستطيع أن أكتب ٢٥ كلمة عن نفسي وعن فصلي.'],
   },
   {
     n: 2, title: 'Your World', titleAr: 'عالمك', icon: 'globe', colour: '#25AFC7',
+    listenGoal: ['I can listen and understand where people are from and how old they are.', 'أستطيع أن أستمع وأفهم من أين الناس وكم أعمارهم.'],
     grammarKeys: ['pronouns', 'possessive-adj', 'wh-questions', 'numbers', 'be'],
     goalsAr: ['أستطيع أن أسأل «من أين أنت؟» وأجيب.', 'أستطيع أن أتحدث عن الآخرين باستخدام he / she و his / her.', 'أستطيع أن أسأل «هل هو من …؟» وأجيب إجابة قصيرة.', 'أستطيع أن أقول الأرقام من ١١ إلى ٣٠ وأسأل عن العمر.', 'أستطيع أن أصف الأماكن والطقس.', 'أستطيع أن أكتب ٢٥ كلمة عن المكان الذي أنا منه.'],
   },
   {
     n: 3, title: 'All About You', titleAr: 'كل شيء عنك', icon: 'briefcase', colour: '#4F5BA8',
+    listenGoal: ['I can listen and understand people talking about jobs and personal information.', 'أستطيع أن أستمع وأفهم الناس وهم يتحدثون عن الوظائف والمعلومات الشخصية.'],
     grammarKeys: ['be', 'a-an', 'wh-questions'],
     goalsAr: ['أستطيع أن أسأل عن الوظيفة وأجيب.', 'أستطيع أن أسأل عن المعلومات الشخصية: الاسم والعنوان والهاتف والعمر.', 'أستطيع أن أستخدم isn’t و aren’t لتصحيح المعلومات.', 'أستطيع أن أستخدم عبارات الاعتذار والشكر.', 'أستطيع أن أكوّن أسئلة بـ am / is / are وأجيب إجابات قصيرة.', 'أستطيع أن أكتب ٢٥ كلمة عن وظائف عائلتي.'],
   },
   {
     n: 4, title: 'Family and Friends', titleAr: 'العائلة والأصدقاء', icon: 'users', colour: '#FF6B6B',
+    listenGoal: ['I can listen and understand people talking about family and friends, and spelling on the phone.', 'أستطيع أن أستمع وأفهم الناس وهم يتحدثون عن العائلة والأصدقاء، والتهجئة على الهاتف.'],
     grammarKeys: ['possessive-s', 'have-has', 'possessive-adj', 'spelling'],
     goalsAr: ['أستطيع أن أصف عائلتي باستخدام our و their و ’s.', 'أستطيع أن أعرف إن كانت ’s تعني is أو الملكية.', 'أستطيع أن أستخدم has / have.', 'أستطيع أن أقول ما أحبه وما أريده.', 'أستطيع أن أتهجّى اسمي وأعطي رقم هاتفي.', 'أستطيع أن أكتب ٢٥ كلمة عن صديقي المقرّب.'],
   },
   {
     n: 5, title: 'The Way I Live', titleAr: 'طريقة حياتي', icon: 'utensils', colour: '#1F9D6B',
+    listenGoal: ['I can listen and understand people talking about what they like, nationalities and prices.', 'أستطيع أن أستمع وأفهم الناس وهم يتحدثون عمّا يحبونه وعن الجنسيات والأسعار.'],
     grammarKeys: ['present-simple', 'a-an', 'numbers'],
     goalsAr: ['أستطيع أن أقول ما أحبه وما لا أحبه.', 'أستطيع أن أسأل «هل تحب …؟» وأجيب.', 'أستطيع أن أتحدث عن حياتي: أسكن وأعمل وأتكلم.', 'أستطيع أن أربط الدول بالجنسيات واللغات.', 'أستطيع أن أسأل عن السعر وأقول الأسعار حتى ١٠٠ ريال.', 'أستطيع أن أكتب ٢٥ كلمة عن الطعام والرياضة التي أحبها.'],
   },
   {
     n: 6, title: 'Every Day', titleAr: 'كل يوم', icon: 'sun', colour: '#FFC14D',
+    listenGoal: ['I can listen and understand the time and people talking about their day.', 'أستطيع أن أستمع وأفهم الوقت والناس وهم يتحدثون عن يومهم.'],
     grammarKeys: ['present-simple', 'frequency', 'prepositions'],
     goalsAr: ['أستطيع أن أقول الوقت وأستخدم at / on / in.', 'أستطيع أن أصف يوم شخص: He gets up at six.', 'أستطيع أن أستخدم always و usually و often و sometimes و never.', 'أستطيع أن أتهجّى أفعال he / she: watches, goes, studies.', 'أستطيع أن أسأل «Does he …?» وأجيب.', 'أستطيع أن أكتب ٢٥ كلمة عن الروتين اليومي لشخص.'],
   },
   {
     n: 7, title: 'My Favourites', titleAr: 'أشيائي المفضلة', icon: 'star', colour: '#C8322F',
+    listenGoal: ['I can listen and understand short conversations in shops and at the station.', 'أستطيع أن أستمع وأفهم محادثات قصيرة في المحلات وفي محطة القطار.'],
     grammarKeys: ['wh-questions', 'this-that', 'can', 'object-pronouns'],
     goalsAr: ['أستطيع أن أسأل بأدوات الاستفهام: What و Where و When و Who و Why و How many.', 'أستطيع أن أستخدم this / that والصفات قبل الأسماء.', 'أستطيع أن أطلب بأدب في المحلات: Can I have …?', 'أستطيع أن أصف رحلة بكلمات مثل fast و cheap و expensive.', 'أستطيع أن أستخدم me و him و her و us و them.', 'أستطيع أن أكتب ٢٥ كلمة عن أشيائي المفضلة.'],
   },
   {
     n: 8, title: 'Where I Live', titleAr: 'أين أسكن', icon: 'home', colour: '#161E54', open: true,
+    listenGoal: ['I can listen and understand descriptions of homes and towns, and directions.', 'أستطيع أن أستمع وأفهم وصف البيوت والمدن، والاتجاهات.'],
     grammarKeys: ['there-is', 'prepositions', 'countable'],
     goalsAr: ['أستطيع أن أصف بيتي باستخدام There is / There are.', 'أستطيع أن أقول أين توجد الأشياء: in و on و under و next to.', 'أستطيع أن أسأل «Is there …?» وأستخدم some / any.', 'أستطيع أن أعطي الاتجاهات: Turn left. Go straight on.', 'أستطيع أن أتحدث عن الطقس والفصول.', 'أستطيع أن أكتب ٢٥ كلمة عن مدينتي.'],
   },
   {
     n: 9, title: 'Times Past', titleAr: 'أيام مضت', icon: 'history', colour: '#25AFC7',
+    listenGoal: ['I can listen and understand years, dates and people talking about the past.', 'أستطيع أن أستمع وأفهم السنوات والتواريخ والناس وهم يتحدثون عن الماضي.'],
     grammarKeys: ['was-were', 'past-simple', 'numbers'],
     goalsAr: ['أستطيع أن أقول السنوات: nineteen ninety-six.', 'أستطيع أن أقول متى وُلد الناس: He was born in 1980.', 'أستطيع أن أقول الشهور وتاريخ ميلادي.', 'أستطيع أن أقول التواريخ بالأعداد الترتيبية: the fifth of May.', 'أستطيع أن أستخدم was / were للحديث عن الماضي.', 'أستطيع أن أستخدم went و had و did و saw للحديث عن الأمس.'],
   },
   {
     n: 10, title: 'We Had a Great Time!', titleAr: 'قضينا وقتاً رائعاً!', icon: 'camera', colour: '#FF6B6B',
+    listenGoal: ['I can listen and understand people talking about their weekend and free time.', 'أستطيع أن أستمع وأفهم الناس وهم يتحدثون عن عطلة نهاية الأسبوع ووقت الفراغ.'],
     grammarKeys: ['past-simple', 'wh-questions'],
     goalsAr: ['أستطيع أن أتهجّى وأنطق الأفعال الماضية المنتظمة: played, watched, studied.', 'أستطيع أن أسأل «Did you …?» وأجيب إجابة قصيرة.', 'أستطيع أن أسأل بأدوات الاستفهام في الماضي: Where did you go?', 'أستطيع أن أستخدم ago و last week و in مع السنة.', 'أستطيع أن أتحدث عن الرياضة وأنشطة وقت الفراغ.', 'أستطيع أن أكتب ٢٥ كلمة عن رحلة أو يوم خارج البيت.'],
   },
   {
     n: 11, title: 'I Can Do That!', titleAr: 'أستطيع فعل ذلك!', icon: 'trophy', colour: '#1F9D6B',
+    listenGoal: ['I can listen and understand people talking about what they can do and everyday problems.', 'أستطيع أن أستمع وأفهم الناس وهم يتحدثون عمّا يستطيعون فعله وعن المشكلات اليومية.'],
     grammarKeys: ['can', 'adverbs', 'adjectives'],
     goalsAr: ['أستطيع أن أقول ما يستطيع الناس فعله وما لا يستطيعون في أعمالهم.', 'أستطيع أن أسأل «Can you …?» وأجيب إجابة قصيرة.', 'أستطيع أن أستخدم الظروف: well و fast و slowly و fluently.', 'أستطيع أن أضع الصفة قبل الاسم: a dangerous sport.', 'أستطيع أن أتحدث عن الإنترنت وكيف أستخدمه.', 'أستطيع أن أسأل «What’s the matter?» وأطلب المساعدة.'],
   },
   {
     n: 12, title: 'Please and Thank You', titleAr: 'من فضلك وشكراً', icon: 'shopping-bag', colour: '#FFC14D',
+    listenGoal: ['I can listen and understand people shopping and ordering food.', 'أستطيع أن أستمع وأفهم الناس وهم يتسوّقون ويطلبون الطعام.'],
     grammarKeys: ['would-like', 'countable', 'can'],
     goalsAr: ['أستطيع أن أقول ما يمكن شراؤه في المحلات المختلفة.', 'أستطيع أن أطلب بأدب: I’d like … / Would you like …?', 'أستطيع أن أستخدم some و any مع الطعام.', 'أستطيع أن أطلب وجبة في مطعم.', 'أستطيع أن أفهم اللافتات الشائعة: Push و Pull و No entry.', 'أستطيع أن أعطي نصيحة صحية بـ too much و too many.'],
   },
   {
     n: 13, title: 'Here and Now', titleAr: 'هنا والآن', icon: 'shirt', colour: '#C8322F',
+    listenGoal: ['I can listen and understand people talking about clothes, what they are doing now and how they feel.', 'أستطيع أن أستمع وأفهم الناس وهم يتحدثون عن الملابس وما يفعلونه الآن وما يشعرون به.'],
     grammarKeys: ['present-continuous', 'present-simple'],
     goalsAr: ['أستطيع أن أصف الملابس والألوان: He’s wearing a white thobe.', 'أستطيع أن أقول ما يفعله الناس الآن: am / is / are + -ing.', 'أستطيع أن أسأل بالمضارع المستمر: Where are you going?', 'أستطيع أن أختار بين المضارع البسيط والمضارع المستمر.', 'أستطيع أن أستخدم الأفعال المتضادة: arrive / leave و open / close.', 'أستطيع أن أتحدث عن المشاعر والمرض: I’m worried. I have a cold.'],
   },
   {
     n: 14, title: 'It’s Time to Go!', titleAr: 'حان وقت الرحيل!', icon: 'plane', colour: '#161E54',
+    listenGoal: ['I can listen and understand people talking about travel and future plans.', 'أستطيع أن أستمع وأفهم الناس وهم يتحدثون عن السفر والخطط المستقبلية.'],
     grammarKeys: ['going-to', 'past-simple', 'present-simple'],
     goalsAr: ['أستطيع أن أقول كيف أسافر: by car و by plane و on foot.', 'أستطيع أن أتحدث عن خططي المستقبلية بـ going to.', 'أستطيع أن أسأل بـ going to: What are you going to study?', 'أستطيع أن أستخدم المضارع والماضي و going to في نص واحد.', 'أستطيع أن أستخدم العبارات الاجتماعية: Same to you! و My pleasure.', 'أستطيع أن أكتب ٢٥ كلمة عن خططي للإجازة.'],
   },
@@ -346,10 +362,18 @@ function buildUnit(cfg: UnitCfg, distractors: string[]): Module | null {
     activities: [{ kind: 'mcq', id: `u${n}-quiz`, title: 'Check yourself', prompt: 'Choose the right answer.', promptAr: 'اختر الإجابة الصحيحة.', items: quizFor(n, u.days, words, key0), tags: tag(n, 'grammar', cfg.title, key0, 'revision') }],
   });
 
+  // "In this unit…": the imported goals plus the listening goal, before the writing goal (lesson order)
+  const hasListening = IATC.listeningExams.some((e) => e.week === n);
+  const writeAt = u.review.findIndex((g) => /^I can write/i.test(g));
+  const at = writeAt < 0 ? u.review.length : writeAt;
+  const withListen = <T,>(list: T[], g: T): T[] => (hasListening ? [...list.slice(0, at), g, ...list.slice(at)] : list);
+  const goals = withListen(u.review, cfg.listenGoal[0]);
+  const goalsAr = withListen(cfg.goalsAr, cfg.listenGoal[1]);
+
   const sources: SourceRef[] = [u.src, ...u.days.flatMap((d) => [d.reading.src, d.src]), ...(dialogue.src ? [dialogue.src] : []), ...(getListening(listeningId(cfg)) ? [getListening(listeningId(cfg))!.src] : [])];
   return {
     n, id: `u${n}`, title: cfg.title, titleAr: cfg.titleAr, subtitle, icon: cfg.icon, colour: cfg.colour,
-    goals: u.review, goalsAr: cfg.goalsAr, grammarKeys: cfg.grammarKeys, vocab: words, dialogue, lessons, full: true, sources,
+    goals, goalsAr, grammarKeys: cfg.grammarKeys, vocab: words, dialogue, lessons, full: true, sources,
     week: u.week, collegeWeek: u.collegeWeek, dates: u.dates, headwayUnit: u.headwayUnit, open: cfg.open,
   };
 }
