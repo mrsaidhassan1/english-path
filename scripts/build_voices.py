@@ -40,7 +40,7 @@ SR = 24000
 ADULT = re.compile(r"^(mr\.?|mrs|teacher|officer|man|pharmacist|waiter|cashier|assistant|examiner|receptionist|guard|driver|father|dad|uncle|captain|coordinator)\b", re.I)
 FEMALE = {"sara", "noura", "fatima", "yuki", "mother", "mum", "aisha", "maryam"}
 STUDENT_VOICES = ["am_michael", "am_puck", "am_fenrir"]
-SPEED = {"dialogue": 0.92, "model": 0.88, "teacher": 0.9, "listening": 0.86, "word": 0.85, "example": 0.9, "reading": 0.86, "talk": 0.86}
+SPEED = {"dialogue": 0.92, "model": 0.88, "teacher": 0.9, "listening": 0.86, "word": 0.85, "example": 0.9, "reading": 0.86, "talk": 0.86, "conversation": 0.88}
 BUNDLE_GAP = 0.6  # seconds of silence between words in a bundle (the player stops inside it)
 
 

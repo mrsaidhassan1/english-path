@@ -8,11 +8,12 @@ import { IATC } from '../src/data/content';
 import { EXAMS } from '../src/data/exams';
 import { audioKey } from '../src/lib/audioKey';
 import { NARRATORS, READERS, readerLine } from '../src/data/narrators';
+import { CONVERSATIONS, convSpeaker } from '../src/data/conversations';
 import { readerActivities } from '../src/data/readerActivities';
 import { filledSentence } from '../src/lib/speech';
 import type { Activity, DialogueLine } from '../src/types';
 
-interface Req { key: string; text: string; speaker: string; group: string; kind: 'dialogue' | 'model' | 'teacher' | 'listening' | 'word' | 'example' | 'reading' | 'talk'; cast?: string[]; bundle?: string; voice?: string }
+interface Req { key: string; text: string; speaker: string; group: string; kind: 'dialogue' | 'model' | 'teacher' | 'listening' | 'word' | 'example' | 'reading' | 'talk' | 'conversation'; cast?: string[]; bundle?: string; voice?: string }
 const reqs = new Map<string, Req>();
 // Short lines are packed into one bundle file per dialogue or activity (keeps the file count low for sharing);
 // long texts (readings, exam talks) stay as their own files.
@@ -105,6 +106,16 @@ for (const n of NARRATORS) {
       if (!key.text || reqs.has(key.id)) return;
       reqs.set(key.id, { key: key.id, text: key.spoken, speaker: n.speaker, group: `reader-${r.week}`, kind: 'reading', voice: n.voice, bundle: `rd-${n.id}-w${String(r.week).padStart(2, '0')}` });
     });
+  }
+}
+
+// Conversations (Conversations page): each person has their own voice, one bundle file per conversation.
+for (const c of CONVERSATIONS) {
+  for (const l of c.lines) {
+    const speaker = convSpeaker(c, l.speaker);
+    const key = audioKey(l.text, speaker);
+    if (!key.text || reqs.has(key.id)) continue;
+    reqs.set(key.id, { key: key.id, text: key.spoken, speaker, group: `conversation-${c.id}`, kind: 'conversation', voice: c.voices[l.speaker], bundle: `cv-${c.id}` });
   }
 }
 

@@ -3,7 +3,7 @@ import { onlineEnabled, teacherSignOut } from '../lib/online';
 import { useEffect, useState, type ReactNode } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {
-  Home, Route, BookOpen, Layers, Mic, Dumbbell, RefreshCcw, ClipboardCheck, BarChart3, LayoutDashboard, Presentation, MoreHorizontal, LogOut, Languages, X, BookText, LibraryBig,
+  Home, Route, BookOpen, Layers, Mic, Dumbbell, RefreshCcw, ClipboardCheck, BarChart3, LayoutDashboard, Presentation, MoreHorizontal, LogOut, Languages, X, BookText, LibraryBig, MessagesSquare,
 } from 'lucide-react';
 import { useSyncState } from '../hooks/useOnlineSync';
 import { Cloud, CloudOff, RefreshCw, UserRound } from 'lucide-react';
@@ -20,6 +20,7 @@ export const NAV = [
   { to: '/vocabulary', label: 'Vocabulary', ar: 'المفردات', icon: Layers },
   { to: '/grammar', label: 'Grammar', ar: 'القواعد', icon: BookText },
   { to: '/reading', label: 'Reading', ar: 'القراءة', icon: LibraryBig },
+  { to: '/conversations', label: 'Conversations', ar: 'المحادثات', icon: MessagesSquare },
   { to: '/speaking', label: 'Speaking', ar: 'التحدث', icon: Mic },
   { to: '/practice', label: 'Practice', ar: 'التدريب', icon: Dumbbell },
   { to: '/review', label: 'Review', ar: 'المراجعة', icon: RefreshCcw },

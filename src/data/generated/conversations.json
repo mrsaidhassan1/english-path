@@ -1,0 +1,4494 @@
+[
+ {
+  "unit": 1,
+  "lesson": 1,
+  "title": "Welcome to IATC!",
+  "where": "The first day in class, Room 212.",
+  "people": [
+   "Mr Said",
+   "Saad",
+   "Fahad"
+  ],
+  "lines": [
+   {
+    "speaker": "Mr Said",
+    "text": "Hello! Welcome to IATC. I'm Mr Said. I'm your teacher."
+   },
+   {
+    "speaker": "Saad",
+    "text": "Hello, Mr Said. My name is Saad."
+   },
+   {
+    "speaker": "Mr Said",
+    "text": "Hello, Saad. Are you a new student?"
+   },
+   {
+    "speaker": "Saad",
+    "text": "Yes, I am."
+   },
+   {
+    "speaker": "Mr Said",
+    "text": "This is Fahad. He is your classmate."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Hello, Saad. Nice to meet you."
+   },
+   {
+    "speaker": "Saad",
+    "text": "Nice to meet you, Fahad."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "I'm from Riyadh. And you?"
+   },
+   {
+    "speaker": "Saad",
+    "text": "I'm from Qassim."
+   },
+   {
+    "speaker": "Mr Said",
+    "text": "This is my class. It's FND 68."
+   },
+   {
+    "speaker": "Saad",
+    "text": "Thank you, Mr Said."
+   },
+   {
+    "speaker": "Mr Said",
+    "text": "Sit down, please."
+   }
+  ]
+ },
+ {
+  "unit": 1,
+  "lesson": 2,
+  "title": "Good Morning, Class!",
+  "where": "The start of the lesson. Mr Ibrahim says hello to the class.",
+  "people": [
+   "Mr Ibrahim",
+   "Turki",
+   "Saud"
+  ],
+  "lines": [
+   {
+    "speaker": "Mr Ibrahim",
+    "text": "Good morning, class! How are you today?"
+   },
+   {
+    "speaker": "Turki",
+    "text": "We're fine, thank you!"
+   },
+   {
+    "speaker": "Mr Ibrahim",
+    "text": "Hello, Turki. How are you?"
+   },
+   {
+    "speaker": "Turki",
+    "text": "I'm very well, thanks. And you?"
+   },
+   {
+    "speaker": "Mr Ibrahim",
+    "text": "I'm OK, thank you. Who is your partner?"
+   },
+   {
+    "speaker": "Turki",
+    "text": "My partner is Saud."
+   },
+   {
+    "speaker": "Saud",
+    "text": "Hello, Mr Ibrahim."
+   },
+   {
+    "speaker": "Mr Ibrahim",
+    "text": "Hello, Saud. Is this your book?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "Yes, it is. Thank you."
+   },
+   {
+    "speaker": "Mr Ibrahim",
+    "text": "OK. Sit down, please."
+   },
+   {
+    "speaker": "Turki",
+    "text": "How are you, Saud?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "Fine, thanks!"
+   }
+  ]
+ },
+ {
+  "unit": 1,
+  "lesson": 3,
+  "title": "At the College Café",
+  "where": "The college café before class.",
+  "people": [
+   "Hamad",
+   "Worker"
+  ],
+  "lines": [
+   {
+    "speaker": "Hamad",
+    "text": "Good morning!"
+   },
+   {
+    "speaker": "Worker",
+    "text": "Good morning! How are you today?"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "I'm fine, thank you. A cup of tea, please."
+   },
+   {
+    "speaker": "Worker",
+    "text": "With milk and sugar?"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Milk, please. No sugar, thanks."
+   },
+   {
+    "speaker": "Worker",
+    "text": "Here you are."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Thank you. How much is it?"
+   },
+   {
+    "speaker": "Worker",
+    "text": "It's three riyals."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Here you are."
+   },
+   {
+    "speaker": "Worker",
+    "text": "Thanks. Have a nice day!"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "You too. See you later!"
+   },
+   {
+    "speaker": "Worker",
+    "text": "It's a lovely day today!"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Yes, it is. Bye!"
+   }
+  ]
+ },
+ {
+  "unit": 1,
+  "lesson": 4,
+  "title": "What's This in English?",
+  "where": "The classroom. Faisal asks Yousef some words.",
+  "people": [
+   "Faisal",
+   "Yousef"
+  ],
+  "lines": [
+   {
+    "speaker": "Faisal",
+    "text": "Yousef, what's this in English?"
+   },
+   {
+    "speaker": "Yousef",
+    "text": "It's a pen."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "And this?"
+   },
+   {
+    "speaker": "Yousef",
+    "text": "It's a notebook."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "What's in your bag?"
+   },
+   {
+    "speaker": "Yousef",
+    "text": "My English book, a pencil and a camera."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "A camera? Is this your phone?"
+   },
+   {
+    "speaker": "Yousef",
+    "text": "Yes, it is. And this is my car key."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "What's that?"
+   },
+   {
+    "speaker": "Yousef",
+    "text": "It's an apple. And this is an orange."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "What's this in the classroom?"
+   },
+   {
+    "speaker": "Yousef",
+    "text": "It's a computer. And that's the board."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Thanks, Yousef!"
+   }
+  ]
+ },
+ {
+  "unit": 1,
+  "lesson": 5,
+  "title": "My New ID Card",
+  "where": "The student office. Mr Hamdan gives Abdullah his ID card.",
+  "people": [
+   "Mr Hamdan",
+   "Abdullah"
+  ],
+  "lines": [
+   {
+    "speaker": "Mr Hamdan",
+    "text": "Hello. What's your first name?"
+   },
+   {
+    "speaker": "Abdullah",
+    "text": "My first name is Abdullah."
+   },
+   {
+    "speaker": "Mr Hamdan",
+    "text": "And what's your surname?"
+   },
+   {
+    "speaker": "Abdullah",
+    "text": "Alharbi."
+   },
+   {
+    "speaker": "Mr Hamdan",
+    "text": "What's your student number?"
+   },
+   {
+    "speaker": "Abdullah",
+    "text": "It's nine, nine, three, four, one, six."
+   },
+   {
+    "speaker": "Mr Hamdan",
+    "text": "Thank you. This is your ID card."
+   },
+   {
+    "speaker": "Abdullah",
+    "text": "Oh, my name is in capital letters!"
+   },
+   {
+    "speaker": "Mr Hamdan",
+    "text": "Yes. And this is your photograph."
+   },
+   {
+    "speaker": "Abdullah",
+    "text": "What's my group?"
+   },
+   {
+    "speaker": "Mr Hamdan",
+    "text": "Group 3. There are eight students in Group 3."
+   },
+   {
+    "speaker": "Abdullah",
+    "text": "And how many books?"
+   },
+   {
+    "speaker": "Mr Hamdan",
+    "text": "Ten books. Here you are!"
+   }
+  ]
+ },
+ {
+  "unit": 2,
+  "lesson": 1,
+  "title": "Where Are You From?",
+  "where": "The classroom. Rayan and Ali ask Mr Adam about his country.",
+  "people": [
+   "Rayan",
+   "Mr Adam",
+   "Ali"
+  ],
+  "lines": [
+   {
+    "speaker": "Rayan",
+    "text": "Mr Adam, where are you from?"
+   },
+   {
+    "speaker": "Mr Adam",
+    "text": "I'm from England. It's a country in Europe."
+   },
+   {
+    "speaker": "Rayan",
+    "text": "What's the capital of England?"
+   },
+   {
+    "speaker": "Mr Adam",
+    "text": "London. Where are you from, Rayan?"
+   },
+   {
+    "speaker": "Rayan",
+    "text": "I'm from Tabuk, in Saudi Arabia."
+   },
+   {
+    "speaker": "Ali",
+    "text": "And Mr Karim? Where's he from?"
+   },
+   {
+    "speaker": "Mr Adam",
+    "text": "He's from Egypt. Look at the map. Egypt is in Africa."
+   },
+   {
+    "speaker": "Ali",
+    "text": "What's the capital of Egypt?"
+   },
+   {
+    "speaker": "Rayan",
+    "text": "It's Cairo!"
+   },
+   {
+    "speaker": "Mr Adam",
+    "text": "Very good. IATC has teachers from all over the world."
+   },
+   {
+    "speaker": "Ali",
+    "text": "Where is Mr Ken from?"
+   },
+   {
+    "speaker": "Mr Adam",
+    "text": "He's from Australia."
+   }
+  ]
+ },
+ {
+  "unit": 2,
+  "lesson": 2,
+  "title": "Who Is This?",
+  "where": "The canteen. Saleh shows Majed some photos on his phone.",
+  "people": [
+   "Saleh",
+   "Majed"
+  ],
+  "lines": [
+   {
+    "speaker": "Saleh",
+    "text": "Look at these photos!"
+   },
+   {
+    "speaker": "Majed",
+    "text": "Who is this?"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "This is my friend. His name is Bader."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Where is he from?"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "He's from Jeddah. He's a student in Riyadh."
+   },
+   {
+    "speaker": "Majed",
+    "text": "And who are these people?"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "They are my cousins, Hamza and Talal. They're from Abha."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Are they students?"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Yes, they are."
+   },
+   {
+    "speaker": "Majed",
+    "text": "And this person?"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "This is my grandmother. Her name is Noura. She's from Hail."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Is she a teacher?"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "No, she isn't. She's at home."
+   }
+  ]
+ },
+ {
+  "unit": 2,
+  "lesson": 3,
+  "title": "Twelve Plus Eight?",
+  "where": "Room 13, the maths room. Mr Tariq asks questions.",
+  "people": [
+   "Mr Tariq",
+   "Fahad",
+   "Saud"
+  ],
+  "lines": [
+   {
+    "speaker": "Mr Tariq",
+    "text": "Good morning! Open your books at page fourteen, please."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Page fourteen. OK."
+   },
+   {
+    "speaker": "Mr Tariq",
+    "text": "Fahad, twelve plus eight?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Twenty!"
+   },
+   {
+    "speaker": "Mr Tariq",
+    "text": "Very good. Saud, nineteen minus four?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "Fifteen."
+   },
+   {
+    "speaker": "Mr Tariq",
+    "text": "Yes! Eleven plus six?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "Sixteen?"
+   },
+   {
+    "speaker": "Mr Tariq",
+    "text": "No, sorry. It's seventeen."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Mr Tariq, are you from Riyadh?"
+   },
+   {
+    "speaker": "Mr Tariq",
+    "text": "No, I'm not. I'm from Jordan. How old are you, Fahad?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "I'm eighteen years old."
+   },
+   {
+    "speaker": "Saud",
+    "text": "And I'm nineteen."
+   }
+  ]
+ },
+ {
+  "unit": 2,
+  "lesson": 4,
+  "title": "My Brothers",
+  "where": "The library. Fawaz shows Omar a photo.",
+  "people": [
+   "Omar",
+   "Fawaz"
+  ],
+  "lines": [
+   {
+    "speaker": "Omar",
+    "text": "Is this a photo of your brothers?"
+   },
+   {
+    "speaker": "Fawaz",
+    "text": "Yes. We're at the Kingdom Tower."
+   },
+   {
+    "speaker": "Omar",
+    "text": "It's a very tall tower!"
+   },
+   {
+    "speaker": "Fawaz",
+    "text": "Yes, and there's a big mall."
+   },
+   {
+    "speaker": "Omar",
+    "text": "How old is this brother?"
+   },
+   {
+    "speaker": "Fawaz",
+    "text": "That's Mansour. He's twenty-five. He's tall."
+   },
+   {
+    "speaker": "Omar",
+    "text": "And this brother?"
+   },
+   {
+    "speaker": "Fawaz",
+    "text": "That's Ibrahim. He's twenty-nine. He's married."
+   },
+   {
+    "speaker": "Omar",
+    "text": "Is he short?"
+   },
+   {
+    "speaker": "Fawaz",
+    "text": "No, he isn't. I'm short! I'm twenty-two."
+   },
+   {
+    "speaker": "Omar",
+    "text": "I'm twenty-one. What's your bus number to the tower?"
+   },
+   {
+    "speaker": "Fawaz",
+    "text": "Bus number twenty-three."
+   }
+  ]
+ },
+ {
+  "unit": 2,
+  "lesson": 5,
+  "title": "Welcome to Riyadh!",
+  "where": "A hotel in Riyadh. Nasser meets two visitors.",
+  "people": [
+   "Nasser",
+   "Imran",
+   "Bilal"
+  ],
+  "lines": [
+   {
+    "speaker": "Nasser",
+    "text": "Hello! Are you on holiday?"
+   },
+   {
+    "speaker": "Imran",
+    "text": "Yes, we are. We're from Pakistan."
+   },
+   {
+    "speaker": "Nasser",
+    "text": "Welcome to Riyadh! What's your job?"
+   },
+   {
+    "speaker": "Imran",
+    "text": "I'm a doctor in a big hospital in Lahore."
+   },
+   {
+    "speaker": "Bilal",
+    "text": "And I'm an engineer."
+   },
+   {
+    "speaker": "Nasser",
+    "text": "How is Riyadh?"
+   },
+   {
+    "speaker": "Imran",
+    "text": "It's fantastic! The buildings in the city centre are beautiful."
+   },
+   {
+    "speaker": "Bilal",
+    "text": "And the food is really good."
+   },
+   {
+    "speaker": "Nasser",
+    "text": "Is your hotel good?"
+   },
+   {
+    "speaker": "Bilal",
+    "text": "Yes, it's near the city centre. It's very nice."
+   },
+   {
+    "speaker": "Nasser",
+    "text": "And the weather?"
+   },
+   {
+    "speaker": "Imran",
+    "text": "Hot! It's awful in the afternoon."
+   },
+   {
+    "speaker": "Nasser",
+    "text": "Yes, it's very hot in September!"
+   }
+  ]
+ },
+ {
+  "unit": 3,
+  "lesson": 1,
+  "title": "Jobs at the Airport",
+  "where": "King Khalid International Airport. Nawaf and Majed meet Nawaf's brother Khalid.",
+  "people": [
+   "Nawaf",
+   "Khalid",
+   "Majed"
+  ],
+  "lines": [
+   {
+    "speaker": "Nawaf",
+    "text": "Look at all the people at the airport! What's his job?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "He's a police officer. His name is Faisal."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Is he a soldier?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "No, he isn't. He's a police officer."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "And that man? Is he a bus driver?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "Yes, he is. His bus is for the passengers."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Who's the man with the bag?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "He's a businessman from China."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "And the man in the café?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "He's a chef. His food is very good!"
+   },
+   {
+    "speaker": "Majed",
+    "text": "Khalid, what's your job?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "I'm an engineer here. I'm not a builder!"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Our cousin is a nurse. He works in a hospital."
+   }
+  ]
+ },
+ {
+  "unit": 3,
+  "lesson": 2,
+  "title": "The Student Form",
+  "where": "The student office. Mr Fahd completes Yasser's form.",
+  "people": [
+   "Mr Fahd",
+   "Yasser"
+  ],
+  "lines": [
+   {
+    "speaker": "Mr Fahd",
+    "text": "Good morning. This is the student form. What's your full name?"
+   },
+   {
+    "speaker": "Yasser",
+    "text": "Yasser Alqahtani."
+   },
+   {
+    "speaker": "Mr Fahd",
+    "text": "What's your nationality?"
+   },
+   {
+    "speaker": "Yasser",
+    "text": "I'm Saudi."
+   },
+   {
+    "speaker": "Mr Fahd",
+    "text": "What's your address?"
+   },
+   {
+    "speaker": "Yasser",
+    "text": "22 Olaya Street, Riyadh. I live here now."
+   },
+   {
+    "speaker": "Mr Fahd",
+    "text": "What's your phone number?"
+   },
+   {
+    "speaker": "Yasser",
+    "text": "It's 050 718 2244."
+   },
+   {
+    "speaker": "Mr Fahd",
+    "text": "And your email address?"
+   },
+   {
+    "speaker": "Yasser",
+    "text": "yasser.q@email.com."
+   },
+   {
+    "speaker": "Mr Fahd",
+    "text": "Are you married?"
+   },
+   {
+    "speaker": "Yasser",
+    "text": "No, I'm not. I'm single."
+   },
+   {
+    "speaker": "Mr Fahd",
+    "text": "Thank you. Your personal information is complete."
+   }
+  ]
+ },
+ {
+  "unit": 3,
+  "lesson": 3,
+  "title": "The Charity Walk",
+  "where": "A park in Riyadh. The coach and two students start a charity walk.",
+  "people": [
+   "Coach",
+   "Omar",
+   "Badr"
+  ],
+  "lines": [
+   {
+    "speaker": "Coach",
+    "text": "Good morning, everyone! We're all here for the charity walk."
+   },
+   {
+    "speaker": "Omar",
+    "text": "Is the walk long, Coach?"
+   },
+   {
+    "speaker": "Coach",
+    "text": "Yes, it's ten kilometres. Are you ready?"
+   },
+   {
+    "speaker": "Badr",
+    "text": "Yes, we are! We're very excited."
+   },
+   {
+    "speaker": "Coach",
+    "text": "The walk is for a children's hospital. We help the children."
+   },
+   {
+    "speaker": "Omar",
+    "text": "I'm tired! Are you tired, Badr?"
+   },
+   {
+    "speaker": "Badr",
+    "text": "No, I'm not. I'm strong!"
+   },
+   {
+    "speaker": "Omar",
+    "text": "My brother isn't here. He's at work."
+   },
+   {
+    "speaker": "Coach",
+    "text": "Look! We climb that hill now."
+   },
+   {
+    "speaker": "Badr",
+    "text": "OK! We aren't tired. We're happy!"
+   },
+   {
+    "speaker": "Coach",
+    "text": "Well done, boys. You're fantastic!"
+   }
+  ]
+ },
+ {
+  "unit": 3,
+  "lesson": 4,
+  "title": "Where's the Bus Station?",
+  "where": "The town centre. Ziyad is new in Riyadh.",
+  "people": [
+   "Ziyad",
+   "Man",
+   "Shop assistant"
+  ],
+  "lines": [
+   {
+    "speaker": "Ziyad",
+    "text": "Excuse me! Where is the bus station, please?"
+   },
+   {
+    "speaker": "Man",
+    "text": "Sorry, I'm not from here. I don't know."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "That's OK. Thanks."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Excuse me. Is the bus station near here?"
+   },
+   {
+    "speaker": "Shop assistant",
+    "text": "Yes, it is. It's over there."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Sorry? I don't understand."
+   },
+   {
+    "speaker": "Shop assistant",
+    "text": "Over there, next to the bank."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Ah! Thanks a lot!"
+   },
+   {
+    "speaker": "Shop assistant",
+    "text": "You're welcome."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "And is the town centre far?"
+   },
+   {
+    "speaker": "Shop assistant",
+    "text": "No, it isn't. It's ten minutes on foot."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Thank you very much!"
+   }
+  ]
+ },
+ {
+  "unit": 3,
+  "lesson": 5,
+  "title": "You're the Winner!",
+  "where": "The college corridor. Talal shows Mansour the new magazine.",
+  "people": [
+   "Talal",
+   "Mansour"
+  ],
+  "lines": [
+   {
+    "speaker": "Talal",
+    "text": "Mansour, look! Your photo is in the college magazine!"
+   },
+   {
+    "speaker": "Mansour",
+    "text": "Really? Am I the winner?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "Yes, you are! All your answers are correct."
+   },
+   {
+    "speaker": "Mansour",
+    "text": "I'm very happy! How many questions are there?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "Forty questions."
+   },
+   {
+    "speaker": "Mansour",
+    "text": "Are they easy?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "No, they aren't. Some questions are very difficult."
+   },
+   {
+    "speaker": "Mansour",
+    "text": "Is the magazine interesting?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "Yes, it is. It isn't boring."
+   },
+   {
+    "speaker": "Mansour",
+    "text": "English is important for us."
+   },
+   {
+    "speaker": "Talal",
+    "text": "Yes, but our classroom is very noisy!"
+   },
+   {
+    "speaker": "Mansour",
+    "text": "Ha ha! Yes, it is."
+   }
+  ]
+ },
+ {
+  "unit": 4,
+  "lesson": 1,
+  "title": "Our Family Tree",
+  "where": "The library. Faisal looks at Abdulaziz's homework.",
+  "people": [
+   "Faisal",
+   "Abdulaziz"
+  ],
+  "lines": [
+   {
+    "speaker": "Faisal",
+    "text": "Is this your family tree?"
+   },
+   {
+    "speaker": "Abdulaziz",
+    "text": "Yes, it is. This is our family."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Who are your parents?"
+   },
+   {
+    "speaker": "Abdulaziz",
+    "text": "My father is Mohammed, and my mother is Latifa."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "How many children are there?"
+   },
+   {
+    "speaker": "Abdulaziz",
+    "text": "Four: three sons and a daughter."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Is your brother Sami married?"
+   },
+   {
+    "speaker": "Abdulaziz",
+    "text": "Yes. His wife is Hessa. Their son is Khalid."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "How old is Khalid?"
+   },
+   {
+    "speaker": "Abdulaziz",
+    "text": "He's three. He's very polite!"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Where are your grandparents?"
+   },
+   {
+    "speaker": "Abdulaziz",
+    "text": "They're in Qassim. Their house has a big garden."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Our grandparents are in Hail."
+   }
+  ]
+ },
+ {
+  "unit": 4,
+  "lesson": 2,
+  "title": "My Father's Office",
+  "where": "The canteen. Majed asks Talal and his brother Yasser about their family.",
+  "people": [
+   "Majed",
+   "Talal",
+   "Yasser"
+  ],
+  "lines": [
+   {
+    "speaker": "Majed",
+    "text": "Talal, what's your father's job?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "He's a bank manager. My father's office is in a big bank."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Is it near your home?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "Yes, it is. It's five minutes by car."
+   },
+   {
+    "speaker": "Majed",
+    "text": "And you, Yasser?"
+   },
+   {
+    "speaker": "Yasser",
+    "text": "I'm an accountant. My company is in the city centre."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Is your office big?"
+   },
+   {
+    "speaker": "Yasser",
+    "text": "No, it's small. But my boss's office is very big!"
+   },
+   {
+    "speaker": "Majed",
+    "text": "What's your mother's job?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "She's a part-time teacher. My mother's school is near our house."
+   },
+   {
+    "speaker": "Majed",
+    "text": "And your grandfather?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "He has a small hotel in Taif. My grandfather's hotel is very good!"
+   },
+   {
+    "speaker": "Majed",
+    "text": "My uncle's job is in a hotel too. He's a chef."
+   }
+  ]
+ },
+ {
+  "unit": 4,
+  "lesson": 3,
+  "title": "Who Is Your Best Friend?",
+  "where": "The college garden at the break.",
+  "people": [
+   "Ziyad",
+   "Sultan"
+  ],
+  "lines": [
+   {
+    "speaker": "Ziyad",
+    "text": "Who is your best friend, Sultan?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "My best friend is Omar. We're both students at IATC."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Where is he from?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "He's from a small village in the north, near Tabuk."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "What's he like?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "He's very funny and clever."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Is he tall?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "Yes, he is. He has short black hair and brown eyes."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Is his brother a student?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "Yes. His brother is at university in Riyadh."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "What do you do together?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "We play football and chat. He has a lot of friends!"
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "My best friend is my cousin, Nayef. He's very kind."
+   }
+  ]
+ },
+ {
+  "unit": 4,
+  "lesson": 4,
+  "title": "The Big Match",
+  "where": "The sports centre. Coach Nabil talks to the college team.",
+  "people": [
+   "Coach Nabil",
+   "Badr",
+   "Waleed"
+  ],
+  "lines": [
+   {
+    "speaker": "Coach Nabil",
+    "text": "Good afternoon, team! We have a match on Thursday."
+   },
+   {
+    "speaker": "Badr",
+    "text": "Where is it, Coach?"
+   },
+   {
+    "speaker": "Coach Nabil",
+    "text": "At the sports centre, at five o'clock."
+   },
+   {
+    "speaker": "Waleed",
+    "text": "Who is the other team?"
+   },
+   {
+    "speaker": "Coach Nabil",
+    "text": "Riyadh Technical College. They have a very good player."
+   },
+   {
+    "speaker": "Badr",
+    "text": "We have good players too! I have twenty goals this year."
+   },
+   {
+    "speaker": "Waleed",
+    "text": "Badr is our best player."
+   },
+   {
+    "speaker": "Coach Nabil",
+    "text": "Please bring your blue shirts and white shorts."
+   },
+   {
+    "speaker": "Waleed",
+    "text": "Our fans have a big flag!"
+   },
+   {
+    "speaker": "Coach Nabil",
+    "text": "Yes, our classmates are very excited."
+   },
+   {
+    "speaker": "Badr",
+    "text": "We want to win the cup!"
+   },
+   {
+    "speaker": "Waleed",
+    "text": "Football is a great sport."
+   },
+   {
+    "speaker": "Coach Nabil",
+    "text": "OK. Let's practise now!"
+   }
+  ]
+ },
+ {
+  "unit": 4,
+  "lesson": 5,
+  "title": "Can I Take a Message?",
+  "where": "A phone call to the student office.",
+  "people": [
+   "Receptionist",
+   "Saud"
+  ],
+  "lines": [
+   {
+    "speaker": "Receptionist",
+    "text": "Good afternoon. Student Office."
+   },
+   {
+    "speaker": "Saud",
+    "text": "Hello. Can I speak to Mr Karim, please?"
+   },
+   {
+    "speaker": "Receptionist",
+    "text": "Certainly. What's your name?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "Saud Alrashid."
+   },
+   {
+    "speaker": "Receptionist",
+    "text": "How do you spell your surname?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "A-L-R-A-S-H-I-D."
+   },
+   {
+    "speaker": "Receptionist",
+    "text": "Thank you. Hold on, please. I'm connecting you …"
+   },
+   {
+    "speaker": "Receptionist",
+    "text": "Sorry, Mr Karim isn't here. Can I take a message?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "Yes, of course. Please ask him to call me."
+   },
+   {
+    "speaker": "Receptionist",
+    "text": "What's your number?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "It's 050 662 1934."
+   },
+   {
+    "speaker": "Receptionist",
+    "text": "And your email?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "saud.r@email dot com."
+   },
+   {
+    "speaker": "Receptionist",
+    "text": "Thank you. Goodbye!"
+   }
+  ]
+ },
+ {
+  "unit": 5,
+  "lesson": 1,
+  "title": "Lunch at the Café",
+  "where": "The college café at lunchtime. Three friends talk about food and sport.",
+  "people": [
+   "Hamad",
+   "Fahad",
+   "Nasser"
+  ],
+  "lines": [
+   {
+    "speaker": "Hamad",
+    "text": "I'm hungry! What do you eat for lunch?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "I eat sandwiches in the café. I don't like fast food."
+   },
+   {
+    "speaker": "Nasser",
+    "text": "I love kabsa. My mother's kabsa is delicious!"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "What do you drink?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "I drink orange juice. I don't drink a lot of cola."
+   },
+   {
+    "speaker": "Nasser",
+    "text": "I drink Arabic coffee, and I eat dates."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "What do you do after college?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "I go swimming. It's my favourite sport."
+   },
+   {
+    "speaker": "Nasser",
+    "text": "I play tennis with my cousin."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Tennis? Is it exciting?"
+   },
+   {
+    "speaker": "Nasser",
+    "text": "Yes, it is! And food after sport is great."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Let's eat now!"
+   }
+  ]
+ },
+ {
+  "unit": 5,
+  "lesson": 2,
+  "title": "The Twins",
+  "where": "The classroom. Saleh meets the twins Ali and Abbas.",
+  "people": [
+   "Saleh",
+   "Ali",
+   "Abbas"
+  ],
+  "lines": [
+   {
+    "speaker": "Saleh",
+    "text": "Are you two twins?"
+   },
+   {
+    "speaker": "Ali",
+    "text": "Yes, we are! I'm Ali, and this is Abbas."
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Do you like the same things?"
+   },
+   {
+    "speaker": "Abbas",
+    "text": "No, we don't! I love horse riding. Ali doesn't like it."
+   },
+   {
+    "speaker": "Ali",
+    "text": "I love reading. Abbas doesn't like books!"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Do you like camping?"
+   },
+   {
+    "speaker": "Ali",
+    "text": "Yes, I do. Sometimes I go camping in the mountains."
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Do you like cooking, Abbas?"
+   },
+   {
+    "speaker": "Abbas",
+    "text": "Yes, I do. My kabsa is the best!"
+   },
+   {
+    "speaker": "Ali",
+    "text": "That's true!"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Do you both like animals?"
+   },
+   {
+    "speaker": "Abbas",
+    "text": "Yes, we do. Our grandfather has a camel and two horses."
+   }
+  ]
+ },
+ {
+  "unit": 5,
+  "lesson": 3,
+  "title": "At the Indian Restaurant",
+  "where": "An Indian restaurant in Riyadh. Joseph is the waiter.",
+  "people": [
+   "Joseph",
+   "Saad",
+   "Turki"
+  ],
+  "lines": [
+   {
+    "speaker": "Joseph",
+    "text": "Good evening! Welcome. Here's the menu."
+   },
+   {
+    "speaker": "Saad",
+    "text": "Thank you. Do you speak Arabic?"
+   },
+   {
+    "speaker": "Joseph",
+    "text": "Yes, a little. I speak four languages."
+   },
+   {
+    "speaker": "Turki",
+    "text": "Wow! Where are you from?"
+   },
+   {
+    "speaker": "Joseph",
+    "text": "I'm from the Philippines. I live and work in Riyadh now."
+   },
+   {
+    "speaker": "Saad",
+    "text": "Is the chicken curry spicy?"
+   },
+   {
+    "speaker": "Joseph",
+    "text": "Yes, it's very spicy."
+   },
+   {
+    "speaker": "Turki",
+    "text": "I don't like spicy food. I'd like the chicken and rice, please."
+   },
+   {
+    "speaker": "Saad",
+    "text": "I love spicy food! The curry, please."
+   },
+   {
+    "speaker": "Joseph",
+    "text": "And to drink?"
+   },
+   {
+    "speaker": "Turki",
+    "text": "Two orange juices, please."
+   },
+   {
+    "speaker": "Joseph",
+    "text": "Thank you. Our customers come from many countries, and they order in English or Arabic."
+   },
+   {
+    "speaker": "Saad",
+    "text": "You're a very good waiter!"
+   }
+  ]
+ },
+ {
+  "unit": 5,
+  "lesson": 4,
+  "title": "Things from Many Countries",
+  "where": "The college car park. Majed and Ziyad talk about cars and teachers.",
+  "people": [
+   "Majed",
+   "Ziyad"
+  ],
+  "lines": [
+   {
+    "speaker": "Majed",
+    "text": "Your father's car is very nice. Is it Japanese?"
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Yes, it is. And my brother's car is German."
+   },
+   {
+    "speaker": "Majed",
+    "text": "What about your phone?"
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "It's a Chinese phone. And my computer is American."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Where are our teachers from?"
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Mr Adam is British. Mr Karim is Egyptian."
+   },
+   {
+    "speaker": "Majed",
+    "text": "And Mr Imran?"
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "He's Pakistani. He speaks Urdu and English."
+   },
+   {
+    "speaker": "Majed",
+    "text": "We're all Saudi Arabian students."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Yes. But our coffee is Turkish today!"
+   },
+   {
+    "speaker": "Majed",
+    "text": "Ha ha! And our pizza is Italian!"
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Our college has a lot of nationalities."
+   }
+  ]
+ },
+ {
+  "unit": 5,
+  "lesson": 5,
+  "title": "At the Sports Shop",
+  "where": "A sports shop in the mall. Faris wants some new things.",
+  "people": [
+   "Faris",
+   "Assistant"
+  ],
+  "lines": [
+   {
+    "speaker": "Faris",
+    "text": "Excuse me. How much is this sports bag?"
+   },
+   {
+    "speaker": "Assistant",
+    "text": "It's seventy riyals."
+   },
+   {
+    "speaker": "Faris",
+    "text": "And how much are these football shoes?"
+   },
+   {
+    "speaker": "Assistant",
+    "text": "They're ninety riyals. They're on sale."
+   },
+   {
+    "speaker": "Faris",
+    "text": "And a pair of socks?"
+   },
+   {
+    "speaker": "Assistant",
+    "text": "Fifteen riyals."
+   },
+   {
+    "speaker": "Faris",
+    "text": "OK. The bag, the shoes and the socks, please."
+   },
+   {
+    "speaker": "Assistant",
+    "text": "That's one hundred and seventy-five riyals. Cash or card?"
+   },
+   {
+    "speaker": "Faris",
+    "text": "Cash. Here's two hundred."
+   },
+   {
+    "speaker": "Assistant",
+    "text": "Thank you. Here's your change: twenty-five riyals."
+   },
+   {
+    "speaker": "Faris",
+    "text": "Can I have a receipt, please?"
+   },
+   {
+    "speaker": "Assistant",
+    "text": "Of course. Here you are."
+   },
+   {
+    "speaker": "Faris",
+    "text": "Thanks. The prices here are good!"
+   }
+  ]
+ },
+ {
+  "unit": 6,
+  "lesson": 1,
+  "title": "What Time Is Our Lesson?",
+  "where": "The first day of the week. Nawaf and Fahad ask Mr Said about the timetable.",
+  "people": [
+   "Nawaf",
+   "Mr Said",
+   "Fahad"
+  ],
+  "lines": [
+   {
+    "speaker": "Nawaf",
+    "text": "Excuse me, Mr Said. What time is our first lesson?"
+   },
+   {
+    "speaker": "Mr Said",
+    "text": "It's at half past one."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "And what time do we finish?"
+   },
+   {
+    "speaker": "Mr Said",
+    "text": "At ten to eight in the evening."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Do we study on Friday?"
+   },
+   {
+    "speaker": "Mr Said",
+    "text": "No. We study from Sunday to Thursday. Friday and Saturday are the weekend."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "When is English Lab?"
+   },
+   {
+    "speaker": "Mr Said",
+    "text": "On Wednesday, at half past one."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "And IT?"
+   },
+   {
+    "speaker": "Mr Said",
+    "text": "On Thursday, at half past five."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "What time is the break?"
+   },
+   {
+    "speaker": "Mr Said",
+    "text": "At ten past three. And there's another break at six o'clock."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Thank you! I'm always here early."
+   }
+  ]
+ },
+ {
+  "unit": 6,
+  "lesson": 2,
+  "title": "Your Daily Routine",
+  "where": "The canteen. Omar asks Abdulrahman about his day for a class project.",
+  "people": [
+   "Omar",
+   "Abdulrahman"
+  ],
+  "lines": [
+   {
+    "speaker": "Omar",
+    "text": "What time do you wake up, Abdulrahman?"
+   },
+   {
+    "speaker": "Abdulrahman",
+    "text": "I wake up early and pray. Then I sleep again!"
+   },
+   {
+    "speaker": "Omar",
+    "text": "What time do you get up?"
+   },
+   {
+    "speaker": "Abdulrahman",
+    "text": "At nine o'clock. I have a shower and get dressed."
+   },
+   {
+    "speaker": "Omar",
+    "text": "What do you have for breakfast?"
+   },
+   {
+    "speaker": "Abdulrahman",
+    "text": "Eggs, toast and tea, with my family."
+   },
+   {
+    "speaker": "Omar",
+    "text": "When do you have lunch?"
+   },
+   {
+    "speaker": "Abdulrahman",
+    "text": "At twelve o'clock. Then I leave home at quarter to one."
+   },
+   {
+    "speaker": "Omar",
+    "text": "How do you go to college?"
+   },
+   {
+    "speaker": "Abdulrahman",
+    "text": "By bus. I get home at half past eight."
+   },
+   {
+    "speaker": "Omar",
+    "text": "And dinner?"
+   },
+   {
+    "speaker": "Abdulrahman",
+    "text": "I have dinner with my brothers, and I go to bed at eleven."
+   }
+  ]
+ },
+ {
+  "unit": 6,
+  "lesson": 3,
+  "title": "A Healthy Lifestyle?",
+  "where": "The gym at college. Nawaf and Hamad ask Talal about his lifestyle.",
+  "people": [
+   "Nawaf",
+   "Talal",
+   "Hamad"
+  ],
+  "lines": [
+   {
+    "speaker": "Nawaf",
+    "text": "Talal, is your lifestyle healthy?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "Yes, I think so. I always have breakfast before college."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "How often do you walk?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "I usually walk for thirty minutes in the evening."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Do you eat fast food?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "Sometimes, with my friends. But I often eat fruit and vegetables."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "I never eat vegetables!"
+   },
+   {
+    "speaker": "Talal",
+    "text": "That's not healthy, Hamad!"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "How often do you watch TV?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "Twice a week. I'm very busy with homework."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "What do you do at the weekend?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "I usually stay at home and relax with my family."
+   }
+  ]
+ },
+ {
+  "unit": 6,
+  "lesson": 4,
+  "title": "Our Friday Plan",
+  "where": "Thursday evening at home. Saad and his brother Bader talk about Friday.",
+  "people": [
+   "Bader",
+   "Saad"
+  ],
+  "lines": [
+   {
+    "speaker": "Bader",
+    "text": "What do we do on Friday, Saad?"
+   },
+   {
+    "speaker": "Saad",
+    "text": "In the morning, Dad drives us to the mosque."
+   },
+   {
+    "speaker": "Bader",
+    "text": "Then we visit our grandparents."
+   },
+   {
+    "speaker": "Saad",
+    "text": "Yes. Our uncle cooks kabsa for everybody."
+   },
+   {
+    "speaker": "Bader",
+    "text": "Do we go shopping in the afternoon?"
+   },
+   {
+    "speaker": "Saad",
+    "text": "Yes. I want to buy a new phone for you!"
+   },
+   {
+    "speaker": "Bader",
+    "text": "Thanks! Can we stop at a café?"
+   },
+   {
+    "speaker": "Saad",
+    "text": "Of course. I want a coffee."
+   },
+   {
+    "speaker": "Bader",
+    "text": "And in the evening?"
+   },
+   {
+    "speaker": "Saad",
+    "text": "Dad invites three friends to dinner."
+   },
+   {
+    "speaker": "Bader",
+    "text": "Do you go out at night?"
+   },
+   {
+    "speaker": "Saad",
+    "text": "No. I write my homework and go to bed early."
+   }
+  ]
+ },
+ {
+  "unit": 6,
+  "lesson": 5,
+  "title": "Let's Go to the Island!",
+  "where": "Captain Saleh's house in Jeddah on Thursday evening.",
+  "people": [
+   "Fahad",
+   "Captain Saleh",
+   "Ahmed"
+  ],
+  "lines": [
+   {
+    "speaker": "Fahad",
+    "text": "Dad, how often do you fly?"
+   },
+   {
+    "speaker": "Captain Saleh",
+    "text": "Three times a week. I fly between Jeddah and Riyadh."
+   },
+   {
+    "speaker": "Ahmed",
+    "text": "Do you have breakfast at home?"
+   },
+   {
+    "speaker": "Captain Saleh",
+    "text": "No, I don't. I have coffee and dates at the airport."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Do you work tomorrow?"
+   },
+   {
+    "speaker": "Captain Saleh",
+    "text": "No, I don't. It's the weekend."
+   },
+   {
+    "speaker": "Ahmed",
+    "text": "Let's go to the island!"
+   },
+   {
+    "speaker": "Captain Saleh",
+    "text": "Good idea! We can take our boat."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Can we swim at the beach?"
+   },
+   {
+    "speaker": "Captain Saleh",
+    "text": "Yes. The sea is beautiful there."
+   },
+   {
+    "speaker": "Ahmed",
+    "text": "How long is the journey?"
+   },
+   {
+    "speaker": "Captain Saleh",
+    "text": "About thirty minutes by boat."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "You're the best dad!"
+   }
+  ]
+ },
+ {
+  "unit": 7,
+  "lesson": 1,
+  "title": "A Call from Abha",
+  "where": "A phone call. Khalid is on holiday in Abha. Hamza is in Riyadh.",
+  "people": [
+   "Hamza",
+   "Khalid"
+  ],
+  "lines": [
+   {
+    "speaker": "Hamza",
+    "text": "Hi Khalid! Where are you?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "I'm in Abha with my family. It's amazing!"
+   },
+   {
+    "speaker": "Hamza",
+    "text": "What's the weather like?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "It's wonderful. It's only eighteen degrees in the afternoon."
+   },
+   {
+    "speaker": "Hamza",
+    "text": "Really? It's thirty-five degrees in Riyadh!"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "At night it's cold, and in the morning there's fog."
+   },
+   {
+    "speaker": "Hamza",
+    "text": "Does it rain?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "Yes, sometimes it rains in the afternoon."
+   },
+   {
+    "speaker": "Hamza",
+    "text": "What's your favourite place there?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "The Green Mountain. My brothers adore the mountain walks."
+   },
+   {
+    "speaker": "Hamza",
+    "text": "And you?"
+   },
+   {
+    "speaker": "Khalid",
+    "text": "I hate them! What do you do in your free time?"
+   },
+   {
+    "speaker": "Hamza",
+    "text": "I play football and study for the exam!"
+   }
+  ]
+ },
+ {
+  "unit": 7,
+  "lesson": 2,
+  "title": "Can I Try It On?",
+  "where": "A clothes shop in a Riyadh mall in winter.",
+  "people": [
+   "Assistant",
+   "Saleh"
+  ],
+  "lines": [
+   {
+    "speaker": "Assistant",
+    "text": "Good evening. Can I help you?"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Yes, please. How much is this grey jacket?"
+   },
+   {
+    "speaker": "Assistant",
+    "text": "It's two hundred riyals."
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Oh, that's expensive. Do you have a cheap one?"
+   },
+   {
+    "speaker": "Assistant",
+    "text": "This black jacket is a hundred and twenty riyals."
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Can I try it on?"
+   },
+   {
+    "speaker": "Assistant",
+    "text": "Of course. The changing rooms are over there."
+   },
+   {
+    "speaker": "Saleh",
+    "text": "It's very comfortable, but it's large. Do you have a medium one?"
+   },
+   {
+    "speaker": "Assistant",
+    "text": "Yes. Here you are."
+   },
+   {
+    "speaker": "Saleh",
+    "text": "This is great. And how much are these T-shirts?"
+   },
+   {
+    "speaker": "Assistant",
+    "text": "They're thirty-five riyals each."
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Two T-shirts and this jacket, please."
+   },
+   {
+    "speaker": "Assistant",
+    "text": "That's a hundred and ninety riyals."
+   }
+  ]
+ },
+ {
+  "unit": 7,
+  "lesson": 3,
+  "title": "Can I Have Some Aspirin?",
+  "where": "A chemist's, then the Post Office next door.",
+  "people": [
+   "Pharmacist",
+   "Hamad",
+   "Clerk"
+  ],
+  "lines": [
+   {
+    "speaker": "Pharmacist",
+    "text": "Good evening. Can I help you?"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Yes. Can I have some aspirin, please? I have a headache."
+   },
+   {
+    "speaker": "Pharmacist",
+    "text": "Here you are. Anything else?"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Yes, toothpaste and shampoo, please."
+   },
+   {
+    "speaker": "Pharmacist",
+    "text": "That's thirty-two riyals."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Can I pay by credit card?"
+   },
+   {
+    "speaker": "Pharmacist",
+    "text": "Of course. Put in your PIN, please."
+   },
+   {
+    "speaker": "Clerk",
+    "text": "Next, please!"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Hello. Can I send this parcel to Jeddah?"
+   },
+   {
+    "speaker": "Clerk",
+    "text": "Yes. Put it on the scales, please … That's forty riyals."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "And can I have a stamp for this postcard?"
+   },
+   {
+    "speaker": "Clerk",
+    "text": "Here you are. Five riyals."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Thank you very much."
+   }
+  ]
+ },
+ {
+  "unit": 7,
+  "lesson": 4,
+  "title": "A Ticket to Al-Ahsa",
+  "where": "The ticket office at the railway station in Riyadh.",
+  "people": [
+   "Waleed",
+   "Clerk"
+  ],
+  "lines": [
+   {
+    "speaker": "Waleed",
+    "text": "Good morning. Can I have a ticket to Al-Ahsa, please?"
+   },
+   {
+    "speaker": "Clerk",
+    "text": "Single or return?"
+   },
+   {
+    "speaker": "Waleed",
+    "text": "A return ticket, please. I come back on Saturday."
+   },
+   {
+    "speaker": "Clerk",
+    "text": "That's 120 riyals."
+   },
+   {
+    "speaker": "Waleed",
+    "text": "Is the train fast?"
+   },
+   {
+    "speaker": "Clerk",
+    "text": "Yes. The journey is about three hours."
+   },
+   {
+    "speaker": "Waleed",
+    "text": "What time is the next train?"
+   },
+   {
+    "speaker": "Clerk",
+    "text": "At eleven o'clock, from platform 2."
+   },
+   {
+    "speaker": "Waleed",
+    "text": "Is there a café on the train?"
+   },
+   {
+    "speaker": "Clerk",
+    "text": "Yes, there is. It's easy to find."
+   },
+   {
+    "speaker": "Waleed",
+    "text": "Great. My cousin meets me at the station."
+   },
+   {
+    "speaker": "Clerk",
+    "text": "Hurry! You can catch the eleven o'clock train."
+   },
+   {
+    "speaker": "Waleed",
+    "text": "Thanks! The train is quick and cheap!"
+   }
+  ]
+ },
+ {
+  "unit": 7,
+  "lesson": 5,
+  "title": "Our New Neighbours",
+  "where": "The street outside Nawaf's house. A new family is moving in.",
+  "people": [
+   "Nawaf",
+   "Fahad",
+   "Father"
+  ],
+  "lines": [
+   {
+    "speaker": "Nawaf",
+    "text": "Hello! Are you our new neighbours?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Yes, we are. I'm Fahad. We're from Hail."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Welcome! Why are you in Riyadh?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Because my father has a new job. He's the boss of a big company."
+   },
+   {
+    "speaker": "Father",
+    "text": "Welcome, Fahad. Who is in your family?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "My parents, my brother and the baby. And our cat!"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "A cat? I love cats. Can I see it?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Of course. Come and see us this evening."
+   },
+   {
+    "speaker": "Father",
+    "text": "How many bedrooms are in your house?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Five. It's old, but it's very nice."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Play football with me and my friends!"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Thanks! You're very friendly."
+   },
+   {
+    "speaker": "Father",
+    "text": "Say hello to your father. I want to visit him."
+   }
+  ]
+ },
+ {
+  "unit": 8,
+  "lesson": 1,
+  "title": "Our New Apartment",
+  "where": "Abdulaziz shows his friend Majed his family's new apartment.",
+  "people": [
+   "Majed",
+   "Abdulaziz"
+  ],
+  "lines": [
+   {
+    "speaker": "Majed",
+    "text": "Wow! Your new apartment is very nice."
+   },
+   {
+    "speaker": "Abdulaziz",
+    "text": "Thanks! It's on the fifth floor."
+   },
+   {
+    "speaker": "Majed",
+    "text": "How many rooms are there?"
+   },
+   {
+    "speaker": "Abdulaziz",
+    "text": "There are three bedrooms, a living room, a kitchen and two bathrooms."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Is this the living room?"
+   },
+   {
+    "speaker": "Abdulaziz",
+    "text": "Yes. There's a big sofa, and there are two armchairs."
+   },
+   {
+    "speaker": "Majed",
+    "text": "I like the lamp next to the sofa."
+   },
+   {
+    "speaker": "Abdulaziz",
+    "text": "Come and see the kitchen. There's a new cooker and a big fridge."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Is there a table in the kitchen?"
+   },
+   {
+    "speaker": "Abdulaziz",
+    "text": "No, there isn't. We eat in the dining room."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Is there a garden?"
+   },
+   {
+    "speaker": "Abdulaziz",
+    "text": "No, but there's a park near our building."
+   }
+  ]
+ },
+ {
+  "unit": 8,
+  "lesson": 2,
+  "title": "Where Are My Car Keys?",
+  "where": "Sunday afternoon at home. Waleed is late for college.",
+  "people": [
+   "Waleed",
+   "Sami"
+  ],
+  "lines": [
+   {
+    "speaker": "Waleed",
+    "text": "Sami, where are my car keys? I'm late!"
+   },
+   {
+    "speaker": "Sami",
+    "text": "Are they on your desk?"
+   },
+   {
+    "speaker": "Waleed",
+    "text": "No. There's a lamp and an alarm clock on my desk, but there aren't any keys."
+   },
+   {
+    "speaker": "Sami",
+    "text": "Look in the drawer."
+   },
+   {
+    "speaker": "Waleed",
+    "text": "There are some pens in the drawer. No keys!"
+   },
+   {
+    "speaker": "Sami",
+    "text": "Are they under the bed?"
+   },
+   {
+    "speaker": "Waleed",
+    "text": "No. There are some trainers and my sports bag under the bed."
+   },
+   {
+    "speaker": "Sami",
+    "text": "What about behind the door?"
+   },
+   {
+    "speaker": "Waleed",
+    "text": "Behind the door? No …"
+   },
+   {
+    "speaker": "Sami",
+    "text": "Where's your laptop?"
+   },
+   {
+    "speaker": "Waleed",
+    "text": "It's on the sofa, next to the TV. Oh! My keys are next to my laptop!"
+   },
+   {
+    "speaker": "Sami",
+    "text": "Ha ha! Go! You're late!"
+   }
+  ]
+ },
+ {
+  "unit": 8,
+  "lesson": 3,
+  "title": "What's There in Riyadh?",
+  "where": "A hotel lobby. Ziyad from Abha asks two Riyadh students about the city.",
+  "people": [
+   "Ziyad",
+   "Faisal",
+   "Turki"
+  ],
+  "lines": [
+   {
+    "speaker": "Ziyad",
+    "text": "This is my first time in Riyadh. What's your home town like?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "It's big and modern. It's very cosmopolitan, too."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Are there any museums?"
+   },
+   {
+    "speaker": "Turki",
+    "text": "Yes, there are. The National Museum is excellent."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Is there a castle?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Yes. Al Masmak is an old castle in the city centre."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "And what about entertainment?"
+   },
+   {
+    "speaker": "Turki",
+    "text": "There are a lot of parks and malls. The Kingdom Tower is spectacular at night."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Are there any good restaurants?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Yes! There are all kinds of food: Saudi, Indian, Thai and Italian."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Is there a supermarket near my hotel?"
+   },
+   {
+    "speaker": "Turki",
+    "text": "Yes, there's one next to it."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Great! Riyadh is fantastic."
+   }
+  ]
+ },
+ {
+  "unit": 8,
+  "lesson": 4,
+  "title": "Is There a Pharmacy Near Here?",
+  "where": "The bus station in Al Malaz. Hassan asks a man for help.",
+  "people": [
+   "Hassan",
+   "Man"
+  ],
+  "lines": [
+   {
+    "speaker": "Hassan",
+    "text": "Excuse me. Is there a pharmacy near here?"
+   },
+   {
+    "speaker": "Man",
+    "text": "Yes, there is. Go out of the bus station and turn right."
+   },
+   {
+    "speaker": "Hassan",
+    "text": "Turn right. OK."
+   },
+   {
+    "speaker": "Man",
+    "text": "Go straight on for two minutes. Go past the bank."
+   },
+   {
+    "speaker": "Hassan",
+    "text": "Go past the bank …"
+   },
+   {
+    "speaker": "Man",
+    "text": "Then turn left at the traffic lights. The pharmacy is on the corner, opposite the mosque."
+   },
+   {
+    "speaker": "Hassan",
+    "text": "Thank you. Is the metro station far?"
+   },
+   {
+    "speaker": "Man",
+    "text": "It's about fifteen minutes on foot."
+   },
+   {
+    "speaker": "Hassan",
+    "text": "Is there a car park there?"
+   },
+   {
+    "speaker": "Man",
+    "text": "Yes, there's a big car park next to it."
+   },
+   {
+    "speaker": "Hassan",
+    "text": "Thanks a lot for the directions!"
+   },
+   {
+    "speaker": "Man",
+    "text": "You're welcome."
+   }
+  ]
+ },
+ {
+  "unit": 8,
+  "lesson": 5,
+  "title": "My Favourite Season",
+  "where": "The college garden. Three friends plan the weekend.",
+  "people": [
+   "Nawaf",
+   "Saud",
+   "Abdullah"
+  ],
+  "lines": [
+   {
+    "speaker": "Nawaf",
+    "text": "What's your favourite season, Saud?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "Winter. The weather is cool and fresh."
+   },
+   {
+    "speaker": "Abdullah",
+    "text": "I love spring. There are flowers in the desert."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "I don't like summer. It's very hot in Riyadh!"
+   },
+   {
+    "speaker": "Saud",
+    "text": "In summer, my family goes to Jeddah for water sports."
+   },
+   {
+    "speaker": "Abdullah",
+    "text": "What do you do there?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "I go sailing and fishing with my uncle."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "What's the weather like in autumn?"
+   },
+   {
+    "speaker": "Abdullah",
+    "text": "It's warm and sunny."
+   },
+   {
+    "speaker": "Saud",
+    "text": "Let's go cycling this weekend!"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Good idea! The sky is blue, and it isn't hot."
+   },
+   {
+    "speaker": "Abdullah",
+    "text": "OK. Let's meet at the park at seven in the morning."
+   }
+  ]
+ },
+ {
+  "unit": 9,
+  "lesson": 1,
+  "title": "Famous People from the Past",
+  "where": "Room 212. Mr. Ibrahim's class talks about history.",
+  "people": [
+   "Mr. Ibrahim",
+   "Ali",
+   "Fahad"
+  ],
+  "lines": [
+   {
+    "speaker": "Mr. Ibrahim",
+    "text": "Today we're talking about famous people from the past. Who's your favourite?"
+   },
+   {
+    "speaker": "Ali",
+    "text": "Ibn Sina. He was a famous scientist and doctor."
+   },
+   {
+    "speaker": "Mr. Ibrahim",
+    "text": "Good. When was he born?"
+   },
+   {
+    "speaker": "Ali",
+    "text": "He was born in 980. That's nine hundred and eighty."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "That was more than a thousand years ago!"
+   },
+   {
+    "speaker": "Mr. Ibrahim",
+    "text": "Yes, in the tenth century. And you, Fahad?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "I like Abbas ibn Firnas. He tried to fly in the ninth century!"
+   },
+   {
+    "speaker": "Ali",
+    "text": "Really? Was he a pilot?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "No, there weren't any planes then! He was a scientist and a poet too."
+   },
+   {
+    "speaker": "Mr. Ibrahim",
+    "text": "Where was he born?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "In Al-Andalus. He died in 887."
+   },
+   {
+    "speaker": "Ali",
+    "text": "When were you born, Fahad?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "I was born in 2007. Two thousand and seven."
+   },
+   {
+    "speaker": "Mr. Ibrahim",
+    "text": "Good. Saying years is important for the exam!"
+   }
+  ]
+ },
+ {
+  "unit": 9,
+  "lesson": 2,
+  "title": "The New Calendar",
+  "where": "The classroom. Three students look at the college calendar on the wall.",
+  "people": [
+   "Faisal",
+   "Badr",
+   "Turki"
+  ],
+  "lines": [
+   {
+    "speaker": "Faisal",
+    "text": "Look at the new calendar. When is the final exam?"
+   },
+   {
+    "speaker": "Badr",
+    "text": "It's in December."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "And when does the second semester start?"
+   },
+   {
+    "speaker": "Badr",
+    "text": "In January."
+   },
+   {
+    "speaker": "Turki",
+    "text": "When is Ramadan next year?"
+   },
+   {
+    "speaker": "Badr",
+    "text": "In February and March. It moves every year because it follows the Hijri calendar."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "I love Ramadan. Fasting is difficult, but the evenings are wonderful."
+   },
+   {
+    "speaker": "Turki",
+    "text": "And after Ramadan, there's Eid. It's a holiday!"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Turki, when's your date of birth?"
+   },
+   {
+    "speaker": "Turki",
+    "text": "It's 2 July 2006. And yours?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "19 September 2007."
+   },
+   {
+    "speaker": "Badr",
+    "text": "My favourite month is December, because the weather is cool."
+   },
+   {
+    "speaker": "Turki",
+    "text": "Mine is August. It's the summer holiday!"
+   }
+  ]
+ },
+ {
+  "unit": 9,
+  "lesson": 3,
+  "title": "After the Race",
+  "where": "The college sports field on Sports Day.",
+  "people": [
+   "Coach",
+   "Fahad",
+   "Saad"
+  ],
+  "lines": [
+   {
+    "speaker": "Coach",
+    "text": "Well done, everyone! Fahad, you were first!"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Thank you, Coach. I'm very happy with my gold medal."
+   },
+   {
+    "speaker": "Saad",
+    "text": "I was second. I was very close!"
+   },
+   {
+    "speaker": "Coach",
+    "text": "Yes, you were. And Majed was third."
+   },
+   {
+    "speaker": "Saad",
+    "text": "What's the prize for first?"
+   },
+   {
+    "speaker": "Coach",
+    "text": "A new laptop. The second prize is a book."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Where was Turki?"
+   },
+   {
+    "speaker": "Saad",
+    "text": "He was tenth. He was very tired."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "What's the date today, Coach?"
+   },
+   {
+    "speaker": "Coach",
+    "text": "It's the fifth of November."
+   },
+   {
+    "speaker": "Coach",
+    "text": "The next sports day is on the twentieth of March."
+   },
+   {
+    "speaker": "Saad",
+    "text": "I want to be first next time!"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "There's a long queue for water. Let's go!"
+   }
+  ]
+ },
+ {
+  "unit": 9,
+  "lesson": 4,
+  "title": "Grandfather's Stories",
+  "where": "Grandfather's house on Friday evening. Omar and Sami ask him questions.",
+  "people": [
+   "Omar",
+   "Grandfather",
+   "Sami"
+  ],
+  "lines": [
+   {
+    "speaker": "Omar",
+    "text": "Grandfather, where were you born?"
+   },
+   {
+    "speaker": "Grandfather",
+    "text": "I was born near Al-Ahsa in 1950."
+   },
+   {
+    "speaker": "Sami",
+    "text": "Was your house big?"
+   },
+   {
+    "speaker": "Grandfather",
+    "text": "No, it wasn't. It was very small. There weren't any lamps. We had candles."
+   },
+   {
+    "speaker": "Omar",
+    "text": "Was there a school?"
+   },
+   {
+    "speaker": "Grandfather",
+    "text": "There was a small primary school, but I didn't go. I worked with my father."
+   },
+   {
+    "speaker": "Sami",
+    "text": "Were you the eldest son?"
+   },
+   {
+    "speaker": "Grandfather",
+    "text": "Yes, I was. I had seven brothers and sisters."
+   },
+   {
+    "speaker": "Omar",
+    "text": "What was your favourite toy?"
+   },
+   {
+    "speaker": "Grandfather",
+    "text": "We didn't have toys! We played with the sheep and goats under the palm trees."
+   },
+   {
+    "speaker": "Sami",
+    "text": "Were you naughty?"
+   },
+   {
+    "speaker": "Grandfather",
+    "text": "Sometimes! My mother told us a lot of stories."
+   },
+   {
+    "speaker": "Omar",
+    "text": "Life was simple then."
+   },
+   {
+    "speaker": "Grandfather",
+    "text": "Yes, it was simple, but it was happy."
+   }
+  ]
+ },
+ {
+  "unit": 9,
+  "lesson": 5,
+  "title": "Where Were You Yesterday?",
+  "where": "The college canteen on Thursday.",
+  "people": [
+   "Majed",
+   "Ali"
+  ],
+  "lines": [
+   {
+    "speaker": "Majed",
+    "text": "Hi Ali! Where were you yesterday?"
+   },
+   {
+    "speaker": "Ali",
+    "text": "I went to Jeddah with my brother."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Really? How did you go?"
+   },
+   {
+    "speaker": "Ali",
+    "text": "We took the train. We left at six in the morning."
+   },
+   {
+    "speaker": "Majed",
+    "text": "What did you do there?"
+   },
+   {
+    "speaker": "Ali",
+    "text": "We went to the Corniche and saw the sea. Then we had lunch at a fish restaurant."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Who paid?"
+   },
+   {
+    "speaker": "Ali",
+    "text": "I paid! It was a hundred and twenty riyals."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Did you buy anything?"
+   },
+   {
+    "speaker": "Ali",
+    "text": "My brother bought some dates for our mother."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Was the weather nice?"
+   },
+   {
+    "speaker": "Ali",
+    "text": "No, it was hot and wet. It was horrible! But we had a good time."
+   },
+   {
+    "speaker": "Majed",
+    "text": "When did you come back?"
+   },
+   {
+    "speaker": "Ali",
+    "text": "We came back at midnight. I'm very tired today!"
+   }
+  ]
+ },
+ {
+  "unit": 10,
+  "lesson": 1,
+  "title": "A Relaxing Weekend",
+  "where": "Sunday, before class. Three friends talk about the weekend.",
+  "people": [
+   "Yasser",
+   "Sultan",
+   "Hamad"
+  ],
+  "lines": [
+   {
+    "speaker": "Yasser",
+    "text": "Good morning, Sultan! How was your weekend?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "It was very relaxing. On Friday, I prayed at the mosque with my father."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Did you go out after that?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "Yes. We visited my grandmother. My aunt cooked a big lunch."
+   },
+   {
+    "speaker": "Yasser",
+    "text": "Nice! What did you do in the afternoon?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "I played football with my cousins in the park."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Did you watch the match in the evening?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "Yes, we watched it on TV. Al Hilal played very well."
+   },
+   {
+    "speaker": "Yasser",
+    "text": "And on Saturday?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "I stayed at home. I cleaned my room and studied English for two hours."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Wow, you worked hard!"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "Yes. I finished my homework at nine, and then I called my friend."
+   },
+   {
+    "speaker": "Yasser",
+    "text": "My weekend wasn't relaxing. I travelled to Dammam and back!"
+   }
+  ]
+ },
+ {
+  "unit": 10,
+  "lesson": 2,
+  "title": "Did You Finish the Homework?",
+  "where": "Room 212 on Monday afternoon. Mr. Ibrahim checks the homework.",
+  "people": [
+   "Mr. Ibrahim",
+   "Nawaf",
+   "Turki"
+  ],
+  "lines": [
+   {
+    "speaker": "Mr. Ibrahim",
+    "text": "Good afternoon. Did you have a good weekend?"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Not bad, thank you. I didn't do much."
+   },
+   {
+    "speaker": "Mr. Ibrahim",
+    "text": "Did you finish the homework?"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Yes, I did. I finished it last night."
+   },
+   {
+    "speaker": "Turki",
+    "text": "I didn't, sorry. I fell asleep at eight o'clock!"
+   },
+   {
+    "speaker": "Mr. Ibrahim",
+    "text": "Really? Did you stay up late on Thursday?"
+   },
+   {
+    "speaker": "Turki",
+    "text": "Yes, I did. I watched the match. My team won, so I was lucky!"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "What was the result?"
+   },
+   {
+    "speaker": "Turki",
+    "text": "Two–one. The goalkeeper was amazing."
+   },
+   {
+    "speaker": "Mr. Ibrahim",
+    "text": "OK, Turki. Please finish it tonight. Did you study this morning?"
+   },
+   {
+    "speaker": "Turki",
+    "text": "No, I didn't. I had a nap!"
+   },
+   {
+    "speaker": "Turki",
+    "text": "Nawaf, can I borrow a pen? I didn't bring my pencil case."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Sure. I can lend you one."
+   },
+   {
+    "speaker": "Mr. Ibrahim",
+    "text": "Good. And nobody forgets the homework next time!"
+   }
+  ]
+ },
+ {
+  "unit": 10,
+  "lesson": 3,
+  "title": "At the Sports Centre",
+  "where": "The college canteen. Saleh asks Faisal about the class trip.",
+  "people": [
+   "Saleh",
+   "Faisal"
+  ],
+  "lines": [
+   {
+    "speaker": "Saleh",
+    "text": "Where did you go last Thursday, Faisal?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Our class went to a big sports centre in Riyadh."
+   },
+   {
+    "speaker": "Saleh",
+    "text": "What did you do there?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "In the morning, I went to the swimming pool. Then I tried bowling."
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Were you good?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "No! I wasn't very good. But it was fun."
+   },
+   {
+    "speaker": "Saleh",
+    "text": "What did you do after lunch?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "We went to the ice rink. It was my first time ice-skating."
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Did you fall down?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Yes, three times! Our teacher didn't skate. He sat and watched us."
+   },
+   {
+    "speaker": "Saleh",
+    "text": "I love padel. I play on the new courts every Saturday."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Can you teach me? I want to try a new leisure activity."
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Sure! Bring a towel and some water."
+   }
+  ]
+ },
+ {
+  "unit": 10,
+  "lesson": 4,
+  "title": "At the Tourist Office",
+  "where": "The tourist office in AlUla. Ahmed and his father want information.",
+  "people": [
+   "Worker",
+   "Father",
+   "Ahmed"
+  ],
+  "lines": [
+   {
+    "speaker": "Worker",
+    "text": "Good morning. Welcome to the tourist office."
+   },
+   {
+    "speaker": "Father",
+    "text": "Hello. Can we have a map and a brochure, please?"
+   },
+   {
+    "speaker": "Worker",
+    "text": "Here you are. Do you want a bus tour?"
+   },
+   {
+    "speaker": "Ahmed",
+    "text": "Yes, please! What can we see?"
+   },
+   {
+    "speaker": "Worker",
+    "text": "You can see the old town and some ancient rocks. The rocks have writing on them."
+   },
+   {
+    "speaker": "Ahmed",
+    "text": "How old are they?"
+   },
+   {
+    "speaker": "Worker",
+    "text": "More than two thousand years old!"
+   },
+   {
+    "speaker": "Father",
+    "text": "What are the opening hours?"
+   },
+   {
+    "speaker": "Worker",
+    "text": "From eight in the morning until six in the evening. The bus tour is ninety riyals."
+   },
+   {
+    "speaker": "Ahmed",
+    "text": "Is there a viewpoint?"
+   },
+   {
+    "speaker": "Worker",
+    "text": "Yes. The view at sunset is amazing."
+   },
+   {
+    "speaker": "Father",
+    "text": "We came here ten years ago. It was very different then!"
+   },
+   {
+    "speaker": "Worker",
+    "text": "Yes, it's busy now. Many tourists come from Europe and China."
+   }
+  ]
+ },
+ {
+  "unit": 10,
+  "lesson": 5,
+  "title": "Dinner at the Diner",
+  "where": "Sunday at college. Ibrahim asks Sultan about Saturday night.",
+  "people": [
+   "Ibrahim",
+   "Sultan"
+  ],
+  "lines": [
+   {
+    "speaker": "Ibrahim",
+    "text": "Did you go out last Saturday?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "Yes. My brothers and I went to a new diner in the mall."
+   },
+   {
+    "speaker": "Ibrahim",
+    "text": "Did you book a table?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "Yes, we did. We sat outside because the weather was cool."
+   },
+   {
+    "speaker": "Ibrahim",
+    "text": "What did you eat?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "I had pasta with chicken. My brother had roast beef."
+   },
+   {
+    "speaker": "Ibrahim",
+    "text": "Was it tasty?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "The pasta was great, but the roast beef was a little cold."
+   },
+   {
+    "speaker": "Ibrahim",
+    "text": "What did you drink?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "Orange juice. Then we went to a coffee bar."
+   },
+   {
+    "speaker": "Ibrahim",
+    "text": "Did you have a coffee?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "No, I didn't. I had a lemon and mint drink."
+   },
+   {
+    "speaker": "Ibrahim",
+    "text": "How much did you pay?"
+   },
+   {
+    "speaker": "Sultan",
+    "text": "Two hundred and ten riyals for everything."
+   },
+   {
+    "speaker": "Ibrahim",
+    "text": "Next time, try the shawarma place near my house. It's cheap!"
+   }
+  ]
+ },
+ {
+  "unit": 11,
+  "lesson": 1,
+  "title": "What Can a Pilot Do?",
+  "where": "Jobs Day at college. Captain Nasser answers students' questions.",
+  "people": [
+   "Ziyad",
+   "Captain Nasser",
+   "Omar"
+  ],
+  "lines": [
+   {
+    "speaker": "Ziyad",
+    "text": "Captain Nasser, what can a pilot do?"
+   },
+   {
+    "speaker": "Captain Nasser",
+    "text": "A pilot can fly a plane. I can fly a jumbo jet."
+   },
+   {
+    "speaker": "Omar",
+    "text": "Can you speak English?"
+   },
+   {
+    "speaker": "Captain Nasser",
+    "text": "Yes, I can. I speak English fluently. All pilots need English."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Can you repair an engine?"
+   },
+   {
+    "speaker": "Captain Nasser",
+    "text": "No, I can't. That's the job of a technician."
+   },
+   {
+    "speaker": "Omar",
+    "text": "I want to be an aircraft mechanic. I can use tools."
+   },
+   {
+    "speaker": "Captain Nasser",
+    "text": "Good. Mechanics work in the hangar. They check the wings and the engines."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Can an interpreter work at the airport?"
+   },
+   {
+    "speaker": "Captain Nasser",
+    "text": "Yes. Interpreters help passengers from other countries."
+   },
+   {
+    "speaker": "Omar",
+    "text": "What can we do now?"
+   },
+   {
+    "speaker": "Captain Nasser",
+    "text": "Study English every day. One day, you can work at an airport too!"
+   }
+  ]
+ },
+ {
+  "unit": 11,
+  "lesson": 2,
+  "title": "The College Champion",
+  "where": "The college library at the break.",
+  "people": [
+   "Fahad",
+   "Talal"
+  ],
+  "lines": [
+   {
+    "speaker": "Fahad",
+    "text": "Talal, can you play chess?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "Yes, I can. I play really well. I'm the college champion!"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Wow! When did you start?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "When I was eight. Now I play online every evening."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Can you beat our teacher?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "Yes, I can! Last month, I beat a player from Argentina."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Can you swim?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "A little bit. I can't swim fast."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "I can play computer games, but I can't play chess."
+   },
+   {
+    "speaker": "Talal",
+    "text": "Do you want to try? It isn't difficult."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "OK! Is it a board game or an online game?"
+   },
+   {
+    "speaker": "Talal",
+    "text": "Both. We can play on a board or on a tablet."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Let's play on a board. I like real games."
+   }
+  ]
+ },
+ {
+  "unit": 11,
+  "lesson": 3,
+  "title": "A Video Call to the US",
+  "where": "Friday evening. Majed and his father make a video call to Yousef in the US.",
+  "people": [
+   "Majed",
+   "Yousef",
+   "Father"
+  ],
+  "lines": [
+   {
+    "speaker": "Majed",
+    "text": "Hello, Yousef! Can you hear me?"
+   },
+   {
+    "speaker": "Yousef",
+    "text": "Yes, I can! The Wi-Fi is good today. I can see you clearly."
+   },
+   {
+    "speaker": "Father",
+    "text": "Hello, son. How is the US?"
+   },
+   {
+    "speaker": "Yousef",
+    "text": "It's great, Dad. I study mostly in the library. Now I speak English more fluently."
+   },
+   {
+    "speaker": "Majed",
+    "text": "I use the Net for study too. I download English apps."
+   },
+   {
+    "speaker": "Yousef",
+    "text": "Good. Do you read my blog?"
+   },
+   {
+    "speaker": "Majed",
+    "text": "Yes, every week! You write very well."
+   },
+   {
+    "speaker": "Father",
+    "text": "And Majed types very fast now."
+   },
+   {
+    "speaker": "Yousef",
+    "text": "Be careful on social media, Majed. Don't tell anyone your password."
+   },
+   {
+    "speaker": "Majed",
+    "text": "I know. And I don't click on strange links."
+   },
+   {
+    "speaker": "Father",
+    "text": "This video call is free. It's amazing!"
+   },
+   {
+    "speaker": "Yousef",
+    "text": "Let's talk again next Friday. Bye!"
+   }
+  ]
+ },
+ {
+  "unit": 11,
+  "lesson": 4,
+  "title": "A Dangerous Sport?",
+  "where": "The college car park. Hamad asks Bader about motor racing.",
+  "people": [
+   "Hamad",
+   "Bader"
+  ],
+  "lines": [
+   {
+    "speaker": "Hamad",
+    "text": "Bader, is motor racing a dangerous sport?"
+   },
+   {
+    "speaker": "Bader",
+    "text": "It can be dangerous. The cars are very fast and very heavy."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Are you a careful driver?"
+   },
+   {
+    "speaker": "Bader",
+    "text": "Yes, I am. I always wear a strong helmet."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Do you race on city roads?"
+   },
+   {
+    "speaker": "Bader",
+    "text": "No! Fast driving on a city road is very dangerous. I only race in a safe place."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "What do you study at college?"
+   },
+   {
+    "speaker": "Bader",
+    "text": "Science and history. I want to be an engineer."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Why?"
+   },
+   {
+    "speaker": "Bader",
+    "text": "I want to design safe cars. Cars are safer now, but the driver is the most important part."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "My favourite subject is geography. I like maps."
+   },
+   {
+    "speaker": "Bader",
+    "text": "Is geography difficult?"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "No, it's an easy subject. But I don't like art!"
+   }
+  ]
+ },
+ {
+  "unit": 11,
+  "lesson": 5,
+  "title": "What's the Matter?",
+  "where": "The football pitch, then the college clinic.",
+  "people": [
+   "Saud",
+   "Hamad",
+   "Nurse"
+  ],
+  "lines": [
+   {
+    "speaker": "Saud",
+    "text": "Hamad, what's the matter?"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "I fell down in the match. My arm hurts."
+   },
+   {
+    "speaker": "Saud",
+    "text": "Oh no! Can you move it?"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "A little bit. It hurts a lot."
+   },
+   {
+    "speaker": "Saud",
+    "text": "Let's go to the college clinic."
+   },
+   {
+    "speaker": "Nurse",
+    "text": "Hello. What's the problem?"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "I had a small accident. I hurt my arm."
+   },
+   {
+    "speaker": "Nurse",
+    "text": "Let me see … It isn't broken. But you need a plaster on this cut."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Thank you. My knee hurts too."
+   },
+   {
+    "speaker": "Nurse",
+    "text": "Put some ice on it, and rest for two days."
+   },
+   {
+    "speaker": "Saud",
+    "text": "What a bad day! You missed the bus this morning too."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Yes, and the ticket machine at the metro was broken!"
+   },
+   {
+    "speaker": "Nurse",
+    "text": "Take care, and get well soon."
+   }
+  ]
+ },
+ {
+  "unit": 12,
+  "lesson": 1,
+  "title": "Shops Near the College",
+  "where": "The main gate. Ziyad is a new student. Omar and Faisal help him.",
+  "people": [
+   "Ziyad",
+   "Omar",
+   "Faisal"
+  ],
+  "lines": [
+   {
+    "speaker": "Ziyad",
+    "text": "I'm new here. What shops are near the college?"
+   },
+   {
+    "speaker": "Omar",
+    "text": "There's a small bookshop next to the main gate. You can buy notebooks there."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Great. Where can I get a coffee?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "There's a coffee shop opposite the bookshop. It opens at seven."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Is there a bakery?"
+   },
+   {
+    "speaker": "Omar",
+    "text": "Yes, near the coffee shop. The bread is fresh and cheap."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "I need some medicine for my headache."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "You can buy medicine at the pharmacy, next to the supermarket."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Is there a cash machine around here?"
+   },
+   {
+    "speaker": "Omar",
+    "text": "Yes, there's one outside the supermarket."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "And a barber's? I need a haircut!"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "There's one behind the laundry. It's good and cheap."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Thanks! Anything else?"
+   },
+   {
+    "speaker": "Omar",
+    "text": "Yes. In the supermarket, pay at the till, not at the door!"
+   }
+  ]
+ },
+ {
+  "unit": 12,
+  "lesson": 2,
+  "title": "At the Sandwich Shop",
+  "where": "A sandwich shop opposite the college at lunchtime.",
+  "people": [
+   "Assistant",
+   "Saud"
+  ],
+  "lines": [
+   {
+    "speaker": "Assistant",
+    "text": "Good afternoon. What would you like?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "I'd like a chicken sandwich, please."
+   },
+   {
+    "speaker": "Assistant",
+    "text": "Would you like onion and tomato?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "Tomato, yes. No onion, thank you."
+   },
+   {
+    "speaker": "Assistant",
+    "text": "Mayonnaise?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "Just a little. Not too much, please."
+   },
+   {
+    "speaker": "Assistant",
+    "text": "Would you like something to drink?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "Yes. I'd like a bottle of mineral water."
+   },
+   {
+    "speaker": "Assistant",
+    "text": "Sparkling or normal?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "Normal, please. And I'd like some olives for my lunch box."
+   },
+   {
+    "speaker": "Assistant",
+    "text": "Small or large?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "Small, please. How much is it?"
+   },
+   {
+    "speaker": "Assistant",
+    "text": "That's twenty-two riyals."
+   },
+   {
+    "speaker": "Saud",
+    "text": "Here you are. Thank you!"
+   }
+  ]
+ },
+ {
+  "unit": 12,
+  "lesson": 3,
+  "title": "A Table for Two",
+  "where": "A restaurant on Olaya Street. Saud and Mansour order dinner.",
+  "people": [
+   "Waiter",
+   "Saud",
+   "Mansour"
+  ],
+  "lines": [
+   {
+    "speaker": "Waiter",
+    "text": "Good evening, Sir. A table for two?"
+   },
+   {
+    "speaker": "Saud",
+    "text": "Yes, please."
+   },
+   {
+    "speaker": "Waiter",
+    "text": "Are you ready to order?"
+   },
+   {
+    "speaker": "Mansour",
+    "text": "Yes. For starters, I'd like some soup."
+   },
+   {
+    "speaker": "Waiter",
+    "text": "Lentil or tomato?"
+   },
+   {
+    "speaker": "Mansour",
+    "text": "Lentil, please."
+   },
+   {
+    "speaker": "Saud",
+    "text": "Do you have any fish?"
+   },
+   {
+    "speaker": "Waiter",
+    "text": "Yes, we have some grilled salmon. It comes with rice."
+   },
+   {
+    "speaker": "Saud",
+    "text": "Great. And a mixed salad on the side, please."
+   },
+   {
+    "speaker": "Mansour",
+    "text": "For mains, I'd like chicken kebab. Do you have any garlic sauce?"
+   },
+   {
+    "speaker": "Waiter",
+    "text": "Sorry, we don't have any garlic sauce today. We have some lemon sauce."
+   },
+   {
+    "speaker": "Mansour",
+    "text": "That's fine. And a jug of water, please."
+   },
+   {
+    "speaker": "Waiter",
+    "text": "Any dessert? We have apple pie and chocolate cake."
+   },
+   {
+    "speaker": "Saud",
+    "text": "Chocolate cake for me! Can we pay by card?"
+   },
+   {
+    "speaker": "Waiter",
+    "text": "Yes, cash or card. Thank you, Sir."
+   }
+  ]
+ },
+ {
+  "unit": 12,
+  "lesson": 4,
+  "title": "What Does That Sign Mean?",
+  "where": "King Khalid International Airport. Ali is travelling with his father.",
+  "people": [
+   "Ali",
+   "Father"
+  ],
+  "lines": [
+   {
+    "speaker": "Ali",
+    "text": "Dad, look at that sign. It says PULL."
+   },
+   {
+    "speaker": "Father",
+    "text": "Yes. Pull the door, don't push it."
+   },
+   {
+    "speaker": "Ali",
+    "text": "What does OUT OF ORDER mean?"
+   },
+   {
+    "speaker": "Father",
+    "text": "It means the lift isn't working. Let's take the stairs."
+   },
+   {
+    "speaker": "Ali",
+    "text": "Can I go through that door?"
+   },
+   {
+    "speaker": "Father",
+    "text": "No. It says STAFF ONLY. Only airport workers can go in."
+   },
+   {
+    "speaker": "Ali",
+    "text": "Can I take photos here?"
+   },
+   {
+    "speaker": "Father",
+    "text": "Look, the sign says NO PHOTOS. You can't take photos here."
+   },
+   {
+    "speaker": "Ali",
+    "text": "OK. Where do we wait?"
+   },
+   {
+    "speaker": "Father",
+    "text": "At the gate. There's a sign: PLEASE WAIT HERE."
+   },
+   {
+    "speaker": "Ali",
+    "text": "What's that green sign?"
+   },
+   {
+    "speaker": "Father",
+    "text": "That's an EXIT sign. In an emergency, follow the green signs."
+   },
+   {
+    "speaker": "Ali",
+    "text": "And DON'T FORGET YOUR BAGS!"
+   },
+   {
+    "speaker": "Father",
+    "text": "Good boy!"
+   }
+  ]
+ },
+ {
+  "unit": 12,
+  "lesson": 5,
+  "title": "Uncle Faisal's Marathon",
+  "where": "Friday lunch at home. Nawaf and his friend Hamad talk to Uncle Faisal.",
+  "people": [
+   "Nawaf",
+   "Faisal",
+   "Hamad"
+  ],
+  "lines": [
+   {
+    "speaker": "Nawaf",
+    "text": "Uncle Faisal, how far is a marathon?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "It's forty-two kilometres."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Wow! How did you feel after the race?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Tired, but very happy. I crossed the finish line in five hours."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "What time do you get up?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "At dawn. I run ten kilometres before work."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "And in the evening?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "After sunset, I ride my bike in the park."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "I eat too many sweets. Is that bad?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Yes. Don't eat too much sugar. Eat smaller meals and a lot of fruit."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "I drink too much cola."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Drink water. Then you have more energy."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "OK! I'm going to walk ten thousand steps every day."
+   }
+  ]
+ },
+ {
+  "unit": 13,
+  "lesson": 1,
+  "title": "Winter Clothes",
+  "where": "A clothes shop in the mall. Majed and Nawaf are shopping for winter.",
+  "people": [
+   "Assistant",
+   "Majed",
+   "Nawaf"
+  ],
+  "lines": [
+   {
+    "speaker": "Assistant",
+    "text": "Good evening. Can I help you?"
+   },
+   {
+    "speaker": "Majed",
+    "text": "Yes. I'd like a shemagh. A red one, please."
+   },
+   {
+    "speaker": "Assistant",
+    "text": "Here you are. And for you?"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "I need a warm scarf and some gloves."
+   },
+   {
+    "speaker": "Assistant",
+    "text": "What colour?"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Dark blue or purple."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Purple? You never wear purple!"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "That's true. Dark blue, please."
+   },
+   {
+    "speaker": "Assistant",
+    "text": "What size are you?"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Large."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Look at that man. What's he wearing?"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "He's wearing a grey suit and a blue tie. Maybe he's a manager."
+   },
+   {
+    "speaker": "Assistant",
+    "text": "Would you like to put on the gloves?"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Yes … They're perfect. How much are they?"
+   },
+   {
+    "speaker": "Assistant",
+    "text": "The scarf and the gloves are ninety riyals."
+   }
+  ]
+ },
+ {
+  "unit": 13,
+  "lesson": 2,
+  "title": "What's Happening in Class?",
+  "where": "Omar is at home with a cold. At the break, he calls Faisal in class.",
+  "people": [
+   "Omar",
+   "Faisal",
+   "Turki"
+  ],
+  "lines": [
+   {
+    "speaker": "Omar",
+    "text": "Hi Faisal! What are you doing at the moment?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "I'm sitting in the classroom. It's the break."
+   },
+   {
+    "speaker": "Omar",
+    "text": "What's happening in class today?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "The teacher is explaining the Present Continuous. We're recording a video about it."
+   },
+   {
+    "speaker": "Omar",
+    "text": "Really? What's Turki doing?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "He's standing up and waving at you! Say hello, Turki."
+   },
+   {
+    "speaker": "Turki",
+    "text": "Hi Omar! I'm holding the camera. We're making a secret video for you!"
+   },
+   {
+    "speaker": "Omar",
+    "text": "Ha ha! What's the teacher doing right now?"
+   },
+   {
+    "speaker": "Faisal",
+    "text": "He's looking for his marker. Wait … someone is knocking on the door."
+   },
+   {
+    "speaker": "Turki",
+    "text": "It's the coordinator. Everyone is standing up."
+   },
+   {
+    "speaker": "Omar",
+    "text": "OK. Go back to class! I'm lying down. I have a cold."
+   },
+   {
+    "speaker": "Faisal",
+    "text": "Get well soon! Bye!"
+   }
+  ]
+ },
+ {
+  "unit": 13,
+  "lesson": 3,
+  "title": "On the Train to Qassim",
+  "where": "A phone call. Nawaf is on the train. His father calls him.",
+  "people": [
+   "Father",
+   "Nawaf"
+  ],
+  "lines": [
+   {
+    "speaker": "Father",
+    "text": "Hello, Nawaf. Where are you?"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "I'm on the train, Dad. We're travelling to Qassim."
+   },
+   {
+    "speaker": "Father",
+    "text": "Who are you with?"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Majed and Saleh. We're using public transport because there's a big traffic jam on the motorway."
+   },
+   {
+    "speaker": "Father",
+    "text": "Good idea. What are you doing now?"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "I'm sitting by the window. Majed is drinking an espresso, and Saleh is sleeping!"
+   },
+   {
+    "speaker": "Father",
+    "text": "Where are you staying tonight?"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "In a small hostel. We aren't spending much money."
+   },
+   {
+    "speaker": "Father",
+    "text": "Is the hostel nice?"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "I don't know yet. We booked a room for three. The reception is open all night."
+   },
+   {
+    "speaker": "Father",
+    "text": "What are you doing tomorrow?"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "We're visiting Majed's uncle. He has a country house with a big farm."
+   },
+   {
+    "speaker": "Father",
+    "text": "Have a good trip, son!"
+   }
+  ]
+ },
+ {
+  "unit": 13,
+  "lesson": 4,
+  "title": "The Busy Airport",
+  "where": "The airport. Abdullah, his father and his cousin Ziyad watch the planes.",
+  "people": [
+   "Father",
+   "Abdullah",
+   "Ziyad"
+  ],
+  "lines": [
+   {
+    "speaker": "Father",
+    "text": "Look, Abdullah. They're building a new airport in Riyadh."
+   },
+   {
+    "speaker": "Abdullah",
+    "text": "Wow! Is it big?"
+   },
+   {
+    "speaker": "Father",
+    "text": "Yes. It's going to be one of the biggest airports in the world."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Every day, hundreds of planes arrive and depart here."
+   },
+   {
+    "speaker": "Abdullah",
+    "text": "Today it's very busy. Why?"
+   },
+   {
+    "speaker": "Father",
+    "text": "The holidays are starting. Many families are travelling."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "Uncle, do you remember the old airport?"
+   },
+   {
+    "speaker": "Father",
+    "text": "Yes. It was small, and it closed at night."
+   },
+   {
+    "speaker": "Abdullah",
+    "text": "Look! The passengers are getting off that plane."
+   },
+   {
+    "speaker": "Ziyad",
+    "text": "And those people are getting on the bus."
+   },
+   {
+    "speaker": "Abdullah",
+    "text": "My teenage brother wants to work here. He's studying hard."
+   },
+   {
+    "speaker": "Father",
+    "text": "Good. He works hard, so he can do well and be successful."
+   }
+  ]
+ },
+ {
+  "unit": 13,
+  "lesson": 5,
+  "title": "Helping Is Worth It",
+  "where": "Thursday evening at home. Saad is ill. His brother Mansour is going out.",
+  "people": [
+   "Mansour",
+   "Saad"
+  ],
+  "lines": [
+   {
+    "speaker": "Mansour",
+    "text": "Saad, what's the matter? You don't look well."
+   },
+   {
+    "speaker": "Saad",
+    "text": "I have a cold and a sore throat. I'm not playing football tonight."
+   },
+   {
+    "speaker": "Mansour",
+    "text": "Do you have a fever?"
+   },
+   {
+    "speaker": "Saad",
+    "text": "No, I don't. But I'm coughing and sneezing a lot."
+   },
+   {
+    "speaker": "Mansour",
+    "text": "Drink hot lemon and honey. Get better soon!"
+   },
+   {
+    "speaker": "Saad",
+    "text": "Thanks. Where are you going?"
+   },
+   {
+    "speaker": "Mansour",
+    "text": "I'm going to the charity. I'm a volunteer there."
+   },
+   {
+    "speaker": "Saad",
+    "text": "What do you do there?"
+   },
+   {
+    "speaker": "Mansour",
+    "text": "We give food and blankets to homeless people and poor families."
+   },
+   {
+    "speaker": "Saad",
+    "text": "Are you carrying boxes today?"
+   },
+   {
+    "speaker": "Mansour",
+    "text": "Yes. It's hard work, but I'm very pleased. Helping people is worth it."
+   },
+   {
+    "speaker": "Saad",
+    "text": "Next month, I want to donate my old clothes."
+   },
+   {
+    "speaker": "Mansour",
+    "text": "Great idea! That can cheer up a lot of people."
+   }
+  ]
+ },
+ {
+  "unit": 14,
+  "lesson": 1,
+  "title": "At the Check-in Desk",
+  "where": "King Khalid International Airport at night. Nawaf and Fahad check in.",
+  "people": [
+   "Officer",
+   "Nawaf",
+   "Fahad"
+  ],
+  "lines": [
+   {
+    "speaker": "Officer",
+    "text": "Good evening. Can I see your passports, please?"
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Here you are. We're going to Paris."
+   },
+   {
+    "speaker": "Officer",
+    "text": "Thank you. Do you have any luggage?"
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Yes, one suitcase each. And I have this rucksack."
+   },
+   {
+    "speaker": "Officer",
+    "text": "The rucksack can go on the plane with you. Here are your boarding passes."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Is the flight on time?"
+   },
+   {
+    "speaker": "Officer",
+    "text": "There's a small delay. It's now leaving at eleven fifteen."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "We have a connection in Dubai. Is that OK?"
+   },
+   {
+    "speaker": "Officer",
+    "text": "Yes. You have two hours there."
+   },
+   {
+    "speaker": "Nawaf",
+    "text": "Where are the departures?"
+   },
+   {
+    "speaker": "Officer",
+    "text": "Go straight, then turn left. Your gate is in Terminal 2."
+   },
+   {
+    "speaker": "Fahad",
+    "text": "Is it an overnight flight?"
+   },
+   {
+    "speaker": "Officer",
+    "text": "Yes. You land in Paris at seven in the morning. Have a good trip!"
+   }
+  ]
+ },
+ {
+  "unit": 14,
+  "lesson": 2,
+  "title": "After the Final Exam",
+  "where": "The college library. Hamad and Abdulrahman talk about the future.",
+  "people": [
+   "Hamad",
+   "Abdulrahman"
+  ],
+  "lines": [
+   {
+    "speaker": "Hamad",
+    "text": "Abdulrahman, what are you going to do after the final exam?"
+   },
+   {
+    "speaker": "Abdulrahman",
+    "text": "I'm going to rest for a week! Then I'm going to start my aviation course."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "What are you going to study?"
+   },
+   {
+    "speaker": "Abdulrahman",
+    "text": "Engines and aircraft. I hope to be a technician."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "When are you going to graduate?"
+   },
+   {
+    "speaker": "Abdulrahman",
+    "text": "In 2029. I'm going to get a diploma and an English certificate."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Great plans! What did you want to be when you were a child?"
+   },
+   {
+    "speaker": "Abdulrahman",
+    "text": "A pilot. But now I imagine a different career."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Are you going to work abroad?"
+   },
+   {
+    "speaker": "Abdulrahman",
+    "text": "Maybe one day. First, I'm going to work in Riyadh."
+   },
+   {
+    "speaker": "Hamad",
+    "text": "I'm going to apply for a job at the airport next month."
+   },
+   {
+    "speaker": "Abdulrahman",
+    "text": "All the best, Hamad!"
+   }
+  ]
+ },
+ {
+  "unit": 14,
+  "lesson": 3,
+  "title": "A Scholarship to Canada",
+  "where": "The classroom. Saleh tells his teacher and his friend Turki his news.",
+  "people": [
+   "Teacher",
+   "Saleh",
+   "Turki"
+  ],
+  "lines": [
+   {
+    "speaker": "Teacher",
+    "text": "Saleh, I hear you got a scholarship. Congratulations!"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Thank you! I'm going to study in Canada."
+   },
+   {
+    "speaker": "Turki",
+    "text": "What are you going to study?"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Engineering. In the first semester, I'm going to take Physics and chemistry."
+   },
+   {
+    "speaker": "Teacher",
+    "text": "Are all the lectures in English?"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Yes, they are. That's why I did a lot of revision for my English exam."
+   },
+   {
+    "speaker": "Turki",
+    "text": "Where are you going to live?"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "On the campus. It has a library, a gym and a laboratory."
+   },
+   {
+    "speaker": "Teacher",
+    "text": "Do you know your lecturer's name?"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "Not yet. I'm going to meet him on the first day."
+   },
+   {
+    "speaker": "Turki",
+    "text": "Are you nervous?"
+   },
+   {
+    "speaker": "Saleh",
+    "text": "A little bit, but I'm very excited!"
+   },
+   {
+    "speaker": "Teacher",
+    "text": "Take good notes, and do every project on time."
+   }
+  ]
+ },
+ {
+  "unit": 14,
+  "lesson": 4,
+  "title": "Uncle Hamad's Safari",
+  "where": "Friday evening. Ali and Majed ask Uncle Hamad about his holidays.",
+  "people": [
+   "Ali",
+   "Hamad",
+   "Majed"
+  ],
+  "lines": [
+   {
+    "speaker": "Ali",
+    "text": "Uncle Hamad, where did you go last year?"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "I went on safari in South Africa."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Did you see any lions?"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Yes! I saw lions, zebras and elephants. A local guide drove the jeep."
+   },
+   {
+    "speaker": "Ali",
+    "text": "Was it hot?"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "There was a lot of sunshine, but the evenings were cool."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Did you buy a souvenir?"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Yes, I bought a wooden elephant for Ali."
+   },
+   {
+    "speaker": "Ali",
+    "text": "Thank you! Where are you going to go next year?"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "I'm going to visit Zambia. I'm going to see a famous waterfall."
+   },
+   {
+    "speaker": "Majed",
+    "text": "Do you need a visa?"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "Yes. I already have it."
+   },
+   {
+    "speaker": "Ali",
+    "text": "Don't forget your sun cream and sunglasses!"
+   },
+   {
+    "speaker": "Hamad",
+    "text": "I'm going to pack them tonight!"
+   }
+  ]
+ },
+ {
+  "unit": 14,
+  "lesson": 5,
+  "title": "Same to You!",
+  "where": "The last lesson before the holiday. Mr. Said says goodbye to the class.",
+  "people": [
+   "Mr. Said",
+   "Turki",
+   "Omar"
+  ],
+  "lines": [
+   {
+    "speaker": "Mr. Said",
+    "text": "Have a good weekend, everyone! See you next week."
+   },
+   {
+    "speaker": "Turki",
+    "text": "Same to you, Mr. Said!"
+   },
+   {
+    "speaker": "Omar",
+    "text": "Atishoo!"
+   },
+   {
+    "speaker": "Turki",
+    "text": "Bless you, Omar!"
+   },
+   {
+    "speaker": "Mr. Said",
+    "text": "Are you OK, Omar? You have a cold. Get well soon!"
+   },
+   {
+    "speaker": "Omar",
+    "text": "Thank you, Mr. Said. And thank you for your help this semester."
+   },
+   {
+    "speaker": "Mr. Said",
+    "text": "It was my pleasure."
+   },
+   {
+    "speaker": "Turki",
+    "text": "I'm going to Jeddah tomorrow."
+   },
+   {
+    "speaker": "Mr. Said",
+    "text": "Have a safe journey!"
+   },
+   {
+    "speaker": "Turki",
+    "text": "Thanks! Jeddah is warm all year round."
+   },
+   {
+    "speaker": "Omar",
+    "text": "Sorry, I can't come to the class dinner tonight."
+   },
+   {
+    "speaker": "Turki",
+    "text": "Never mind. Take care!"
+   },
+   {
+    "speaker": "Mr. Said",
+    "text": "All the best in the final exam, everyone!"
+   },
+   {
+    "speaker": "Omar",
+    "text": "Thank you. See you again soon!"
+   }
+  ]
+ }
+]

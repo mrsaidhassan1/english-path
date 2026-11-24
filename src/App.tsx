@@ -14,6 +14,7 @@ import LessonPlayer from './pages/LessonPlayer';
 import Vocabulary from './pages/Vocabulary';
 import GrammarPage from './pages/Grammar';
 import ReadingPage from './pages/Reading';
+import ConversationsPage from './pages/Conversations';
 import { SpeakingPage, RolePlayPage } from './pages/Speaking';
 import { PracticePage, GrammarBooster, ReviewPage } from './pages/Practice';
 import { ExamsPage, ExamRunner } from './pages/Exams';
@@ -44,6 +45,7 @@ function Shell() {
         <Route path="/lessons/:moduleId/:lessonId" element={<LessonPlayer />} />
         <Route path="/vocabulary" element={<Vocabulary />} />
         <Route path="/reading" element={<ReadingPage />} />
+        <Route path="/conversations" element={<ConversationsPage />} />
         <Route path="/grammar" element={<GrammarPage />} />
         <Route path="/speaking" element={<SpeakingPage />} />
         <Route path="/speaking/:id" element={<RolePlayPage />} />
