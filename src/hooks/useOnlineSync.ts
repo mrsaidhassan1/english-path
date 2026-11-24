@@ -123,10 +123,18 @@ export function useOnlineSync() {
     return () => { window.clearInterval(timer); document.removeEventListener('visibilitychange', again); };
   }, [me?.onlineId]);
 
-  // 6. the learner's restore code (to get his record back if this phone forgets him)
+  // 6. the learner's restore code (to get his record back if this phone forgets him).
+  // Checked once per visit, and again after a rejoin: when the online entry is made again the code changes,
+  // and a code the phone still showed from before would be refused. A changed code shows its card again.
+  const codeChecked = useRef<string | null>(null);
   useEffect(() => {
-    if (!onlineEnabled || !me?.onlineId || me.restoreCode || owner() !== me.id) return;
-    fetchMyRestoreCode(me.onlineId).then((c) => { if (c) updateStudent((s) => { s.restoreCode = c; }, me.id); }).catch(() => undefined);
+    if (!onlineEnabled || !me?.onlineId || owner() !== me.id) { codeChecked.current = null; return; }
+    if (codeChecked.current === me.onlineId && me.restoreCode) return;
+    const had = me.restoreCode;
+    codeChecked.current = me.onlineId;
+    fetchMyRestoreCode(me.onlineId).then((c) => {
+      if (c && c !== had) updateStudent((s) => { s.restoreCode = c; s.restoreCodeSaved = false; }, me.id);
+    }).catch(() => { codeChecked.current = null; });
   }, [me?.onlineId, me?.restoreCode]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // retry when the connection comes back
