@@ -1,6 +1,7 @@
 import { KIND_LABEL } from '../components/activities/ActivityView';
 import { Link, useParams } from 'react-router-dom';
-import { BookOpen, Check, Clock, Lock, Play, Target, FileText } from 'lucide-react';
+import { BookOpen, Check, Clock, Film, Lock, Play, Target, FileText } from 'lucide-react';
+import { lessonVideo } from '../data/lessonVideos';
 import { MODULES, getModule, reviewAfterModule } from '../data/modules';
 import { useLearner } from '../hooks/useLearner';
 import { useApp } from '../store';
@@ -112,6 +113,7 @@ export function ModulePage() {
                     {l.titleAr && <Ar className="text-sm">{l.titleAr}</Ar>}
                     <span className="flex items-center gap-1 text-sm text-navy-400"><Clock size={14} /> {l.minutes} min · {l.activities.length} activities</span>
                   </span>
+                  {lessonVideo(l.id) && <Pill tone="sky"><Film size={14} /> Video</Pill>}
                   {r && r.total > 0 && <Pill tone="mint">{r.score}/{r.total}</Pill>}
                 </>
               );

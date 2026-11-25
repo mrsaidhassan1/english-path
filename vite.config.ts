@@ -19,6 +19,8 @@ const copyAudio = (): Plugin => ({
   closeBundle() {
     const from = new URL('./public/audio', import.meta.url);
     if (existsSync(from)) cpSync(from, new URL('./dist-single/audio', import.meta.url), { recursive: true });
+    const video = new URL('./public/video', import.meta.url);
+    if (existsSync(video)) cpSync(video, new URL('./dist-single/video', import.meta.url), { recursive: true });
   },
 });
 
