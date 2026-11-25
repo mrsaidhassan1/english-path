@@ -85,6 +85,7 @@ export type Activity =
   | (ActivityBase & { kind: 'flashcards'; words: string[] })
   | (ActivityBase & { kind: 'grammar'; points: GrammarPoint[] })
   | (ActivityBase & { kind: 'watch'; dialogue: Dialogue })
+  | (ActivityBase & { kind: 'video'; videoId: string })
   | (ActivityBase & { kind: 'listening'; parts: ListeningPart[] })
   | (ActivityBase & { kind: 'reading'; text: string; textTitle: string; questions: McqItem[] });
 

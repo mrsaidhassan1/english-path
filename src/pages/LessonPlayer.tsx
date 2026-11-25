@@ -14,7 +14,6 @@ import { countByStatus } from '../lib/srs';
 import { ActivityView, type AnswerEvent } from '../components/activities/ActivityView';
 import { Ar, Button, Card, EmptyState, LinkButton, Pill, ProgressBar, ProgressRing } from '../components/ui';
 import { Monster } from '../components/Monster';
-import { LessonVideo } from '../components/LessonVideo';
 import { AnswerKey } from '../components/activities/AnswerKey';
 import { PresentView, PreviewBar, useAssignHere, useCanEdit, useShowAnswers } from '../components/StaffPreview';
 
@@ -116,7 +115,6 @@ function Player({ lesson, module, review }: { lesson: Lesson; module: Module; re
           <ul className="mt-1 grid gap-1 sm:grid-cols-2">{module.goals.map((g) => <li key={g} className="text-navy">✔ {g}</li>)}</ul>
         </div>
       )}
-      {i === 0 && <LessonVideo lessonId={lesson.id} />}
       {!me && isTeacher && <p className="mb-4"><Pill tone="sun">Teacher preview — answers are not saved</Pill></p>}
       <Card className="p-5 sm:p-7">
         <ActivityView key={act.id} activity={act} onAnswer={onAnswer} onDone={onDone} />

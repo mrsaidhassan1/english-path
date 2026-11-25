@@ -146,6 +146,25 @@ export function Watch({ activity, onDone }: ActivityProps<'watch'>) {
   );
 }
 
+/** Step 1 of a day lesson: the animated lesson video (captions on). */
+export function VideoStep({ activity, onDone }: ActivityProps<'video'>) {
+  const [played, setPlayed] = useState(false);
+  const base = `${import.meta.env.BASE_URL}video/${activity.videoId}`;
+  return (
+    <Shell activity={activity}>
+      <div className="overflow-hidden rounded-3xl bg-navy shadow-card">
+        <video className="aspect-video w-full bg-black" controls playsInline preload="metadata" poster={`${base}.jpg`} onPlay={() => setPlayed(true)} onEnded={() => setPlayed(true)}>
+          <source src={`${base}.mp4`} type="video/mp4" />
+          <track kind="captions" srcLang="en" label="English" src={`${base}.vtt`} default />
+          Your browser cannot play this video.
+        </video>
+      </div>
+      <p className="mt-3 text-sm text-navy-400">Turn the captions on or off with the CC button.</p>
+      <NextButton label={played ? 'Next: word cards' : 'Skip the video'} onClick={() => onDone({ score: 0, total: 0 })} />
+    </Shell>
+  );
+}
+
 // ------------------------------------------------------------------ listen and repeat
 export function ListenRepeat({ activity, onDone }: ActivityProps<'listen'>) {
   const { updateStudent, me } = useApp();

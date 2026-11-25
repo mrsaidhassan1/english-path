@@ -36,7 +36,7 @@ export function AnswerKey({ activity, big = false }: { activity: Activity; big?:
     <section className={`rounded-3xl border-2 border-dashed border-mint bg-mint-50 p-4 ${big ? 'text-xl' : ''}`} aria-label="Answer key">
       <h3 className="mb-2 flex items-center gap-2 font-bold text-mint-700"><KeyRound size={18} /> Answers</h3>
       {lines.length === 0
-        ? <p className="text-navy-500">Nothing to check in this step ({activity.kind === 'flashcards' ? 'word cards' : activity.kind === 'grammar' ? 'grammar explanation' : activity.kind === 'watch' ? 'dialogue to watch' : 'practice'}).</p>
+        ? <p className="text-navy-500">Nothing to check in this step ({activity.kind === 'flashcards' ? 'word cards' : activity.kind === 'grammar' ? 'grammar explanation' : activity.kind === 'watch' ? 'dialogue to watch' : activity.kind === 'video' ? 'lesson video' : 'practice'}).</p>
         : (
           <ol className="space-y-1.5">
             {lines.map((l, k) => (

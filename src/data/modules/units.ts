@@ -8,6 +8,7 @@ import { existingWords, getDialogue, getListening, getUnitData, getWord, IATC, t
 import { autoMatch, autoOrder, autoPicture, dialogueBuilder, optionsWith, tag } from './builder';
 import { stripMarkup } from '../../lib/text';
 import { listeningParts } from '../listeningParts';
+import { lessonVideo } from '../lessonVideos';
 
 interface UnitCfg {
   n: number;
@@ -202,6 +203,10 @@ function dayLesson(n: number, d: IatcUnitDay, k: number, key0: string): Lesson {
   const words = existingWords(d.words);
   const gKey = grammarKeyFor(d.grammarTitle, key0);
   const acts: Activity[] = [];
+  const vid = lessonVideo(`u${n}-d${k + 1}`);
+  if (vid) {
+    acts.push({ kind: 'video', id: id('video'), title: 'Watch the lesson video', prompt: 'Watch the animated lesson first. Then do the activities.', promptAr: 'شاهد فيديو الدرس أولاً ثم أكمل الأنشطة.', videoId: vid.id, tags: tag(n, 'listening', topic) });
+  }
 
   if (words.length) {
     acts.push({ kind: 'flashcards', id: id('cards'), title: 'New words', prompt: 'Look, listen and say each word.', promptAr: 'انظر واستمع وقل كل كلمة.', words: words.slice(0, 12), tags: tag(n, 'vocabulary', topic), src: getWord(words[0])?.src });
